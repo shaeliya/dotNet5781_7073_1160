@@ -11,48 +11,90 @@ namespace dotNet5781_01_1160_7073
 
         static void Main(string[] args)
         {
-
             List<Bus> bussList = new List<Bus>();
+            bool isValid = false;
             string liceseNumber = string.Empty;
             DateTime busStartDate = new DateTime();
 
-            bool isValid = false;
-            while (!isValid)
+            Console.WriteLine("Please, choose one of the following:");
+            Console.WriteLine("A: Introducing a bus to the list of buses in the company.");
+            Console.WriteLine("B: Choosing a bus to travel.");
+            Console.WriteLine("C: Refueling or handling a bus.");
+            Console.WriteLine("D: Presentation of the passenger since the last treatment for all vehicles in the company.");
+            Console.WriteLine("E: Exit.");
+            string choose = Console.ReadLine();
+            while (choose != "E")
             {
-                Console.WriteLine("Please enter the bus license number");
-                liceseNumber = Console.ReadLine();
-                bool isDateTime = false;
-                while (!isDateTime)
+                switch (choose)
                 {
-                    Console.WriteLine("Please enter the start date of the bus activity in fotmat dd/MM/yyyy");
-                    string busStartDateStr = Console.ReadLine();
-                    isDateTime = DateTime.TryParseExact(busStartDateStr, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out busStartDate);
+                    case "A":
+                        while (!isValid)
+                        {
+                            Console.WriteLine("Please enter the bus license number");
+                            liceseNumber = Console.ReadLine();
+                            bool isDateTime = false;
+                            while (!isDateTime)
+                            {
+                                Console.WriteLine("Please enter the start date of the bus activity in fotmat dd/MM/yyyy");
+                                string busStartDateStr = Console.ReadLine();
+                                isDateTime = DateTime.TryParseExact(busStartDateStr, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out busStartDate);
+                            }
+                            isValid = InputValidityCheck(liceseNumber, busStartDate);
+                        }
+
+                        Bus b = new Bus(liceseNumber, busStartDate);
+                        bussList.Add(b);
+                        break;
+                    case "B":
+                        while (!isValid)
+                        {
+                            Console.WriteLine("Please enter the bus license number");
+                            liceseNumber = Console.ReadLine();
+                        }
+
+                        Random randKilometrage = new Random(DateTime.Now.Millisecond);
+                        for (int i = 0; i < bussList.Count; i++)
+                        {
+                            if(bussList[i]==)// אנחנו צריכות לבוק איך אנחנו ניגשות לשדה של מספר רישוי מתוך רשימה של אוטובוסים, כדי שנוכל לבדוק האם האוטובוס המסויים נמצא ברשימה
+                            {
+                               
+                            }
+                        }
+                        break;
+                    case "C":
+                        break;
+                    case "D":
+                        break;
+                    case "E":
+
+                    default:
+                        Console.WriteLine("ERROR");
+                        break;
                 }
-                isValid = InputValidityCheck(liceseNumber, busStartDate);
             }
 
-            Bus b = new Bus(liceseNumber, busStartDate);
-            bussList.Add(b);
+            
         }
+
+
 
         private static bool InputValidityCheck(string liceseNumber, DateTime busStartDate)
         {
-            //     liceseNumber = liceseNumber.Substring(0, 2) + "-" + liceseNumber.Substring(2, 3) + "-" + liceseNumber.Substring(5, 2);
-            // liceseNumber = liceseNumber.Substring(0, 3) + "-" + liceseNumber.Substring(3, 2) + "-" + liceseNumber.Substring(5, 3);
-
-            if (liceseNumber.Length < 7 || liceseNumber.Length>8)
+            if (liceseNumber.Length < 7 || liceseNumber.Length > 8)
             {
                 Console.WriteLine("Number of digits incorrect. Please Enter data again");
                 return false;
             }
-            if (busStartDate.Year < 2018 && liceseNumber.Length != 7||
+            if (busStartDate.Year < 2018 && liceseNumber.Length != 7 ||
                 busStartDate.Year >= 2018 && liceseNumber.Length != 8)
             {
                 Console.WriteLine("Number of digits doesn't match date. Please Enter data again");
                 return false;
             }
-           
+
             return true;
         }
     }
 }
+
+
