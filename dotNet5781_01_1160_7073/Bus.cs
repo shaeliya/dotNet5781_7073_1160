@@ -40,6 +40,11 @@ namespace dotNet5781_01_1160_7073
                 
             }  
         }
-        
+
+        public void AddBus(string licenseNumber, DateTime busStartDate)
+        {
+
+        }
+
     }
 }
