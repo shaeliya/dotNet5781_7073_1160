@@ -13,32 +13,18 @@ namespace dotNet5781_01_1160_7073
         private double Fuel; //דלק
         DateTime BusStartDate;//תאריך תחילת הפעילות
 
-        public Bus(string licenseNumber, string busStartDate)
+        public Bus(string licenseNumber, DateTime busStartDate)
         {
-            LicenseNumber = licenseNumber;
-            BusStartDate = DateTime.Now;
-            if (BusStartDate.Year < 2018)
+            if (licenseNumber.Length==7)
             {
-                if (LicenseNumber.Length == 7)
-                {
-                    LicenseNumber = licenseNumber.Substring(0, 2) + "-" + licenseNumber.Substring(2, 3) + "-" + licenseNumber.Substring(5, 2);
-                }
-                else
-                {
-                    Console.WriteLine("Please write a number with 7 digits");
-                }
+                LicenseNumber = licenseNumber.Substring(0, 2) + "-" + licenseNumber.Substring(2, 3) + "-" + licenseNumber.Substring(5, 2);
+
             }
-            else {
-                if(LicenseNumber.Length == 8)
-                {
-                    LicenseNumber = licenseNumber.Substring(0, 3) + "-" + licenseNumber.Substring(3, 2) + "-" + licenseNumber.Substring(5, 3);
-                }
-                else
-                {
-                    Console.WriteLine("Please write a number with 8 digits");
-                }
-                
-            }  
+            else
+            {
+                LicenseNumber = licenseNumber.Substring(0, 3) + "-" + licenseNumber.Substring(3, 2) + "-" + licenseNumber.Substring(5, 3);
+            }
+            BusStartDate = busStartDate;
         }
 
         public void AddBus(string licenseNumber, DateTime busStartDate)
