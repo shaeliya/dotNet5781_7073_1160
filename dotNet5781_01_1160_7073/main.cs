@@ -1,4 +1,6 @@
-﻿using System;
+﻿//כשלוחצים A פעמיים ברצף, מופיע שוב התפריט הראשי במקום לבקש למלא את מספר הרישוי
+//לסדר את ההדפסות של B- אם B לא מוצא את האוטובוס הוא מבצע את כל ההדפסות(כנראה קשור לברייק)
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -31,12 +33,16 @@ namespace dotNet5781_01_1160_7073
                         while (!isValid)
                         {
                             liceseNumber = inputLicenseNumber();
-
+                            if (liceseNumber== "The number is incorrect")
+                            {
+                                Console.WriteLine("The number is incorrect");
+                                break;
+                            }
                             foreach (Bus bus in busList)
                             {
-                                bool isBusFound = bus.IsBusFound(liceseNumber);
-                                if (isBusFound)
+                                if (bus.LicenseNumber == liceseNumber)
                                 {
+                                    Console.WriteLine("The license number exists in the system");
                                     break;
                                 }
                             }
@@ -56,6 +62,11 @@ namespace dotNet5781_01_1160_7073
                         break;
                     case "B":
                         liceseNumber = inputLicenseNumber();
+                        if (liceseNumber == "The number is incorrect")
+                        {
+                            Console.WriteLine("The number is incorrect");
+                            break;
+                        }
                         foreach (Bus bus in busList)
                         {
                             Random randKilometrage = new Random(DateTime.Now.Millisecond);
@@ -101,7 +112,8 @@ namespace dotNet5781_01_1160_7073
                         foreach (Bus bus in busList)
                         {
                             Console.WriteLine("The license number is:" + bus.LicenseNumber);
-                            Console.WriteLine("The kilometrage is:" + bus.Kilometrage);
+                            string temp = bus.print(bus.LicenseNumber);
+                            Console.WriteLine("The kilometrage is:" + temp);
                         }
                         break;
                     case "E":
@@ -121,9 +133,24 @@ namespace dotNet5781_01_1160_7073
             string liceseNumber;
             Console.WriteLine("Please enter the bus license number");
             liceseNumber = Console.ReadLine();
-            return liceseNumber;
+            bool isDigitsOnly = IsDigitsOnly(liceseNumber);
+            if (isDigitsOnly)
+            {
+                return liceseNumber;
+            }
+            string temp = "The number is incorrect";
+            return temp;
         }
 
+        private static bool IsDigitsOnly(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+            return true;
+        }
         private static bool InputValidityCheck(string liceseNumber, DateTime busStartDate)
         {
             if (liceseNumber.Length < 7 || liceseNumber.Length > 8)
@@ -141,8 +168,7 @@ namespace dotNet5781_01_1160_7073
             return true;
         }
         
-                
-
+         
     }
 }
 
