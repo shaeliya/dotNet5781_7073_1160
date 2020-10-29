@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -32,7 +31,16 @@ namespace dotNet5781_01_1160_7073
                         while (!isValid)
                         {
                             liceseNumber = inputLicenseNumber();
-                            bool isDateTime = false;
+
+                            foreach (Bus bus in busList)
+                            {
+                                bool isBusFound = bus.IsBusFound(liceseNumber);
+                                if (isBusFound)
+                                {
+                                    break;
+                                }
+                            }
+                                bool isDateTime = false;
                             while (!isDateTime)
                             {
                                 Console.WriteLine("Please enter the start date of the bus activity in fotmat dd/MM/yyyy");
@@ -40,6 +48,7 @@ namespace dotNet5781_01_1160_7073
                                 isDateTime = DateTime.TryParseExact(busStartDateStr, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out busStartDate);
                             }
                             isValid = InputValidityCheck(liceseNumber, busStartDate);
+
                         }
 
                         Bus b = new Bus(liceseNumber, busStartDate);
