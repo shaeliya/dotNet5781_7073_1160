@@ -16,16 +16,16 @@ namespace dotNet5781_01_1160_7073
             bool isValid = false;
             string liceseNumber = string.Empty;
             DateTime busStartDate = new DateTime();
-
-            Console.WriteLine("Please, choose one of the following:");
-            Console.WriteLine("A: Introducing a bus to the list of buses in the company.");
-            Console.WriteLine("B: Choosing a bus to travel.");
-            Console.WriteLine("C: Refueling or handling a bus.");
-            Console.WriteLine("D: Presentation of the passenger since the last treatment for all vehicles in the company.");
-            Console.WriteLine("E: Exit.");
-            string choose = Console.ReadLine();
-            while (choose != "E")
+            string choose=string.Empty;
+            while (choose != "E") 
             {
+                Console.WriteLine("Please, choose one of the following:");
+                Console.WriteLine("A: Introducing a bus to the list of buses in the company.");
+                Console.WriteLine("B: Choosing a bus to travel.");
+                Console.WriteLine("C: Refueling or handling a bus.");
+                Console.WriteLine("D: Presentation of the passenger since the last treatment for all vehicles in the company.");
+                Console.WriteLine("E: Exit.");
+                choose = Console.ReadLine();
                 switch (choose)
                 {
                     case "A":
@@ -60,11 +60,40 @@ namespace dotNet5781_01_1160_7073
                             }
 
                         }
-
                         break;
                     case "C":
+                        liceseNumber = inputLicenseNumber();
+                        foreach (Bus bus in busList) 
+                        {
+                            bool isBusFound = bus.IsBusFound(liceseNumber);
+                            if (!isBusFound)
+                            {
+                                break;
+                            }
+                            Console.WriteLine("Press 'T' for treatment or 'R' to refuel");
+                            string ch = Console.ReadLine();
+                            if (ch == "T" || ch == "t")
+                            {
+                                bus.Kilometrage = 0;
+                                bus.BusStartDate = DateTime.Now;
+                            }
+                            else if (ch == "R" || ch == "r")
+                            {
+                                bus.Fuel = 0;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Your choice is wrong!");
+                                break;
+                            }
+                        }
                         break;
                     case "D":
+                        foreach (Bus bus in busList)
+                        {
+                            Console.WriteLine("The license number is:" + bus.LicenseNumber);
+                            Console.WriteLine("The kilometrage is:" + bus.Kilometrage);
+                        }
                         break;
                     case "E":
 
@@ -72,9 +101,10 @@ namespace dotNet5781_01_1160_7073
                         Console.WriteLine("ERROR");
                         break;
                 }
-            }
+            } 
 
-            
+
+
         }
 
         private static string inputLicenseNumber()
@@ -101,6 +131,9 @@ namespace dotNet5781_01_1160_7073
 
             return true;
         }
+        
+                
+
     }
 }
 
