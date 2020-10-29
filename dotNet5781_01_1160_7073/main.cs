@@ -11,7 +11,7 @@ namespace dotNet5781_01_1160_7073
 
         static void Main(string[] args)
         {
-            List<Bus> bussList = new List<Bus>();
+            List<Bus> busList = new List<Bus>();
             bool isValid = false;
             string liceseNumber = string.Empty;
             DateTime busStartDate = new DateTime();
@@ -30,8 +30,7 @@ namespace dotNet5781_01_1160_7073
                     case "A":
                         while (!isValid)
                         {
-                            Console.WriteLine("Please enter the bus license number");
-                            liceseNumber = Console.ReadLine();
+                            liceseNumber = inputLicenseNumber();
                             bool isDateTime = false;
                             while (!isDateTime)
                             {
@@ -43,23 +42,24 @@ namespace dotNet5781_01_1160_7073
                         }
 
                         Bus b = new Bus(liceseNumber, busStartDate);
-                        bussList.Add(b);
+                        busList.Add(b);
                         break;
                     case "B":
-                        while (!isValid)
+                        liceseNumber = inputLicenseNumber();
+                        foreach (Bus bus in busList)
                         {
-                            Console.WriteLine("Please enter the bus license number");
-                            liceseNumber = Console.ReadLine();
+                            Random randKilometrage = new Random(DateTime.Now.Millisecond);
+                            double KilometrageForRide;
+                            bool isKilometrage = double.TryParse(randKilometrage.ToString(), out KilometrageForRide);
+                            bool isProperBusForTravel = bus.IsProperBusForTravel(liceseNumber, KilometrageForRide);
+                            if (isProperBusForTravel)
+                            {
+                                bus.Kilometrage += KilometrageForRide;
+                                bus.Fuel += KilometrageForRide;
+                            }
+
                         }
 
-                        Random randKilometrage = new Random(DateTime.Now.Millisecond);
-                        for (int i = 0; i < bussList.Count; i++)
-                        {
-                            if(bussList[i]==)// אנחנו צריכות לבוק איך אנחנו ניגשות לשדה של מספר רישוי מתוך רשימה של אוטובוסים, כדי שנוכל לבדוק האם האוטובוס המסויים נמצא ברשימה
-                            {
-                               
-                            }
-                        }
                         break;
                     case "C":
                         break;
@@ -76,7 +76,13 @@ namespace dotNet5781_01_1160_7073
             
         }
 
-
+        private static string inputLicenseNumber()
+        {
+            string liceseNumber;
+            Console.WriteLine("Please enter the bus license number");
+            liceseNumber = Console.ReadLine();
+            return liceseNumber;
+        }
 
         private static bool InputValidityCheck(string liceseNumber, DateTime busStartDate)
         {
