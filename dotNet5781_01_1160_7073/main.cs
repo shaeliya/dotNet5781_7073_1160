@@ -30,6 +30,7 @@ namespace dotNet5781_01_1160_7073
                 switch (choose)
                 {
                     case "1":
+                        
                         bool isValid = false;
                         while (!isValid)
                         {
@@ -88,15 +89,15 @@ namespace dotNet5781_01_1160_7073
                                 busExists = true;
                             }
 
-                            randKilometrage.Next(0, 1200);
-                            double KilometrageForRide;
-                            bool isKilometrage = double.TryParse(randKilometrage.ToString(), out KilometrageForRide);
+                            double KilometrageForRide = randKilometrage.NextDouble() * (1200.0 - 0.0) + 0.0;
                             bool isProperBusForTravel = bus.IsProperBusForTravel(liceseNumber, KilometrageForRide, busExists);
                             if (isProperBusForTravel)
                             {
                                 Console.WriteLine("The bus is ready for travel"); 
                                 bus.Kilometrage += KilometrageForRide;
                                 bus.Fuel += KilometrageForRide;
+                                bus.Treatment += KilometrageForRide;
+
                             }
 
                         }
@@ -115,7 +116,7 @@ namespace dotNet5781_01_1160_7073
                             string ch = Console.ReadLine();
                             if (ch == "T" || ch == "t")
                             {
-                                bus.Kilometrage = 0;
+                                bus.Treatment = 0;
                                 bus.BusStartDate = DateTime.Now;
 
                             }

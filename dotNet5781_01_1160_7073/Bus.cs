@@ -13,6 +13,7 @@ namespace dotNet5781_01_1160_7073
         public double Kilometrage { get; set; } //קילומטראג
         public DateTime BusStartDate { get; set; }//תאריך תחילת הפעילות
         public double Fuel { get; set; } //דלק
+        public double Treatment { get; set; } //טיפול
         public Bus(string licenseNumber, DateTime busStartDate)
         {
             if (licenseNumber.Length == 7)
