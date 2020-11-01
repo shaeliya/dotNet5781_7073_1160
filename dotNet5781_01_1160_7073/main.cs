@@ -16,7 +16,7 @@ namespace dotNet5781_01_1160_7073
             List<Bus> busList = new List<Bus>();
             string liceseNumber = string.Empty;
             DateTime busStartDate = new DateTime();
-            bool busExists = false;
+            bool IsBusExists = false;
             string choose=string.Empty;
             while (choose != "5") 
             {
@@ -46,10 +46,10 @@ namespace dotNet5781_01_1160_7073
                                 if (bus.LicenseNumber == liceseNumber)
                                 {
                                     Console.WriteLine("The license number exists in the system");
-                                   busExists = true;
+                                   IsBusExists = true;
                                 }
                             }
-                            if (busExists == true)
+                            if (IsBusExists == true)
                             {
                                 break;
                             }
@@ -63,7 +63,10 @@ namespace dotNet5781_01_1160_7073
                             isValid = InputValidityCheck(liceseNumber, busStartDate);
 
                         }
-
+                        if (IsBusExists == true)
+                        {
+                            break;
+                        }
                         Bus b = new Bus(liceseNumber, busStartDate);
                         busList.Add(b);
                         Console.WriteLine("The bus was added to the system");
@@ -81,27 +84,36 @@ namespace dotNet5781_01_1160_7073
                             Console.WriteLine("The bus does not exist in the system");
                             break;
                         }
+                        bool isBusExists = true;
                         foreach (Bus bus in busList)
                         {
                             bool isBusFound = bus.IsBusFound(liceseNumber);
                             if (!isBusFound)
                             {
-                                busExists = true;
+                                isBusExists = false;   
                             }
-
-                            double KilometrageForRide = randKilometrage.NextDouble() * (1200.0 - 0.0) + 0.0;
-                            bool isProperBusForTravel = bus.IsProperBusForTravel(liceseNumber, KilometrageForRide, busExists);
-                            if (isProperBusForTravel)
+                            //if (IsBusExists == true)
+                            //{
+                            //    break;
+                            //}
+                            else
                             {
-                                Console.WriteLine("The bus is ready for travel"); 
-                                bus.Kilometrage += KilometrageForRide;
-                                bus.Fuel += KilometrageForRide;
-                                bus.Treatment += KilometrageForRide;
-
+                                double KilometrageForRide = randKilometrage.NextDouble() * (1200.0 - 0.0) + 0.0;
+                                bool isProperBusForTravel = bus.IsProperBusForTravel(liceseNumber, KilometrageForRide);
+                                if (isProperBusForTravel)
+                                {
+                                    Console.WriteLine("The bus is ready for travel");
+                                    bus.Kilometrage += KilometrageForRide;
+                                    bus.Fuel += KilometrageForRide;
+                                    bus.Treatment += KilometrageForRide;
+                                }
                             }
-
                         }
-                        
+                        if (!isBusExists)
+                        {
+                            Console.WriteLine("No bus found, with the license number you entered");
+                        }
+
                         break;
                     case "3":
                         liceseNumber = inputLicenseNumber();
