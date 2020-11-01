@@ -10,41 +10,47 @@ namespace dotNet5781_01_1160_7073
 {
     class Program
     {
-
+        static Random randKilometrage = new Random(DateTime.Now.Millisecond);
         static void Main(string[] args)
         {
             List<Bus> busList = new List<Bus>();
-            bool isValid = false;
             string liceseNumber = string.Empty;
             DateTime busStartDate = new DateTime();
+            bool busExists = false;
             string choose=string.Empty;
-            while (choose != "E") 
+            while (choose != "5") 
             {
                 Console.WriteLine("Please, choose one of the following:");
-                Console.WriteLine("A: Introducing a bus to the list of buses in the company.");
-                Console.WriteLine("B: Choosing a bus to travel.");
-                Console.WriteLine("C: Refueling or handling a bus.");
-                Console.WriteLine("D: Presentation of the passenger since the last treatment for all vehicles in the company.");
-                Console.WriteLine("E: Exit.");
+                Console.WriteLine("1: Introducing a bus to the list of buses in the company.");
+                Console.WriteLine("2: Choosing a bus to travel.");
+                Console.WriteLine("3: Refueling or handling a bus.");
+                Console.WriteLine("4: Presentation of the passenger since the last treatment for all vehicles in the company.");
+                Console.WriteLine("5: Exit.");
                 choose = Console.ReadLine();
                 switch (choose)
                 {
-                    case "A":
+                    case "1":
+                        bool isValid = false;
                         while (!isValid)
                         {
                             liceseNumber = inputLicenseNumber();
-                            if (liceseNumber== "The number is incorrect")
+                            if (liceseNumber == "The number is incorrect") 
                             {
                                 Console.WriteLine("The number is incorrect");
                                 break;
                             }
+                           
                             foreach (Bus bus in busList)
                             {
                                 if (bus.LicenseNumber == liceseNumber)
                                 {
                                     Console.WriteLine("The license number exists in the system");
-                                    break;
+                                   busExists = true;
                                 }
+                            }
+                            if (busExists == true)
+                            {
+                                break;
                             }
                                 bool isDateTime = false;
                             while (!isDateTime)
@@ -59,29 +65,44 @@ namespace dotNet5781_01_1160_7073
 
                         Bus b = new Bus(liceseNumber, busStartDate);
                         busList.Add(b);
+                        Console.WriteLine("The bus was added to the system");
                         break;
-                    case "B":
+                    case "2":
                         liceseNumber = inputLicenseNumber();
                         if (liceseNumber == "The number is incorrect")
                         {
                             Console.WriteLine("The number is incorrect");
                             break;
                         }
+                        bool isEmpty = !busList.Any();
+                        if (isEmpty)
+                        {
+                            Console.WriteLine("The bus does not exist in the system");
+                            break;
+                        }
                         foreach (Bus bus in busList)
                         {
-                            Random randKilometrage = new Random(DateTime.Now.Millisecond);
+                            bool isBusFound = bus.IsBusFound(liceseNumber);
+                            if (!isBusFound)
+                            {
+                                busExists = true;
+                            }
+
+                            randKilometrage.Next(0, 1200);
                             double KilometrageForRide;
                             bool isKilometrage = double.TryParse(randKilometrage.ToString(), out KilometrageForRide);
-                            bool isProperBusForTravel = bus.IsProperBusForTravel(liceseNumber, KilometrageForRide);
+                            bool isProperBusForTravel = bus.IsProperBusForTravel(liceseNumber, KilometrageForRide, busExists);
                             if (isProperBusForTravel)
                             {
+                                Console.WriteLine("The bus is ready for travel"); 
                                 bus.Kilometrage += KilometrageForRide;
                                 bus.Fuel += KilometrageForRide;
                             }
 
                         }
+                        
                         break;
-                    case "C":
+                    case "3":
                         liceseNumber = inputLicenseNumber();
                         foreach (Bus bus in busList) 
                         {
@@ -96,6 +117,7 @@ namespace dotNet5781_01_1160_7073
                             {
                                 bus.Kilometrage = 0;
                                 bus.BusStartDate = DateTime.Now;
+
                             }
                             else if (ch == "R" || ch == "r")
                             {
@@ -108,15 +130,15 @@ namespace dotNet5781_01_1160_7073
                             }
                         }
                         break;
-                    case "D":
+                    case "4":
                         foreach (Bus bus in busList)
                         {
-                            Console.WriteLine("The license number is:" + bus.LicenseNumber);
                             string temp = bus.print(bus.LicenseNumber);
-                            Console.WriteLine("The kilometrage is:" + temp);
+                            Console.WriteLine("The license number is:" + temp);                          
+                            Console.WriteLine("The kilometrage is:" + bus.Kilometrage);
                         }
                         break;
-                    case "E":
+                    case "5":
 
                     default:
                         Console.WriteLine("ERROR");

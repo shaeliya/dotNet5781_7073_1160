@@ -26,8 +26,13 @@ namespace dotNet5781_01_1160_7073
             BusStartDate = busStartDate;
         }
 
-        public bool IsProperBusForTravel(string liceseNumber, double KilometrageForRide)
+        public bool IsProperBusForTravel(string liceseNumber, double KilometrageForRide,bool busExists)
         {
+            if (busExists == true)
+            {
+                Console.WriteLine("The bus does not exist in the system");
+                return false;
+            }
             bool isBusFound = IsBusFound(liceseNumber);
 
             if (Fuel + KilometrageForRide > 1200)
