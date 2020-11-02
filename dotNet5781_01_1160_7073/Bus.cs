@@ -14,6 +14,7 @@ namespace dotNet5781_01_1160_7073
         public DateTime BusStartDate { get; set; }//תאריך תחילת הפעילות
         public double Fuel { get; set; } //דלק
         public double Treatment { get; set; } //טיפול
+        public string LicenseNumberForPrint { get; set; }
         public Bus(string licenseNumber, DateTime busStartDate)
         {
             if (licenseNumber.Length == 7)
@@ -72,13 +73,13 @@ namespace dotNet5781_01_1160_7073
 
             if (licenseNumber.Length == 7)
             {
-                LicenseNumber = licenseNumber.Substring(0, 2) + "-" + licenseNumber.Substring(2, 3) + "-" + licenseNumber.Substring(5, 2);
+                LicenseNumberForPrint = licenseNumber.Substring(0, 2) + "-" + licenseNumber.Substring(2, 3) + "-" + licenseNumber.Substring(5, 2);
             }
             else
             {
-                LicenseNumber = licenseNumber.Substring(0, 3) + "-" + licenseNumber.Substring(3, 2) + "-" + licenseNumber.Substring(5, 3);
+                LicenseNumberForPrint = licenseNumber.Substring(0, 3) + "-" + licenseNumber.Substring(3, 2) + "-" + licenseNumber.Substring(5, 3);
             }
-            return LicenseNumber;
+            return LicenseNumberForPrint;
         }
     }
 }
