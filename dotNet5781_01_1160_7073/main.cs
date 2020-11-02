@@ -14,7 +14,7 @@ namespace dotNet5781_01_1160_7073
             List<Bus> busList = new List<Bus>();
             string liceseNumber = string.Empty;
             DateTime busStartDate = new DateTime();
-            
+            double kilometrage=0.0;
             bool isBusFound = false;
             string choose=string.Empty;
             while (choose != "5") 
@@ -66,7 +66,16 @@ namespace dotNet5781_01_1160_7073
                         }
                         if (isValid)
                         {
-                            Bus b = new Bus(liceseNumber, busStartDate);
+                           
+                            Console.WriteLine("If you want to add how many miles the bus has traveled Press Y otherwise press N");
+                            string answer = Console.ReadLine();
+                            if (answer=="Y" || answer == "y")
+                            {
+                                Console.WriteLine("How many miles the bus has traveled?");
+                                string kilometrageStr = Console.ReadLine();
+                                bool temp = double.TryParse(kilometrageStr,out kilometrage);
+                            }
+                            Bus b = new Bus(liceseNumber, busStartDate, kilometrage);
                             busList.Add(b);
                             Console.WriteLine("The bus was added to the system");
                             break;
@@ -205,8 +214,9 @@ namespace dotNet5781_01_1160_7073
 
             return true;
         }
-        
-         
+      
+
+
     }
 }
 
