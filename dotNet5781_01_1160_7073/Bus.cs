@@ -87,9 +87,9 @@ namespace dotNet5781_01_1160_7073
             bool isFuel = false;
             while (!isFuel)
             {
-                if (kilometrage> 12000)
+                if (kilometrage> 1200)
                 {
-                    kilometrage= kilometrage- 12000;
+                    kilometrage= kilometrage- 1200;
                 }
                 else
                 {
