@@ -27,8 +27,8 @@ namespace dotNet5781_01_1160_7073
             }
             BusStartDate = busStartDate;
             Kilometrage = kilometrage;
-            Fuel = IsFuel(kilometrage);
-            Treatment = IsTreatment(kilometrage);
+            Fuel = kilometrage;
+            Treatment = kilometrage;
         }
 
         public bool IsProperBusForTravel(string liceseNumber, double KilometrageForRide)
@@ -82,37 +82,37 @@ namespace dotNet5781_01_1160_7073
             }
             return LicenseNumberForPrint;
         }
-        public double IsFuel(double kilometrage)
-        {
-            bool isFuel = false;
-            while (!isFuel)
-            {
-                if (kilometrage> 1200)
-                {
-                    kilometrage= kilometrage- 1200;
-                }
-                else
-                {
-                    isFuel = true;
-                }
-            }
-            return kilometrage;
-        }
-        public double IsTreatment(double kilometrage)
-        {
-            bool isFuel = false;
-            while (!isFuel)
-            {
-                if (kilometrage > 20000)
-                {
-                    kilometrage = kilometrage - 20000;
-                }
-                else
-                {
-                    isFuel = true;
-                }
-            }
-            return kilometrage;
-        }
+        //public double IsFuel(double kilometrage)
+        //{
+        //    bool isFuel = false;
+        //    while (!isFuel)
+        //    {
+        //        if (kilometrage> 1200)
+        //        {
+        //            kilometrage= kilometrage- 1200;
+        //        }
+        //        else
+        //        {
+        //            isFuel = true;
+        //        }
+        //    }
+        //    return kilometrage;
+        //}
+        //public double IsTreatment(double kilometrage)
+        //{
+        //    bool isFuel = false;
+        //    while (!isFuel)
+        //    {
+        //        if (kilometrage > 20000)
+        //        {
+        //            kilometrage = kilometrage - 20000;
+        //        }
+        //        else
+        //        {
+        //            isFuel = true;
+        //        }
+        //    }
+        //    return kilometrage;
+        //}
     }
 }
