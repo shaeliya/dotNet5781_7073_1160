@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+﻿//Shalhevet Eliyahu 211661160
+//Orit Stavsky 212507073
+using System;
 namespace dotNet5781_01_1160_7073
 {
     class Bus
@@ -14,8 +10,9 @@ namespace dotNet5781_01_1160_7073
         public DateTime BusStartDate { get; set; }//תאריך תחילת הפעילות
         public double Fuel { get; set; } //דלק
         public double Treatment { get; set; } //טיפול
-        public string LicenseNumberForPrint { get; set; }
-        public Bus(string licenseNumber, DateTime busStartDate, double kilometrage)
+        public string LicenseNumberForPrint { get; set; } //מספר רישוי להדפסה 
+        public DateTime LastTreatmentDate { get; set; } //תאירך אחרון לטיפול 
+        public Bus(string licenseNumber, DateTime busStartDate, double kilometrage,double fuel, double treatment, DateTime lastTreatmentDate)//ctor
         {
             if (licenseNumber.Length == 7)
             {
@@ -29,9 +26,10 @@ namespace dotNet5781_01_1160_7073
             Kilometrage = kilometrage;
             Fuel = kilometrage;
             Treatment = kilometrage;
+            LastTreatmentDate = lastTreatmentDate;
         }
 
-        public bool IsProperBusForTravel(string liceseNumber, double KilometrageForRide)
+        public bool IsProperBusForTravel(string liceseNumber, double KilometrageForRide)//The function checks whether the bus is suitable for travel
         {          
             bool isBusFound = IsBusFound(liceseNumber);
 
@@ -48,11 +46,11 @@ namespace dotNet5781_01_1160_7073
             }
             return true;
         }
-        public bool IsYearPassed()
+        public bool IsYearPassed()//The function checks if a year has passed since the last treatment of the bus
         {
             DateTime zeroTime = new DateTime(1, 1, 1);
 
-            var diff = DateTime.Now - BusStartDate;
+            var diff = DateTime.Now - LastTreatmentDate;
             int years = (zeroTime + diff).Year - 1;
             if (years >= 1)
             {
@@ -61,7 +59,7 @@ namespace dotNet5781_01_1160_7073
             }
             return false;
         }
-        public bool IsBusFound(string liceseNumber)
+        public bool IsBusFound(string liceseNumber)//The function checks if the bus is in the system
         {
             if (LicenseNumber != liceseNumber)
             {
@@ -69,7 +67,7 @@ namespace dotNet5781_01_1160_7073
             }
             return true;
         }
-        public string print(string licenseNumber)
+        public string PreparingLicenseNumberForPrint(string licenseNumber)//The function prepares for printing the license number according to the requested format
         {
 
             if (licenseNumber.Length == 7)
@@ -82,37 +80,6 @@ namespace dotNet5781_01_1160_7073
             }
             return LicenseNumberForPrint;
         }
-        //public double IsFuel(double kilometrage)
-        //{
-        //    bool isFuel = false;
-        //    while (!isFuel)
-        //    {
-        //        if (kilometrage> 1200)
-        //        {
-        //            kilometrage= kilometrage- 1200;
-        //        }
-        //        else
-        //        {
-        //            isFuel = true;
-        //        }
-        //    }
-        //    return kilometrage;
-        //}
-        //public double IsTreatment(double kilometrage)
-        //{
-        //    bool isFuel = false;
-        //    while (!isFuel)
-        //    {
-        //        if (kilometrage > 20000)
-        //        {
-        //            kilometrage = kilometrage - 20000;
-        //        }
-        //        else
-        //        {
-        //            isFuel = true;
-        //        }
-        //    }
-        //    return kilometrage;
-        //}
+       
     }
 }
