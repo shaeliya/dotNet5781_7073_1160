@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Net.Http;
@@ -27,20 +28,22 @@ namespace dotNet5781_01_1160_7073
             BusStartDate = busStartDate;
         }
 
-        public bool IsProperBusForTravel(string liceseNumber, double KilometrageForRide)
+        public bool IsProperBusForTravel(string liceseNumber, double KilometrageForRide,  bool isBusFound )
         {
-           
-            bool isBusFound = IsBusFound(liceseNumber);
 
+           
             if (Fuel + KilometrageForRide > 1200)
             {
                 Console.WriteLine("The bus can not start traveling,the bus needs to refuel");
+                
                 return false;
+              
             }
             bool isYearPassed = IsYearPassed();
             if (Kilometrage + KilometrageForRide > 20000 || isYearPassed)
             {
                 Console.WriteLine("The bus can not start traveling,The bus needs care");
+               
                 return false;
             }
             return true;
@@ -67,7 +70,7 @@ namespace dotNet5781_01_1160_7073
             }
             return true;
         }
-        public string print(string licenseNumber)
+        public string Print(string licenseNumber)
         {
 
             if (licenseNumber.Length == 7)
@@ -80,5 +83,6 @@ namespace dotNet5781_01_1160_7073
             }
             return LicenseNumber;
         }
+      
     }
 }
