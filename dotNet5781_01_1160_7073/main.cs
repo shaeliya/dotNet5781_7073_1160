@@ -1,6 +1,4 @@
-﻿//לבדוק בשלוש מה קורה כשמכניסים מספר רישוי לא תקין
-// באחת אם אני מכניסה ברישוי מספר ואות הוא כותב שהמשפט לא נכון ואז הוא כותב שהוא הכניס את זה למערכת 
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -16,12 +14,13 @@ namespace dotNet5781_01_1160_7073
             List<Bus> busList = new List<Bus>();
             string liceseNumber = string.Empty;
             DateTime busStartDate = new DateTime();
-            bool IsBusExists = false;
-            bool isBusExists = false;
+            double kilometrage=0.0;
             bool isBusFound = false;
-            string choose =string.Empty;
+            string choose=string.Empty;
             while (choose != "5") 
             {
+                bool isValid = false;
+                bool IsBusExists = false;
                 Console.WriteLine("Please, choose one of the following:");
                 Console.WriteLine("1: Introducing a bus to the list of buses in the company.");
                 Console.WriteLine("2: Choosing a bus to travel.");
@@ -32,30 +31,30 @@ namespace dotNet5781_01_1160_7073
                 switch (choose)
                 {
                     case "1":
-
-                        bool isValid = false;
+                        
+                        
                         while (!isValid)
                         {
                             liceseNumber = inputLicenseNumber();
-                            if (liceseNumber == "The number is incorrect")
+                            if (liceseNumber == "The number is incorrect") 
                             {
                                 Console.WriteLine("The number is incorrect");
                                 break;
                             }
-
+                           
                             foreach (Bus bus in busList)
                             {
                                 if (bus.LicenseNumber == liceseNumber)
                                 {
                                     Console.WriteLine("The license number exists in the system");
-                                    IsBusExists = true;
+                                   IsBusExists = true;
                                 }
                             }
                             if (IsBusExists == true)
                             {
                                 break;
                             }
-                            bool isDateTime = false;
+                                bool isDateTime = false;
                             while (!isDateTime)
                             {
                                 Console.WriteLine("Please enter the start date of the bus activity in fotmat dd/MM/yyyy");
@@ -65,19 +64,24 @@ namespace dotNet5781_01_1160_7073
                             isValid = InputValidityCheck(liceseNumber, busStartDate);
 
                         }
-                        if (IsBusExists == true)
-                        {
-                            break;
-                        }
                         if (isValid)
-                        {                        
-                            Bus b = new Bus(liceseNumber, busStartDate);
+                        {
+                           
+                            Console.WriteLine("If you want to add how many miles the bus has traveled Press Y otherwise press N");
+                            string answer = Console.ReadLine();
+                            if (answer=="Y" || answer == "y")
+                            {
+                                Console.WriteLine("How many miles the bus has traveled?");
+                                string kilometrageStr = Console.ReadLine();
+                                bool temp = double.TryParse(kilometrageStr,out kilometrage);
+                            }
+                            Bus b = new Bus(liceseNumber, busStartDate, kilometrage);
                             busList.Add(b);
                             Console.WriteLine("The bus was added to the system");
+                            break;
                         }
                         break;
                     case "2":
-                        isBusExists = false;
                         liceseNumber = inputLicenseNumber();
                         if (liceseNumber == "The number is incorrect")
                         {
@@ -90,54 +94,53 @@ namespace dotNet5781_01_1160_7073
                             Console.WriteLine("The bus does not exist in the system");
                             break;
                         }
-
-                        
+                       
                         foreach (Bus bus in busList)
                         {
-                          
                             isBusFound = bus.IsBusFound(liceseNumber);
                             if (isBusFound)
                             {
-                                isBusExists = true;
+                                IsBusExists = true;
                                 double KilometrageForRide = randKilometrage.NextDouble() * (1200.0 - 0.0) + 0.0;
-                                bool isProperBusForTravel = bus.IsProperBusForTravel(liceseNumber, KilometrageForRide,  isBusFound);           
+                                bool isProperBusForTravel = bus.IsProperBusForTravel(liceseNumber, KilometrageForRide);
                                 if (isProperBusForTravel)
                                 {
-                                   
                                     Console.WriteLine("The bus is ready for travel");
                                     bus.Kilometrage += KilometrageForRide;
                                     bus.Fuel += KilometrageForRide;
                                     bus.Treatment += KilometrageForRide;
                                 }
                             }
-                        }                     
-                          
-                        if (!isBusExists)
+                           
+                            
+                        }
+                        if (!IsBusExists)
                         {
                             Console.WriteLine("No bus found, with the license number you entered");
                         }
 
                         break;
                     case "3":
-                        isBusExists = false;
-                        liceseNumber = inputLicenseNumber();                         
+                        liceseNumber = inputLicenseNumber();
                         foreach (Bus bus in busList) 
                         {
-                             isBusFound = bus.IsBusFound(liceseNumber);
+                            isBusFound = bus.IsBusFound(liceseNumber);
                             if (isBusFound)
                             {
-                                isBusExists = true;
+                                IsBusExists = true;
                                 Console.WriteLine("Press 'T' for treatment or 'R' to refuel");
                                 string ch = Console.ReadLine();
                                 if (ch == "T" || ch == "t")
                                 {
                                     bus.Treatment = 0;
                                     bus.BusStartDate = DateTime.Now;
+                                    Console.WriteLine("The treatment was successful");
 
                                 }
                                 else if (ch == "R" || ch == "r")
                                 {
                                     bus.Fuel = 0;
+                                    Console.WriteLine("The refueling was successful");
                                 }
                                 else
                                 {
@@ -145,8 +148,9 @@ namespace dotNet5781_01_1160_7073
                                     break;
                                 }
                             }
+                            
                         }
-                        if (!isBusExists)
+                        if (!IsBusExists)
                         {
                             Console.WriteLine("No bus found, with the license number you entered");
                         }
@@ -154,7 +158,7 @@ namespace dotNet5781_01_1160_7073
                     case "4":
                         foreach (Bus bus in busList)
                         {
-                            string temp = bus.Print(bus.LicenseNumber);
+                            string temp = bus.print(bus.LicenseNumber);
                             Console.WriteLine("The license number is:" + temp);                          
                             Console.WriteLine("The kilometrage is:" + bus.Kilometrage);
                         }
@@ -210,8 +214,9 @@ namespace dotNet5781_01_1160_7073
 
             return true;
         }
-        
-         
+      
+
+
     }
 }
 
