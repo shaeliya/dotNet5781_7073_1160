@@ -8,15 +8,12 @@ namespace dotNet5781_01_1160_7073
     class Program
     {
         static Random randKilometrage = new Random(DateTime.Now.Millisecond);       
-        
-        
         static void Main(string[] args)
         {
             List<Bus> busList = new List<Bus>();
             string choose = string.Empty;
             while (choose != "5")
             {
-               
                 Console.WriteLine("Please, choose one of the following:");
                 Console.WriteLine("1: Introducing a bus to the list of buses in the company.");
                 Console.WriteLine("2: Choosing a bus to travel.");
@@ -45,9 +42,6 @@ namespace dotNet5781_01_1160_7073
                         break;
                 }
             }
-
-
-
         }
 
         private static void PrintsTheInformationOnTheBuses(List<Bus> busList)//case 4
@@ -62,8 +56,7 @@ namespace dotNet5781_01_1160_7073
 
         private static void RefulingAndHandlingBus(List<Bus> busList)//case3
         {
-            
-            string liceseNumber ;    
+            string liceseNumber;   
             bool IsBusExists = false;
             liceseNumber = inputLicenseNumber();
             foreach (Bus bus in busList)
@@ -77,9 +70,8 @@ namespace dotNet5781_01_1160_7073
                     if (ch == "T" || ch == "t")
                     {
                         bus.Treatment = 0;
-                        bus.BusStartDate = DateTime.Now;
+                        bus.LastTreatmentDate = DateTime.Now;
                         Console.WriteLine("The treatment was successful");
-
                     }
                     else if (ch == "R" || ch == "r")
                     {
@@ -92,7 +84,6 @@ namespace dotNet5781_01_1160_7073
                         break;
                     }
                 }
-
             }
             if (!IsBusExists)
             {
@@ -109,9 +100,7 @@ namespace dotNet5781_01_1160_7073
             double fuel = 0.0;
             double treatment = 0.0;
             string answer;
-            
             DateTime lastTreatmentDate = new DateTime();
-            
             bool IsBusExists = false;
             while (!isValid)
             {
@@ -121,7 +110,6 @@ namespace dotNet5781_01_1160_7073
                     Console.WriteLine("The number is incorrect");
                     break;
                 }
-
                 foreach (Bus bus in busList)
                 {
                     if (bus.LicenseNumber == liceseNumber)
@@ -142,12 +130,10 @@ namespace dotNet5781_01_1160_7073
                     isDateTime = DateTime.TryParseExact(busStartDateStr, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out busStartDate);
                 }
                 isValid = InputValidityCheck(liceseNumber, busStartDate);
-
             }
 
             if (isValid)
             {
-
                 Console.WriteLine("If you want to add how many miles the bus has traveled Press Y otherwise press any key");
                 answer = Console.ReadLine();
                 if (answer == "Y" || answer == "y")
@@ -163,7 +149,6 @@ namespace dotNet5781_01_1160_7073
                             Console.WriteLine("The number of miles is incorrect, please try again");
                             temp = false;
                         }
-
                     }
                 }
                 Console.WriteLine("If you want to add  how many miles the bus has traveled since the last refueling, Press Y otherwise press any key");
@@ -173,7 +158,6 @@ namespace dotNet5781_01_1160_7073
                     bool temp = false;
                     while (!temp)
                     {
-
                         Console.WriteLine("How many miles the bus has traveled since the last refueling?");
                         string kilometrageSinceTheLastRefueling = Console.ReadLine();
                         temp = double.TryParse(kilometrageSinceTheLastRefueling, out fuel);
@@ -182,7 +166,6 @@ namespace dotNet5781_01_1160_7073
                             Console.WriteLine("The number of miles is incorrect, please try again");
                             temp = false;
                         }
-
                     }
                 }
 
@@ -190,7 +173,6 @@ namespace dotNet5781_01_1160_7073
                 answer = Console.ReadLine();
                 if (answer == "Y" || answer == "y")
                 {
-
                     bool temp = false;
                     while (!temp)
                     {
@@ -203,18 +185,15 @@ namespace dotNet5781_01_1160_7073
                             temp = false;
                         }
                     }
-
                 }
                 Console.WriteLine("If you want to add a last treatment date, Press Y otherwise press any key");
                 answer = Console.ReadLine();
                 if (answer == "Y" || answer == "y")
                 {
-
                     bool isDateTime = false;
                     while (!isDateTime)
                     {
                         Console.WriteLine("What was the last treatment date?");
-
                         Console.WriteLine("Please enter the date of the last treatment in fotmat dd/MM/yyyy");
                         string lastTreatmentDateStr = Console.ReadLine();
                         isDateTime = DateTime.TryParseExact(lastTreatmentDateStr, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out lastTreatmentDate);
@@ -232,8 +211,6 @@ namespace dotNet5781_01_1160_7073
                 Bus b = new Bus(liceseNumber, busStartDate, kilometrage, fuel, treatment, lastTreatmentDate);
                 busList.Add(b);
                 Console.WriteLine("The bus was added to the system");
-
-              
             }
         } 
         private static void ChoosingBusToTravel(List<Bus> busList)//case2
@@ -252,7 +229,6 @@ namespace dotNet5781_01_1160_7073
                 Console.WriteLine("The bus does not exist in the system");
                 return;
             }
-
             foreach (Bus bus in busList)
             {
                 bool isBusFound = bus.IsBusFound(liceseNumber);
@@ -269,8 +245,6 @@ namespace dotNet5781_01_1160_7073
                         bus.Treatment += KilometrageForRide;
                     }
                 }
-
-
             }
             if (!IsBusExists)
             {
@@ -313,12 +287,8 @@ namespace dotNet5781_01_1160_7073
                 Console.WriteLine("Number of digits doesn't match date. Please Enter data again");
                 return false;
             }
-
             return true;
         }
-
-
-
     }
 }
 
