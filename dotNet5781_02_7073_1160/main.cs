@@ -8,8 +8,11 @@ namespace dotNet5781_02_7073_1160
 {
     class Program
     {
+       
         static void Main(string[] args)
         {
+
+            
         }
     }
 }
