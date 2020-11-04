@@ -22,6 +22,10 @@ namespace dotNet5781_02_7073_1160
             StationCode = stationCode;
             StationAddress = stationAddress;
         }
+        public override string ToString()
+        {
+            return "Bus Station Code: " + StationCode + "," + Latitude+ "°N" + Longitude + "°E";
+        }              
     }
     
 }
