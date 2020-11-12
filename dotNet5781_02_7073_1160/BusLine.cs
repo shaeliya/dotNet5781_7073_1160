@@ -40,7 +40,7 @@ The bus station codes are: { string.Join(", ", stationKeys)}
             }
             else
             {
-                Console.WriteLine("It is not possible to add a station in the requested location");
+                Console.WriteLine("It is not possible to add a station in the requested location");// אולי נגיד לו שיכנס עוד פעם לוקייששן ואז נעשה וייל במיין 
             }
         }
         //לעשות פונקציה דליט
