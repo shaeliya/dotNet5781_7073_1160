@@ -31,24 +31,80 @@ The bus station codes are: { string.Join(", ", stationKeys)}
         }
         public void AddStation(int index,BusLineStation busLineStation)
         {
-            if (index <= Stations.Count||index==Stations.Count+1) 
+            bool isBusStopExist = IsBusStopExist(busLineStation.BusStop.BusStationKey);
+            string choice = "add";
+            if (!isBusStopExist) 
             {
-              
-                Stations.Insert(index-1, busLineStation);
-                Console.WriteLine("The station was successfully added");
-
+                InputCheckAndAddingOrDeletingStation(index, busLineStation, choice);
             }
             else
             {
-                Console.WriteLine("It is not possible to add a station in the requested location");// אולי נגיד לו שיכנס עוד פעם לוקייששן ואז נעשה וייל במיין 
+                Console.WriteLine("The bus station exists in the system, the requested station cannot be added");
+            }
+            
+        }
+
+        public void DeleteStation(int index, BusLineStation busLineStation)
+        {
+            bool isBusStopExist = IsBusStopExist(busLineStation.BusStop.BusStationKey);
+            string choice = "delete";
+            if (isBusStopExist)
+            {
+                InputCheckAndAddingOrDeletingStation(index, busLineStation, choice);
+            }
+            else
+            {
+                Console.WriteLine("The bus station does not exist in the system, the requested station cannot be deleted");
             }
         }
-        //לעשות פונקציה דליט
-        public void DeleteStation()
-        {
 
+        public bool IsBusStopExist(string busStationKey)
+        {
+            foreach (var station in Stations)
+            {
+                if (station.BusStop.BusStationKey == busStationKey)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
-        
+
+        private void InputCheckAndAddingOrDeletingStation(int index, BusLineStation busLineStation,string choice)
+        {
+            if (choice=="add")
+            {
+                if (index <= Stations.Count || index == Stations.Count + 1)
+                {
+
+                    Stations.Insert(index - 1, busLineStation);
+                    Console.WriteLine("The station was successfully added");
+
+                }
+                else
+                {
+                    Console.WriteLine("It is not possible to add a station in the requested location");// אולי נגיד לו שיכנס עוד פעם לוקייששן ואז נעשה וייל במיין 
+                }
+            }
+            else
+            {
+                if (index <= Stations.Count)
+                {
+
+                    Stations.Insert(index - 1, busLineStation);
+                    Console.WriteLine("The station was successfully deleted");
+
+                }
+                else
+                {
+                    Console.WriteLine("It is not possible to delete a station in the requested location");// אולי נגיד לו שיכנס עוד פעם לוקייששן ואז נעשה וייל במיין 
+                }
+            }
+           
+        }
+
+       
+
     }
 }
 //בס סטופ מחלקה שיש בה מידע על כל תחנת אוטובוס
