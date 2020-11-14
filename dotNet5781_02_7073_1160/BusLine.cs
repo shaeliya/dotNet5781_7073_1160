@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_7073_1160
 {     //פרטים על קו האוטובוס
-    
+
     class BusLine
     {
+
         List<BusLineStation> Stations = new List<BusLineStation>();
         public string BusLineNumber { get; set; }
         public string StartStation { get; set; }
@@ -16,10 +17,10 @@ namespace dotNet5781_02_7073_1160
         public string Area { get; set; }
         public override string ToString()
         {
-            List<string> stationKeys= new List<string>();
+            List<string> stationKeys = new List<string>();
             foreach (var station in Stations)
             {
-                stationKeys.Add( station.BusStop.BusStationKey);
+                stationKeys.Add(station.BusStop.BusStationKey);
             }
 
             return $@"The bus line is: {BusLineNumber} 
@@ -27,37 +28,77 @@ The area is: {Area}
 The bus station codes are: { string.Join(", ", stationKeys)}
 "
 ;
-             
+
         }
-        public void AddStation(int index,BusLineStation busLineStation)
+        public void AddStation(int index, BusLineStation busLineStation, double distanceFromPreviousBusStop, TimeSpan travelTimeFromPrevioussBusStop)
         {
             bool isBusStopExist = IsBusStopExist(busLineStation.BusStop.BusStationKey);
             string choice = "add";
-            if (!isBusStopExist) 
+            if (!isBusStopExist)
             {
                 InputCheckAndAddingOrDeletingStation(index, busLineStation, choice);
+                UpdateDistanceAndTimeFromPreviousStation(index, distanceFromPreviousBusStop, travelTimeFromPrevioussBusStop, choice);
             }
             else
             {
                 Console.WriteLine("The bus station exists in the system, the requested station cannot be added");
             }
-            
-        }
 
-        public void DeleteStation(int index, BusLineStation busLineStation)
+        }
+        public void DeleteStation(int index, BusLineStation busLineStation, double distanceFromPreviousBusStop, TimeSpan travelTimeFromPrevioussBusStop)
         {
             bool isBusStopExist = IsBusStopExist(busLineStation.BusStop.BusStationKey);
             string choice = "delete";
             if (isBusStopExist)
             {
                 InputCheckAndAddingOrDeletingStation(index, busLineStation, choice);
+                UpdateDistanceAndTimeFromPreviousStation(index, distanceFromPreviousBusStop, travelTimeFromPrevioussBusStop, choice);
             }
             else
             {
                 Console.WriteLine("The bus station does not exist in the system, the requested station cannot be deleted");
             }
         }
+        private void UpdateDistanceAndTimeFromPreviousStation(int index, double distanceFromPreviousBusStop, TimeSpan travelTimeFromPrevioussBusStop, string choice)
+        {
+            if (choice == "add")
+            {
+                if (index == 1)
+                {
+                    Stations[index].DistanceFromPreviousBusStop = distanceFromPreviousBusStop;
+                    Stations[index].TravelTimeFromPrevioussBusStop = travelTimeFromPrevioussBusStop;
+                }
+                else if (index == Stations.Count + 1)
+                {
+                    Stations[index - 1].DistanceFromPreviousBusStop = distanceFromPreviousBusStop;
+                    Stations[index - 1].TravelTimeFromPrevioussBusStop = travelTimeFromPrevioussBusStop;
+                }
+                else
+                {
+                    TimeSpan time = new TimeSpan(0, 3, 58);
+                    Stations[index].DistanceFromPreviousBusStop = distanceFromPreviousBusStop + 5.83;
+                    Stations[index].TravelTimeFromPrevioussBusStop = travelTimeFromPrevioussBusStop + time;
+                    Stations[index - 1].DistanceFromPreviousBusStop = distanceFromPreviousBusStop;
+                    Stations[index - 1].TravelTimeFromPrevioussBusStop = travelTimeFromPrevioussBusStop;
+                }
+            }
+            else
+            {
+                if (index == 1)
+                {
+                    TimeSpan time = new TimeSpan(0, 0, 0);
+                    Stations[index - 1].DistanceFromPreviousBusStop = 0;
+                    Stations[index - 1].TravelTimeFromPrevioussBusStop = time;
+                }
 
+                if (!(index == 1) || !(index == Stations.Count + 1))
+                {
+                    Stations[index].DistanceFromPreviousBusStop = distanceFromPreviousBusStop;
+                    Stations[index].TravelTimeFromPrevioussBusStop = travelTimeFromPrevioussBusStop;
+                }
+            }
+
+        }
         public bool IsBusStopExist(string busStationKey)
         {
             foreach (var station in Stations)
@@ -69,10 +110,9 @@ The bus station codes are: { string.Join(", ", stationKeys)}
             }
             return false;
         }
-
-        private void InputCheckAndAddingOrDeletingStation(int index, BusLineStation busLineStation,string choice)
+        private void InputCheckAndAddingOrDeletingStation(int index, BusLineStation busLineStation, string choice)
         {
-            if (choice=="add")
+            if (choice == "add")
             {
                 if (index <= Stations.Count || index == Stations.Count + 1)
                 {
@@ -100,10 +140,34 @@ The bus station codes are: { string.Join(", ", stationKeys)}
                     Console.WriteLine("It is not possible to delete a station in the requested location");// אולי נגיד לו שיכנס עוד פעם לוקייששן ואז נעשה וייל במיין 
                 }
             }
-           
+
+        }
+        private int ReturnsIindexOfStationInList(BusLineStation busLineStation, string busStationKey)
+        {
+            for (int i = 0; i < Stations.Count; i++)
+            {
+                if (busLineStation.BusStop.BusStationKey == busStationKey)
+                {
+                    return i;
+                }                
+            }
+            return -1;
+        }
+       private double DistancBetweenTwoStationsOnBusLine(BusLineStation busLineStation, string busStationKey, string busLineStation1,string busLineStation2)
+        {      
+           int indexBusStationKey1= ReturnsIindexOfStationInList(busLineStation, busLineStation1);
+            int indexBusStationKey2 = ReturnsIindexOfStationInList(busLineStation, busLineStation2);
+            double distancBetweenTwoStationsOnBusLineStations = Stations[indexBusStationKey1].DistanceFromPreviousBusStop - Stations[indexBusStationKey2].DistanceFromPreviousBusStop;
+            return distancBetweenTwoStationsOnBusLineStations;
         }
 
-       
+        private TimeSpan TimeBetweenTwoStationsOnBusLine(BusLineStation busLineStation, string busStationKey, string busLineStation1, string busLineStation2)
+        {
+            int indexBusStationKey1 = ReturnsIindexOfStationInList(busLineStation, busLineStation1);
+            int indexBusStationKey2 = ReturnsIindexOfStationInList(busLineStation, busLineStation2);
+            TimeSpan timeBetweenTwoStationsOnBusLineStations = Stations[indexBusStationKey1].TravelTimeFromPrevioussBusStop - Stations[indexBusStationKey2].TravelTimeFromPrevioussBusStop;
+            return timeBetweenTwoStationsOnBusLineStations;
+        }
 
     }
 }

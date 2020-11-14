@@ -15,11 +15,11 @@ namespace dotNet5781_02_7073_1160
         public double Latitude { get; set; } //קו רוחב
         public double Longitude { get; set; } //קו אורך
         public string StationAddress { get; set; } //כתובת התחנה
-        public BusStop(string stationCode, string stationAddress)
+        public BusStop(string busStationKey, string stationAddress)
         {
             Latitude = RandomLatitude.NextDouble() * (33.4 - 30.9) + 30.9;
             Longitude = RandomLongitude.NextDouble() * (35.6 - 34.2) + 34.2;
-            BusStationKey = stationCode;
+            BusStationKey = busStationKey;
             StationAddress = stationAddress;
         }
         public BusStop()
