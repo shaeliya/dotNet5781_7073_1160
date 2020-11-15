@@ -12,13 +12,13 @@ namespace dotNet5781_02_7073_1160
 
         List<BusLineStation> Stations = new List<BusLineStation>();
         public string BusLineNumber { get; set; }
-        public string GetStartStationKey ()
+        public BusLineStation GetStartStation ()
         {
-           return Stations[0].BusStop.BusStationKey;
+            return Stations[0];
         }
-        public string GetLastStationKey()
+        public BusLineStation GetLastStationKey()
         {
-            return Stations[Stations.Count-1].BusStop.BusStationKey;
+            return Stations[Stations.Count-1];
         }
         public string Area { get; set; }
         public override string ToString()
@@ -169,20 +169,43 @@ The bus station codes are: { string.Join(", ", stationKeys)}
             }
             return -1;
         }
-        private double DistancBetweenTwoStationsOnBusLine(BusLineStation busLineStation, string busLineStation1,string busLineStation2)
+        public double DistancBetweenTwoStationsOnBusLine(BusLineStation busLineStation, string busLineStation1, string busLineStation2)
         {      
            int indexBusStationKey1= ReturnsIindexOfStationInList(busLineStation, busLineStation1);
             int indexBusStationKey2 = ReturnsIindexOfStationInList(busLineStation, busLineStation2);
             double distancBetweenTwoStationsOnBusLineStations = Stations[indexBusStationKey1].DistanceFromPreviousBusStop - Stations[indexBusStationKey2].DistanceFromPreviousBusStop;
             return distancBetweenTwoStationsOnBusLineStations;
         }
-        private TimeSpan TimeBetweenTwoStationsOnBusLine(BusLineStation busLineStation, string busStationKey, string busLineStation1, string busLineStation2)
+        public TimeSpan TimeBetweenTwoStationsOnBusLine(BusLineStation busLineStation, string busLineStation1, string busLineStation2)
         {
             int indexBusStationKey1 = ReturnsIindexOfStationInList(busLineStation, busLineStation1);
             int indexBusStationKey2 = ReturnsIindexOfStationInList(busLineStation, busLineStation2);
             TimeSpan timeBetweenTwoStationsOnBusLineStations = Stations[indexBusStationKey1].TravelTimeFromPrevioussBusStop - Stations[indexBusStationKey2].TravelTimeFromPrevioussBusStop;
             return timeBetweenTwoStationsOnBusLineStations;
         }
+        public BusLine ReturnsSubwayOfBusLine(BusLineStation busLineStation,string busLineStationkey1, string busLineStationkey2)
+        {
+            bool isBusStopExist1 = IsBusStopExist(busLineStationkey1);
+            bool isBusStopExist2 = IsBusStopExist(busLineStationkey2);
+            BusLine busLine = new BusLine();
+            if (!isBusStopExist1 ||! isBusStopExist2) 
+            {
+                throw new Exception("The bus stop does not exist in the system");
+            }
+            else
+            {
+                int Index1 = ReturnsIindexOfStationInList(busLineStation, busLineStationkey1);
+                int Index2 = ReturnsIindexOfStationInList(busLineStation, busLineStationkey2);
+                int SubwaySize = Math.Abs(Index2 - Index1);
+                for (int i = 0; i < SubwaySize; i++)
+                {
+                    busLine.AddStation(i, busLineStation, busLineStation.DistanceFromPreviousBusStop, busLineStation.TravelTimeFromPrevioussBusStop);
+                }
+                return busLine;
+            }
+
+        }
+
     }
 }
 //בס סטופ מחלקה שיש בה מידע על כל תחנת אוטובוס
