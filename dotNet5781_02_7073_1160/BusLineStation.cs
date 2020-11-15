@@ -9,6 +9,11 @@ namespace dotNet5781_02_7073_1160
     //תחנה של  קו ספציפי
     class BusLineStation
     {
+        public BusLineStation(TimeSpan travelTimeFromPrevioussBusStop, double distanceFromPreviousBusStop)
+        {
+            TravelTimeFromPrevioussBusStop = travelTimeFromPrevioussBusStop;
+            DistanceFromPreviousBusStop = distanceFromPreviousBusStop;
+        }
         // מרחק וזמן  לתחנה הבאה
         //כל הקווים העוברים בתחנה זאת
         //זמני אמת של הקו בתחנה

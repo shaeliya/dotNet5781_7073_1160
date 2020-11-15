@@ -41,11 +41,13 @@ namespace dotNet5781_02_7073_1160
                 {
                     throw new Exception("This line already exists in the system");
                 }
+
                 Console.WriteLine("Please enter at least two bus stops, to finish press s");
                 
                 string ch = Console.ReadLine();
                 while (ch != "S" || ch != "s")
                 {
+
                     busLineNumber.AddStation( index, busLineStation,distanceFromPreviousBusStop, travelTimeFromPrevioussBusStop)
                 }
             }

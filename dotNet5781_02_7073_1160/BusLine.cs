@@ -11,6 +11,13 @@ namespace dotNet5781_02_7073_1160
     {
 
         List<BusLineStation> Stations = new List<BusLineStation>();
+        public BusLine(string busLineNumber, string area)
+        {
+            BusLineNumber = busLineNumber;
+            Area = area;
+        }
+       
+
         public string BusLineNumber { get; set; }
         public BusLineStation GetStartStation ()
         {

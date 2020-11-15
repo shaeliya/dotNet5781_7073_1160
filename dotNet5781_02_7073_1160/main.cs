@@ -13,6 +13,7 @@ namespace dotNet5781_02_7073_1160
        
         static void Main(string[] args)
         {
+            BusLine bus = new BusLine;
 
             
         }
