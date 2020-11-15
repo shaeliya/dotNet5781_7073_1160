@@ -12,8 +12,14 @@ namespace dotNet5781_02_7073_1160
 
         List<BusLineStation> Stations = new List<BusLineStation>();
         public string BusLineNumber { get; set; }
-        public string StartStation { get; set; }
-        public string LastStation { get; set; }
+        public string GetStartStationKey ()
+        {
+           return Stations[0].BusStop.BusStationKey;
+        }
+        public string GetLastStationKey()
+        {
+            return Stations[Stations.Count-1].BusStop.BusStationKey;
+        }
         public string Area { get; set; }
         public override string ToString()
         {
@@ -30,6 +36,7 @@ The bus station codes are: { string.Join(", ", stationKeys)}
 ;
 
         }
+
         public void AddStation(int index, BusLineStation busLineStation, double distanceFromPreviousBusStop, TimeSpan travelTimeFromPrevioussBusStop)
         {
             bool isBusStopExist = IsBusStopExist(busLineStation.BusStop.BusStationKey);
@@ -41,7 +48,7 @@ The bus station codes are: { string.Join(", ", stationKeys)}
             }
             else
             {
-                Console.WriteLine("The bus station exists in the system, the requested station cannot be added");
+                throw new Exception("The bus station exists in the system, the requested station cannot be added");            
             }
 
         }
@@ -123,7 +130,9 @@ The bus station codes are: { string.Join(", ", stationKeys)}
                 }
                 else
                 {
-                    Console.WriteLine("It is not possible to add a station in the requested location");// אולי נגיד לו שיכנס עוד פעם לוקייששן ואז נעשה וייל במיין 
+
+                    throw new System.IndexOutOfRangeException("It is not possible to add a station in the requested location");
+                   
                 }
             }
             else
@@ -137,30 +146,36 @@ The bus station codes are: { string.Join(", ", stationKeys)}
                 }
                 else
                 {
-                    Console.WriteLine("It is not possible to delete a station in the requested location");// אולי נגיד לו שיכנס עוד פעם לוקייששן ואז נעשה וייל במיין 
+                    throw new System.IndexOutOfRangeException("It is not possible to delete a station in the requested location");
+                  
                 }
             }
 
         }
         private int ReturnsIindexOfStationInList(BusLineStation busLineStation, string busStationKey)
         {
+            bool IndexExist = false;
             for (int i = 0; i < Stations.Count; i++)
             {
                 if (busLineStation.BusStop.BusStationKey == busStationKey)
                 {
+                    IndexExist = true;
                     return i;
                 }                
             }
+            if (!IndexExist)
+            {
+                throw new Exception("The index does not exist in the system");
+            }
             return -1;
         }
-       private double DistancBetweenTwoStationsOnBusLine(BusLineStation busLineStation, string busStationKey, string busLineStation1,string busLineStation2)
+        private double DistancBetweenTwoStationsOnBusLine(BusLineStation busLineStation, string busLineStation1,string busLineStation2)
         {      
            int indexBusStationKey1= ReturnsIindexOfStationInList(busLineStation, busLineStation1);
             int indexBusStationKey2 = ReturnsIindexOfStationInList(busLineStation, busLineStation2);
             double distancBetweenTwoStationsOnBusLineStations = Stations[indexBusStationKey1].DistanceFromPreviousBusStop - Stations[indexBusStationKey2].DistanceFromPreviousBusStop;
             return distancBetweenTwoStationsOnBusLineStations;
         }
-
         private TimeSpan TimeBetweenTwoStationsOnBusLine(BusLineStation busLineStation, string busStationKey, string busLineStation1, string busLineStation2)
         {
             int indexBusStationKey1 = ReturnsIindexOfStationInList(busLineStation, busLineStation1);
@@ -168,7 +183,6 @@ The bus station codes are: { string.Join(", ", stationKeys)}
             TimeSpan timeBetweenTwoStationsOnBusLineStations = Stations[indexBusStationKey1].TravelTimeFromPrevioussBusStop - Stations[indexBusStationKey2].TravelTimeFromPrevioussBusStop;
             return timeBetweenTwoStationsOnBusLineStations;
         }
-
     }
 }
 //בס סטופ מחלקה שיש בה מידע על כל תחנת אוטובוס
