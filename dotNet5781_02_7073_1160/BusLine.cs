@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace dotNet5781_02_7073_1160
 {     //פרטים על קו האוטובוס
 
-    class BusLine
+    class BusLine:IComparable<BusLine>
     {
 
         List<BusLineStation> Stations = new List<BusLineStation>();
@@ -36,7 +36,6 @@ The bus station codes are: { string.Join(", ", stationKeys)}
 ;
 
         }
-
         public void AddStation(int index, BusLineStation busLineStation, double distanceFromPreviousBusStop, TimeSpan travelTimeFromPrevioussBusStop)
         {
             bool isBusStopExist = IsBusStopExist(busLineStation.BusStop.BusStationKey);
@@ -183,7 +182,7 @@ The bus station codes are: { string.Join(", ", stationKeys)}
             TimeSpan timeBetweenTwoStationsOnBusLineStations = Stations[indexBusStationKey1].TravelTimeFromPrevioussBusStop - Stations[indexBusStationKey2].TravelTimeFromPrevioussBusStop;
             return timeBetweenTwoStationsOnBusLineStations;
         }
-        public BusLine ReturnsSubwayOfBusLine(BusLineStation busLineStation,string busLineStationkey1, string busLineStationkey2)
+        public BusLine ReturnsSubRouteOfBusLine(BusLineStation busLineStation,string busLineStationkey1, string busLineStationkey2)
         {
             bool isBusStopExist1 = IsBusStopExist(busLineStationkey1);
             bool isBusStopExist2 = IsBusStopExist(busLineStationkey2);
@@ -196,8 +195,8 @@ The bus station codes are: { string.Join(", ", stationKeys)}
             {
                 int Index1 = ReturnsIindexOfStationInList(busLineStation, busLineStationkey1);
                 int Index2 = ReturnsIindexOfStationInList(busLineStation, busLineStationkey2);
-                int SubwaySize = Math.Abs(Index2 - Index1);
-                for (int i = 0; i < SubwaySize; i++)
+                int SubRouteSize = Math.Abs(Index2 - Index1);
+                for (int i = 0; i < SubRouteSize; i++)
                 {
                     busLine.AddStation(i, busLineStation, busLineStation.DistanceFromPreviousBusStop, busLineStation.TravelTimeFromPrevioussBusStop);
                 }
@@ -205,7 +204,37 @@ The bus station codes are: { string.Join(", ", stationKeys)}
             }
 
         }
+        public int CompareTo(BusLine bus)
+        {
+            double compare = GetLineTime() - bus.GetLineTime();
+            if (compare > 0)
+            {
+                return 1;
+            }
+            else if (compare < 0)
+            {
+                return -1;
+            }
+                return 0;                   
+        }
+        private double GetLineTime()
+        {
+            double time = 0;
+            bool isFirst = true;
+            foreach (BusLineStation station in Stations)
+            {
+                if (isFirst)
+                {
+                    isFirst = false;
+                }
+                else
+                {
+                    time += station.TravelTimeFromPrevioussBusStop.TotalMilliseconds;
+                }
+            }
+            return time;
 
+        }
     }
 }
 //בס סטופ מחלקה שיש בה מידע על כל תחנת אוטובוס
