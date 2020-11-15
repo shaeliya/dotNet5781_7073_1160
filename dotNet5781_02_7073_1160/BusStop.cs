@@ -29,6 +29,17 @@ namespace dotNet5781_02_7073_1160
         {
             return "Bus Station Code: " + BusStationKey + "," + Latitude+ "°N" + Longitude + "°E";
         }              
+        public bool IsBusStopExist(string busStationKey)
+        {
+            foreach (var station in Stations)
+            {
+                if (BusStationKey == busStationKey)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
     
 }
