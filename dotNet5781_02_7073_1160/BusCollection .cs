@@ -17,7 +17,7 @@ namespace dotNet5781_02_7073_1160
             {
                 BusLineStation busLineStation = new BusLineStation();
                 InputCheckAndAddingOrDeletingBus(busLineNumber, choice, busLineStation);
-                if ()
+                if ()//להשלים כאן
                 {
 
                 }
