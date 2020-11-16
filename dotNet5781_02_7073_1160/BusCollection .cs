@@ -17,6 +17,10 @@ namespace dotNet5781_02_7073_1160
             {
                 BusLineStation busLineStation = new BusLineStation();
                 InputCheckAndAddingOrDeletingBus(busLineNumber, choice, busLineStation);
+                if ()
+                {
+
+                }
                 //UpdateDistanceAndTimeFromPreviousStation(distanceFromPreviousBusStop, travelTimeFromPrevioussBusStop, choice);
             }
             else
@@ -30,41 +34,37 @@ namespace dotNet5781_02_7073_1160
         {
             if (choice == "add")
             {
-                Console.WriteLine("Please enter Bus Station Key");
-                string busStationKey = Console.ReadLine();
-                if (busLineNumber.IsBusStopExist(busStationKey))
+                Console.WriteLine("To add a station, press A");
+                string ch = Console.ReadLine();
+                while (ch == "A" || ch == "a")
                 {
-                    throw new Exception("The bus station exists in the system, the requested station cannot be added");
-                }
-                else
-                {
-                    foreach (var bus in BusLines)
+
+                    Console.WriteLine("Please enter Bus Station Key");
+                    string busStationKey = Console.ReadLine();
+                    if (busLineNumber.IsBusStopExist(busStationKey))
                     {
-                        foreach (var stationkey in busLineStation.BusStop.BusStationKey)
+                        throw new Exception("The bus station exists in the system, the requested station cannot be added");
+                    }
+                    else
+                    {
+                        foreach (var bus in BusLines)
                         {
-                            if (busLineStation.BusStop.BusStationKey == busStationKey)
+                            foreach (var stationkey in busLineStation.BusStop.BusStationKey)
                             {
-                                AddingStopToBusLine();
-                                //גמרנו לבדוק האם הקו נמצא במערכת, והוספנו את השדות המתאימים
-                                //אם הגענו עד עכשיו זה אומר שהקו לא נמצא במערכת וצריך להוסיף אותו גם בבס סטופ וגם בבס ליין
+                                if (busLineStation.BusStop.BusStationKey == busStationKey)
+                                {
+                                    AddingBusStopToBusLine(choice);
+                                }
                             }
                         }
-                    }
-                    Console.WriteLine("Please enter the station address");
-                    string stationAddress = Console.ReadLine();
-                    if(string.IsNullOrEmpty(stationAddress))
-                    {
-                        throw new ArgumentException($"'{nameof(stationAddress)}' cannot be null or empty", nameof(stationAddress));
-                    }
-                    AddingStopToBusLine();
-                    BusStop busStop = new BusStop(busStationKey, stationAddress);
-                    
-                    
-                    string ch = Console.ReadLine();
-                    while (ch != "S" || ch != "s")
-                    {
-
-                        // busLineNumber.AddStation( index, busLineStation,distanceFromPreviousBusStop, travelTimeFromPrevioussBusStop)
+                        Console.WriteLine("Please enter the station address");
+                        string stationAddress = Console.ReadLine();
+                        if (string.IsNullOrEmpty(stationAddress))
+                        {
+                            throw new ArgumentException($"'{nameof(stationAddress)}' cannot be null or empty", nameof(stationAddress));
+                        }
+                        AddingBusStopToBusLine(choice);
+                        BusStop busStop = new BusStop(busStationKey, stationAddress);
                     }
                 }
                 //else
@@ -76,32 +76,22 @@ namespace dotNet5781_02_7073_1160
 
         }
 
-        private static void AddingStopToBusLine()
+        private static void AddingBusStopToBusLine(String choice)
         {
             BusLine bus = new BusLine();
+            Console.WriteLine("Enter the number you want to place the station on the list");
             string indexStr = Console.ReadLine();
             int index;
             bool temp = int.TryParse(indexStr, out index);
+            Console.WriteLine("Please enter distance from previous bus stop");
             string distanceFromPreviousBusStopStr = Console.ReadLine();
             double distanceFromPreviousBusStop;
             bool temp1 = double.TryParse(distanceFromPreviousBusStopStr, out distanceFromPreviousBusStop);
-            string travelTimeFromPrevioussBusStopStr = Console.ReadLine();
             TimeSpan travelTimeFromPrevioussBusStop;
+            Console.WriteLine("Please enter travel from previous bus stop");
+            string travelTimeFromPrevioussBusStopStr = Console.ReadLine();
             bool temp2 = TimeSpan.TryParse(travelTimeFromPrevioussBusStopStr, out travelTimeFromPrevioussBusStop);
-            string choice=Console.ReadLine();
-            bus.UpdateDistanceAndTimeFromPreviousStation(index, distanceFromPreviousBusStop, travelTimeFromPrevioussBusStop, choice);
-            
-            //bool temp1;
-            //bool temp2;
-            //Console.WriteLine("Please enter distance from previous bus stop");
-            //string distanceFromPreviousBusStopStr = Console.ReadLine();
-            //double distanceFromPreviousBusStop;
-            //temp1 = double.TryParse(distanceFromPreviousBusStopStr, out distanceFromPreviousBusStop);
-            //TimeSpan travelTimeFromPrevioussBusStop;
-            //Console.WriteLine("Please enter travel from previous bus stop");
-            //string travelTimeFromPrevioussBusStopStr = Console.ReadLine();
-            //temp2 = TimeSpan.TryParse(travelTimeFromPrevioussBusStopStr, out travelTimeFromPrevioussBusStop);
-            //BusLineStation busLine = new BusLineStation(travelTimeFromPrevioussBusStop, distanceFromPreviousBusStop, temp1, temp2);
+            bus.UpdateDistanceAndTimeFromPreviousStation(index, distanceFromPreviousBusStop, travelTimeFromPrevioussBusStop, choice);  
         }
 
         private void IsBusE(BusLine busLineNumber)

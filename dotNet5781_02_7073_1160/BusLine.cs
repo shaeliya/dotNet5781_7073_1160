@@ -80,6 +80,17 @@ The bus station codes are: { string.Join(", ", stationKeys)}
         {
             if (choice == "add")
             {
+               
+                if (distanceFromPreviousBusStop < 0.0 )
+                {
+                    throw new Exception("The distance is not acceptable");
+                }
+                
+                TimeSpan minTime = new TimeSpan(0, 0, 0);
+                if (travelTimeFromPrevioussBusStop < minTime )
+                {
+                    throw new Exception("The travel time is not acceptable");
+                }
                 if (index == 1)
                 {
                     Stations[index].DistanceFromPreviousBusStop = distanceFromPreviousBusStop;
