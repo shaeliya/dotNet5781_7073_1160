@@ -16,7 +16,11 @@ namespace dotNet5781_02_7073_1160
             BusLineNumber = busLineNumber;
             Area = area;
         }
-       
+        public BusLine()
+        {
+
+        }
+
 
         public string BusLineNumber { get; set; }
         public BusLineStation GetStartStation ()
@@ -72,7 +76,7 @@ The bus station codes are: { string.Join(", ", stationKeys)}
                 Console.WriteLine("The bus station does not exist in the system, the requested station cannot be deleted");
             }
         }
-        private void UpdateDistanceAndTimeFromPreviousStation(int index, double distanceFromPreviousBusStop, TimeSpan travelTimeFromPrevioussBusStop, string choice)
+        public void UpdateDistanceAndTimeFromPreviousStation(int index, double distanceFromPreviousBusStop, TimeSpan travelTimeFromPrevioussBusStop, string choice)
         {
             if (choice == "add")
             {
@@ -114,6 +118,10 @@ The bus station codes are: { string.Join(", ", stationKeys)}
         }
         public bool IsBusStopExist(string busStationKey)
         {
+            if (string.IsNullOrEmpty(busStationKey))
+            {
+                throw new ArgumentException($"'{nameof(busStationKey)}' cannot be null or empty", nameof(busStationKey));
+            }
             foreach (var station in Stations)
             {
                 if (station.BusStop.BusStationKey == busStationKey)
