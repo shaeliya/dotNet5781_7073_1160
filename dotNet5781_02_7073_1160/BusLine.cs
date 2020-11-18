@@ -116,7 +116,7 @@ namespace dotNet5781_02_7073_1160
             }
             else
             {
-                throw new Exception("The bus station exists in the system, the requested station cannot be added");            
+                throw new ItemAlreadyExistsException("Bus Station", "The bus station exists in the system, the requested station cannot be added");            
             }
 
         }
@@ -141,15 +141,15 @@ namespace dotNet5781_02_7073_1160
             if (choice == "add")
             {
                
-                if (distanceFromPreviousBusStop < 0.0 )
+                if (distanceFromPreviousBusStop <= 0.0 )
                 {
-                    throw new Exception("The distance is not acceptable");
+                    throw new FormatException(("The distance format is incorrect. Distance must be positive and greater than 0"));
                 }
                 
                 TimeSpan minTime = new TimeSpan(0, 0, 0);
-                if (travelTimeFromPrevioussBusStop < minTime )
+                if (travelTimeFromPrevioussBusStop <= minTime )
                 {
-                    throw new Exception("The travel time is not acceptable");
+                    throw new FormatException("The travel time format is incorrect.Travel time must be positive and greater than 0");
                 }
                 if (index == 1)
                 {
@@ -191,7 +191,7 @@ namespace dotNet5781_02_7073_1160
         {
             if (string.IsNullOrEmpty(busStationKey))
             {
-                throw new ArgumentException($"'{nameof(busStationKey)}' cannot be null or empty", nameof(busStationKey));
+                throw new FormatException($"'{nameof(busStationKey)}' cannot be null or empty");
             }
 
             int index = FindIndexOfStationInList(busStationKey);
@@ -213,7 +213,7 @@ namespace dotNet5781_02_7073_1160
                 else
                 {
 
-                    throw new System.IndexOutOfRangeException("It is not possible to add a station in the requested location");
+                    throw new IndexOutOfRangeException("It is not possible to add a station in the requested location");
                    
                 }
             }
@@ -227,7 +227,7 @@ namespace dotNet5781_02_7073_1160
                 }
                 else
                 {
-                    throw new System.IndexOutOfRangeException("It is not possible to delete a station in the requested location");
+                    throw new IndexOutOfRangeException("It is not possible to delete a station in the requested location");
                   
                 }
             }
@@ -254,12 +254,12 @@ namespace dotNet5781_02_7073_1160
            int indexBusStationKey1= FindIndexOfStationInList(busLineStation1);
             if (indexBusStationKey1 == -1)
             {
-                throw new Exception("The index does not exist in the system");
+                throw new KeyNotFoundException("The index does not exist in the system");
             }
             int indexBusStationKey2 = FindIndexOfStationInList(busLineStation2);
             if(indexBusStationKey2 == -1)
             {
-                throw new Exception("The index does not exist in the system");
+                throw new KeyNotFoundException("The index does not exist in the system");
             }
             double distancBetweenTwoStationsOnBusLineStations = Stations[indexBusStationKey1].DistanceFromPreviousBusStop - Stations[indexBusStationKey2].DistanceFromPreviousBusStop;
             return distancBetweenTwoStationsOnBusLineStations;
@@ -269,12 +269,12 @@ namespace dotNet5781_02_7073_1160
             int indexBusStationKey1 = FindIndexOfStationInList(busLineStation1);
             if (indexBusStationKey1 == -1)
             {
-                throw new Exception("The index does not exist in the system");
+                throw new KeyNotFoundException("The index does not exist in the system");
             }
             int indexBusStationKey2 = FindIndexOfStationInList(busLineStation2);
             if (indexBusStationKey2 == -1)
             {
-                throw new Exception("The index does not exist in the system");
+                throw new KeyNotFoundException("The index does not exist in the system");
             }
             TimeSpan timeBetweenTwoStationsOnBusLineStations = Stations[indexBusStationKey1].TravelTimeFromPrevioussBusStop - Stations[indexBusStationKey2].TravelTimeFromPrevioussBusStop;
             return timeBetweenTwoStationsOnBusLineStations;
@@ -305,7 +305,7 @@ namespace dotNet5781_02_7073_1160
         }
         public int CompareTo(BusLine bus)
         {
-            double compare = GetLineTime() - bus.GetLineTime();
+            double compare = GetLineLength() - bus.GetLineLength();
             if (compare > 0)
             {
                 return 1;
@@ -316,7 +316,7 @@ namespace dotNet5781_02_7073_1160
             }
                 return 0;                   
         }
-        public double GetLineTime()
+        public double GetLineLength()
         {
             double time = 0;
             bool isFirst = true;

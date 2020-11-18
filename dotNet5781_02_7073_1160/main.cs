@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-// בפפונקצית הוספת אוטובוס במחלקת בס ליין- אולי נגיד לו שיכנס עוד פעם לוקייששן ואז נעשה וייל במיין 
 //כשהמשתמש רוצה להוסיף תחנה למסלול של קו אנחנו נדיס לו את אורך המסלול ונשאל אותו איפה הוא רוצה להוסיף
 // לזכור לעשות טריי וקאטצ אחרי כל פונקציה שזרקנו אקספשין
-// ליצור מחלקה של התחנות הקיימות
 // לטפל באקספשן לא יהיה מסוג אקספשן
 namespace dotNet5781_02_7073_1160
 {
@@ -14,9 +12,46 @@ namespace dotNet5781_02_7073_1160
     {
         static void Main(string[] args)
         {
+            try
+            {
+                BusCollection busCollection = InitializeBusCollection();
+                Menu(busCollection);
+            }
+            catch(NotEnoughStationsException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            catch (ItemAlreadyExistsException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            catch (KeyNotFoundException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
 
-            BusCollection busCollection = InitializeBusCollection();
+            finally
+            {
+                Console.WriteLine("Thank you for using our system!");
+                Console.WriteLine("We hope you enjoyed the experience :)");
+            }
 
+        }
+
+        private static void Menu(BusCollection busCollection)
+        {
             string choose = string.Empty;
             while (choose != "0")
             {
@@ -64,7 +99,6 @@ namespace dotNet5781_02_7073_1160
                         break;
                 }
             }
-
         }
 
 

@@ -68,7 +68,7 @@ namespace dotNet5781_02_7073_1160
 
             if (busLine.Stations.Count < 2)
             {
-                throw new Exception("you must enter at least two stations for the bus!");
+                throw new NotEnoughStationsException(busLineNumber, "you must enter at least two stations for the bus!");
             }
 
             BusLinesList.Add(busLine);
@@ -126,7 +126,7 @@ namespace dotNet5781_02_7073_1160
             }
             if (busLines.Count == 0)
             {
-                throw new Exception("No Bus Lines Found for station");
+                throw new KeyNotFoundException("No Bus Lines Found for busStationKey: " + busStationKey);
             }
             return busLines;
         }
@@ -164,7 +164,7 @@ namespace dotNet5781_02_7073_1160
             }
             if (busLinesByLineNumber.Count == 0)
             {
-                throw new IndexOutOfRangeException("No busLineNumber Exists: " + busLineNumber);
+                throw new KeyNotFoundException("No bus found for key busLineNumber: " + busLineNumber);
             }
             return busLinesByLineNumber;
         }
