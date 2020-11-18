@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace dotNet5781_02_7073_1160
 {
   // תחנה
-    class BusStop
+    public class BusStop
     {
         Random RandomLongitude = new Random(DateTime.Now.Millisecond);
         Random RandomLatitude = new Random(DateTime.Now.Millisecond);
