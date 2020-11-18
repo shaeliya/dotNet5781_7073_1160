@@ -18,7 +18,6 @@ namespace dotNet5781_02_7073_1160
         public NotEnoughStationsException(string message, Exception inner) : base(message, inner) { }
         protected NotEnoughStationsException(SerializationInfo info, StreamingContext context)
      : base(info, context) { }
-        // special constructor for our custom exception
         public NotEnoughStationsException(string busLineNumber, string message) : base(message)
         { 
             BusLineNumber = busLineNumber; 

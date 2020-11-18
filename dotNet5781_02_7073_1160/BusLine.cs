@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace dotNet5781_02_7073_1160
 {     //פרטים על קו האוטובוס
 
-    public class BusLine:IComparable<BusLine>
+    public class BusLine : IComparable<BusLine>
     {
 
         public List<BusLineStation> Stations = new List<BusLineStation>();
@@ -25,13 +25,13 @@ namespace dotNet5781_02_7073_1160
         }
 
 
-        public BusLineStation GetStartStation ()
+        public BusLineStation GetStartStation()
         {
             return Stations[0];
         }
         public BusLineStation GetLastStationKey()
         {
-            return Stations[Stations.Count-1];
+            return Stations[Stations.Count - 1];
         }
         public override string ToString()
         {
@@ -103,7 +103,7 @@ namespace dotNet5781_02_7073_1160
             Console.WriteLine("enter busStationKey ");
             busStationKey = Console.ReadLine();
 
-            if(busStationKey.Length > 6)
+            if (busStationKey.Length > 6)
             {
                 throw new FormatException("busStationKey must be 6 digits or less");
             }
@@ -140,7 +140,7 @@ namespace dotNet5781_02_7073_1160
             }
             else
             {
-                throw new ItemAlreadyExistsException("Bus Station", "The bus station exists in the line, the requested station cannot be added");            
+                throw new ItemAlreadyExistsException("Bus Station", "The bus station exists in the line, the requested station cannot be added");
             }
 
         }
@@ -164,8 +164,8 @@ namespace dotNet5781_02_7073_1160
         }
         public void UpdateDistanceAndTimeFromPreviousStation(int index, double distanceFromPreviousBusStop, TimeSpan travelTimeFromPrevioussBusStop, string choice)
         {
-            
-            
+
+
             if (choice == "add")
             {
                 // מכיוון שהמרחק והזמן הם מהתחנה הקודמת, צריך לעדכן תמיד רק את התחנה הבאה לחנה שמכניסים
@@ -175,7 +175,8 @@ namespace dotNet5781_02_7073_1160
                     return;
                 }
                 TimeSpan time = new TimeSpan(0, 3, 9);
-
+                // החלטת מרצת הקורס: מכייון שאחנו לא יודעים את המרחק מהתחנה החדשה לתחנה הקיימת
+                // נחליט על מספר שרירותי
                 Stations[index].DistanceFromPreviousBusStop += 5.83;
                 Stations[index].TravelTimeFromPrevioussBusStop += time;
             }
@@ -183,7 +184,7 @@ namespace dotNet5781_02_7073_1160
             {
                 // מכיוון שהמרחק והזמן הם מהתחנה הקודמת, צריך לעדכן תמיד רק את התחנה הבאה לחנה שמכניסים
                 // ולכן, אם מדובר בתחנה אחרונה - אין צורך לעדכן כלום
-                if (index   == Stations.Count + 1)
+                if (index == Stations.Count + 1)
                 {
                     return;
                 }
@@ -225,7 +226,7 @@ namespace dotNet5781_02_7073_1160
                 {
 
                     throw new IndexOutOfRangeException("It is not possible to add a station in the requested location");
-                   
+
                 }
             }
             else
@@ -239,7 +240,7 @@ namespace dotNet5781_02_7073_1160
                 else
                 {
                     throw new IndexOutOfRangeException("It is not possible to delete a station in the requested location");
-                  
+
                 }
             }
 
@@ -261,14 +262,14 @@ namespace dotNet5781_02_7073_1160
             return -1;
         }
         public double DistancBetweenTwoStationsOnBusLine(string busLineStation1, string busLineStation2)
-        {      
-           int indexBusStationKey1= FindIndexOfStationInList(busLineStation1);
+        {
+            int indexBusStationKey1 = FindIndexOfStationInList(busLineStation1);
             if (indexBusStationKey1 == -1)
             {
                 throw new KeyNotFoundException("The index does not exist in the system");
             }
             int indexBusStationKey2 = FindIndexOfStationInList(busLineStation2);
-            if(indexBusStationKey2 == -1)
+            if (indexBusStationKey2 == -1)
             {
                 throw new KeyNotFoundException("The index does not exist in the system");
             }
@@ -295,7 +296,7 @@ namespace dotNet5781_02_7073_1160
             bool isBusStopExist1 = IsBusStopExist(busLineStationkey1);
             bool isBusStopExist2 = IsBusStopExist(busLineStationkey2);
             BusLine subBusLine = new BusLine();
-            if (!isBusStopExist1 ||! isBusStopExist2) 
+            if (!isBusStopExist1 || !isBusStopExist2)
             {
                 return null;
             }
@@ -325,8 +326,21 @@ namespace dotNet5781_02_7073_1160
             {
                 return -1;
             }
-                return 0;                   
+            return 0;
         }
+        public void PrintBusRoute(bool isNew)
+        {
+            string newString = isNew ? "New " : string.Empty;
+            Console.WriteLine("---------------------------");
+            Console.WriteLine(newString + "Route fot Bus Line: " + BusLineNumber);
+            Console.WriteLine("---------------------------");
+            foreach (var station in Stations)
+            {
+                Console.Write(station.BusStop.BusStationKey + " -> ");
+            }
+            Console.WriteLine(" You have arrived to your destination! ");
+        }
+
         public double GetLineLength()
         {
             double time = 0;
@@ -347,6 +361,3 @@ namespace dotNet5781_02_7073_1160
         }
     }
 }
-//בס סטופ מחלקה שיש בה מידע על כל תחנת אוטובוס
-//בס ליין סטיישן תחנה בהקשר לקו מסויים
-//בס ליין זה קו אוטובוס מוסיפים לקו תחנות

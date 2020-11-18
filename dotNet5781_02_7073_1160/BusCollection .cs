@@ -21,7 +21,7 @@ namespace dotNet5781_02_7073_1160
             BusStopsList = new List<BusStop>();
             
         }
-        /*
+        /* הנחיית הרכז:
                      דז: בפועל פנו אליי סטודנטים והציגו את המציאות )שהיא ברוב המקרים המציאות(. וגם מצאתי שיש אותו קו בהלוך
         שנוסע במסלולים שונים בשעות שונות. לכן עניתי להם שיכולים לאפשר יותר משני קוים עם אותו מספר ולא לוודא     
         את העניין הלוך\חזור – רק אמרתי להם להוסיף בתיעוד את ההחלטה ושהיא אושרה והנימוקים של ההחלטה. אתה יכול
@@ -30,9 +30,6 @@ namespace dotNet5781_02_7073_1160
         #region AddBusLine
         public void AddBusLine()
         {
-            // לקלוט אוסף קווי אוטובוס -> לקלוט קו אוטובס- >
-            //לקלוט אוסף תחנות - > לבדוק שהתחנה קיימת בליסט ואם לא ליצור
-
             Console.WriteLine("Enter bus Line Number");
             string busLineNumber = Console.ReadLine();
             if (IsLineExistsInBusCollection(busLineNumber))
@@ -75,10 +72,6 @@ namespace dotNet5781_02_7073_1160
 
             BusLinesList.Add(busLine);
         }
-
-
-
-
 
         #endregion AddBusLine
 
@@ -147,7 +140,7 @@ namespace dotNet5781_02_7073_1160
             return BusLinesList;
 
         }
-
+        // הנחיית הרכז:
         //דז: ניתן להחזיר רשימה של קוים במקום קו בודד. זה מה שהמלצתי למי שפנה אליי. כמובן עם הסבר בתיעוד.
         public List<BusLine> this[string busLineNumber]
         {
@@ -192,9 +185,12 @@ namespace dotNet5781_02_7073_1160
         {
             Console.WriteLine("Enter the bus line number");
             string busLineNumber = Console.ReadLine();
+
             foreach (var busLine in this[busLineNumber])
             {
+                busLine.PrintBusRoute(false);
                 busLine.AddSingleBusStopToBusLine(BusStopsList);
+                busLine.PrintBusRoute(true);
             }
 
         }

@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//כשהמשתמש רוצה להוסיף תחנה למסלול של קו אנחנו נדיס לו את אורך המסלול ונשאל אותו איפה הוא רוצה להוסיף
-// לזכור לעשות טריי וקאטצ אחרי כל פונקציה שזרקנו אקספשין
-// לטפל באקספשן לא יהיה מסוג אקספשן
+
+//-------------------------------
+// Shalhevet Eliyahu 211661160
+// Orit Stavsky 212507073
+//-------------------------------
+
 namespace dotNet5781_02_7073_1160
 {
     class Program
@@ -252,14 +255,7 @@ namespace dotNet5781_02_7073_1160
             busLines.SortBusCollection();
             foreach (var bus in busLines)
             {
-                Console.WriteLine("---------------------------");
-                Console.WriteLine("Route fot Bus Line: " +  bus.BusLineNumber);
-                Console.WriteLine("---------------------------");
-                foreach (var station in bus.Stations)
-                {
-                    Console.Write(station.BusStop.BusStationKey + " -> ");
-                }
-                Console.WriteLine(" You have arrived to your destination! ");
+                bus.PrintBusRoute(false);
             }
 
         }
