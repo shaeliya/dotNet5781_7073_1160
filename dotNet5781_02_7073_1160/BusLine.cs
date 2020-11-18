@@ -50,19 +50,37 @@ namespace dotNet5781_02_7073_1160
 
         public void AddSingleBusStopToBusLine(List<BusStop> BusStopsList)
         {
-            Console.WriteLine("Enter the number you want to place the station on the list");
+            Console.WriteLine("Enter the index you want to place the station on the list. start from 1");
             string indexStr = Console.ReadLine();
-            Console.WriteLine("Please enter distance from previous bus stop");
-            string distanceFromPreviousBusStopStr = Console.ReadLine();
-            Console.WriteLine("Please enter travel from previous bus stop");
-            string travelTimeFromPrevioussBusStopStr = Console.ReadLine();
-
             int index;
             bool temp = int.TryParse(indexStr, out index);
-            double distanceFromPreviousBusStop;
-            bool temp1 = double.TryParse(distanceFromPreviousBusStopStr, out distanceFromPreviousBusStop);
-            TimeSpan travelTimeFromPrevioussBusStop;
-            bool temp2 = TimeSpan.TryParse(travelTimeFromPrevioussBusStopStr, out travelTimeFromPrevioussBusStop);
+            double distanceFromPreviousBusStop = 0;
+            TimeSpan travelTimeFromPrevioussBusStop = new TimeSpan(0, 0, 0);
+            if (index != 1)
+            {
+                Console.WriteLine("Please enter distance from previous bus stop");
+                string distanceFromPreviousBusStopStr = Console.ReadLine();
+                Console.WriteLine("Please enter travel time from previous bus stop:");
+                Console.WriteLine("hours:");
+                int hours = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("minutes:");
+                int minutes = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("seconds:");
+                int seconds = Convert.ToInt32(Console.ReadLine());
+                bool temp1 = double.TryParse(distanceFromPreviousBusStopStr, out distanceFromPreviousBusStop);
+                travelTimeFromPrevioussBusStop = new TimeSpan(hours, minutes, seconds);
+
+                if (distanceFromPreviousBusStop <= 0.0)
+                {
+                    throw new FormatException(("The distance format is incorrect. Distance must be positive and greater than 0"));
+                }
+
+                TimeSpan minTime = new TimeSpan(0, 0, 0);
+                if (travelTimeFromPrevioussBusStop <= minTime)
+                {
+                    throw new FormatException("The travel time format is incorrect.Travel time must be positive and greater than 0");
+                }
+            }
 
             //ניצור תחנה אם לא קיימת ואם כן - נביא אותה כולל קווי אורך ורוחב שהוגרלו לה בעבר
             BusStop busStop = AddBusStopToList(BusStopsList);
@@ -71,6 +89,8 @@ namespace dotNet5781_02_7073_1160
 
             //נוסיף את התחנה לקו
             AddStation(index, station);
+
+            Console.WriteLine("The station was successfully added");
         }
 
         /// <summary>
@@ -83,6 +103,10 @@ namespace dotNet5781_02_7073_1160
             Console.WriteLine("enter busStationKey ");
             busStationKey = Console.ReadLine();
 
+            if(busStationKey.Length > 6)
+            {
+                throw new FormatException("busStationKey must be 6 digits or less");
+            }
             string stationAddress;
             Console.WriteLine("enter stationAddress ");
             stationAddress = Console.ReadLine();
@@ -116,7 +140,7 @@ namespace dotNet5781_02_7073_1160
             }
             else
             {
-                throw new ItemAlreadyExistsException("Bus Station", "The bus station exists in the system, the requested station cannot be added");            
+                throw new ItemAlreadyExistsException("Bus Station", "The bus station exists in the line, the requested station cannot be added");            
             }
 
         }
@@ -128,6 +152,8 @@ namespace dotNet5781_02_7073_1160
                 string choice = "delete";
                 double distanceFromPreviousBusStop = Stations[index].DistanceFromPreviousBusStop;
                 TimeSpan travelTimeFromPrevioussBusStop = Stations[index].TravelTimeFromPrevioussBusStop;
+                // הפונקציות של בדיקת תקינות מתייחסות לאינדקס + 1 ולכן נוסיף פה 1
+                index = index + 1;
                 ValidityCheckAndAddingOrDeletingStation(index, null, choice);
                 UpdateDistanceAndTimeFromPreviousStation(index, distanceFromPreviousBusStop, travelTimeFromPrevioussBusStop, choice);
             }
@@ -138,51 +164,39 @@ namespace dotNet5781_02_7073_1160
         }
         public void UpdateDistanceAndTimeFromPreviousStation(int index, double distanceFromPreviousBusStop, TimeSpan travelTimeFromPrevioussBusStop, string choice)
         {
+            
+            
             if (choice == "add")
             {
-               
-                if (distanceFromPreviousBusStop <= 0.0 )
+                // מכיוון שהמרחק והזמן הם מהתחנה הקודמת, צריך לעדכן תמיד רק את התחנה הבאה לחנה שמכניסים
+                // ולכן, אם מדובר בתחנה אחרונה - אין צורך לעדכן כלום
+                if (index == Stations.Count)
                 {
-                    throw new FormatException(("The distance format is incorrect. Distance must be positive and greater than 0"));
+                    return;
                 }
-                
-                TimeSpan minTime = new TimeSpan(0, 0, 0);
-                if (travelTimeFromPrevioussBusStop <= minTime )
-                {
-                    throw new FormatException("The travel time format is incorrect.Travel time must be positive and greater than 0");
-                }
-                if (index == 1)
-                {
-                    Stations[index].DistanceFromPreviousBusStop = distanceFromPreviousBusStop;
-                    Stations[index].TravelTimeFromPrevioussBusStop = travelTimeFromPrevioussBusStop;
-                }
-                else if (index == Stations.Count + 1)
-                {
-                    Stations[index - 1].DistanceFromPreviousBusStop = distanceFromPreviousBusStop;
-                    Stations[index - 1].TravelTimeFromPrevioussBusStop = travelTimeFromPrevioussBusStop;
-                }
-                else
-                {
-                    TimeSpan time = new TimeSpan(0, 3, 58);
-                    Stations[index].DistanceFromPreviousBusStop = distanceFromPreviousBusStop + 5.83;
-                    Stations[index].TravelTimeFromPrevioussBusStop = travelTimeFromPrevioussBusStop + time;
-                    Stations[index - 1].DistanceFromPreviousBusStop = distanceFromPreviousBusStop;
-                    Stations[index - 1].TravelTimeFromPrevioussBusStop = travelTimeFromPrevioussBusStop;
-                }
+                TimeSpan time = new TimeSpan(0, 3, 9);
+
+                Stations[index].DistanceFromPreviousBusStop += 5.83;
+                Stations[index].TravelTimeFromPrevioussBusStop += time;
             }
             else
             {
+                // מכיוון שהמרחק והזמן הם מהתחנה הקודמת, צריך לעדכן תמיד רק את התחנה הבאה לחנה שמכניסים
+                // ולכן, אם מדובר בתחנה אחרונה - אין צורך לעדכן כלום
+                if (index   == Stations.Count + 1)
+                {
+                    return;
+                }
                 if (index == 1)
                 {
                     TimeSpan time = new TimeSpan(0, 0, 0);
                     Stations[index - 1].DistanceFromPreviousBusStop = 0;
                     Stations[index - 1].TravelTimeFromPrevioussBusStop = time;
                 }
-
-                if (!(index == 1) || !(index == Stations.Count + 1))
+                else
                 {
-                    Stations[index].DistanceFromPreviousBusStop = distanceFromPreviousBusStop;
-                    Stations[index].TravelTimeFromPrevioussBusStop = travelTimeFromPrevioussBusStop;
+                    Stations[index - 1].DistanceFromPreviousBusStop += distanceFromPreviousBusStop;
+                    Stations[index - 1].TravelTimeFromPrevioussBusStop += travelTimeFromPrevioussBusStop;
                 }
             }
 
@@ -205,10 +219,7 @@ namespace dotNet5781_02_7073_1160
             {
                 if (index <= Stations.Count || index == Stations.Count + 1)
                 {
-
                     Stations.Insert(index - 1, busLineStation);
-                    Console.WriteLine("The station was successfully added");
-
                 }
                 else
                 {

@@ -35,9 +35,13 @@ namespace dotNet5781_02_7073_1160
 
             Console.WriteLine("Enter bus Line Number");
             string busLineNumber = Console.ReadLine();
+            if (IsLineExistsInBusCollection(busLineNumber))
+            {
+                throw new ItemAlreadyExistsException("Bus Line Number", "The bus line number already exists in the collection, the requested line cannot be added");
+            }
 
             int areaInt = 0;
-            while (areaInt < 1 && areaInt > 8)
+            while (areaInt < 1 || areaInt > 8)
             {
                 Console.WriteLine("Please Choose area code from 1 to 8 according to the following list:");
                 Console.WriteLine("1 - General");
@@ -56,8 +60,6 @@ namespace dotNet5781_02_7073_1160
             BusLine busLine = new BusLine(busLineNumber, area);
 
             string ch = "c";
-
-            Console.WriteLine("you must enter at least two stations for the bus");
 
             while (ch.ToLower() == "c")
             {
@@ -149,7 +151,15 @@ namespace dotNet5781_02_7073_1160
         //דז: ניתן להחזיר רשימה של קוים במקום קו בודד. זה מה שהמלצתי למי שפנה אליי. כמובן עם הסבר בתיעוד.
         public List<BusLine> this[string busLineNumber]
         {
-            get { return ReturnsAllBusLinesByLineNumber(busLineNumber); }
+            get
+            {
+                List<BusLine> busLinesByLineNumber = ReturnsAllBusLinesByLineNumber(busLineNumber);
+                if (busLinesByLineNumber.Count == 0)
+                {
+                    throw new IndexOutOfRangeException("No bus found for busLineNumber: " + busLineNumber);
+                }
+                return ReturnsAllBusLinesByLineNumber(busLineNumber);
+            }
         }
 
         private List<BusLine> ReturnsAllBusLinesByLineNumber(string busLineNumber)
@@ -162,12 +172,19 @@ namespace dotNet5781_02_7073_1160
                     busLinesByLineNumber.Add(busLine);
                 }
             }
-            if (busLinesByLineNumber.Count == 0)
-            {
-                throw new KeyNotFoundException("No bus found for key busLineNumber: " + busLineNumber);
-            }
             return busLinesByLineNumber;
         }
+        public bool IsLineExistsInBusCollection(string busLineNumber)
+        {
+            List<BusLine> busLinesByLineNumber = ReturnsAllBusLinesByLineNumber(busLineNumber);
+            if (busLinesByLineNumber.Count == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         /// <summary>
         /// הוספת תחנה לקו
         /// </summary>

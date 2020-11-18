@@ -27,35 +27,40 @@ namespace dotNet5781_02_7073_1160
             }
             catch (KeyNotFoundException ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.Message);
             }
             catch (FormatException ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.Message);
             }
             catch (IndexOutOfRangeException ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.Message);
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.Message);
             }
 
             finally
             {
                 Console.WriteLine("Thank you for using our system!");
                 Console.WriteLine("We hope you enjoyed the experience :)");
+                Console.ReadKey();
+
             }
 
         }
 
         private static void Menu(BusCollection busCollection)
         {
-            string choose = string.Empty;
-            while (choose != "0")
+            string choice = string.Empty;
+            while (choice != "0")
             {
-                Console.WriteLine("Please, choose one of the following:");
+                Console.WriteLine("----------------");
+                Console.WriteLine("~~~~~~Menu~~~~~~");
+                Console.WriteLine("----------------");
+                Console.WriteLine("Please choose one of the following:");
                 Console.WriteLine("1: Add a new bus line.");
                 Console.WriteLine("2: Add a new bus stop to a bus line.");
                 Console.WriteLine("3: Delete a bus line.");
@@ -65,8 +70,8 @@ namespace dotNet5781_02_7073_1160
                 Console.WriteLine("7: Print all the bus lines in the system.");
                 Console.WriteLine("8: Print all the stops and their bus lines.");
                 Console.WriteLine("0: Exit.");
-                choose = Console.ReadLine();
-                switch (choose)
+                choice = Console.ReadLine();
+                switch (choice.Trim())
                 {
                     case "1":
                         AddNewBusLine(busCollection);
@@ -123,7 +128,7 @@ namespace dotNet5781_02_7073_1160
                 // נשאר לנו לחלק את תחנות 10 - 39  לשאר הקווים
                 // כל קו יקבל 3 תחנות נוספות חדשות מהקווים הללו
 
-                for (int j = 0; j < 12; j++)
+                for (int j = 0; j <= 12; j++)
                 {
                     TimeSpan travelTimeFromPrevioussBusStop = new TimeSpan(0, i, i * 2);
                     BusStop busStop = new BusStop();
@@ -136,7 +141,7 @@ namespace dotNet5781_02_7073_1160
                         busStop = busCollection.BusStopsList[j + (i - 1) * 3];
                     }
                     BusLineStation busLineStation = new BusLineStation(travelTimeFromPrevioussBusStop, i * 1.1, busStop);
-                    busLine.AddStation(j, busLineStation);
+                    busLine.AddStation(j + 1, busLineStation);
                 }
                 busCollection.BusLinesList.Add(busLine);
             }
@@ -231,6 +236,7 @@ namespace dotNet5781_02_7073_1160
                 BusLine subRoute = bus.ReturnsSubRouteOfBusLine(busLineStationkey1, busLineStationkey2);
                 if (subRoute != null)
                 {
+                    subRoute.BusLineNumber = bus.BusLineNumber;                        
                     busLines.BusLinesList.Add(subRoute);
                 }
             }
@@ -246,7 +252,14 @@ namespace dotNet5781_02_7073_1160
             busLines.SortBusCollection();
             foreach (var bus in busLines)
             {
-                Console.WriteLine(bus.BusLineNumber);
+                Console.WriteLine("---------------------------");
+                Console.WriteLine("Route fot Bus Line: " +  bus.BusLineNumber);
+                Console.WriteLine("---------------------------");
+                foreach (var station in bus.Stations)
+                {
+                    Console.Write(station.BusStop.BusStationKey + " -> ");
+                }
+                Console.WriteLine(" You have arrived to your destination! ");
             }
 
         }
