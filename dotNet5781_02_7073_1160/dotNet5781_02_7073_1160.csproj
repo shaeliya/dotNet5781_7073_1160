@@ -49,6 +49,8 @@
     <Compile Include="BusLineStation.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="main.cs" />
+    <Compile Include="ItemAlreadyExistsException.cs" />
+    <Compile Include="NotEnoughStationsException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

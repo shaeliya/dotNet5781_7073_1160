@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace dotNet5781_02_7073_1160
 {
   // תחנה
-    class BusStop
+    public class BusStop
     {
         Random RandomLongitude = new Random(DateTime.Now.Millisecond);
         Random RandomLatitude = new Random(DateTime.Now.Millisecond);
@@ -28,18 +28,7 @@ namespace dotNet5781_02_7073_1160
         public override string ToString()
         {
             return "Bus Station Code: " + BusStationKey + "," + Latitude+ "°N" + Longitude + "°E";
-        }              
-        //public bool IsBusStopExist(string busStationKey)
-        //{
-        //    foreach (var station in Stations)
-        //    {
-        //        if (BusStationKey == busStationKey)
-        //        {
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
+        }
     }
     
 }

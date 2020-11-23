@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,133 +7,250 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_7073_1160
 {
-    class BusCollection//:IEnumerable
+     public class BusCollection:IEnumerable<BusLine>
     {
-        public List<BusLine> BusLines { get; set; }
-        public void AddBus(BusLine busLineNumber)
-        {
-            bool isBusExist = IsBusExist(busLineNumber.BusLineNumber);
-            string choice = "add";
-            if (!isBusExist)
-            {
-                BusLineStation busLineStation = new BusLineStation();
-                InputCheckAndAddingOrDeletingBus(busLineNumber, choice, busLineStation);
-                if ()//להשלים כאן
-                {
+        //אוסף הקווים
+        public List<BusLine> BusLinesList { get; set; }
 
-                }
-                //UpdateDistanceAndTimeFromPreviousStation(distanceFromPreviousBusStop, travelTimeFromPrevioussBusStop, choice);
-            }
-            else
+        //אוסף התחנות הקיימות במערכת
+        public List<BusStop> BusStopsList { get; set; }
+
+        public BusCollection()
+        {
+            BusLinesList = new List<BusLine>();
+            BusStopsList = new List<BusStop>();
+            
+        }
+        /* הנחיית הרכז:
+                     דז: בפועל פנו אליי סטודנטים והציגו את המציאות )שהיא ברוב המקרים המציאות(. וגם מצאתי שיש אותו קו בהלוך
+        שנוסע במסלולים שונים בשעות שונות. לכן עניתי להם שיכולים לאפשר יותר משני קוים עם אותו מספר ולא לוודא     
+        את העניין הלוך\חזור – רק אמרתי להם להוסיף בתיעוד את ההחלטה ושהיא אושרה והנימוקים של ההחלטה. אתה יכול
+        להמליץ לסטודנטים שלך גם כפי שכתבת וגם כמוני
+                     */
+        #region AddBusLine
+        public void AddBusLine()
+        {
+            Console.WriteLine("Enter bus Line Number");
+            string busLineNumber = Console.ReadLine();
+            if (IsLineExistsInBusCollection(busLineNumber))
             {
-                throw new Exception("The bus station exists in the system, the requested station cannot be added");
+                throw new ItemAlreadyExistsException("Bus Line Number", "The bus line number already exists in the collection, the requested line cannot be added");
+            }
+
+            int areaInt = 0;
+            while (areaInt < 1 || areaInt > 8)
+            {
+                Console.WriteLine("Please Choose area code from 1 to 8 according to the following list:");
+                Console.WriteLine("1 - General");
+                Console.WriteLine("2 - North");
+                Console.WriteLine("3 - South");
+                Console.WriteLine("4 - Center");
+                Console.WriteLine("5 - Jerusalem");
+                Console.WriteLine("6 - TelAviv");
+                Console.WriteLine("7 - YehudaShomron");
+                Console.WriteLine("8 - Haifa");
+                string areaStr = Console.ReadLine();
+                bool temp = int.TryParse(areaStr, out areaInt);
+            }
+
+            Enum.Area area = (Enum.Area)areaInt;
+            BusLine busLine = new BusLine(busLineNumber, area);
+
+            string ch = "c";
+
+            while (ch.ToLower() == "c")
+            {
+                busLine.AddSingleBusStopToBusLine(BusStopsList);
+                Console.WriteLine("Enter 'c' to continue adding. Press any key to stop");
+                ch = Console.ReadLine();
+            }
+
+            if (busLine.Stations.Count < 2)
+            {
+                throw new NotEnoughStationsException(busLineNumber, "you must enter at least two stations for the bus!");
+            }
+
+            BusLinesList.Add(busLine);
+        }
+
+        #endregion AddBusLine
+
+        public void DeleteBusLine()
+        {
+            string busLineNumber;
+            Console.WriteLine("enter busLineNumber ");
+            busLineNumber = Console.ReadLine();
+
+            // משום שיכול להיות שיש כמה קווים עם אותו המספר, נמחק את כל הקווים מאותו המספר
+            int index = ReturnsIndexOfBusLine(busLineNumber);
+
+            while (index != -1)
+            {
+                BusLinesList.RemoveAt(index);
+                index = ReturnsIndexOfBusLine(busLineNumber);
             }
         }
 
-
-        public void InputCheckAndAddingOrDeletingBus(BusLine busLineNumber, string choice, BusLineStation busLineStation)//, int index)
+        private int ReturnsIndexOfBusLine(string busLineNumber)
         {
-            if (choice == "add")
+            for (int i = 0; i < BusLinesList.Count; i++)
             {
-                Console.WriteLine("To add a station, press A");
-                string ch = Console.ReadLine();
-                while (ch == "A" || ch == "a")
+                if (BusLinesList[i].BusLineNumber == busLineNumber)
                 {
+                    return i;
+                }
+            }
+            return -1;
 
-                    Console.WriteLine("Please enter Bus Station Key");
-                    string busStationKey = Console.ReadLine();
-                    if (busLineNumber.IsBusStopExist(busStationKey))
+        }
+
+        public List<BusLine> GetAllLinesWithStation(string busStationKey)
+        {
+            List<BusLine> busLines = new List<BusLine>();
+            foreach (BusLine busLine in this)
+            {
+                foreach(var station in busLine.Stations)
+                {
+                    if (station.BusStop.BusStationKey == busStationKey)
                     {
-                        throw new Exception("The bus station exists in the system, the requested station cannot be added");
-                    }
-                    else
-                    {
-                        foreach (var bus in BusLines)
-                        {
-                            foreach (var stationkey in busLineStation.BusStop.BusStationKey)
-                            {
-                                if (busLineStation.BusStop.BusStationKey == busStationKey)
-                                {
-                                    AddingBusStopToBusLine(choice);
-                                }
-                            }
-                        }
-                        Console.WriteLine("Please enter the station address");
-                        string stationAddress = Console.ReadLine();
-                        if (string.IsNullOrEmpty(stationAddress))
-                        {
-                            throw new ArgumentException($"'{nameof(stationAddress)}' cannot be null or empty", nameof(stationAddress));
-                        }
-                        AddingBusStopToBusLine(choice);
-                        BusStop busStop = new BusStop(busStationKey, stationAddress);
+                        busLines.Add(busLine);
+                        break;
                     }
                 }
-                //else
-                //    {
-
-                //    }
 
             }
-
-        }
-
-        private static void AddingBusStopToBusLine(String choice)
-        {
-            BusLine bus = new BusLine();
-            Console.WriteLine("Enter the number you want to place the station on the list");
-            string indexStr = Console.ReadLine();
-            int index;
-            bool temp = int.TryParse(indexStr, out index);
-            Console.WriteLine("Please enter distance from previous bus stop");
-            string distanceFromPreviousBusStopStr = Console.ReadLine();
-            double distanceFromPreviousBusStop;
-            bool temp1 = double.TryParse(distanceFromPreviousBusStopStr, out distanceFromPreviousBusStop);
-            TimeSpan travelTimeFromPrevioussBusStop;
-            Console.WriteLine("Please enter travel from previous bus stop");
-            string travelTimeFromPrevioussBusStopStr = Console.ReadLine();
-            bool temp2 = TimeSpan.TryParse(travelTimeFromPrevioussBusStopStr, out travelTimeFromPrevioussBusStop);
-            bus.UpdateDistanceAndTimeFromPreviousStation(index, distanceFromPreviousBusStop, travelTimeFromPrevioussBusStop, choice);  
-        }
-
-        private void IsBusE(BusLine busLineNumber)
-        {
-            if (string.IsNullOrEmpty(busLineNumber.BusLineNumber))
+            if (busLines.Count == 0)
             {
-                throw new ArgumentException($"'{nameof(busLineNumber)}' cannot be null or empty", nameof(busLineNumber));
+                throw new KeyNotFoundException("No Bus Lines Found for busStationKey: " + busStationKey);
             }
-            int count = 0;
-            foreach (BusLine busLine in BusLines)
+            return busLines;
+        }
+        public IEnumerator<BusLine> GetEnumerator()
+        {
+            return BusLinesList.GetEnumerator();
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public List<BusLine> SortBusCollection()
+        {
+            BusLinesList.Sort();
+            return BusLinesList;
+
+        }
+        // הנחיית הרכז:
+        //דז: ניתן להחזיר רשימה של קוים במקום קו בודד. זה מה שהמלצתי למי שפנה אליי. כמובן עם הסבר בתיעוד.
+        public List<BusLine> this[string busLineNumber]
+        {
+            get
             {
-                if (busLine.BusLineNumber == busLineNumber.BusLineNumber)
+                List<BusLine> busLinesByLineNumber = ReturnsAllBusLinesByLineNumber(busLineNumber);
+                if (busLinesByLineNumber.Count == 0)
                 {
-                    count++;
+                    throw new IndexOutOfRangeException("No bus found for busLineNumber: " + busLineNumber);
+                }
+                return ReturnsAllBusLinesByLineNumber(busLineNumber);
+            }
+        }
+
+        private List<BusLine> ReturnsAllBusLinesByLineNumber(string busLineNumber)
+        {
+            List<BusLine> busLinesByLineNumber = new List<BusLine>();
+            foreach(var busLine in this)
+            {
+                if (busLine.BusLineNumber == busLineNumber)
+                {
+                    busLinesByLineNumber.Add(busLine);
                 }
             }
-            if (count >= 2)
+            return busLinesByLineNumber;
+        }
+        public bool IsLineExistsInBusCollection(string busLineNumber)
+        {
+            List<BusLine> busLinesByLineNumber = ReturnsAllBusLinesByLineNumber(busLineNumber);
+            if (busLinesByLineNumber.Count == 0)
             {
-                throw new Exception("This line already exists in the system");
+                return false;
             }
+
+            return true;
         }
 
-        private bool IsBusExist(string busLineNumber)
+        /// <summary>
+        /// הוספת תחנה לקו
+        /// </summary>
+        public void AddStationToSpecificBusLine()
         {
-            if (string.IsNullOrEmpty(busLineNumber))
+            Console.WriteLine("Enter the bus line number");
+            string busLineNumber = Console.ReadLine();
+
+            foreach (var busLine in this[busLineNumber])
             {
-                throw new ArgumentException($"'{nameof(busLineNumber)}' cannot be null or empty", nameof(busLineNumber));
+                busLine.PrintBusRoute(false);
+                busLine.AddSingleBusStopToBusLine(BusStopsList);
+                busLine.PrintBusRoute(true);
             }
 
-            foreach (var busLines in BusLines)
+        }
+
+        /// <summary>
+        /// מחיקת תחנה מקו
+        /// </summary>
+        public void DeleteStationFromSpecificBusLine()
+        {
+            Console.WriteLine("Enter the bus line number");
+            string busLineNumber = Console.ReadLine();
+            Console.WriteLine("Enter the bus station key");
+            string busStationKey = Console.ReadLine();
+            foreach (var busLine in this[busLineNumber])
             {
-                if (busLines.BusLineNumber == busLineNumber)
+                busLine.DeleteStation(busStationKey);
+            }
+
+        }
+        /// <summary>
+        /// הפונקציה מחזירה את כל הקווים שעוברים בתחנה
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetBusLinesThatStopInBusStation(string busStationKey)
+        {
+            List<string> allBusLinesThatStopInBusStation = new List<string>();
+
+            foreach (var b in this)
+            {
+                if (b.IsBusStopExist(busStationKey))
                 {
-                    return true;
+                    allBusLinesThatStopInBusStation.Add(b.BusLineNumber);
                 }
             }
-            return false;
+
+            // יכול להיות כמה קווים עם אותו המספר שעוברים באותה התחנה
+            // אין צורך להציג את הכפילויות
+            allBusLinesThatStopInBusStation = allBusLinesThatStopInBusStation.Distinct().ToList();
+            return allBusLinesThatStopInBusStation;
         }
-        ////public IEnumerator GetEnumerator()
-        //{
-        //    return BusLines.GetEnumerator();
-        //}
+
+        /// <summary>
+        /// הפונקציה מדפיסה את כל האוטובוסים
+        /// </summary>
+        public void PrintAllBusses()
+        {
+            if (BusLinesList == null || BusLinesList.Count == 0)
+            {
+                Console.WriteLine("no buses in collection:");
+                return;
+            }
+
+            Console.WriteLine("Buses in collection:");
+
+            foreach (var bus in this)
+            {
+                Console.WriteLine(bus.BusLineNumber);
+            }
+
+
+        }
     }
 }

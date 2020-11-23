@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_7073_1160
 {
-    class Enum
+    public class Enum
    {
-        enum Area
+        public enum Area
         {
             General,
             North,
