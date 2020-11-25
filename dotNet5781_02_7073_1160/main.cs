@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_02_7073_1160
 {
-    class Program
+   public class Program
     {
         static void Main(string[] args)
         {
