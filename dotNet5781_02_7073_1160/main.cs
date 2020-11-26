@@ -166,7 +166,7 @@ namespace dotNet5781_02_7073_1160
             {
                 string busStationKey = RandomBusStop.Next(1, 1000000).ToString();
                 int adress = RandomAdress.Next(1, 1000);
-                BusStop busStop = new BusStop(busStationKey, "Adress " + adress);
+                BusStop busStop = new BusStop(busStationKey, "Adress: " + adress);
                 busCollection.BusStopsList.Add(busStop);
             }
         }
