@@ -158,14 +158,15 @@ namespace dotNet5781_02_7073_1160
         public static void InitializeBusStopsList(BusCollection busCollection)
         {
             Random RandomBusStop = new Random(DateTime.Now.Millisecond);
+            Random RandomAdress = new Random();
 
             busCollection.BusStopsList = new List<BusStop>();
 
             for (int i = 0; i < 40; i++)
             {
                 string busStationKey = RandomBusStop.Next(1, 1000000).ToString();
-
-                BusStop busStop = new BusStop(busStationKey, "Adress " + i);
+                int adress = RandomAdress.Next(1, 1000);
+                BusStop busStop = new BusStop(busStationKey, "Adress " + adress);
                 busCollection.BusStopsList.Add(busStop);
             }
         }
