@@ -26,7 +26,7 @@ namespace dotNet5781_03A_7073_1160
         public MainWindow()
         {
             InitializeComponent();           
-            busLines = InitializeBusCollection();
+            busLines = Program.InitializeBusCollection();
             cbBusLines.ItemsSource = busLines;
             cbBusLines.DisplayMemberPath = " BusLineNumber ";
             cbBusLines.SelectedIndex = 0;
@@ -51,30 +51,10 @@ namespace dotNet5781_03A_7073_1160
             Random RandomBusStop = new Random();
 
             BusCollection busCollection = new BusCollection();
-            dotNet5781_02_7073_1160.Program.InitializeBusStopsList(busCollection);
-
-            //קווים
-            for (int i = 0; i < 10; i++)
-            {
-                int area = RandomArea.Next(0, 8);
-                int busNumber = RandomBusNumber.Next(1, 999);
-                BusLine busLine = new BusLine(busNumber.ToString(), (dotNet5781_02_7073_1160.Enum.Area)area);
-
-                for (int j = 0; j <= 12; j++)
-                {
-                    TimeSpan travelTimeFromPrevioussBusStop = new TimeSpan(0, i, i * 2);
-                    BusStop busStop = new BusStop();
-                    
-                    int BusStationKey = RandomBusStop.Next(1, 1000000);
-                    busStop = busCollection.BusStopsList[j];
-                    
-                    BusLineStation busLineStation = new BusLineStation(travelTimeFromPrevioussBusStop, i * 1.1, busStop);
-                    busLine.AddStation(j + 1, busLineStation);
-                }
-                busCollection.BusLinesList.Add(busLine);
-            }
-
+            Program.InitializeBusStopsList(busCollection);
             return busCollection;
+
+
         }
 
     }

@@ -118,6 +118,7 @@ namespace dotNet5781_02_7073_1160
         {
             Random RandomArea = new Random(DateTime.Now.Millisecond);
 
+            Random RandomBusLine = new Random(DateTime.Now.Millisecond);
 
             BusCollection busCollection = new BusCollection();
             InitializeBusStopsList(busCollection);
@@ -126,7 +127,9 @@ namespace dotNet5781_02_7073_1160
             for (int i = 1; i < 11; i++)
             {
                 int area = RandomArea.Next(0,8);
-                BusLine busLine = new BusLine(i.ToString(), (Enum.Area)area);
+                int busLineRandom = RandomBusLine.Next(1, 999);
+
+                BusLine busLine = new BusLine(busLineRandom.ToString(), (Enum.Area)area);
                 // כל הקווים מתחילים מאותן 10 תחנות וכך יש לי 10 תחנות עם אותו הקו כפול 10
                 // נשאר לנו לחלק את תחנות 10 - 39  לשאר הקווים
                 // כל קו יקבל 3 תחנות נוספות חדשות מהקווים הללו
@@ -154,11 +157,13 @@ namespace dotNet5781_02_7073_1160
 
         public static void InitializeBusStopsList(BusCollection busCollection)
         {
+            Random RandomBusStop = new Random(DateTime.Now.Millisecond);
+
             busCollection.BusStopsList = new List<BusStop>();
 
             for (int i = 0; i < 40; i++)
             {
-                string busStationKey = "1234" + i.ToString().PadLeft(2, '0');
+                string busStationKey = RandomBusStop.Next(1, 1000000).ToString();
 
                 BusStop busStop = new BusStop(busStationKey, "Adress " + i);
                 busCollection.BusStopsList.Add(busStop);
