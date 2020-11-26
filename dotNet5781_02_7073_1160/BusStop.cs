@@ -28,7 +28,7 @@ namespace dotNet5781_02_7073_1160
         public override string ToString()
         {
             
-            return "Bus Station Code: " + BusStationKey + " ,       " + StationAddress+ "       " + "Latitude: " +Latitude+ "°N"+"       " + "Longitude" +Longitude + "°E";
+            return "Bus Station Code: " + BusStationKey + " ,       " + StationAddress+ "       " + "Latitude: " +Latitude+ "°N"+"       " + "Longitude: " +Longitude + "°E";
         }
     }
     
