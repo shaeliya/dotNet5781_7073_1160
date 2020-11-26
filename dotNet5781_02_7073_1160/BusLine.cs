@@ -15,6 +15,8 @@ namespace dotNet5781_02_7073_1160
         public Enum.Area Area { get; set; }
         public int BusLineNum { get; set; }
 
+        //public int BusLineNum { get; set; }
+
         public BusLine(string busLineNumber, Enum.Area area)
         {
             BusLineNumber = busLineNumber;

@@ -21,14 +21,14 @@ namespace dotNet5781_03A_7073_1160
     /// </summary>
     public partial class MainWindow : Window
     {
-        public BusCollection busLines { get; set; }
-        private BusLine currentDisplayBusLine;
+        public BusCollection busLines;
+        public BusLine currentDisplayBusLine;
 
         public MainWindow()
         {
-            BusCollection busLines = new BusCollection();
-            busLines = dotNet5781_02_7073_1160.Program.InitializeBusCollection();
             InitializeComponent();
+            BusCollection busLines= new BusCollection();
+            busLines = dotNet5781_02_7073_1160.Program.InitializeBusCollection();
             cbBusLines.ItemsSource = busLines;
             cbBusLines.DisplayMemberPath = " BusLineNum ";
             cbBusLines.SelectedIndex = 0;
@@ -36,12 +36,12 @@ namespace dotNet5781_03A_7073_1160
     }
     private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ShowBusLine((cbBusLines.SelectedValue as BusLine).BusLineNum);
+            ShowBusLine((cbBusLines.SelectedValue as BusLine).BusLineNumber);
 
         }
-        private void ShowBusLine(int index)
+        private void ShowBusLine(string index)
         {
-            currentDisplayBusLine = busLines[index.ToString()].First();
+            currentDisplayBusLine = busLines[index].First();
             UpGrid.DataContext = currentDisplayBusLine;
             lbBusLineStations.DataContext = currentDisplayBusLine.Stations;
         }
