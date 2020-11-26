@@ -63,19 +63,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BusCollection .cs" />
-    <Compile Include="BusLine.cs" />
-    <Compile Include="BusLineStation.cs" />
-    <Compile Include="BusStop.cs" />
-    <Compile Include="Enum.cs" />
-    <Compile Include="ItemAlreadyExistsException.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NotEnoughStationsException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -100,6 +93,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dotNet5781_02_7073_1160\dotNet5781_02_7073_1160.csproj">
+      <Project>{5a133b0a-5fd3-4d12-a7a9-c3b58dd60fe6}</Project>
+      <Name>dotNet5781_02_7073_1160</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
