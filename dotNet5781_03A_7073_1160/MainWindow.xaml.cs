@@ -41,7 +41,12 @@ namespace dotNet5781_03A_7073_1160
             currentDisplayBusLine = busLines[index].First();
             UpGrid.DataContext = currentDisplayBusLine;
             lbBusLineStations.DataContext = currentDisplayBusLine.Stations;
-            lbBusLineStations.DisplayMemberPath = " BusStop ";
+            lbBusLineStations.DisplayMemberPath = " ";
+        }
+
+        private void tbArea_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 

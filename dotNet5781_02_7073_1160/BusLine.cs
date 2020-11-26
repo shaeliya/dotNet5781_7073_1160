@@ -140,7 +140,7 @@ namespace dotNet5781_02_7073_1160
             if (!isBusStopExist)
             {
                 ValidityCheckAndAddingOrDeletingStation(index, busLineStation, choice);
-                UpdateDistanceAndTimeFromPreviousStation(index, busLineStation.DistanceFromPreviousBusStop, busLineStation.TravelTimeFromPrevioussBusStop, choice);
+                UpdateDistanceAndTimeFromPreviousStation(index, busLineStation.DistanceFromPreviousBusStop, busLineStation.TravelTimeFromPreviousBusStop, choice);
             }
             else
             {
@@ -155,7 +155,7 @@ namespace dotNet5781_02_7073_1160
             {
                 string choice = "delete";
                 double distanceFromPreviousBusStop = Stations[index].DistanceFromPreviousBusStop;
-                TimeSpan travelTimeFromPrevioussBusStop = Stations[index].TravelTimeFromPrevioussBusStop;
+                TimeSpan travelTimeFromPrevioussBusStop = Stations[index].TravelTimeFromPreviousBusStop;
                 // הפונקציות של בדיקת תקינות מתייחסות לאינדקס + 1 ולכן נוסיף פה 1
                 index = index + 1;
                 ValidityCheckAndAddingOrDeletingStation(index, null, choice);
@@ -182,7 +182,7 @@ namespace dotNet5781_02_7073_1160
                 // החלטת מרצת הקורס: מכייון שאחנו לא יודעים את המרחק מהתחנה החדשה לתחנה הקיימת
                 // נחליט על מספר שרירותי
                 Stations[index].DistanceFromPreviousBusStop += 5.83;
-                Stations[index].TravelTimeFromPrevioussBusStop += time;
+                Stations[index].TravelTimeFromPreviousBusStop += time;
             }
             else
             {
@@ -196,12 +196,12 @@ namespace dotNet5781_02_7073_1160
                 {
                     TimeSpan time = new TimeSpan(0, 0, 0);
                     Stations[index - 1].DistanceFromPreviousBusStop = 0;
-                    Stations[index - 1].TravelTimeFromPrevioussBusStop = time;
+                    Stations[index - 1].TravelTimeFromPreviousBusStop = time;
                 }
                 else
                 {
                     Stations[index - 1].DistanceFromPreviousBusStop += distanceFromPreviousBusStop;
-                    Stations[index - 1].TravelTimeFromPrevioussBusStop += travelTimeFromPrevioussBusStop;
+                    Stations[index - 1].TravelTimeFromPreviousBusStop += travelTimeFromPrevioussBusStop;
                 }
             }
 
@@ -292,7 +292,7 @@ namespace dotNet5781_02_7073_1160
             {
                 throw new KeyNotFoundException("The index does not exist in the system");
             }
-            TimeSpan timeBetweenTwoStationsOnBusLineStations = Stations[indexBusStationKey1].TravelTimeFromPrevioussBusStop - Stations[indexBusStationKey2].TravelTimeFromPrevioussBusStop;
+            TimeSpan timeBetweenTwoStationsOnBusLineStations = Stations[indexBusStationKey1].TravelTimeFromPreviousBusStop - Stations[indexBusStationKey2].TravelTimeFromPreviousBusStop;
             return timeBetweenTwoStationsOnBusLineStations;
         }
         public BusLine ReturnsSubRouteOfBusLine(string busLineStationkey1, string busLineStationkey2)
@@ -357,7 +357,7 @@ namespace dotNet5781_02_7073_1160
                 }
                 else
                 {
-                    time += station.TravelTimeFromPrevioussBusStop.TotalMilliseconds;
+                    time += station.TravelTimeFromPreviousBusStop.TotalMilliseconds;
                 }
             }
             return time;

@@ -11,16 +11,20 @@ namespace dotNet5781_02_7073_1160
     {
         public BusStop BusStop { get; set; }
         public double DistanceFromPreviousBusStop { get; set; }
-        public TimeSpan TravelTimeFromPrevioussBusStop { get; set; }
-
+        public TimeSpan TravelTimeFromPreviousBusStop { get; set; }
+        
         public BusLineStation(TimeSpan travelTimeFromPrevioussBusStop, double distanceFromPreviousBusStop, BusStop busStop)
         {
             DistanceFromPreviousBusStop = distanceFromPreviousBusStop;
-            TravelTimeFromPrevioussBusStop = travelTimeFromPrevioussBusStop;
+            TravelTimeFromPreviousBusStop = travelTimeFromPrevioussBusStop;
             BusStop = busStop;
         }
         public BusLineStation()
         {
+        }
+        public override string ToString()
+        {
+            return BusStop.ToString() + "       " + "Travel time from previous bus stop: " +TravelTimeFromPreviousBusStop;
         }
 
 
