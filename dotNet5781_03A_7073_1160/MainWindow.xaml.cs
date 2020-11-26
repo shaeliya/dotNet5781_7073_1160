@@ -30,23 +30,19 @@ namespace dotNet5781_03A_7073_1160
             cbBusLines.ItemsSource = busLines;
             cbBusLines.DisplayMemberPath = " BusLineNumber ";
             cbBusLines.SelectedIndex = 0;
-           
-    }
-    private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+
+        }
+        private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {        
             ShowBusLine((cbBusLines.SelectedValue as BusLine).BusLineNumber);
+            tbArea.Text = (cbBusLines.SelectedValue as BusLine).Area.ToString();
         }
         private void ShowBusLine(string index)
         {
             currentDisplayBusLine = busLines[index].First();
             UpGrid.DataContext = currentDisplayBusLine;
             lbBusLineStations.DataContext = currentDisplayBusLine.Stations;
-            lbBusLineStations.DisplayMemberPath = " ";
-        }
-
-        private void tbArea_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 

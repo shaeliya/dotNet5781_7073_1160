@@ -18,10 +18,10 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions >
-            <TextBox Name ="tbArea" HorizontalAlignment= "Stretch" VerticalAlignment="Stretch" Grid.Column="3" Text="{Binding Path=Area}" FontFamily="Footlight MT Light" FontSize="20" TextChanged="tbArea_TextChanged"/>
-            <ComboBox Name="cbBusLines" HorizontalAlignment= "Stretch" VerticalAlignment="Stretch" Width="120" Grid.Column="1" FontFamily="Footlight MT Light" FontSize="20" IsSynchronizedWithCurrentItem="False" FontWeight="Bold" SelectionChanged="cbBusLines_SelectionChanged"/>
+            <TextBox Name ="tbArea" HorizontalAlignment= "Stretch" VerticalAlignment="Stretch" Grid.Column="2" Text="{Binding Path=Area}" FontFamily="Footlight MT Light" FontSize="20" Margin="198.2,22,47.6,10" Grid.ColumnSpan="2"/>
+            <ComboBox Name="cbBusLines" HorizontalAlignment= "Stretch" VerticalAlignment="Stretch" Grid.Column="1" FontFamily="Footlight MT Light" FontSize="20" IsSynchronizedWithCurrentItem="False" FontWeight="Bold" SelectionChanged="cbBusLines_SelectionChanged" Margin="44.6,21,101.8,19" RenderTransformOrigin="-1.103,0.541"/>
             <Label Content="Bus Line Number:" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.ColumnSpan="2" Margin="29,21,158.8,-21" FontFamily="FrankRuehl" FontSize="20" RenderTransformOrigin="0.5,0.5"/>
-            <Label Content="Area:" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Column="2" FontFamily="Footlight MT Light" FontSize="20" Grid.ColumnSpan="2" Margin="84.2,19,114.6,-19"/>
+            <Label Content="Area:" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Column="2" FontFamily="Footlight MT Light" FontSize="21" Grid.ColumnSpan="2" Margin="84.2,19,114.6,-19"/>
         </Grid>
         <ListBox Name="lbBusLineStations" ItemsSource="{Binding}"  HorizontalAlignment="Left" Height="495" Margin="26,23,0,0" Grid.Row="1" VerticalAlignment="Top" Width="739"/>
     </Grid>

@@ -125,7 +125,7 @@ namespace dotNet5781_02_7073_1160
             //קווים
             for (int i = 1; i < 11; i++)
             {
-                int area = RandomArea.Next() * (8 + 1) - 1;
+                int area = RandomArea.Next(0,8);
                 BusLine busLine = new BusLine(i.ToString(), (Enum.Area)area);
                 // כל הקווים מתחילים מאותן 10 תחנות וכך יש לי 10 תחנות עם אותו הקו כפול 10
                 // נשאר לנו לחלק את תחנות 10 - 39  לשאר הקווים
