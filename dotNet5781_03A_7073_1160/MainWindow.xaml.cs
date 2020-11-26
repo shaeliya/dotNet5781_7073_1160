@@ -23,31 +23,26 @@ namespace dotNet5781_03A_7073_1160
     {
         public BusCollection busLines;
         public BusLine currentDisplayBusLine;
-
         public MainWindow()
         {
-            InitializeComponent();
-            BusCollection busLines= new BusCollection();
+            InitializeComponent();           
             busLines = dotNet5781_02_7073_1160.Program.InitializeBusCollection();
             cbBusLines.ItemsSource = busLines;
-            cbBusLines.DisplayMemberPath = " BusLineNum ";
+            cbBusLines.DisplayMemberPath = " BusLineNumber ";
             cbBusLines.SelectedIndex = 0;
-
+           
     }
     private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        {        
             ShowBusLine((cbBusLines.SelectedValue as BusLine).BusLineNumber);
-
         }
         private void ShowBusLine(string index)
         {
             currentDisplayBusLine = busLines[index].First();
             UpGrid.DataContext = currentDisplayBusLine;
             lbBusLineStations.DataContext = currentDisplayBusLine.Stations;
+            lbBusLineStations.DisplayMemberPath = " BusStop ";
         }
-
-
-
     }
 
 }
