@@ -101,7 +101,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <SplashScreen Include="ללא שם.jpg">
+    <SplashScreen Include="cartoon-school-bus-with-children_23-2147829786.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </SplashScreen>
   </ItemGroup>

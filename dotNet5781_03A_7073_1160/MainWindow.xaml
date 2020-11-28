@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03A_7073_1160"
         mc:Ignorable="d"
-        Title="Bus line system" FontFamily="Footlight MT Light" FontSize="16" Height="640" Width="800" Visibility="Visible" Icon="ללא שם.jpg" Cursor="">
+        Title="Bus line system" FontFamily="Footlight MT Light" FontSize="16" Height="640" Width="800" Visibility="Visible" Icon="cartoon-school-bus-with-children_23-2147829786.jpg" Cursor="">
     <Window.Foreground>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="Black" Offset="0"/>

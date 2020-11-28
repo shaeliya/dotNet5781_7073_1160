@@ -120,7 +120,6 @@ namespace dotNet5781_02_7073_1160
 
             Random RandomBusLine = new Random(DateTime.Now.Millisecond);
 
-
             BusCollection busCollection = new BusCollection();
             InitializeBusStopsList(busCollection);
 

@@ -42,16 +42,7 @@ namespace dotNet5781_03A_7073_1160
             UpGrid.DataContext = currentDisplayBusLine;
             lbBusLineStations.DataContext = currentDisplayBusLine.Stations;
         }
-        //public static BusCollection InitializeBusCollection()
-        //{
-        //    Random RandomArea = new Random(DateTime.Now.Millisecond);
-        //    Random RandomBusNumber = new Random();
-        //    Random RandomBusStop = new Random();
-
-        //    BusCollection busCollection = new BusCollection();
-        //    Program.InitializeBusStopsList(busCollection);
-        //    return busCollection;
-        //}
+       
 
     }
 
