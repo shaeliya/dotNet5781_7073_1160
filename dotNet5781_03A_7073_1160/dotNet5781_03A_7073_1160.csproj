@@ -101,7 +101,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ללא שם.jpg" />
+    <SplashScreen Include="ללא שם.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </SplashScreen>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

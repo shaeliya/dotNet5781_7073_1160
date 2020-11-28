@@ -30,8 +30,6 @@ namespace dotNet5781_03A_7073_1160
             cbBusLines.ItemsSource = busLines;
             cbBusLines.DisplayMemberPath = " BusLineNumber ";
             cbBusLines.SelectedIndex = 0;
-
-
         }
         private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {        
@@ -44,18 +42,16 @@ namespace dotNet5781_03A_7073_1160
             UpGrid.DataContext = currentDisplayBusLine;
             lbBusLineStations.DataContext = currentDisplayBusLine.Stations;
         }
-        public static BusCollection InitializeBusCollection()
-        {
-            Random RandomArea = new Random(DateTime.Now.Millisecond);
-            Random RandomBusNumber = new Random();
-            Random RandomBusStop = new Random();
+        //public static BusCollection InitializeBusCollection()
+        //{
+        //    Random RandomArea = new Random(DateTime.Now.Millisecond);
+        //    Random RandomBusNumber = new Random();
+        //    Random RandomBusStop = new Random();
 
-            BusCollection busCollection = new BusCollection();
-            Program.InitializeBusStopsList(busCollection);
-            return busCollection;
-
-
-        }
+        //    BusCollection busCollection = new BusCollection();
+        //    Program.InitializeBusStopsList(busCollection);
+        //    return busCollection;
+        //}
 
     }
 

@@ -120,6 +120,7 @@ namespace dotNet5781_02_7073_1160
 
             Random RandomBusLine = new Random(DateTime.Now.Millisecond);
 
+
             BusCollection busCollection = new BusCollection();
             InitializeBusStopsList(busCollection);
 
@@ -136,7 +137,8 @@ namespace dotNet5781_02_7073_1160
 
                 for (int j = 0; j <= 12; j++)
                 {
-                    TimeSpan travelTimeFromPrevioussBusStop = new TimeSpan(0, i, i * 2);
+
+                    TimeSpan travelTimeFromPrevioussBusStop = new TimeSpan(0, j, j * 2);                                  
                     BusStop busStop = new BusStop();
                     if (j >= 0 && j <= 9)
                     {
