@@ -3,7 +3,7 @@
 using System;
 namespace dotNet5781_01_1160_7073
 {
-    class Bus
+    public class Bus
     {
         public string LicenseNumber { get; set; } //מספר רישוי
         public double Kilometrage { get; set; } //קילומטראג
@@ -13,15 +13,8 @@ namespace dotNet5781_01_1160_7073
         public string LicenseNumberForPrint { get; set; } //מספר רישוי להדפסה 
         public DateTime LastTreatmentDate { get; set; } //תאירך אחרון לטיפול 
         public Bus(string licenseNumber, DateTime busStartDate, double kilometrage,double fuel, double treatment, DateTime lastTreatmentDate)//ctor
-        {
-            if (licenseNumber.Length == 7)
-            {
-                LicenseNumber = licenseNumber;
-            }
-            else
-            {
-                LicenseNumber = licenseNumber;
-            }
+        {  
+            LicenseNumber = licenseNumber;
             BusStartDate = busStartDate;
             Kilometrage = kilometrage;
             Fuel = kilometrage;
@@ -80,6 +73,5 @@ namespace dotNet5781_01_1160_7073
             }
             return LicenseNumberForPrint;
         }
-       
     }
 }
