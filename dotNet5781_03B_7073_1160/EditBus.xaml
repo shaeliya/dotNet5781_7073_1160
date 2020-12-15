@@ -13,7 +13,7 @@
     <StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label>License Number :</Label>
-            <TextBlock x:Name="tbLicenseNumber"></TextBlock>
+            <TextBlock x:Name="tbLicenseNumber" Text="{Binding Path=SelectedBus.LicenseNumber}"></TextBlock>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal">

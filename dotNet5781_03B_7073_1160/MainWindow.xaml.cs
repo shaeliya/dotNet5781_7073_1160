@@ -136,7 +136,7 @@ namespace dotNet5781_03B_7073_1160
             if (cmd.DataContext is Bus)
             {
                 Bus bus = (Bus)cmd.DataContext;
-                EditBus editBusWindow = new EditBus(bus.LicenseNumber);
+                EditBus editBusWindow = new EditBus();
                 editBusWindow.SelectedBus = bus;
                 editBusWindow.Show();
 

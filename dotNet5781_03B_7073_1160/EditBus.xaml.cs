@@ -30,11 +30,10 @@ namespace dotNet5781_03B_7073_1160
                 OnPropertyChanged(nameof(FailureReason));
             }
         }
-        public EditBus(string selectedLicenseNumber)
+        public EditBus()
         {
             InitializeComponent();
             FailureReason = string.Empty;
-            tbLicenseNumber.Text = selectedLicenseNumber;
             TreatmentCommand = new RelayCommand(Treat, CanTreat);
             FuelCommand = new RelayCommand(Fuel, CanFuel);
             DataContext = this;
