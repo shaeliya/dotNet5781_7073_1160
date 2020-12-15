@@ -24,15 +24,16 @@ namespace dotNet5781_03B_7073_1160
     {
         ObservableCollection<Bus> BusList = new ObservableCollection<Bus>();
         Random RandomLicenseNumber = new Random(DateTime.Now.Millisecond);
+        private Random gen = new Random();
+        public ICommand OnClickCommand { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
             InitializingVariables();
             lbBus.ItemsSource = BusList;
             this.DataContext = BusList;
-
-
-        }
+        }       
 
         private void InitializingVariables( )
         {
@@ -107,8 +108,7 @@ namespace dotNet5781_03B_7073_1160
             }
 
         }
-
-        private Random gen = new Random();      
+   
         DateTime RandomBusStartDate()
         {
             DateTime start = new DateTime(1995, 1, 1);
@@ -129,7 +129,19 @@ namespace dotNet5781_03B_7073_1160
             addBusWindow.Show();
 
         }
+        private void Open_Edit_Bus_Window_Button_Click(object sender, RoutedEventArgs e)
+        {
 
-        
+            Button cmd = (Button)sender;
+            if (cmd.DataContext is Bus)
+            {
+                Bus bus = (Bus)cmd.DataContext;
+                EditBus editBusWindow = new EditBus(bus.LicenseNumber);
+                editBusWindow.SelectedBus = bus;
+                editBusWindow.Show();
+
+            }
+
+        }
     }
 }

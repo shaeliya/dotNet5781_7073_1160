@@ -1,0 +1,45 @@
+﻿<Window x:Class="dotNet5781_03B_7073_1160.EditBus"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dotNet5781_03B_7073_1160"
+        mc:Ignorable="d"
+        xmlns:controls="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
+        Title="EditBus" Height="450" Width="800">
+    <Window.Resources>
+        <controls:BooleanToVisibilityConverter x:Key="boolConv"/>
+    </Window.Resources>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>License Number :</Label>
+            <TextBlock x:Name="tbLicenseNumber"></TextBlock>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <Label>Kilometrage :</Label>
+            <TextBox x:Name="tbKilometrage" Width="82" KeyDown="tbKilometrage_KeyDown" PreviewTextInput="PreviewTextInput"></TextBox>
+
+        </StackPanel>
+        <Button Height="96" Margin="0,0,642.6,0" 
+                Visibility="{Binding RelativeSource={RelativeSource Self},
+            Path=IsEnabled, Converter={StaticResource boolConv}}"
+                Command="{Binding TreatmentCommand}" FontSize="20" FontWeight="Bold" Foreground="White">
+            <Button.Background>
+                <ImageBrush ImageSource="carTreatment.jpg"/>
+            </Button.Background>
+            Treat Car
+        </Button>
+
+        <Button Height="96" Margin="0,0,642.6,0" 
+                Visibility="{Binding RelativeSource={RelativeSource Self},
+            Path=IsEnabled, Converter={StaticResource boolConv}}"
+                Command="{Binding FuelCommand}" FontSize="20" FontWeight="Bold" Foreground="White">
+            <Button.Background>
+                <ImageBrush ImageSource="fuelCar.png"/>
+            </Button.Background>
+            Fuel Car
+        </Button>
+
+    </StackPanel>
+</Window>

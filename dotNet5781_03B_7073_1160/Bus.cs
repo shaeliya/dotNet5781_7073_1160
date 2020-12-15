@@ -26,19 +26,21 @@ namespace dotNet5781_03B_7073_1160
             LastTreatmentDate = lastTreatmentDate;
         }
 
-        public bool IsProperBusForTravel(string liceseNumber, double KilometrageForRide)//The function checks whether the bus is suitable for travel
+        public bool CanTravel(double KilometrageForRide, out string message, out string failureReason)//The function checks whether the bus is suitable for travel
         {
-            bool isBusFound = IsBusFound(liceseNumber);
-
+            message = string.Empty;
+            failureReason = string.Empty;
             if (Fuel + KilometrageForRide > 1200)
             {
-                Console.WriteLine("The bus can not start traveling,the bus needs to refuel");
+                failureReason = "Fuel";
+                message = "The bus can not start traveling,the bus needs to refuel";
                 return false;
             }
             bool isYearPassed = IsYearPassed();
-            if (Kilometrage + KilometrageForRide > 20000 || isYearPassed)
+            if (Treatment + KilometrageForRide > 20000 || isYearPassed)
             {
-                Console.WriteLine("The bus can not start traveling,The bus needs care");
+                failureReason = "Treatment";
+                message = "The bus can not start traveling,The bus needs Treatment";
                 return false;
             }
             return true;
@@ -87,6 +89,40 @@ namespace dotNet5781_03B_7073_1160
                    ", Treatment: " + Treatment +
                    ", LastTreatmentDate: " + LastTreatmentDate.ToString("dd/MM/yyyy");
                  
+        }
+        public bool TravelKilometrage(double KilometrageForRide, out string message)
+        {      
+            try
+            {
+                string reason = string.Empty;
+                bool isProperBusForTravel = CanTravel(KilometrageForRide, out message, out reason);
+                if (isProperBusForTravel)
+                {
+                    message = "The bus is ready for travel";
+                    Kilometrage += KilometrageForRide;
+                    Fuel += KilometrageForRide;
+                    Treatment += KilometrageForRide;
+                    return true;
+                }
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+                message = "Error: " + ex;
+                return false;
+            }
+        }
+
+        public void Refuel()
+        {
+            Fuel = 0;
+        }
+
+        public void Treat()
+        {
+            Treatment = 0;
+            LastTreatmentDate = DateTime.Now;
         }
     }
 }

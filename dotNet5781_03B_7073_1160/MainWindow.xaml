@@ -6,8 +6,16 @@
         xmlns:local="clr-namespace:dotNet5781_03B_7073_1160"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate x:Key="ListBoxItemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Edit Bus" Margin="0,0,20,0" Width="80" Click="Open_Edit_Bus_Window_Button_Click"/>
+                <TextBlock Height="23" Text="{Binding}" VerticalAlignment="Top" />
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
     <StackPanel>
-        <ListBox Name="lbBus" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="368" Margin="10,0,0,0"/>
+        <ListBox Name="lbBus" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="368" Margin="10,0,0,0" ItemTemplate="{StaticResource ListBoxItemTemplate}"/>
         <Button Content="add bus" Click="Open_Add_Bus_Window_Button_Click" Margin="642,0,-0.4,0" />
     </StackPanel>
 

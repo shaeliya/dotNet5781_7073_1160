@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace dotNet5781_03B_7073_1160
 {
     /// <summary>
@@ -48,7 +49,7 @@ namespace dotNet5781_03B_7073_1160
                 return false;
             }
 
-            if (!IsDigitsOnly(tbLicenseNumber.Text))
+            if (!Utils.IsDigitsOnly(tbLicenseNumber.Text))
             {
                 MessageBox.Show("License Number must be digits only");
                 return false;
@@ -96,15 +97,6 @@ namespace dotNet5781_03B_7073_1160
             return true;
         }
 
-        private static bool IsDigitsOnly(string str)//Checks if the license number is just digits
-        {
-            foreach (char c in str)
-            {
-                if (c < '0' || c > '9')
-                    return false;
-            }
-            return true;
-        }
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
             Close();
