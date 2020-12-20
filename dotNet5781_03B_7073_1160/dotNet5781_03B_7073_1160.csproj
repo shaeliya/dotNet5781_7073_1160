@@ -70,12 +70,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ShowBusDetails.xaml.cs">
+      <DependentUpon>ShowBusDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils.cs" />
     <Page Include="AddBus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditBus.xaml">
+    <Page Include="ShowBusDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TravelWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,8 +98,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bus.cs" />
-    <Compile Include="EditBus.xaml.cs">
-      <DependentUpon>EditBus.xaml</DependentUpon>
+    <Compile Include="TravelWindow.xaml.cs">
+      <DependentUpon>TravelWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

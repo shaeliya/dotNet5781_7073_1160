@@ -162,16 +162,41 @@ namespace dotNet5781_03B_7073_1160
             addBusWindow.Show();
 
         }
-        private void Open_Edit_Bus_Window_Button_Click(object sender, RoutedEventArgs e)
+        private void Open_Travel_Window_Button_Click(object sender, RoutedEventArgs e)
         {
 
             Button cmd = (Button)sender;
             if (cmd.DataContext is Bus)
             {
                 Bus bus = (Bus)cmd.DataContext;
-                EditBus editBusWindow = new EditBus();
-                editBusWindow.SelectedBus = bus;
-                editBusWindow.Show();
+                TravelWindow travelWindow = new TravelWindow();
+                travelWindow.SelectedBus = bus;
+                travelWindow.Show();
+
+            }
+
+        }
+
+        private void FuelBus_Click(object sender, RoutedEventArgs e)
+        {
+            Button cmd = (Button)sender;
+            if (cmd.DataContext is Bus)
+            {
+                Bus bus = (Bus)cmd.DataContext;
+                bus.Refuel();
+            }
+
+        }
+
+        private void Open_ShowBusDetails_Click(object sender, RoutedEventArgs e)
+        {
+            Button cmd = (Button)sender;
+            if (cmd.DataContext is Bus)
+            {
+                Bus bus = (Bus)cmd.DataContext;
+                TravelWindow travelWindow = new TravelWindow();
+                travelWindow.SelectedBus = bus;
+                travelWindow.Show();
 
             }
 

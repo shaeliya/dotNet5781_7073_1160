@@ -11,9 +11,9 @@ using static dotNet5781_03B_7073_1160.Utils;
 namespace dotNet5781_03B_7073_1160
 {
     /// <summary>
-    /// Interaction logic for EditBus.xaml
+    /// Interaction logic for TravelWindow.xaml
     /// </summary>
-    public partial class EditBus : Window, INotifyPropertyChanged
+    public partial class TravelWindow : Window, INotifyPropertyChanged
     {
         private string _failureReason;
 
@@ -30,7 +30,7 @@ namespace dotNet5781_03B_7073_1160
                 OnPropertyChanged(nameof(FailureReason));
             }
         }
-        public EditBus()
+        public TravelWindow()
         {
             InitializeComponent();
             FailureReason = string.Empty;
