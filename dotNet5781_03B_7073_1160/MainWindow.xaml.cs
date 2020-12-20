@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,31 +22,59 @@ namespace dotNet5781_03B_7073_1160
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     /////  לפחות אוטובוס אחד יהיה לאחר תאריך טיפול הבא
-   
-    public partial class MainWindow : Window
+
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        ObservableCollection<Bus> BusList = new ObservableCollection<Bus>();
+        public ObservableCollection<Bus> BusList
+        {
+            get { return _busList; }
+            set
+            {
+                _busList = value;
+                OnPropertyChanged(nameof(BusList));
+            }
+        }
         Random RandomLicenseNumber = new Random(DateTime.Now.Millisecond);
         private Random gen = new Random();
+        private ObservableCollection<Bus> _busList;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
         public ICommand OnClickCommand { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
             InitializingVariables();
-            lbBus.ItemsSource = BusList;
-            this.DataContext = BusList;
-        }       
+            this.DataContext = this;
+        }
 
-        private void InitializingVariables( )
+        private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                foreach (var bus in e.NewItems.Cast<Bus>())
+                {
+                    bus.PropertyChanged += (s, ev) => { OnPropertyChanged(nameof(BusList)); };
+                }
+            }
+        }
+
+        private void InitializingVariables()
+        {
+            BusList = new ObservableCollection<Bus>();
+            BusList.CollectionChanged += CollectionChanged;
+
             DateTime busStartDate, lastTreatmentDate;
             string licenseNumber;
             double fuel, treatment, kilometrage;
             for (int i = 0; i < 7; i++)
             {
                 busStartDate = RandomBusStartDate();
-                
+
                 if (busStartDate.Year < 2018)
                 {
                     int licenseNumberRandom = RandomLicenseNumber.Next(1000000, 10000000);
@@ -70,7 +101,8 @@ namespace dotNet5781_03B_7073_1160
                 }
                 kilometrage = RandomKilometrage.NextDouble() * (9999999999.9 - min) + min;
                 lastTreatmentDate = RandomLastTreatmentDate(busStartDate);
-                Bus bus = new Bus( licenseNumber, busStartDate, kilometrage, fuel, treatment, lastTreatmentDate);
+                licenseNumber = i.ToString();
+                Bus bus = new Bus(licenseNumber, busStartDate, kilometrage, fuel, treatment, lastTreatmentDate);
                 BusList.Add(bus);
             }
             for (int j = 0; j < 3; j++)
@@ -90,7 +122,7 @@ namespace dotNet5781_03B_7073_1160
                 Random RandomKilometrage = new Random(DateTime.Now.Millisecond);
                 Random RandomFuel = new Random(DateTime.Now.Millisecond);
                 Random RandomTreatment = new Random(DateTime.Now.Millisecond);
-                fuel = RandomFuel.NextDouble() * (1200.0 -1150.0) + 1150.0;
+                fuel = RandomFuel.NextDouble() * (1200.0 - 1150.0) + 1150.0;
                 treatment = RandomTreatment.NextDouble() * (20000.0 - 19900.0) + 19900.0;
                 double min;
                 if (fuel > treatment)
@@ -103,19 +135,20 @@ namespace dotNet5781_03B_7073_1160
                 }
                 kilometrage = RandomKilometrage.NextDouble() * (9999999999.9 - min) + min;
                 lastTreatmentDate = RandomLastTreatmentDate(busStartDate);
-                Bus bus = new Bus(licenseNumber, busStartDate, kilometrage, fuel,treatment, lastTreatmentDate);
+                licenseNumber = (7 + j).ToString();
+                Bus bus = new Bus(licenseNumber, busStartDate, kilometrage, fuel, treatment, lastTreatmentDate);
                 BusList.Add(bus);
             }
 
         }
-   
+
         DateTime RandomBusStartDate()
         {
             DateTime start = new DateTime(1995, 1, 1);
             int range = (DateTime.Today - start).Days;
             return start.AddDays(gen.Next(range));
         }
-        DateTime RandomLastTreatmentDate(DateTime busStartDate )
+        DateTime RandomLastTreatmentDate(DateTime busStartDate)
         {
             DateTime start = new DateTime(busStartDate.Year, busStartDate.Month, busStartDate.Day);
             int range = (DateTime.Today - start).Days;

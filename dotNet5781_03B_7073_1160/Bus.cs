@@ -1,18 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace dotNet5781_03B_7073_1160
 {
-    public class Bus
+    public class Bus: INotifyPropertyChanged
     {
+        private double _fuel;
+        private double _treatment;
+
         public string LicenseNumber { get; set; } //מספר רישוי
         public double Kilometrage { get; set; } //קילומטראג
         public DateTime BusStartDate { get; set; }//תאריך תחילת הפעילות
-        public double Fuel { get; set; } //דלק
-        public double Treatment { get; set; } //טיפול
+        public double Fuel
+        { 
+            get { return _fuel; }
+            set { 
+                _fuel = value;
+                OnPropertyChanged(nameof(Fuel));
+            }
+        } //דלק
+        public double Treatment { get { return _treatment; } set { _treatment = value; OnPropertyChanged(nameof(Treatment)); } } //טיפול
         public string LicenseNumberForPrint { get; set; } //מספר רישוי להדפסה 
         public DateTime LastTreatmentDate { get; set; } //תאירך אחרון לטיפול 
         public string Status { get; set; } //מצב האוטובוס
@@ -25,6 +37,8 @@ namespace dotNet5781_03B_7073_1160
             Treatment = treatment;
             LastTreatmentDate = lastTreatmentDate;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public bool CanTravel(double KilometrageForRide, out string message, out string failureReason)//The function checks whether the bus is suitable for travel
         {
@@ -123,6 +137,11 @@ namespace dotNet5781_03B_7073_1160
         {
             Treatment = 0;
             LastTreatmentDate = DateTime.Now;
+        }
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

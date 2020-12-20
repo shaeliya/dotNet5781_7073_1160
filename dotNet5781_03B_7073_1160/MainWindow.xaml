@@ -8,14 +8,37 @@
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
         <DataTemplate x:Key="ListBoxItemTemplate">
-            <StackPanel Orientation="Horizontal">
+            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
                 <Button Content="Edit Bus" Margin="0,0,20,0" Width="80" Click="Open_Edit_Bus_Window_Button_Click"/>
-                <TextBlock Height="23" Text="{Binding}" VerticalAlignment="Top" />
+                <StackPanel Orientation="Horizontal">
+                        
+                    <Label Content="LicenseNumber:"></Label>
+                    <Label Content="{Binding LicenseNumber}"  />
+                    
+                    <Label Content=", Kilometrage:"/>
+                    <Label Content="{Binding Kilometrage}" />
+                    
+                    <Label Content=", BusStartDate:"></Label>
+                    <Label Content="{Binding BusStartDate}"  />
+                    
+                    <Label Content=", Fuel:"></Label>
+                    <Label Content="{Binding Fuel}"  />
+                    
+                    <Label Content=", Treatment:"></Label>
+                    <Label Content="{Binding Treatment}"  />
+
+                    <Label Content=", LicenseNumberForPrint:"></Label>
+                    <Label Content="{Binding LicenseNumberForPrint}"  />
+
+                    <Label Content=", Status:"></Label>
+                    <Label Content="{Binding Status}"  />
+                </StackPanel>
+                
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
-    <StackPanel>
-        <ListBox Name="lbBus" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="368" Margin="10,0,0,0" ItemTemplate="{StaticResource ListBoxItemTemplate}"/>
+    <StackPanel Orientation="Vertical">
+        <ListView SelectionMode="Extended"  Name="lbBus" ItemsSource="{Binding BusList ,UpdateSourceTrigger=Explicit}" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" Margin="10,0,0,0" ItemTemplate="{StaticResource ListBoxItemTemplate}"/>
         <Button Content="add bus" Click="Open_Add_Bus_Window_Button_Click" Margin="642,0,-0.4,0" />
     </StackPanel>
 

@@ -62,6 +62,7 @@ namespace dotNet5781_03B_7073_1160
         {
             SelectedBus.Refuel();
             FailureReason = string.Empty;
+            
             MessageBox.Show("Fuel successful");
         }
 
