@@ -6,7 +6,60 @@
         xmlns:local="clr-namespace:dotNet5781_03B_7073_1160"
         mc:Ignorable="d"
         Title="ShowBusDetails" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+
+            <Label Content="LicenseNumber:"></Label>
+            <Label Content="{Binding Path=SelectedBus.LicenseNumber}"  />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+
+            <Label Content="Kilometrage:"/>
+            <Label Content="{Binding Path=SelectedBus.Kilometrage}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+
+            <Label Content="BusStartDate:"></Label>
+            <Label Content="{Binding Path=SelectedBus.BusStartDate, StringFormat=dd/MM/yyyy}"  />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+
+            <Label Content="Fuel:"></Label>
+            <Label Content="{Binding Path=SelectedBus.Fuel}"  />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+
+            <Label Content="Treatment:"></Label>
+            <Label Content="{Binding Path=SelectedBus.Treatment}"  />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+
+            <Label Content="LastTreatmentDate:"></Label>
+            <Label Content="{Binding Path=SelectedBus.LastTreatmentDate}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+
+            <Label Content="Status:"></Label>
+            <Label Content="{Binding Path=SelectedBus.Status}"  />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Height="96" Margin="0,0,1,0" FontSize="20" FontWeight="Bold" Foreground="White" Click="Treat_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="carTreatment.jpg"/>
+            </Button.Background>
+            Treat Car
+        </Button>
+
+        <Button Height="96" Margin="0,0,1,0" FontSize="20" FontWeight="Bold" Foreground="White" Click="Fuel_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="fuelCar.png"/>
+            </Button.Background>
+            Fuel Car
+            </Button>
+        </StackPanel>
+
+
+    </StackPanel>
 </Window>

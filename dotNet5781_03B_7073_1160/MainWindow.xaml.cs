@@ -188,15 +188,16 @@ namespace dotNet5781_03B_7073_1160
 
         }
 
-        private void Open_ShowBusDetails_Click(object sender, RoutedEventArgs e)
+
+        private void Open_ShowBusDetails_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Button cmd = (Button)sender;
-            if (cmd.DataContext is Bus)
+            var item = (sender as ListView).SelectedItem;
+            if (item is Bus)
             {
-                Bus bus = (Bus)cmd.DataContext;
-                TravelWindow travelWindow = new TravelWindow();
-                travelWindow.SelectedBus = bus;
-                travelWindow.Show();
+                Bus bus = (Bus)item;
+                ShowBusDetails showBusDetailsWindow = new ShowBusDetails();
+                showBusDetailsWindow.SelectedBus = bus;
+                showBusDetailsWindow.Show();
 
             }
 

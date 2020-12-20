@@ -12,6 +12,7 @@ namespace dotNet5781_03B_7073_1160
     {
         private double _fuel;
         private double _treatment;
+        private DateTime _lastTreatmentDate;
 
         public string LicenseNumber { get; set; } //מספר רישוי
         public double Kilometrage { get; set; } //קילומטראג
@@ -26,8 +27,8 @@ namespace dotNet5781_03B_7073_1160
         } //דלק
         public double Treatment { get { return _treatment; } set { _treatment = value; OnPropertyChanged(nameof(Treatment)); } } //טיפול
         public string LicenseNumberForPrint { get; set; } //מספר רישוי להדפסה 
-        public DateTime LastTreatmentDate { get; set; } //תאירך אחרון לטיפול 
-        public string Status { get; set; } //מצב האוטובוס
+        public DateTime LastTreatmentDate { get { return _lastTreatmentDate; } set { _lastTreatmentDate = value; OnPropertyChanged(nameof(LastTreatmentDate)); } }  //תאירך אחרון לטיפול 
+        public Enum.Status Status { get; set; } //מצב האוטובוס
         public Bus(string licenseNumber, DateTime busStartDate, double kilometrage, double fuel, double treatment, DateTime lastTreatmentDate)//ctor
         {
             LicenseNumber = licenseNumber;
@@ -130,13 +131,17 @@ namespace dotNet5781_03B_7073_1160
 
         public void Refuel()
         {
+            Status = Enum.Status.Refueling;
             Fuel = 0;
+            Status = Enum.Status.ReadyToGo;
         }
 
         public void Treat()
         {
+            Status = Enum.Status.Treatment;
             Treatment = 0;
             LastTreatmentDate = DateTime.Now;
+            Status = Enum.Status.ReadyToGo;
         }
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)

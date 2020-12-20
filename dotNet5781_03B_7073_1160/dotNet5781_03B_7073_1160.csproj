@@ -70,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Enum.cs" />
     <Compile Include="ShowBusDetails.xaml.cs">
       <DependentUpon>ShowBusDetails.xaml</DependentUpon>
     </Compile>

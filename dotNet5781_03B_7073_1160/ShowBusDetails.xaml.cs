@@ -19,9 +19,29 @@ namespace dotNet5781_03B_7073_1160
     /// </summary>
     public partial class ShowBusDetails : Window
     {
+        public Bus SelectedBus { get; set; }
+
         public ShowBusDetails()
         {
             InitializeComponent();
+            DataContext = this;
+        }
+
+
+        private void Treat_Click(object sender, RoutedEventArgs e)
+        {
+            
+            SelectedBus.Treat();
+
+            MessageBox.Show("Treat successful");
+        }
+
+
+
+        private void Fuel_Click(object sender, RoutedEventArgs e)
+        {
+            SelectedBus.Refuel();
+            MessageBox.Show("Fuel successful");
         }
     }
 }

@@ -11,7 +11,6 @@
             <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
                 <Button Content="Travel" Margin="0,0,20,0" Width="80" Click="Open_Travel_Window_Button_Click"/>
                 <Button Content="Fuel" Margin="0,0,20,0" Width="80" Click="FuelBus_Click"/>
-                <Button Content="ShowDetails" Margin="0,0,20,0" Width="80" Click="Open_ShowBusDetails_Click"/>
                 <StackPanel Orientation="Horizontal">
                         
                     <Label Content="LicenseNumber:"></Label>
@@ -29,9 +28,6 @@
                     <Label Content=", Treatment:"></Label>
                     <Label Content="{Binding Treatment}"  />
 
-                    <Label Content=", LicenseNumberForPrint:"></Label>
-                    <Label Content="{Binding LicenseNumberForPrint}"  />
-
                     <Label Content=", Status:"></Label>
                     <Label Content="{Binding Status}"  />
                 </StackPanel>
@@ -40,7 +36,7 @@
         </DataTemplate>
     </Window.Resources>
     <StackPanel Orientation="Vertical">
-        <ListView SelectionMode="Extended"  Name="lbBus" ItemsSource="{Binding BusList ,UpdateSourceTrigger=Explicit}" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" Margin="10,0,0,0" ItemTemplate="{StaticResource ListBoxItemTemplate}"/>
+        <ListView SelectionMode="Extended"  Name="lbBus" ItemsSource="{Binding BusList ,UpdateSourceTrigger=Explicit}" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" Margin="10,0,0,0" ItemTemplate="{StaticResource ListBoxItemTemplate}" MouseDoubleClick="Open_ShowBusDetails_DoubleClick"/>
         <Button Content="add bus" Click="Open_Add_Bus_Window_Button_Click" Margin="642,0,-0.4,0" />
     </StackPanel>
 
