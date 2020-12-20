@@ -5,11 +5,14 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace dotNet5781_03B_7073_1160
 {
     public class Bus: INotifyPropertyChanged
     {
+        private const int DurationOfRefuling = 12;
+        private const int DurationOfTreatment = 144;
         private double _fuel;
         private double _treatment;
         private DateTime _lastTreatmentDate;
@@ -28,7 +31,17 @@ namespace dotNet5781_03B_7073_1160
         public double Treatment { get { return _treatment; } set { _treatment = value; OnPropertyChanged(nameof(Treatment)); } } //טיפול
         public string LicenseNumberForPrint { get; set; } //מספר רישוי להדפסה 
         public DateTime LastTreatmentDate { get { return _lastTreatmentDate; } set { _lastTreatmentDate = value; OnPropertyChanged(nameof(LastTreatmentDate)); } }  //תאירך אחרון לטיפול 
-        public Enum.Status Status { get; set; } //מצב האוטובוס
+        public Enum.Status Status { get { return _status; } set 
+            { 
+                _status = value;
+                OnPropertyChanged(nameof(Status));
+            } } //מצב האוטובוס
+
+        private DispatcherTimer _statusTimer;
+        private Enum.Status _status;
+        private double KilometersToTravel;
+
+
         public Bus(string licenseNumber, DateTime busStartDate, double kilometrage, double fuel, double treatment, DateTime lastTreatmentDate)//ctor
         {
             LicenseNumber = licenseNumber;
@@ -37,6 +50,55 @@ namespace dotNet5781_03B_7073_1160
             Fuel = fuel;
             Treatment = treatment;
             LastTreatmentDate = lastTreatmentDate;
+            _statusTimer = new DispatcherTimer();
+            _statusTimer.Tick += StatusTimerTick;
+            UpdateStaus();
+
+        }
+
+        private void UpdateStaus()
+        {
+            if (Status == Enum.Status.MidTravel ||
+                Status == Enum.Status.Refueling ||
+                Status == Enum.Status.InTreatment)
+            {
+                return;
+            }
+
+            bool isNeedFuel = false;
+            if (Fuel > 1200)
+            {
+                isNeedFuel = true;
+            }
+
+            bool isNeedTreatment = false;
+
+            bool isYearPassed = IsYearPassed();
+            if (Treatment > 20000 || isYearPassed)
+            {
+                isNeedTreatment = true;
+            }
+
+            if (isNeedFuel && isNeedTreatment)
+            {
+                Status = Enum.Status.NeedFuelAndTreatment;
+                return;
+            }
+            if (isNeedTreatment)
+            {
+                Status = Enum.Status.NeedTreatment;
+                return;
+
+            }
+            if (isNeedFuel)
+            {
+                Status = Enum.Status.NeedFuel;
+                return;
+
+            }
+
+            Status = Enum.Status.ReadyToGo;
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -45,19 +107,53 @@ namespace dotNet5781_03B_7073_1160
         {
             message = string.Empty;
             failureReason = string.Empty;
-            if (Fuel + KilometrageForRide > 1200)
+
+            UpdateStaus();
+
+            switch(Status)
             {
-                failureReason = "Fuel";
-                message = "The bus can not start traveling,the bus needs to refuel";
-                return false;
+                case Enum.Status.NeedTreatment:
+                    failureReason = "Treatment";
+                    message = "The bus can not start traveling,The bus needs Treatment";
+                    return false;
+                case Enum.Status.NeedFuel:
+                    failureReason = "Fuel";
+                    message = "The bus can not start traveling,the bus needs to refuel";
+                    return false;
+                case Enum.Status.NeedFuelAndTreatment:
+                    failureReason = "Treatment";
+                    message = "The bus can not start traveling,the bus needs Treatment and to refuel";
+                    return false;
+                case Enum.Status.InTreatment:
+                    failureReason = string.Empty;
+                    message = "The bus can not start traveling while in treatment";
+                    return false;
+                case Enum.Status.Refueling:
+                    failureReason = string.Empty;
+                    message = "The bus can not start traveling while refueling";
+                    return false;
+                case Enum.Status.MidTravel:
+                    failureReason = string.Empty;
+                    message = "The bus can not start traveling. It is already mid travel";
+                    return false;
             }
+
             bool isYearPassed = IsYearPassed();
             if (Treatment + KilometrageForRide > 20000 || isYearPassed)
             {
                 failureReason = "Treatment";
-                message = "The bus can not start traveling,The bus needs Treatment";
+                message = "The bus can not travel this distance because it would need Treatment midway";
                 return false;
             }
+
+            if (Fuel + KilometrageForRide > 1200)
+            {
+                failureReason = "Fuel";
+                message = "The bus can not travel this distance because it wouldn't have enough fuel";
+                return false;
+            }
+
+            
             return true;
         }
         public bool IsYearPassed()//The function checks if a year has passed since the last treatment of the bus
@@ -105,18 +201,23 @@ namespace dotNet5781_03B_7073_1160
                    ", LastTreatmentDate: " + LastTreatmentDate.ToString("dd/MM/yyyy");
                  
         }
-        public bool TravelKilometrage(double KilometrageForRide, out string message)
+        public bool TravelKilometrage(double kilometresForRide, out string message)
         {      
             try
             {
                 string reason = string.Empty;
-                bool isProperBusForTravel = CanTravel(KilometrageForRide, out message, out reason);
+                bool isProperBusForTravel = CanTravel(kilometresForRide, out message, out reason);
                 if (isProperBusForTravel)
                 {
                     message = "The bus is ready for travel";
-                    Kilometrage += KilometrageForRide;
-                    Fuel += KilometrageForRide;
-                    Treatment += KilometrageForRide;
+                    KilometersToTravel = kilometresForRide;
+                    Status = Enum.Status.MidTravel;
+                    Random RandomSpeed = new Random(DateTime.Now.Millisecond);
+                    double speed = RandomSpeed.NextDouble() * (50.0 - 20.0) + 20.0;
+                    double travelDuration = kilometresForRide / speed;
+                    _statusTimer.Interval = TimeSpan.FromSeconds(travelDuration);
+                    _statusTimer.Tag = new Action(FinishTravel);
+                    _statusTimer.Start();
                     return true;
                 }
                 return false;
@@ -129,19 +230,107 @@ namespace dotNet5781_03B_7073_1160
             }
         }
 
-        public void Refuel()
+
+        private void FinishTravel()
         {
-            Status = Enum.Status.Refueling;
-            Fuel = 0;
             Status = Enum.Status.ReadyToGo;
+            Kilometrage += KilometersToTravel;
+            Fuel += KilometersToTravel;
+            Treatment += KilometersToTravel;
+            UpdateStaus();
         }
 
-        public void Treat()
+        public string Refuel()
         {
-            Status = Enum.Status.Treatment;
+            UpdateStaus();
+
+
+            switch (Status)
+            {
+                case Enum.Status.InTreatment:
+                    return "The bus can not start fueling while in treatment";
+                case Enum.Status.Refueling:
+                    return "The bus can not start fueling while refueling";
+                case Enum.Status.MidTravel:
+                    return "The bus can not start fueling mid travel";
+                default:
+                    break;
+            }
+
+            if (Fuel > 0)
+            {
+                Status = Enum.Status.Refueling;
+                _statusTimer.Interval = TimeSpan.FromSeconds(DurationOfRefuling);
+                _statusTimer.Tag = new Action(FinishRefuel);
+                _statusTimer.Start();
+                return "Refuling...";
+            }
+
+            return "The bus doesn't need Refueling";
+
+        }
+        private void FinishRefuel()
+        {
+            Status = Enum.Status.ReadyToGo;
+            Fuel = 0;
+            UpdateStaus();
+        }
+
+        private void StatusTimerTick(object sender, EventArgs e)
+        {
+            _statusTimer.Stop();
+            Status = Enum.Status.ReadyToGo;
+            ((Action)_statusTimer.Tag)();
+        }
+
+        public string Treat()
+        {
+            UpdateStaus();
+
+            switch (Status)
+            {
+                case Enum.Status.InTreatment:
+                    return "The bus can not start treatment while in treatment";
+                case Enum.Status.Refueling:
+                    return "The bus can not start treatment while refueling";
+                case Enum.Status.MidTravel:
+                    return "The bus can not start treatment mid travel";
+                default:
+                    break;
+            }
+
+            if (Treatment > 0)
+            {
+                Status = Enum.Status.InTreatment;
+                _statusTimer.Interval = TimeSpan.FromSeconds(DurationOfTreatment);
+                _statusTimer.Tag = new Action(FinishTreatment);
+                _statusTimer.Start();
+                return "Treating...";
+            }
+
+            // גם אם לא צריך טיפול אך צריך תדלוק בלבד - נתדלק אותו
+            if (Status == Enum.Status.NeedFuel)
+            {
+                return Refuel();
+            }
+
+            return "The bus doesn't need Treatment";
+
+
+        }
+
+        private void FinishTreatment()
+        {
+            Status = Enum.Status.ReadyToGo;
             Treatment = 0;
             LastTreatmentDate = DateTime.Now;
-            Status = Enum.Status.ReadyToGo;
+            UpdateStaus();
+
+            if(Status == Enum.Status.NeedFuel)
+            {
+                Refuel();
+            }
+
         }
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)

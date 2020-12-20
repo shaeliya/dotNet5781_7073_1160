@@ -31,10 +31,7 @@
             <Label>LastTreatmentDate:</Label>
             <DatePicker Name="dpLastTreatmentDate"></DatePicker>
         </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Label>Status:</Label>
-            <TextBox Width="71" Name="tbStatus"></TextBox>
-        </StackPanel>
+        
         <StackPanel Orientation="Horizontal">
             <Button Command="{Binding SaveBusCommand}" Click="Add_Button_Click" Width="75" Margin="12">Add</Button>
             <Button Command="{Binding CancelAddBusCommand}" Click="Cancel_Button_Click" Width="66" Margin="12">Cancel</Button>

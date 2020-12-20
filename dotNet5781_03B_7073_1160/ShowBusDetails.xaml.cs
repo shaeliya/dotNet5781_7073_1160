@@ -30,18 +30,18 @@ namespace dotNet5781_03B_7073_1160
 
         private void Treat_Click(object sender, RoutedEventArgs e)
         {
-            
-            SelectedBus.Treat();
 
-            MessageBox.Show("Treat successful");
+            string msg = SelectedBus.Treat();
+            MessageBox.Show(msg);
         }
 
 
 
         private void Fuel_Click(object sender, RoutedEventArgs e)
         {
-            SelectedBus.Refuel();
-            MessageBox.Show("Fuel successful");
+            string msg = SelectedBus.Refuel();
+
+            MessageBox.Show(msg);
         }
     }
 }

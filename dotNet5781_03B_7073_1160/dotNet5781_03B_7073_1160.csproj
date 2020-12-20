@@ -70,6 +70,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\StatusToImageConverter.cs" />
+    <Compile Include="Converters\StatusToColorConverter.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="ShowBusDetails.xaml.cs">
       <DependentUpon>ShowBusDetails.xaml</DependentUpon>
@@ -125,6 +127,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Bonuses.docx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -139,6 +142,19 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="fuelCar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CarFuel.jpg" />
+    <Resource Include="CarTravel.png" />
+    <Resource Include="CarTreat.jpg" />
+    <Resource Include="ReadyToGo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ExclamationMark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CarNeedTreatment.jpg" />
+    <Resource Include="NeedFuel.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -21,7 +21,6 @@ namespace dotNet5781_03B_7073_1160
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    /////  לפחות אוטובוס אחד יהיה לאחר תאריך טיפול הבא
 
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
@@ -69,77 +68,95 @@ namespace dotNet5781_03B_7073_1160
             BusList.CollectionChanged += CollectionChanged;
 
             DateTime busStartDate, lastTreatmentDate;
-            string licenseNumber;
-            double fuel, treatment, kilometrage;
+            double fuel;
+            Random RandomFuel = new Random(DateTime.Now.Millisecond);
+            Bus bus;
             for (int i = 0; i < 7; i++)
             {
-                busStartDate = RandomBusStartDate();
-
-                if (busStartDate.Year < 2018)
-                {
-                    int licenseNumberRandom = RandomLicenseNumber.Next(1000000, 10000000);
-                    licenseNumber = licenseNumberRandom.ToString();
-                }
-                else
-                {
-                    int licenseNumberRandom = RandomLicenseNumber.Next(10000000, 100000000);
-                    licenseNumber = licenseNumberRandom.ToString();
-                }
-                Random RandomKilometrage = new Random(DateTime.Now.Millisecond);
-                Random RandomFuel = new Random(DateTime.Now.Millisecond);
-                Random RandomTreatment = new Random(DateTime.Now.Millisecond);
                 fuel = RandomFuel.NextDouble() * (1200.0 - 0.0) + 0.0;
-                treatment = RandomTreatment.NextDouble() * (20000.0 - 0.0) + 0.0;
-                double min;
-                if (fuel > treatment)
-                {
-                    min = fuel;
-                }
-                else
-                {
-                    min = treatment;
-                }
-                kilometrage = RandomKilometrage.NextDouble() * (9999999999.9 - min) + min;
-                lastTreatmentDate = RandomLastTreatmentDate(busStartDate);
-                licenseNumber = i.ToString();
-                Bus bus = new Bus(licenseNumber, busStartDate, kilometrage, fuel, treatment, lastTreatmentDate);
-                BusList.Add(bus);
-            }
-            for (int j = 0; j < 3; j++)
-            {
                 busStartDate = RandomBusStartDate();
-
-                if (busStartDate.Year < 2018)
-                {
-                    int licenseNumberRandom = RandomLicenseNumber.Next(1000000, 10000000);
-                    licenseNumber = licenseNumberRandom.ToString();
-                }
-                else
-                {
-                    int licenseNumberRandom = RandomLicenseNumber.Next(10000000, 100000000);
-                    licenseNumber = licenseNumberRandom.ToString();
-                }
-                Random RandomKilometrage = new Random(DateTime.Now.Millisecond);
-                Random RandomFuel = new Random(DateTime.Now.Millisecond);
-                Random RandomTreatment = new Random(DateTime.Now.Millisecond);
-                fuel = RandomFuel.NextDouble() * (1200.0 - 1150.0) + 1150.0;
-                treatment = RandomTreatment.NextDouble() * (20000.0 - 19900.0) + 19900.0;
-                double min;
-                if (fuel > treatment)
-                {
-                    min = fuel;
-                }
-                else
-                {
-                    min = treatment;
-                }
-                kilometrage = RandomKilometrage.NextDouble() * (9999999999.9 - min) + min;
                 lastTreatmentDate = RandomLastTreatmentDate(busStartDate);
-                licenseNumber = (7 + j).ToString();
-                Bus bus = new Bus(licenseNumber, busStartDate, kilometrage, fuel, treatment, lastTreatmentDate);
+                bus = CreateNewBus(busStartDate, lastTreatmentDate, fuel);
                 BusList.Add(bus);
             }
 
+            // אוטובוס לאחר תאריך טיפול הבא
+            fuel = RandomFuel.NextDouble() * (1200.0 - 0.0) + 0.0;
+            busStartDate = DateTime.Now.AddMonths(-24);
+            lastTreatmentDate = DateTime.Now.AddMonths(-13);
+            bus = CreateNewBus(busStartDate, lastTreatmentDate, fuel);
+            BusList.Add(bus);
+
+
+            // אוטובוס לאחר תאריך טיפול הבא
+            fuel = RandomFuel.NextDouble() * (1200.0 - 0.0) + 0.0;
+            busStartDate = DateTime.Now.AddMonths(-19);
+            lastTreatmentDate = DateTime.Now.AddMonths(-14);
+            bus = CreateNewBus(busStartDate, lastTreatmentDate, fuel);
+            BusList.Add(bus);
+
+
+            // אוטובוס קרוב לתאריך טיפול הבא
+            fuel = RandomFuel.NextDouble() * (1200.0 - 0.0) + 0.0;
+            busStartDate = DateTime.Now.AddMonths(-24);
+            lastTreatmentDate = DateTime.Now.AddMonths(-11);
+            bus = CreateNewBus(busStartDate, lastTreatmentDate, fuel);
+            BusList.Add(bus);
+
+
+            // אוטובוס קרוב לתאריך טיפול הבא
+            fuel = RandomFuel.NextDouble() * (1200.0 - 0.0) + 0.0;
+            busStartDate = DateTime.Now.AddMonths(-45);
+            lastTreatmentDate = DateTime.Now.AddMonths(-10);
+            bus = CreateNewBus(busStartDate, lastTreatmentDate, fuel);
+            BusList.Add(bus);
+
+
+            // אוטובוס עם מעט דלק
+            fuel = RandomFuel.NextDouble() * (1200.0 - 1150.0) + 1150.0;
+            busStartDate = RandomBusStartDate();
+            lastTreatmentDate = RandomLastTreatmentDate(busStartDate);
+            bus = CreateNewBus(busStartDate, lastTreatmentDate, fuel);
+            BusList.Add(bus);
+
+            // אוטובוס עם מעט דלק
+            fuel = RandomFuel.NextDouble() * (1200.0 - 1150.0) + 1150.0;
+            busStartDate = RandomBusStartDate();
+            lastTreatmentDate = RandomLastTreatmentDate(busStartDate);
+            bus = CreateNewBus(busStartDate, lastTreatmentDate, fuel);
+            BusList.Add(bus);
+
+        }
+
+        private Bus CreateNewBus(DateTime busStartDate, DateTime lastTreatmentDate, double fuel)
+        {
+            string licenseNumber;
+            double treatment, kilometrage;
+            if (busStartDate.Year < 2018)
+            {
+                int licenseNumberRandom = RandomLicenseNumber.Next(1000000, 10000000);
+                licenseNumber = licenseNumberRandom.ToString();
+            }
+            else
+            {
+                int licenseNumberRandom = RandomLicenseNumber.Next(10000000, 100000000);
+                licenseNumber = licenseNumberRandom.ToString();
+            }
+            Random RandomKilometrage = new Random(DateTime.Now.Millisecond);
+            Random RandomTreatment = new Random(DateTime.Now.Millisecond);
+            treatment = RandomTreatment.NextDouble() * (20000.0 - 0.0) + 0.0;
+            double min;
+            if (fuel > treatment)
+            {
+                min = fuel;
+            }
+            else
+            {
+                min = treatment;
+            }
+            kilometrage = RandomKilometrage.NextDouble() * (9999999999.9 - min) + min;
+            Bus bus = new Bus(licenseNumber, busStartDate, kilometrage, fuel, treatment, lastTreatmentDate);
+            return bus;
         }
 
         DateTime RandomBusStartDate()
@@ -183,7 +200,8 @@ namespace dotNet5781_03B_7073_1160
             if (cmd.DataContext is Bus)
             {
                 Bus bus = (Bus)cmd.DataContext;
-                bus.Refuel();
+                string msg = bus.Refuel();
+                MessageBox.Show(msg);
             }
 
         }

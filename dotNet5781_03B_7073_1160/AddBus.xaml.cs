@@ -49,6 +49,13 @@ namespace dotNet5781_03B_7073_1160
                 return false;
             }
 
+            var isExistsBus = BusList.Where(b => b.LicenseNumber.Trim() == tbLicenseNumber.Text.Trim()).ToList();
+            if (isExistsBus != null && isExistsBus.Count > 0)
+            {
+                MessageBox.Show("Bus Already Exists");
+                return false;
+            }
+
             if (!Utils.IsDigitsOnly(tbLicenseNumber.Text))
             {
                 MessageBox.Show("License Number must be digits only");
@@ -56,9 +63,35 @@ namespace dotNet5781_03B_7073_1160
             }
 
             if (!dpBusStartDate.SelectedDate.HasValue ||
-                dpBusStartDate.SelectedDate == DateTime.MinValue)
+                dpBusStartDate.SelectedDate.Value == DateTime.MinValue)
             {
                 MessageBox.Show("Must Enter Bus Start Date");
+                return false;
+            }
+
+
+            if (dpBusStartDate.SelectedDate.Value > DateTime.Today)
+            {
+                MessageBox.Show("Must Enter Bus Start Date before today");
+                return false;
+            }
+
+
+            if (!dpLastTreatmentDate.SelectedDate.HasValue ||
+                dpLastTreatmentDate.SelectedDate.Value == DateTime.MinValue)
+            {
+                MessageBox.Show("Must Enter Bus Last Treatment Date");
+                return false;
+            }
+
+            if (dpBusStartDate.SelectedDate.Value > dpLastTreatmentDate.SelectedDate.Value)
+            {
+                MessageBox.Show("Bus Start Date must be before Last Treatment Date");
+                return false;
+            }
+            if (dpLastTreatmentDate.SelectedDate.Value > DateTime.Today)
+            {
+                MessageBox.Show("Must Enter Bus Last Treatment Date before today");
                 return false;
             }
 
@@ -84,13 +117,6 @@ namespace dotNet5781_03B_7073_1160
             if (!isDouble)
             {
                 MessageBox.Show("Treatment is inccorect format");
-                return false;
-            }
-
-            if (dpLastTreatmentDate.SelectedDate.HasValue ||
-                dpLastTreatmentDate.SelectedDate.Value == DateTime.MinValue)
-            {
-                MessageBox.Show("Must Enter Treatment Date");
                 return false;
             }
 

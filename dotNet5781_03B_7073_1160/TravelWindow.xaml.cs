@@ -46,10 +46,9 @@ namespace dotNet5781_03B_7073_1160
 
         private void Treat(object o)
         {
-            SelectedBus.Treat();
             FailureReason = string.Empty;
-
-            MessageBox.Show("Treat successful");
+            string msg = SelectedBus.Treat();
+            MessageBox.Show(msg);
         }
 
 
@@ -60,10 +59,11 @@ namespace dotNet5781_03B_7073_1160
 
         private void Fuel(object o)
         {
-            SelectedBus.Refuel();
+            string msg = SelectedBus.Refuel();
+
+            MessageBox.Show(msg);
+
             FailureReason = string.Empty;
-            
-            MessageBox.Show("Fuel successful");
         }
 
 
@@ -127,7 +127,8 @@ namespace dotNet5781_03B_7073_1160
         }
         private void Car_Treatment_Button_Click(object sender, RoutedEventArgs e)
         {
-            SelectedBus.Treat();
+            string msg = SelectedBus.Treat();
+            MessageBox.Show(msg);
 
 
         }

@@ -3,12 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:dotNet5781_03B_7073_1160"
+        xmlns:local="clr-namespace:dotNet5781_03B_7073_1160" xmlns:converters="clr-namespace:dotNet5781_03B_7073_1160.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
+        <converters:StatusToColorConverter x:Key="StatusToColorConverter"/>
+        <converters:StatusToImageConverter x:Key="StatusToImageConverter"/>
+
         <DataTemplate x:Key="ListBoxItemTemplate">
-            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal" Background="{Binding Status, Converter={StaticResource StatusToColorConverter}}">
+                <Image Height="25" Width="25" Source="{Binding Status, Converter={StaticResource StatusToImageConverter}}"/>
                 <Button Content="Travel" Margin="0,0,20,0" Width="80" Click="Open_Travel_Window_Button_Click"/>
                 <Button Content="Fuel" Margin="0,0,20,0" Width="80" Click="FuelBus_Click"/>
                 <StackPanel Orientation="Horizontal">

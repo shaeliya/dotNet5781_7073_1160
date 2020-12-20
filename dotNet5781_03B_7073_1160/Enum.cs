@@ -11,9 +11,13 @@ namespace dotNet5781_03B_7073_1160
         public enum Status
         {
             ReadyToGo,
-            MidRide,
+            MidTravel,
             Refueling,
-            Treatment
+            InTreatment,
+            NeedFuel,
+            NeedTreatment,
+            NeedFuelAndTreatment
+
         }
     }
 }
