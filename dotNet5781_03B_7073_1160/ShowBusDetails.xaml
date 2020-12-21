@@ -5,67 +5,67 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_7073_1160"
         mc:Ignorable="d"
-        Title="Bus Details" Height="450" Width="800" FontFamily="Times New Roman" FontSize="19" Icon="carmaim.png">
-
-    <StackPanel>
-        <StackPanel.Background>
+        Title="Bus Details" Height="499.2" Width="480.8" FontFamily="Times New Roman" FontSize="19" Icon="carmaim.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="44*"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="White"/>
-                <GradientStop Color="#FFF0BFBA" Offset="1"/>
+                <GradientStop Color="#FF56DBDD"/>
+                <GradientStop Color="White" Offset="0.641"/>
+                <GradientStop Color="#FF35BF32" Offset="1"/>
+                <GradientStop Color="#FFBBE9BA" Offset="0.854"/>
             </LinearGradientBrush>
-        </StackPanel.Background>
-        <StackPanel Orientation="Horizontal">
+        </Grid.Background>
+        <StackPanel Margin="50,0,-0.6,-0.4" Grid.RowSpan="2">
 
-            <Label Content="LicenseNumber:"></Label>
-            <Label Content="{Binding Path=SelectedBus.LicenseNumber}"  />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
 
-            <Label Content="Kilometrage:"/>
-            <Label Content="{Binding Path=SelectedBus.Kilometrage}" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
+            <Label Content="Bus Details" FontWeight="Bold" Margin="112,20,171.8,20" Foreground="#FF104008"/>
 
-            <Label Content="BusStartDate:"></Label>
-            <Label Content="{Binding Path=SelectedBus.BusStartDate, StringFormat=dd/MM/yyyy}"  />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal">
 
-            <Label Content="Fuel:"></Label>
-            <Label Content="{Binding Path=SelectedBus.Fuel}"  />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
+                <Label Content="LicenseNumber:" FontWeight="Bold"/>
+                <Label Content="{Binding SelectedBus.LicenseNumber}"  />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
 
-            <Label Content="Treatment:"></Label>
-            <Label Content="{Binding Path=SelectedBus.Treatment}"  />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
+                <Label Content="Kilometrage:" FontWeight="Bold"/>
+                <Label Content="{Binding SelectedBus.Kilometrage}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
 
-            <Label Content="LastTreatmentDate:"></Label>
-            <Label Content="{Binding Path=SelectedBus.LastTreatmentDate}" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
+                <Label Content="BusStartDate:" FontWeight="Bold"/>
+                <Label Content="{Binding SelectedBus.BusStartDate, StringFormat=dd/MM/yyyy}"  />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
 
-            <Label Content="Status:"></Label>
-            <Label Content="{Binding Path=SelectedBus.Status}"  />
-        </StackPanel>
+                <Label Content="Fuel:" FontWeight="Bold"/>
+                <Label Content="{Binding SelectedBus.Fuel}"  />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0.4,0">
 
-        <StackPanel Orientation="Horizontal">
-            <Button Height="96" Margin="0,0,1,0" FontSize="20" FontWeight="Bold" Foreground="White" Click="Treat_Click">
-                <Button.Background>
-                    <ImageBrush ImageSource="carTreatment.jpg"/>
-                </Button.Background>
-                Treat Car
-            </Button>
+                <Label Content="Treatment:" FontWeight="Bold"/>
+                <Label Content="{Binding SelectedBus.Treatment}"  />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
 
-            <Button Height="100" Margin="0,0,1,0" FontSize="20" FontWeight="Bold" Foreground="White" Click="Fuel_Click">
-                <Button.Background>
-                    <ImageBrush ImageSource="fuelCar.png"/>
-                </Button.Background>
-                Fuel Car
-            </Button>
+                <Label Content="LastTreatmentDate:" FontWeight="Bold"/>
+                <Label Content="{Binding SelectedBus.LastTreatmentDate}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+
+                <Label Content="Status:" FontWeight="Bold"/>
+                <Label Content="{Binding SelectedBus.Status}"  />
+            </StackPanel>
+
+
         </StackPanel>
 
-
-    </StackPanel>
+        <Grid Margin="0,286,9.4,-0.4" Grid.Row="1">
+            <Button Margin="44,35,248.8,68.8" Click="Treat_Click" Content="Treat Car" FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold"/>
+            <Button Margin="234,35,40.8,68.8" Click="Fuel_Click" Content="Fuel Car" FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold"/>
+        </Grid>
+    </Grid>
 </Window>

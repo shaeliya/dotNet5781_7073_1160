@@ -159,5 +159,8 @@
   <ItemGroup>
     <Resource Include="carmaim.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BusBackground.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
