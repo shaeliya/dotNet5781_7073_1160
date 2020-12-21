@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+//לא מחכה בנסיעה הוא לא מחשב כמ זמן הוא צריך לחכות כשולחים לנסיעה
+//כששולחים לנסיעה ישר מקפיץנ= הודעה שהגענו ליעד
 namespace dotNet5781_03B_7073_1160
 {
     /// <summary>

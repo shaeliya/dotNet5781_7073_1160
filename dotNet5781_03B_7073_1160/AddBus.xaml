@@ -5,36 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_7073_1160"
         mc:Ignorable="d"
-        Title="AddBus" Height="450" Width="800">
+        Title="Add Bus" Height="450" Width="800" Icon="carmaim.png" FontFamily="Times New Roman" FontSize="19">
     <StackPanel>
+        <StackPanel.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="White"/>
+                <GradientStop Color="#FFF0BFBA" Offset="1"/>
+            </LinearGradientBrush>
+        </StackPanel.Background>
         <StackPanel Orientation="Horizontal">
             <Label>License Number:</Label>
-            <TextBox Width="93" Name="tbLicenseNumber"></TextBox>
+            <TextBox Width="93" Name="tbLicenseNumber" Background="#FFFEFDFD"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label>BusStartDate:</Label>
-            <DatePicker Name="dpBusStartDate"></DatePicker>
+            <DatePicker Name="dpBusStartDate" Foreground="#FF060404"></DatePicker>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label>Kilometrage:</Label>
-            <TextBox Width="106" Name="tbKilometrage"></TextBox>
+            <TextBox Width="106" Name="tbKilometrage" Background="#FFFBF1F0"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label>Fuel:</Label>
-            <TextBox Width="71" Name="tbFuel"></TextBox>
+            <TextBox Width="71" Name="tbFuel" Background="#FFF9EAE9"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label>Treatment:</Label>
-            <TextBox Width="71" Name="tbTreatment"></TextBox>
+            <TextBox Width="71" Name="tbTreatment" Background="#FFF8E4E2"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label>LastTreatmentDate:</Label>
-            <DatePicker Name="dpLastTreatmentDate"></DatePicker>
+            <DatePicker Name="dpLastTreatmentDate" Background="#00000000" Foreground="#FF0C0707" OpacityMask="#FFE46E6E">
+                <DatePicker.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                        <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                        <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                        <GradientStop Color="#FF718597" Offset="0.375"/>
+                        <GradientStop Color="#FF131618" Offset="1"/>
+                    </LinearGradientBrush>
+                </DatePicker.BorderBrush>
+            </DatePicker>
         </StackPanel>
-        
+
         <StackPanel Orientation="Horizontal">
-            <Button Command="{Binding SaveBusCommand}" Click="Add_Button_Click" Width="75" Margin="12">Add</Button>
-            <Button Command="{Binding CancelAddBusCommand}" Click="Cancel_Button_Click" Width="66" Margin="12">Cancel</Button>
+            <Button Command="{Binding SaveBusCommand}" Click="Add_Button_Click" Width="75" Margin="12">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF0BFBA" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background> Add
+            </Button>
+            <Button Command="{Binding CancelAddBusCommand}" Click="Cancel_Button_Click" Width="66" Margin="12">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF0BFBA" Offset="0.01"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background> Cancel
+            </Button>
         </StackPanel>
     </StackPanel>
 </Window>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_7073_1160" xmlns:converters="clr-namespace:dotNet5781_03B_7073_1160.Converters"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Bus system" Height="450" Width="800" Icon="carmaim.png">
     <Window.Resources>
         <converters:StatusToColorConverter x:Key="StatusToColorConverter"/>
         <converters:StatusToImageConverter x:Key="StatusToImageConverter"/>
@@ -16,32 +16,39 @@
                 <Button Content="Travel" Margin="0,0,20,0" Width="80" Click="Open_Travel_Window_Button_Click"/>
                 <Button Content="Fuel" Margin="0,0,20,0" Width="80" Click="FuelBus_Click"/>
                 <StackPanel Orientation="Horizontal">
-                        
+
                     <Label Content="LicenseNumber:"></Label>
                     <Label Content="{Binding LicenseNumber}"  />
-                    
+
                     <Label Content=", Kilometrage:"/>
                     <Label Content="{Binding Kilometrage}" />
-                    
+
                     <Label Content=", BusStartDate:"></Label>
                     <Label Content="{Binding BusStartDate}"  />
-                    
+
                     <Label Content=", Fuel:"></Label>
                     <Label Content="{Binding Fuel}"  />
-                    
+
                     <Label Content=", Treatment:"></Label>
                     <Label Content="{Binding Treatment}"  />
 
                     <Label Content=", Status:"></Label>
                     <Label Content="{Binding Status}"  />
                 </StackPanel>
-                
+
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
     <StackPanel Orientation="Vertical">
-        <ListView SelectionMode="Extended"  Name="lbBus" ItemsSource="{Binding BusList ,UpdateSourceTrigger=Explicit}" HorizontalAlignment="Stretch" Height="100" VerticalAlignment="Top" Margin="10,0,0,0" ItemTemplate="{StaticResource ListBoxItemTemplate}" MouseDoubleClick="Open_ShowBusDetails_DoubleClick"/>
-        <Button Content="add bus" Click="Open_Add_Bus_Window_Button_Click" Margin="642,0,-0.4,0" />
+        <ListView SelectionMode="Extended"  Name="lbBus" ItemsSource="{Binding BusList ,UpdateSourceTrigger=Explicit}" HorizontalAlignment="Stretch" Height="360" VerticalAlignment="Top" Margin="0,0,-0.4,0" ItemTemplate="{StaticResource ListBoxItemTemplate}" MouseDoubleClick="Open_ShowBusDetails_DoubleClick" Foreground="#FFB64848" Background="White" />
+        <Button Content="add bus" Click="Open_Add_Bus_Window_Button_Click" Margin="0,0,-0.4,0" Height="60" FontFamily="Wide Latin" FontSize="30" FontWeight="Bold" Foreground="Black" BorderBrush="#FF0A030E" >
+            <Button.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFF0BFBA" Offset="0.941"/>
+                    <GradientStop Color="#FFF9EBEB" Offset="0.191"/>
+                </RadialGradientBrush>
+            </Button.Background>
+        </Button>
     </StackPanel>
 
 
