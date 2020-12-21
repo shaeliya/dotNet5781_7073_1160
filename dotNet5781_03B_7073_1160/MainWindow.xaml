@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:dotNet5781_03B_7073_1160" xmlns:converters="clr-namespace:dotNet5781_03B_7073_1160.Converters"
+        xmlns:local="clr-namespace:dotNet5781_03B_7073_1160" xmlns:converters="clr-namespace:dotNet5781_03B_7073_1160.Converters" xmlns:radialprogressbar="clr-namespace:RadialProgressbar;assembly=RadialProgressbar"
         mc:Ignorable="d"
         Title="Bus system" Height="766.8" Width="657.2" Icon="carmaim.png">
     <Window.Resources>
@@ -19,11 +19,30 @@
         <ListView HorizontalContentAlignment="Stretch" ItemsSource="{Binding BusList, UpdateSourceTrigger=Explicit}" HorizontalAlignment="Stretch" Height="401" VerticalAlignment="Top" Margin="89,104,89.8,0" MouseDoubleClick="Open_ShowBusDetails_DoubleClick" Foreground="#FFB64848" Background="White" FontFamily="Goudy Old Style" FontSize="20px">
             <ListView.View>
                 <GridView>
-                    <GridView.Columns>                        
+                    <GridView.Columns>
                         <GridViewColumn Header="Status">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Image Height="65" Width="65" Source="{Binding Status, Converter={StaticResource StatusToImageConverter}}"/>
+                                    <Grid >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="110" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="110" />
+                                            <ColumnDefinition Width="110" />
+                                        </Grid.ColumnDefinitions>
+                                        <radialprogressbar:RadialProgressBar
+                                            Margin="10"
+                                            Duration="{Binding DurationOfUnavailability,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"
+                                            Min="0"
+                                            Max="100"
+                                            DigitStyle="Percentage_1_DecimalPlaces" 
+                                            BackArcBrush="#444444"
+                                            ValueArcBrush="{Binding Status, Converter={StaticResource StatusToColorConverter}}"
+                                            NumericBrush="{Binding Status, Converter={StaticResource StatusToColorConverter}}"
+                                            Glow="False" />
+                                        <Image Grid.Column="1" Height="65" Width="65" Source="{Binding Status, Converter={StaticResource StatusToImageConverter}}"/>
+                                    </Grid>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

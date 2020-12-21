@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNet5781_03A_7073_1160", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotNet5781_03B_7073_1160", "dotNet5781_03B_7073_1160\dotNet5781_03B_7073_1160.csproj", "{54FA9457-CC46-4853-9ACF-5C569066AEA2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadialProgressbar", "RadialProgressbar\RadialProgressbar.csproj", "{0CFB816B-3D82-453E-9F00-640414ACCFFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{54FA9457-CC46-4853-9ACF-5C569066AEA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54FA9457-CC46-4853-9ACF-5C569066AEA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54FA9457-CC46-4853-9ACF-5C569066AEA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CFB816B-3D82-453E-9F00-640414ACCFFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CFB816B-3D82-453E-9F00-640414ACCFFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CFB816B-3D82-453E-9F00-640414ACCFFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CFB816B-3D82-453E-9F00-640414ACCFFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

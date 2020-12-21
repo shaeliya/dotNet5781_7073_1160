@@ -31,6 +31,7 @@ namespace dotNet5781_03B_7073_1160
         public double Treatment { get { return _treatment; } set { _treatment = value; OnPropertyChanged(nameof(Treatment)); } } //טיפול
         public string LicenseNumberForPrint { get; set; } //מספר רישוי להדפסה 
         public DateTime LastTreatmentDate { get { return _lastTreatmentDate; } set { _lastTreatmentDate = value; OnPropertyChanged(nameof(LastTreatmentDate)); } }  //תאירך אחרון לטיפול 
+        public int DurationOfUnavailability { get { return _durationOfUnavailability; } set { _durationOfUnavailability = value; OnPropertyChanged(nameof(DurationOfUnavailability)); } }  
         public Enum.Status Status { get { return _status; } set 
             { 
                 _status = value;
@@ -40,7 +41,7 @@ namespace dotNet5781_03B_7073_1160
         private DispatcherTimer _statusTimer;
         private Enum.Status _status;
         private double KilometersToTravel;
-
+        private int _durationOfUnavailability;
 
         public Bus(string licenseNumber, DateTime busStartDate, double kilometrage, double fuel, double treatment, DateTime lastTreatmentDate)//ctor
         {
@@ -214,8 +215,9 @@ namespace dotNet5781_03B_7073_1160
                     Status = Enum.Status.MidTravel;
                     Random RandomSpeed = new Random(DateTime.Now.Millisecond);
                     double speed = RandomSpeed.NextDouble() * (50.0 - 20.0) + 20.0;
-                    double travelDuration = kilometresForRide / speed;
-                    _statusTimer.Interval = TimeSpan.FromSeconds(travelDuration);
+                    double travelDuration = 3600 * kilometresForRide / speed;
+                    DurationOfUnavailability = (int)travelDuration / 600;
+                    _statusTimer.Interval = TimeSpan.FromSeconds(DurationOfUnavailability);
                     _statusTimer.Tag = new Action(FinishTravel);
                     _statusTimer.Start();
                     return true;
@@ -237,6 +239,7 @@ namespace dotNet5781_03B_7073_1160
             Kilometrage += KilometersToTravel;
             Fuel += KilometersToTravel;
             Treatment += KilometersToTravel;
+            DurationOfUnavailability = 0;
             UpdateStaus();
         }
 
@@ -260,6 +263,7 @@ namespace dotNet5781_03B_7073_1160
             if (Fuel > 0)
             {
                 Status = Enum.Status.Refueling;
+                DurationOfUnavailability = DurationOfRefuling;
                 _statusTimer.Interval = TimeSpan.FromSeconds(DurationOfRefuling);
                 _statusTimer.Tag = new Action(FinishRefuel);
                 _statusTimer.Start();
@@ -272,6 +276,7 @@ namespace dotNet5781_03B_7073_1160
         private void FinishRefuel()
         {
             Status = Enum.Status.ReadyToGo;
+            DurationOfUnavailability = 0;
             Fuel = 0;
             UpdateStaus();
         }
@@ -302,6 +307,7 @@ namespace dotNet5781_03B_7073_1160
             if (Treatment > 0)
             {
                 Status = Enum.Status.InTreatment;
+                DurationOfUnavailability = DurationOfTreatment;
                 _statusTimer.Interval = TimeSpan.FromSeconds(DurationOfTreatment);
                 _statusTimer.Tag = new Action(FinishTreatment);
                 _statusTimer.Start();
@@ -321,6 +327,7 @@ namespace dotNet5781_03B_7073_1160
 
         private void FinishTreatment()
         {
+            DurationOfUnavailability = 0;
             Status = Enum.Status.ReadyToGo;
             Treatment = 0;
             LastTreatmentDate = DateTime.Now;

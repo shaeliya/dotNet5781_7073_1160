@@ -162,5 +162,11 @@
   <ItemGroup>
     <Resource Include="BusBackground.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RadialProgressbar\RadialProgressbar.csproj">
+      <Project>{0cfb816b-3d82-453e-9f00-640414accffc}</Project>
+      <Name>RadialProgressbar</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
