@@ -264,7 +264,7 @@ namespace RadialProgressbar
             }
             else
             {
-                mValueText.Text = durationsInHoursRounded + " Hours";
+                mValueText.Text = durationsInHoursRounded + " Hrs";
             }
 
             //switch (DigitStyle)
