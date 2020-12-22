@@ -1,0 +1,12 @@
+C:\Users\97252\source\repos\dotNet5781_7073_1160\RadialProgressbar\bin\Debug\RadialProgressbar.dll
+C:\Users\97252\source\repos\dotNet5781_7073_1160\RadialProgressbar\bin\Debug\RadialProgressbar.pdb
+C:\Users\97252\source\repos\dotNet5781_7073_1160\RadialProgressbar\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\97252\source\repos\dotNet5781_7073_1160\RadialProgressbar\obj\Debug\RadialProgressbar_MarkupCompile.cache
+C:\Users\97252\source\repos\dotNet5781_7073_1160\RadialProgressbar\obj\Debug\RadialProgressbar_MarkupCompile.lref
+C:\Users\97252\source\repos\dotNet5781_7073_1160\RadialProgressbar\obj\Debug\Themes\Generic.baml
+C:\Users\97252\source\repos\dotNet5781_7073_1160\RadialProgressbar\obj\Debug\RadialProgressbar.g.resources
+C:\Users\97252\source\repos\dotNet5781_7073_1160\RadialProgressbar\obj\Debug\RadialProgressbar.Properties.Resources.resources
+C:\Users\97252\source\repos\dotNet5781_7073_1160\RadialProgressbar\obj\Debug\RadialProgressbar.csproj.GenerateResource.cache
+C:\Users\97252\source\repos\dotNet5781_7073_1160\RadialProgressbar\obj\Debug\RadialProgressbar.csproj.CoreCompileInputs.cache
+C:\Users\97252\source\repos\dotNet5781_7073_1160\RadialProgressbar\obj\Debug\RadialProgressbar.dll
+C:\Users\97252\source\repos\dotNet5781_7073_1160\RadialProgressbar\obj\Debug\RadialProgressbar.pdb

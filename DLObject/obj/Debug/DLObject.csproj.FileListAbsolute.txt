@@ -1,0 +1,9 @@
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DLObject\bin\Debug\DLObject.exe.config
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DLObject\bin\Debug\DLObject.exe
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DLObject\bin\Debug\DLObject.pdb
+C:\Users\97252\source\repos\dotNet5781_7073_1160\bin\DLObject.pdb
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DLObject\obj\Debug\DLObject.csproj.CoreCompileInputs.cache
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DLObject\obj\Debug\DLObject.pdb
+C:\Users\97252\source\repos\dotNet5781_7073_1160\bin\DLObject.dll.config
+C:\Users\97252\source\repos\dotNet5781_7073_1160\bin\DLObject.dll
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DLObject\obj\Debug\DLObject.dll

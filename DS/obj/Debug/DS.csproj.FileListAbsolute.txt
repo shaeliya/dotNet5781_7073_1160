@@ -1,0 +1,9 @@
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DS\bin\Debug\DS.exe.config
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DS\bin\Debug\DS.exe
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DS\bin\Debug\DS.pdb
+C:\Users\97252\source\repos\dotNet5781_7073_1160\bin\DS.pdb
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.csproj.CoreCompileInputs.cache
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.pdb
+C:\Users\97252\source\repos\dotNet5781_7073_1160\bin\DS.dll.config
+C:\Users\97252\source\repos\dotNet5781_7073_1160\bin\DS.dll
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.dll
