@@ -114,7 +114,7 @@ namespace dotNet5781_03B_7073_1160
 
                 if (isSuccess)
                 {
-                    MessageBox.Show("You arrived to your destination!");
+                    MessageBox.Show("Started Traveling");
                     Close();
 
                 }
@@ -146,6 +146,11 @@ namespace dotNet5781_03B_7073_1160
         private static bool IsTextAllowed(string text)
         {
             return !_regex.IsMatch(text);
+        }
+
+        private void ColseWindow_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

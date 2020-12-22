@@ -138,35 +138,29 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="carTreatment.jpg" />
+    <Resource Include="Resources\Images\CarFuel.jpg" />
+    <Resource Include="Resources\Images\CarTravel.png" />
+    <Resource Include="Resources\Images\CarTreat.jpg" />
+    <Resource Include="Resources\Images\ReadyToGo.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="fuelCar.png" />
+    <Resource Include="Resources\Images\ExclamationMark.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="CarFuel.jpg" />
-    <Resource Include="CarTravel.png" />
-    <Resource Include="CarTreat.jpg" />
-    <Resource Include="ReadyToGo.jpg" />
+    <Resource Include="Resources\Images\CarNeedTreatment.jpg" />
+    <Resource Include="Resources\Images\NeedFuel.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ExclamationMark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="CarNeedTreatment.jpg" />
-    <Resource Include="NeedFuel.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="carmaim.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="BusBackground.jpg" />
+    <Resource Include="Resources\Images\carMain.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RadialProgressbar\RadialProgressbar.csproj">
       <Project>{0cfb816b-3d82-453e-9f00-640414accffc}</Project>
       <Name>RadialProgressbar</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\BusBackground.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

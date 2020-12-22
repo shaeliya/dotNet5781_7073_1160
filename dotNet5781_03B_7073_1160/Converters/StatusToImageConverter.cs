@@ -16,30 +16,30 @@ namespace dotNet5781_03B_7073_1160.Converters
             if (value is Enum.Status && value != null)
             {
                 var status = (Enum.Status)value;
-                var image = "carTreatment.jpg";
+                var image = string.Empty;
 
                 switch (status)
                 {
                     case Enum.Status.ReadyToGo:
-                        image = "ReadyToGo.jpg";
+                        image = "Resources/Images/ReadyToGo.jpg";
                         break;
                     case Enum.Status.Refueling:
-                        image = "CarFuel.jpg";
+                        image = "Resources/Images/CarFuel.jpg";
                         break;
                     case Enum.Status.InTreatment:
-                        image = "CarTreat.jpg";
+                        image = "Resources/Images/CarTreat.jpg";
                         break;
                     case Enum.Status.MidTravel:
-                        image = "CarTravel.png";
+                        image = "Resources/Images/CarTravel.png";
                         break;
                     case Enum.Status.NeedFuel:
-                        image = "NeedFuel.jpg";
+                        image = "Resources/Images/NeedFuel.jpg";
                         break;
                     case Enum.Status.NeedTreatment:
-                        image = "CarNeedTreatment.jpg";
+                        image = "Resources/Images/CarNeedTreatment.jpg";
                         break;
                     case Enum.Status.NeedFuelAndTreatment:
-                        image = "ExclamationMark.png";
+                        image = "Resources/Images/ExclamationMark.png";
                         break;
                     default:
                         image = "ExclamationMark.png";

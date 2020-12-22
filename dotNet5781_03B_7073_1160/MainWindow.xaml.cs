@@ -222,5 +222,16 @@ namespace dotNet5781_03B_7073_1160
             }
 
         }
+
+        private void TreatBus_Click(object sender, RoutedEventArgs e)
+        {
+            Button cmd = (Button)sender;
+            if (cmd.DataContext is Bus)
+            {
+                Bus bus = (Bus)cmd.DataContext;
+                string msg = bus.Treat();
+                MessageBox.Show(msg);
+            }
+        }
     }
 }

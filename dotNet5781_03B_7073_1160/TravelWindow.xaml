@@ -6,44 +6,59 @@
         xmlns:local="clr-namespace:dotNet5781_03B_7073_1160"
         mc:Ignorable="d"
         xmlns:controls="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
-        Title="Travel " Height="450" Width="800" FontFamily="Goudy Old Style" FontSize="20" Icon="carmaim.png">
+        Title="Travel " Height="334.8" Width="465.2" FontFamily="Goudy Old Style" FontSize="20" Icon="Resources/Images/carMain.png">
     <Window.Resources>
         <controls:BooleanToVisibilityConverter x:Key="boolConv"/>
     </Window.Resources>
-    <StackPanel HorizontalAlignment="Right" Margin="0,0,-0.4,0" Width="784">
-        <StackPanel.Background>
+    <Grid>
+
+        <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF56DBDD"/>
                 <GradientStop Color="White" Offset="0.641"/>
                 <GradientStop Color="#FF35BF32" Offset="1"/>
                 <GradientStop Color="#FFBBE9BA" Offset="0.854"/>
             </LinearGradientBrush>
-        </StackPanel.Background>
-        <StackPanel Orientation="Horizontal">
-            <Label FontFamily="Goudy Old Style" FontSize="20" FontWeight="Bold">License Number  :</Label>
-            <TextBlock x:Name="tbLicenseNumber" Text="{Binding Path=SelectedBus.LicenseNumber}" FontFamily="Goudy Old Style" FontSize="16" Margin="0,8,642.6,0" FontWeight="Bold"/>
-        </StackPanel>
+        </Grid.Background>
+        <Label Content="Travel" FontWeight="Bold" Foreground="#FF104008" Margin="180,0,197,229.2"/>
 
-        <StackPanel Orientation="Horizontal">
-            <Label FontFamily="Goudy Old Style" FontSize="20" FontWeight="Bold">Kilometrage :</Label>
-            <TextBox x:Name="tbKilometrage" Width="82" KeyDown="tbKilometrage_KeyDown" FontWeight="Bold" FontSize="16"   FontFamily="Goudy Old Style" PreviewTextInput="PreviewTextInput" Height="22"/>
+        <StackPanel HorizontalAlignment="Right" Width="459" Margin="0,38,-41.8,175.8">
 
+            <StackPanel Orientation="Horizontal">
+                <Label FontFamily="Goudy Old Style" FontSize="20" FontWeight="Bold">License Number  :</Label>
+                <Label Content="{Binding Path=SelectedBus.LicenseNumber}" FontFamily="Goudy Old Style" FontSize="20" FontWeight="Bold"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label FontFamily="Goudy Old Style" FontSize="20" FontWeight="Bold">Kilometrage :</Label>
+                <TextBox x:Name="tbKilometrage" Width="82" KeyDown="tbKilometrage_KeyDown" FontWeight="Bold" FontSize="16"   FontFamily="Goudy Old Style" PreviewTextInput="PreviewTextInput" Height="22"/>
+
+            </StackPanel>
         </StackPanel>
-        <Button Height="70" Margin="0,0,642.6,0"  FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold"
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="197*"/>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="6*"/>
+            </Grid.ColumnDefinitions>
+            <Button FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold"
                 Visibility="{Binding RelativeSource={RelativeSource Self},
             Path=IsEnabled, Converter={StaticResource boolConv}}"
-                Command="{Binding TreatmentCommand}">
+                Command="{Binding TreatmentCommand}" Margin="142,115,74.8,100.8">
+                Treat Car
+            </Button>
 
-            Treat Car
-        </Button>
-
-        <Button Height="70" Margin="0,0,642.6,0" FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" 
+            <Button FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" 
                 Visibility="{Binding RelativeSource={RelativeSource Self},
             Path=IsEnabled, Converter={StaticResource boolConv}}"
-                Command="{Binding FuelCommand}" >
+                Command="{Binding FuelCommand}" Margin="146,115,70.8,100.8" >
 
-            Fuel Car
-        </Button>
+                Fuel Car
+            </Button>
+            <Button Click="ColseWindow_Click" FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="146,209,71.8,10.8">
+                Close
+            </Button>
 
-    </StackPanel>
+        </Grid>
+    </Grid>
 </Window>

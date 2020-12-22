@@ -30,7 +30,7 @@ namespace dotNet5781_03B_7073_1160.Converters
                         color = new SolidColorBrush(Colors.Aqua);
                         break;
                     case Enum.Status.MidTravel:
-                        color = new SolidColorBrush(Colors.Gold);
+                        color = new SolidColorBrush(Colors.LimeGreen);
                         break;
                     case Enum.Status.NeedFuel:
                         color = new SolidColorBrush(Colors.Purple);

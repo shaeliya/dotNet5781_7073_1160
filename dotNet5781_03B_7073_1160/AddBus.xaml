@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:dotNet5781_03B_7073_1160"
         mc:Ignorable="d"
-        Title="Add Bus" Height="499.2" Width="480.8" Icon="carmaim.png" FontFamily="Times New Roman" FontSize="19">
+        Title="Add Bus" Height="499.2" Width="480.8" Icon="Resources/Images/carMain.png" FontFamily="Times New Roman" FontSize="19">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="237*"/>
