@@ -255,8 +255,17 @@ namespace RadialProgressbar
 
         private void UpdateTextBlock(double value, double percentage)
         {
-        
-            mValueText.Text = ((Duration - NumberOfTicks) * 600) + " sec";
+            double durationsInHours =(((Duration - NumberOfTicks) * 600.0) / 60.0) / 60.0;
+            double durationsInHoursRounded = Math.Round(durationsInHours, 1);
+           
+            if (durationsInHours == 0)
+            {
+                mValueText.Text = "Idle";
+            }
+            else
+            {
+                mValueText.Text = durationsInHoursRounded + " Hours";
+            }
 
             //switch (DigitStyle)
             //{

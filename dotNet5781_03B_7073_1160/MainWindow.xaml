@@ -15,7 +15,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="Resources/Images/BusBackground.jpg"/>
         </Grid.Background>
-        <Label Margin="262,15,261.8,628.8" FontSize="50"  FontFamily="Goudy Old Style" FontWeight="Bold">Bus System</Label>
+        <Label Margin="262,15,236.8,628.8" FontSize="50"  FontFamily="Goudy Old Style" FontWeight="Bold">Bus System</Label>
         <ListView HorizontalContentAlignment="Stretch" ItemsSource="{Binding BusList, UpdateSourceTrigger=Explicit}" HorizontalAlignment="Stretch" Height="401" VerticalAlignment="Top" Margin="15,104,14.8,0" MouseDoubleClick="Open_ShowBusDetails_DoubleClick" Foreground="#FFB64848" Background="White"  FontFamily="Goudy Old Style" FontSize="20px">
             <ListView.View>
                 <GridView>
