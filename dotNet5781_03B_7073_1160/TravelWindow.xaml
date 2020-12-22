@@ -6,38 +6,42 @@
         xmlns:local="clr-namespace:dotNet5781_03B_7073_1160"
         mc:Ignorable="d"
         xmlns:controls="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
-        Title="TravelWindow" Height="450" Width="800">
+        Title="Travel " Height="450" Width="800" FontFamily="Goudy Old Style" FontSize="20" Icon="carmaim.png">
     <Window.Resources>
         <controls:BooleanToVisibilityConverter x:Key="boolConv"/>
     </Window.Resources>
-    <StackPanel>
+    <StackPanel HorizontalAlignment="Right" Margin="0,0,-0.4,0" Width="784">
+        <StackPanel.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF56DBDD"/>
+                <GradientStop Color="White" Offset="0.641"/>
+                <GradientStop Color="#FF35BF32" Offset="1"/>
+                <GradientStop Color="#FFBBE9BA" Offset="0.854"/>
+            </LinearGradientBrush>
+        </StackPanel.Background>
         <StackPanel Orientation="Horizontal">
-            <Label>License Number :</Label>
-            <TextBlock x:Name="tbLicenseNumber" Text="{Binding Path=SelectedBus.LicenseNumber}"></TextBlock>
+            <Label FontFamily="Goudy Old Style" FontSize="20" FontWeight="Bold">License Number  :</Label>
+            <TextBlock x:Name="tbLicenseNumber" Text="{Binding Path=SelectedBus.LicenseNumber}" FontFamily="Goudy Old Style" FontSize="16" Margin="0,8,642.6,0" FontWeight="Bold"/>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal">
-            <Label>Kilometrage :</Label>
-            <TextBox x:Name="tbKilometrage" Width="82" KeyDown="tbKilometrage_KeyDown" PreviewTextInput="PreviewTextInput"></TextBox>
+            <Label FontFamily="Goudy Old Style" FontSize="20" FontWeight="Bold">Kilometrage :</Label>
+            <TextBox x:Name="tbKilometrage" Width="82" KeyDown="tbKilometrage_KeyDown" FontWeight="Bold" FontSize="16"   FontFamily="Goudy Old Style" PreviewTextInput="PreviewTextInput" Height="22"/>
 
         </StackPanel>
-        <Button Height="96" Margin="0,0,642.6,0" 
+        <Button Height="70" Margin="0,0,642.6,0"  FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold"
                 Visibility="{Binding RelativeSource={RelativeSource Self},
             Path=IsEnabled, Converter={StaticResource boolConv}}"
-                Command="{Binding TreatmentCommand}" FontSize="20" FontWeight="Bold" Foreground="White">
-            <Button.Background>
-                <ImageBrush ImageSource="carTreatment.jpg"/>
-            </Button.Background>
+                Command="{Binding TreatmentCommand}">
+
             Treat Car
         </Button>
 
-        <Button Height="96" Margin="0,0,642.6,0" 
+        <Button Height="70" Margin="0,0,642.6,0" FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" 
                 Visibility="{Binding RelativeSource={RelativeSource Self},
             Path=IsEnabled, Converter={StaticResource boolConv}}"
-                Command="{Binding FuelCommand}" FontSize="20" FontWeight="Bold" Foreground="White">
-            <Button.Background>
-                <ImageBrush ImageSource="fuelCar.png"/>
-            </Button.Background>
+                Command="{Binding FuelCommand}" >
+
             Fuel Car
         </Button>
 

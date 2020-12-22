@@ -16,7 +16,7 @@
             <ImageBrush ImageSource="BusBackground.jpg"/>
         </Grid.Background>
         <Label Margin="202,15,196.8,628.8" FontSize="50"  FontFamily="Goudy Old Style" FontWeight="Bold">Bus System</Label>
-        <ListView HorizontalContentAlignment="Stretch" ItemsSource="{Binding BusList, UpdateSourceTrigger=Explicit}" HorizontalAlignment="Stretch" Height="401" VerticalAlignment="Top" Margin="15,104,14.8,0" MouseDoubleClick="Open_ShowBusDetails_DoubleClick" Foreground="#FFB64848" Background="White" FontFamily="Goudy Old Style" FontSize="20px">
+        <ListView HorizontalContentAlignment="Stretch" ItemsSource="{Binding BusList, UpdateSourceTrigger=Explicit}" HorizontalAlignment="Stretch" Height="401" VerticalAlignment="Top" Margin="15,104,14.8,0" MouseDoubleClick="Open_ShowBusDetails_DoubleClick" Foreground="#FFB64848" Background="White"  FontFamily="Goudy Old Style" FontSize="20px">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -41,7 +41,7 @@
                                             ValueArcBrush="{Binding Status, Converter={StaticResource StatusToColorConverter}}"
                                             NumericBrush="{Binding Status, Converter={StaticResource StatusToColorConverter}}"
                                             Glow="False" />
-                                        <Image Grid.Column="1" Height="65" Width="65" Source="{Binding Status, Converter={StaticResource StatusToImageConverter}}"/>
+                                        <Image Grid.Column="1" Height="63" Width="63" Source="{Binding Status, Converter={StaticResource StatusToImageConverter}}"/>
                                     </Grid>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>

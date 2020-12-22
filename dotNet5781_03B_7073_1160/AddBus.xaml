@@ -8,12 +8,12 @@
         Title="Add Bus" Height="499.2" Width="480.8" Icon="carmaim.png" FontFamily="Times New Roman" FontSize="19">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="269*"/>
-            <ColumnDefinition Width="205*"/>
+            <ColumnDefinition Width="237*"/>
+            <ColumnDefinition Width="238*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="44*"/>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="414*"/>
         </Grid.RowDefinitions>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -23,11 +23,11 @@
                 <GradientStop Color="#FFBBE9BA" Offset="0.854"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Label Content="Add Bus" FontWeight="Bold" Foreground="#FF104008" Grid.ColumnSpan="2" Margin="168,10,-167.6,429.6" Grid.RowSpan="2"/>
-        <StackPanel Margin="44,29.4,43.4,172.6" Grid.Row="1" Grid.ColumnSpan="2">
+        <Label Content="Add Bus" FontWeight="Bold" Foreground="#FF104008" Grid.ColumnSpan="2" Margin="168,10,-167.6,1.2"/>
+        <StackPanel Margin="44,29.8,43.4,172.6" Grid.Row="1" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
                 <Label>License Number:</Label>
-                <TextBox Width="93" Name="tbLicenseNumber" Background="#FFFEFDFD"/>
+                <TextBox Width="93" Name="tbLicenseNumber"  Background="#FFFEFFFF"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label>BusStartDate:</Label>
@@ -35,15 +35,15 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label>Kilometrage:</Label>
-                <TextBox Width="106" Name="tbKilometrage" Background="#FFFBF1F0"/>
+                <TextBox Width="106" Name="tbKilometrage"  Background="#FFFEFFFF"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label>Fuel:</Label>
-                <TextBox Width="71" Name="tbFuel" Background="#FFF9EAE9"/>
+                <TextBox Width="71" Name="tbFuel"  Background="#FFFEFFFF"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label>Treatment:</Label>
-                <TextBox Width="71" Name="tbTreatment" Background="#FFF8E4E2"/>
+                <TextBox Width="71" Name="tbTreatment"  Background="#FFFEFFFF"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label>LastTreatmentDate:</Label>
@@ -60,9 +60,9 @@
             </StackPanel>
 
         </StackPanel>
-        <Grid Margin="0,286.4,9.4,-0.4" Grid.Row="1" Grid.ColumnSpan="2">
-            <Button Command="{Binding CancelAddBusCommand}" Click="Add_Button_Click" Content="Add" FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="44,35,248.8,68.8" Width="127"/>
-            <Button Command="{Binding CancelAddBusCommand}" Click="Cancel_Button_Click" Content="Cancel" FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="262,35,59,68.4" Width="144"/>
+        <Grid Margin="0,286.8,9.4,-9.4" Grid.Row="1" Grid.ColumnSpan="2">
+            <Button Command="{Binding CancelAddBusCommand}" Click="Add_Button_Click" Content="Add" FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="65,-3,282,97"/>
+            <Button Command="{Binding CancelAddBusCommand}" Click="Cancel_Button_Click" Content="Cancel" FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="281,-3,53,97"/>
 
         </Grid>
     </Grid>

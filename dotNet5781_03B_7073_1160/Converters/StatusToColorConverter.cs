@@ -21,25 +21,25 @@ namespace dotNet5781_03B_7073_1160.Converters
                 switch (status)
                 {
                     case Enum.Status.ReadyToGo:
-                        color = new SolidColorBrush(Colors.PaleTurquoise);
+                        color = new SolidColorBrush(Colors.Green);
                         break;
                     case Enum.Status.Refueling:
-                        color = new SolidColorBrush(Colors.Crimson);
+                        color = new SolidColorBrush(Colors.Orange);
                         break;
                     case Enum.Status.InTreatment:
-                        color = new SolidColorBrush(Colors.GreenYellow);
+                        color = new SolidColorBrush(Colors.Aqua);
                         break;
                     case Enum.Status.MidTravel:
-                        color = new SolidColorBrush(Colors.Yellow);
+                        color = new SolidColorBrush(Colors.Gold);
                         break;
                     case Enum.Status.NeedFuel:
-                        color = new SolidColorBrush(Colors.Plum);
+                        color = new SolidColorBrush(Colors.Purple);
                         break;
                     case Enum.Status.NeedTreatment:
-                        color = new SolidColorBrush(Colors.MistyRose);
+                        color = new SolidColorBrush(Colors.Crimson);
                         break;
                     case Enum.Status.NeedFuelAndTreatment:
-                        color = new SolidColorBrush(Colors.PaleTurquoise);
+                        color = new SolidColorBrush(Colors.MediumBlue);
                         break;
                     default:
                         color = new SolidColorBrush(Colors.White);
