@@ -12,12 +12,11 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-//לא מחכה בנסיעה הוא לא מחשב כמ זמן הוא צריך לחכות כשולחים לנסיעה
-//כששולחים לנסיעה ישר מקפיץנ= הודעה שהגענו ליעד
+//-------------------------------
+// Shalhevet Eliyahu 211661160
+// Orit Stavsky 212507073
+//-------------------------------
+
 namespace dotNet5781_03B_7073_1160
 {
     /// <summary>
