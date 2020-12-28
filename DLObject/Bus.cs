@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DLObject
+namespace DO
 {
     /// <summary>
     /// אוטובוס
@@ -16,6 +16,18 @@ namespace DLObject
         public double TotalTrip { get; set; }
         public double FuelRemain { get; set; }
         public Enums.BusStatuses Status { get; set; }
+        /// <summary>
+        /// סימון שהישות נמחקה בכדי שלא נמחק אותה בפועל
+        /// </summary>
+        public bool IsDeleted { get; set; }
+        /// <summary>
+        /// שם משתמש שייצר את הישות
+        /// </summary>
+        public bool CreateUserName { get; set; } // Foregin key from User
+        /// <summary>
+        /// שם משתמש שעדכן את הישות - לצורך תיעוד במקרה של עדכון / מחיקה
+        /// </summary>
+        public bool UpdateUserName { get; set; } // Foregin key from User
 
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DLObject
+namespace DO
 {
     /// <summary>
     /// תחנת הקו
@@ -14,8 +14,19 @@ namespace DLObject
         public int LineStationId { get; set; }
         public int LineId { get; set; }
         public int StationId { get; set; }
-        public int LineStationIndex { get; set; }
         public int PrevStationId { get; set; }
         public int NextStationId { get; set; }
+        /// <summary>
+        /// סימון שהישות נמחקה בכדי שלא נמחק אותה בפועל
+        /// </summary>
+        public bool IsDeleted { get; set; }
+        /// <summary>
+        /// שם משתמש שייצר את הישות
+        /// </summary>
+        public bool CreateUserName { get; set; } // Foregin key from User
+        /// <summary>
+        /// שם משתמש שעדכן את הישות - לצורך תיעוד במקרה של עדכון / מחיקה
+        /// </summary>
+        public bool UpdateUserName { get; set; } // Foregin key from User
     }
 }

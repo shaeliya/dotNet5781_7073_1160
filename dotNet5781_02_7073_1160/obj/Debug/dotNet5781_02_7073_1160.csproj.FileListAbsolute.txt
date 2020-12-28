@@ -4,3 +4,10 @@ C:\Users\97252\source\repos\dotNet5781_7073_1160\dotNet5781_02_7073_1160\bin\Deb
 C:\Users\97252\source\repos\dotNet5781_7073_1160\dotNet5781_02_7073_1160\obj\Debug\dotNet5781_02_7073_1160.csproj.CoreCompileInputs.cache
 C:\Users\97252\source\repos\dotNet5781_7073_1160\dotNet5781_02_7073_1160\obj\Debug\dotNet5781_02_7073_1160.exe
 C:\Users\97252\source\repos\dotNet5781_7073_1160\dotNet5781_02_7073_1160\obj\Debug\dotNet5781_02_7073_1160.pdb
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\dotNet5781_02_7073_1160\bin\Debug\dotNet5781_02_7073_1160.exe.config
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\dotNet5781_02_7073_1160\bin\Debug\dotNet5781_02_7073_1160.exe
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\dotNet5781_02_7073_1160\bin\Debug\dotNet5781_02_7073_1160.pdb
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\dotNet5781_02_7073_1160\obj\Debug\dotNet5781_02_7073_1160.csprojAssemblyReference.cache
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\dotNet5781_02_7073_1160\obj\Debug\dotNet5781_02_7073_1160.csproj.CoreCompileInputs.cache
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\dotNet5781_02_7073_1160\obj\Debug\dotNet5781_02_7073_1160.exe
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\dotNet5781_02_7073_1160\obj\Debug\dotNet5781_02_7073_1160.pdb

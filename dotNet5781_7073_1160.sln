@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadialProgressbar", "Radial
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL_Transportation_System", "PL_Transportation_System\PL_Transportation_System.csproj", "{765BDF39-92CB-4B35-96DC-9E96E8A8D700}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalObject", "DLObject\DalObject.csproj", "{AA755339-A5FF-4C9D-90BD-D1AD51C2A032}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DO", "DLObject\DO.csproj", "{AA755339-A5FF-4C9D-90BD-D1AD51C2A032}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{4BDD0095-BFED-447C-AAAE-3A704C3BF540}"
 EndProject
