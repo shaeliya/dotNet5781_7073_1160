@@ -46,17 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DO\AdjacentStations.cs" />
+    <Compile Include="DO\Bus.cs" />
+    <Compile Include="DO\BusOnTrip.cs" />
+    <Compile Include="DO\Enums.cs" />
+    <Compile Include="DO\Exceptions\BusExceptions.cs" />
+    <Compile Include="DO\Line.cs" />
+    <Compile Include="DO\LineStation.cs" />
+    <Compile Include="DO\LineTrip.cs" />
+    <Compile Include="DO\Station.cs" />
+    <Compile Include="DO\User.cs" />
     <Compile Include="IDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DLObject\DO.csproj">
-      <Project>{aa755339-a5ff-4c9d-90bd-d1ad51c2a032}</Project>
-      <Name>DO</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

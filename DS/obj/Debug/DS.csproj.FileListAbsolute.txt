@@ -7,3 +7,11 @@ C:\Users\97252\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.pdb
 C:\Users\97252\source\repos\dotNet5781_7073_1160\bin\DS.dll.config
 C:\Users\97252\source\repos\dotNet5781_7073_1160\bin\DS.dll
 C:\Users\97252\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.dll
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\bin\DS.dll.config
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\bin\DS.dll
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\bin\DS.pdb
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.csprojAssemblyReference.cache
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.csproj.CoreCompileInputs.cache
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.csproj.CopyComplete
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.dll
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.pdb

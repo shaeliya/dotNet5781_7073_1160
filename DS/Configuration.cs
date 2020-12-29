@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace DS
 {
-    class Program
+    public static class Configuration
     {
-        static void Main(string[] args)
+        public static int MaxAdjacentStationsId;
+
+        static Configuration()
         {
+            MaxAdjacentStationsId = 0;
         }
     }
 }

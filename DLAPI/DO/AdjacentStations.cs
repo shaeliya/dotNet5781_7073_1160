@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 namespace DO
 {
     /// <summary>
-    /// אוטובוס
+    /// מידע על זוג תחנות עוקבות
     /// </summary>
-    public class Bus
+    public class AdjacentStations
     {
-        public int LicenseNumber { get; set; }
-        public DateTime FromDate { get; set; }
-        public double TotalTrip { get; set; }
-        public double FuelRemain { get; set; }
-        public Enums.BusStatuses Status { get; set; }
+        public int AdjacentStationsId { get; set; }
+        public int StationId1 { get; set; }
+        public int StationId2 { get; set; }
+        public double Distance { get; set; }
+        public TimeSpan Time { get; set; }
         /// <summary>
         /// סימון שהישות נמחקה בכדי שלא נמחק אותה בפועל
         /// </summary>
@@ -28,6 +28,5 @@ namespace DO
         /// שם משתמש שעדכן את הישות - לצורך תיעוד במקרה של עדכון / מחיקה
         /// </summary>
         public bool UpdateUserName { get; set; } // Foregin key from User
-
     }
 }

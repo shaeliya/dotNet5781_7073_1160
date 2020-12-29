@@ -46,20 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusOnTrip.cs" />
-    <Compile Include="Bus.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="LineTrip.cs" />
-    <Compile Include="Enums.cs" />
-    <Compile Include="AdjacentStations.cs" />
-    <Compile Include="LineStation.cs" />
-    <Compile Include="Line.cs" />
+    <Compile Include="Cloning.cs" />
+    <Compile Include="DLObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Station.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DLAPI\DalApi.csproj">
+      <Project>{397661a4-aea6-4b1b-a2ac-bc104fd3fe4e}</Project>
+      <Name>DalApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DS\DS.csproj">
+      <Project>{095ea86b-f726-40b6-ad2b-cb903e1b9a93}</Project>
+      <Name>DS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DLObjectExceptions\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

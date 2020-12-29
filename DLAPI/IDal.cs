@@ -18,8 +18,8 @@ namespace DalApi
 
         #region AdjacentStations
         IEnumerable<AdjacentStations> GetAllAdjacentStations();
-        IEnumerable<AdjacentStations> GetAllAdjacentStationsBy(Predicate<Bus> predicate);
-        Bus GetAdjacentStationsById(int id);
+        IEnumerable<AdjacentStations> GetAllAdjacentStationsBy(Predicate<AdjacentStations> predicate);
+        AdjacentStations GetAdjacentStationsById(int id);
         void AddAdjacentStations(AdjacentStations adjacentStations);
         void UpdateAdjacentStations(AdjacentStations adjacentStations);
         void UpdateAdjacentStations(int id, Action<AdjacentStations> update); //method that knows to update specific fields in Bus
@@ -42,8 +42,8 @@ namespace DalApi
 
         #region BusOnTrip
         IEnumerable<BusOnTrip> GetAllBusOnTrip();
-        IEnumerable<BusOnTrip> GetAllBusOnTripBy(Predicate<Bus> predicate);
-        Bus GetBusOnTripById(int id);
+        IEnumerable<BusOnTrip> GetAllBusOnTripBy(Predicate<BusOnTrip> predicate);
+        BusOnTrip GetBusOnTripById(int id);
         void AddBusOnTrip(BusOnTrip busOnTrip);
         void UpdateBusOnTrip(BusOnTrip busOnTrip);
         void UpdateBusOnTrip(int id, Action<BusOnTrip> update); //method that knows to update specific fields in Bus
@@ -54,8 +54,8 @@ namespace DalApi
 
         #region Line
         IEnumerable<Line> GetAllLine();
-        IEnumerable<Line> GetAllLineBy(Predicate<Bus> predicate);
-        Bus GetLineById(int id);
+        IEnumerable<Line> GetAllLineBy(Predicate<Line> predicate);
+        Line GetLineById(int id);
         void AddLine(Line line);
         void UpdateLine(Line line);
         void UpdateLine(int id, Action<Line> update); //method that knows to update specific fields in Bus
@@ -66,8 +66,8 @@ namespace DalApi
 
         #region LineStation
         IEnumerable<LineStation> GetAllLineStation();
-        IEnumerable<LineStation> GetAllLineStationBy(Predicate<Bus> predicate);
-        Bus GetLineStationById(int id);
+        IEnumerable<LineStation> GetAllLineStationBy(Predicate<LineStation> predicate);
+        LineStation GetLineStationById(int id);
         void AddLineStation(LineStation lineStation);
         void UpdateLineStation(LineStation lineStation);
         void UpdateLineStation(int id, Action<LineStation> update); //method that knows to update specific fields in Bus
@@ -78,8 +78,8 @@ namespace DalApi
 
         #region LineTrip
         IEnumerable<LineTrip> GetAllLineTrip();
-        IEnumerable<LineTrip> GetAllLineTripBy(Predicate<Bus> predicate);
-        Bus GetLineTripById(int id);
+        IEnumerable<LineTrip> GetAllLineTripBy(Predicate<LineTrip> predicate);
+        LineTrip GetLineTripById(int id);
         void AddLineTrip(LineTrip lineTrip);
         void UpdateLineTrip(LineTrip lineTrip);
         void UpdateLineTrip(int id, Action<LineTrip> update); //method that knows to update specific fields in Bus
@@ -90,8 +90,8 @@ namespace DalApi
 
         #region Station
         IEnumerable<Station> GetAllStation();
-        IEnumerable<Station> GetAllStationBy(Predicate<Bus> predicate);
-        Bus GetStationById(int id);
+        IEnumerable<Station> GetAllStationBy(Predicate<Station> predicate);
+        Station GetStationById(int id);
         void AddStation(Station station);
         void UpdateStation(Station station);
         void UpdateStation(int id, Action<Station> update); //method that knows to update specific fields in Bus
@@ -102,18 +102,14 @@ namespace DalApi
 
         #region User
         IEnumerable<User> GetAllUser();
-        IEnumerable<User> GetAllUserBy(Predicate<Bus> predicate);
-        Bus GetUserById(int id);
+        IEnumerable<User> GetAllUserBy(Predicate<User> predicate);
+        User GetUserById(int id);
         void AddUser(User user);
         void UpdateUser(User user);
         void UpdateUser(int id, Action<User> update); //method that knows to update specific fields in Bus
         void DeleteUser(int id);
 
         #endregion User
-
-
-
-
 
 
     }
