@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//יש מחיקה של מופע של ישות שגורר בעקבותיו מחיקה של ישויות נוספות שמקושרות אליו.
+
 namespace DL
 {
     sealed class DLObject :IDal

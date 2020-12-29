@@ -9,6 +9,11 @@ namespace DS
     public static class Configuration
     {
         public static int MaxAdjacentStationsId;
+        // BusOnTripId
+        // LineId
+        // LineStationId
+        // LineTripId
+        // StationId
 
         static Configuration()
         {
