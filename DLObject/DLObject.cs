@@ -101,7 +101,7 @@ namespace DL
             }
 
             DataSource.busesList.Remove(busToUpdate);
-            DataSource.busesList.Add(bus);
+            DataSource.busesList.Add(bus.Clone());
         }
         public void UpdateBus(Bus bus, Action<Bus> update)
         {
@@ -116,7 +116,7 @@ namespace DL
             {
                 throw new BusDeletedException(bus.LicenseNumber, "Cannot update deleted bus");
             }
-            update(busToUpdate);
+            update(busToUpdate.Clone());
         } 
         public void DeleteBus(Bus bus)
         {
