@@ -22,8 +22,8 @@ namespace DalApi
         AdjacentStations GetAdjacentStationsById(int id);
         void AddAdjacentStations(AdjacentStations adjacentStations);
         void UpdateAdjacentStations(AdjacentStations adjacentStations);
-        void UpdateAdjacentStations(int id, Action<AdjacentStations> update); //method that knows to update specific fields in Bus
-        void DeleteAdjacentStations(int id);
+        void UpdateAdjacentStations(AdjacentStations id, Action<AdjacentStations> update); //method that knows to update specific fields in Bus
+        void DeleteAdjacentStations(AdjacentStations id);
 
         #endregion AdjacentStations
 
@@ -34,8 +34,8 @@ namespace DalApi
         Bus GetBusById(int id);
         void AddBus(Bus bus);
         void UpdateBus(Bus bus);
-        void UpdateBus(int id, Action<Bus> update); //method that knows to update specific fields in Bus
-        void DeleteBus(int id);
+        void UpdateBus(Bus id, Action<Bus> update); //method that knows to update specific fields in Bus
+        void DeleteBus(Bus id);
 
         #endregion Bus
 
@@ -46,8 +46,8 @@ namespace DalApi
         BusOnTrip GetBusOnTripById(int id);
         void AddBusOnTrip(BusOnTrip busOnTrip);
         void UpdateBusOnTrip(BusOnTrip busOnTrip);
-        void UpdateBusOnTrip(int id, Action<BusOnTrip> update); //method that knows to update specific fields in Bus
-        void DeleteBusOnTrip(int id);
+        void UpdateBusOnTrip(BusOnTrip id, Action<BusOnTrip> update); //method that knows to update specific fields in Bus
+        void DeleteBusOnTrip(BusOnTrip id);
 
         #endregion BusOnTrip
 
@@ -58,8 +58,8 @@ namespace DalApi
         Line GetLineById(int id);
         void AddLine(Line line);
         void UpdateLine(Line line);
-        void UpdateLine(int id, Action<Line> update); //method that knows to update specific fields in Bus
-        void DeleteLine(int id);
+        void UpdateLine(Line id, Action<Line> update); //method that knows to update specific fields in Bus
+        void DeleteLine(Line id);
 
         #endregion Line
 
@@ -70,8 +70,8 @@ namespace DalApi
         LineStation GetLineStationById(int id);
         void AddLineStation(LineStation lineStation);
         void UpdateLineStation(LineStation lineStation);
-        void UpdateLineStation(int id, Action<LineStation> update); //method that knows to update specific fields in Bus
-        void DeleteLineStation(int id);
+        void UpdateLineStation(LineStation id, Action<LineStation> update); //method that knows to update specific fields in Bus
+        void DeleteLineStation(LineStation id);
 
         #endregion LineStation
 
@@ -82,8 +82,8 @@ namespace DalApi
         LineTrip GetLineTripById(int id);
         void AddLineTrip(LineTrip lineTrip);
         void UpdateLineTrip(LineTrip lineTrip);
-        void UpdateLineTrip(int id, Action<LineTrip> update); //method that knows to update specific fields in Bus
-        void DeleteLineTrip(int id);
+        void UpdateLineTrip(LineTrip id, Action<LineTrip> update); //method that knows to update specific fields in Bus
+        void DeleteLineTrip(LineTrip id);
 
         #endregion LineTrip
 
@@ -94,8 +94,8 @@ namespace DalApi
         Station GetStationById(int id);
         void AddStation(Station station);
         void UpdateStation(Station station);
-        void UpdateStation(int id, Action<Station> update); //method that knows to update specific fields in Bus
-        void DeleteStation(int id);
+        void UpdateStation(Station id, Action<Station> update); //method that knows to update specific fields in Bus
+        void DeleteStation(Station id);
 
         #endregion Station
 
@@ -103,11 +103,11 @@ namespace DalApi
         #region User
         IEnumerable<User> GetAllUser();
         IEnumerable<User> GetAllUserBy(Predicate<User> predicate);
-        User GetUserById(int id);
+        User GetUserById(string id);
         void AddUser(User user);
         void UpdateUser(User user);
-        void UpdateUser(int id, Action<User> update); //method that knows to update specific fields in Bus
-        void DeleteUser(int id);
+        void UpdateUser(User id, Action<User> update); //method that knows to update specific fields in Bus
+        void DeleteUser(User id);
 
         #endregion User
 

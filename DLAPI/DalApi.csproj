@@ -50,7 +50,14 @@
     <Compile Include="DO\Bus.cs" />
     <Compile Include="DO\BusOnTrip.cs" />
     <Compile Include="DO\Enums.cs" />
+    <Compile Include="DO\Exceptions\AdjacentStationsExceptions.cs" />
     <Compile Include="DO\Exceptions\BusExceptions.cs" />
+    <Compile Include="DO\Exceptions\BusOnTripExceptions.cs" />
+    <Compile Include="DO\Exceptions\LineExceptions.cs" />
+    <Compile Include="DO\Exceptions\LineStationExceptions.cs" />
+    <Compile Include="DO\Exceptions\LineTripExceptions.cs" />
+    <Compile Include="DO\Exceptions\StationExceptions.cs" />
+    <Compile Include="DO\Exceptions\UserExceptions.cs" />
     <Compile Include="DO\Line.cs" />
     <Compile Include="DO\LineStation.cs" />
     <Compile Include="DO\LineTrip.cs" />

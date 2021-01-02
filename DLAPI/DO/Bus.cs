@@ -14,7 +14,9 @@ namespace DO
         public int LicenseNumber { get; set; }
         public DateTime FromDate { get; set; }
         public double TotalTrip { get; set; }
-        public double FuelRemain { get; set; }
+        public double FuelRemain { get; set; }//כמה נישאר לו ליסוע עד התדלוק הבא
+        public double Treatment { get; set; }//כמה הוא נסוע מאז הטיפול האחרון 
+        public DateTime LastTreatmentDate { get; set; }      
         public Enums.BusStatuses Status { get; set; }
         /// <summary>
         /// סימון שהישות נמחקה בכדי שלא נמחק אותה בפועל
