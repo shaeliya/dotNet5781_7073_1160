@@ -13,8 +13,8 @@ namespace DO
     {
         public int StationId { get; set; } // קוד התחנה
         public string Name { get; set; }
-        public int Longtitude { get; set; }
-        public int Latitude { get; set; }
+        public double Longitude { get; set; }
+        public double Latitude { get; set; }
         public string Adress { get; set; }
         /// <summary>
         /// סימון שהישות נמחקה בכדי שלא נמחק אותה בפועל
@@ -23,10 +23,10 @@ namespace DO
         /// <summary>
         /// שם משתמש שייצר את הישות
         /// </summary>
-        public bool CreateUserName { get; set; } // Foregin key from User
+        public string CreateUserName { get; set; } // Foregin key from User
         /// <summary>
         /// שם משתמש שעדכן את הישות - לצורך תיעוד במקרה של עדכון / מחיקה
         /// </summary>
-        public bool UpdateUserName { get; set; } // Foregin key from User
+        public string UpdateUserName { get; set; } // Foregin key from User
     }
 }

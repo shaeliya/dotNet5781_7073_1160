@@ -17,23 +17,25 @@ namespace DS
         public static List<LineTrip> lineTripsList;
         public static List<Station> stationsList;
         public static List<User> usersList;
-
         static DataSource()
         {
             InitializeAllLists();
         }
-
         static void InitializeAllLists()
         {
-
-            InitializeBus();
+            InitializeBus();         
+            InitializeStationsList();
+            InitializeAdjacentStationsList();
+            InitializeLineList();
+            InitializeLineTripList();
+            InitializeBusOnTripList();
+            InitializeLineStationList();
             InitializeUser();
-
-            // פה עוברים בלולאה על כל רשימה ומאתחילים אותה
         }
 
         #region Initialize Bus 
-
+        
+        //UpdateUserName -לא אתחלנו כאן את 
         private static void InitializeBus()
         {
             busesList = new List<Bus>();
@@ -165,15 +167,250 @@ namespace DS
         }
         #endregion Initialize Bus
 
-        adjacentStationsList = new List<AdjacentStations>();
-        busOnTripsList = new List<BusOnTrip>();
-            linesList = new List<Line>();
+        #region Initialize Station
+
+        //UpdateUserName-לא אתחלנו כאן את     
+        private static void InitializeStationsList()
+        {
             stationsList = new List<Station>();
+            Random RandomStationId = new Random();
+            Random RandomLongitude = new Random(DateTime.Now.Millisecond);
+            Random RandomLatitude = new Random(DateTime.Now.Millisecond);
+            CreateNewStations("HA-CALANIOT", RandomStationId, RandomLongitude, RandomLatitude);
+            CreateNewStations("HA-DUVDEVAN", RandomStationId, RandomLongitude, RandomLatitude);
+            CreateNewStations("HA-LIMON", RandomStationId, RandomLongitude, RandomLatitude);
+            CreateNewStations("HA-CHARZIT", RandomStationId, RandomLongitude, RandomLatitude);
+            CreateNewStations("HA-CHAMANIOT", RandomStationId, RandomLongitude, RandomLatitude);
+        }
+        private static void CreateNewStations(string str, Random RandomStationId, Random RandomLongitude, Random RandomLatitude)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                
+                double Latitude = RandomLatitude.NextDouble() * (33.4 - 30.9) + 30.9;
+                double Longitude = RandomLongitude.NextDouble() * (35.6 - 34.2) + 34.2;
+                Station station = new Station();
+                ++Configuration.MaxStationId;
+                station.StationId = Configuration.MaxStationId;
+                station.Name = str + (i + 2);
+                station.Adress = str + (i + 2);
+                station.Latitude = Latitude;
+                station.Longitude = Longitude;
+                station.IsDeleted = false;
+                station.CreateUserName = "shaeliya2";
+                stationsList.Add(station);
+            }
+        }
+
+        #endregion Initialize Station
+
+        #region Initialize AdjacentStations
+
+        //UpdateUserName-לא אתחלנו כאן את
+        private static void InitializeAdjacentStationsList()
+        {
+            adjacentStationsList = new List<AdjacentStations>();
+            Random RandomDistance = new Random(DateTime.Now.Millisecond);           
+            Random RandomStationId1 = new Random(DateTime.Now.Millisecond);
+            Random RandomStationId2 = new Random(DateTime.Now.Millisecond);
+
+            for (int i = 0; i < 100; i++)
+            {
+                AdjacentStations adjacentStations = new AdjacentStations();              
+                double distance = RandomDistance.NextDouble() * (10.5 - 0.5) + 0.5;
+                TimeSpan time = new TimeSpan(0,  i + 2, i + 5);
+                adjacentStations.CreateUserName = "orstavsk1";
+                adjacentStations.Distance = distance;
+                adjacentStations.Time = time;
+                adjacentStations.IsDeleted = false;               
+                ++Configuration.MaxAdjacentStationsId;
+                adjacentStations.AdjacentStationsId = Configuration.MaxAdjacentStationsId;
+                int stationId1Random = RandomStationId1.Next(1, 50);
+                int stationId2Random = stationId1Random;
+                while (stationId1Random == stationId2Random)
+                {
+                    stationId2Random = RandomStationId2.Next(1, 50);
+                }
+                adjacentStations.StationId1 = stationId1Random;
+                adjacentStations.StationId2 = stationId2Random;
+
+            }
+        }
+
+        #endregion Initialize AdjacentStations
+       
+        #region Initialize Line
+       
+        //UpdateUserName-לא אתחלנו כאן את
+        private static void InitializeLineList()
+    {
+            linesList = new List<Line>();
+            Random RandomArea = new Random(DateTime.Now.Millisecond);
+            Random RandomfirstStationId = new Random(DateTime.Now.Millisecond);
+            Random RandomlastStationId = new Random(DateTime.Now.Millisecond);
+            for (int i = 1; i < 11; i++)
+            {
+                int area = RandomArea.Next(0, 8);
+                Line line = new Line();
+                line.LineNumber = i;
+                line.Area = (Enums.Areas) area;
+                ++Configuration.MaxLineId;
+                line.LineId = Configuration.MaxLineId;
+                line.IsDeleted = false;
+                line.CreateUserName = "orstavsk1";                
+                int firstStationIdRandom = RandomfirstStationId.Next(1, 50);
+                int lastStationIdRandom = firstStationIdRandom;
+                while (lastStationIdRandom == firstStationIdRandom)
+                {
+                    lastStationIdRandom = RandomlastStationId.Next(1, 50);
+                }
+                line.FirstStationId = firstStationIdRandom;
+                line.LastStationId = lastStationIdRandom;
+            }
+        }
+
+        #endregion Initialize Line
+
+        #region Initialize LineStation 
+
+        //UpdateUserName-לא אתחלנו כאן את 
+        private static void InitializeLineStationList()
+        {
             lineStationsList = new List<LineStation>();
+            int temp = 0;
+            Random RandomPrevStationId = new Random(DateTime.Now.Millisecond);
+            Random RandomNextStationId = new Random(DateTime.Now.Millisecond);
+            LineStation lineStation = new LineStation();
+            for (int i = 0; i < 10; i++)//קווים
+            {             
+                for (int j = 0; j < 10; j++)//תחנות
+                {                                                          
+                    int prevStationIdRandom = RandomPrevStationId.Next(1, 50);
+                    int nextStationIdRandom = prevStationIdRandom;
+                    while (nextStationIdRandom == prevStationIdRandom)
+                    {
+                         nextStationIdRandom = RandomPrevStationId.Next(1, 50);
+                    }
+                    lineStation.PrevStationId = prevStationIdRandom;
+                    lineStation.NextStationId = nextStationIdRandom;
+                    ++Configuration.MaxLineStationId;
+                    lineStation.LineStationId = Configuration.MaxLineStationId;
+                    lineStation.LineId = linesList[i].LineId;
+                    lineStation.StationId = stationsList[j+temp].StationId;
+                    lineStation.IsDeleted = false;
+                    lineStation.CreateUserName = "shaeliya2";
+                    lineStationsList.Add(lineStation);
+                }
+                if (i >= 4 && i < 8) 
+                {
+                    temp -= 10;
+                }
+                else { temp += 10; }
+               
+            }
+ 
+        }
+        #endregion Initialize LineStation 
+
+        #region Initialize BusOnTrip
+
+        //UpdateUserName-לא אתחלנו כאן את
+        private static void InitializeBusOnTripList()
+        {
+            busOnTripsList = new List<BusOnTrip>();
+            Random RandomPrevStation = new Random(DateTime.Now.Millisecond);
+
+            for (int i = 0; i < 10; i++)
+            {
+                BusOnTrip busOnTrip = new BusOnTrip();
+                TimeSpan actualTakeOff;
+                busOnTrip.PlannedTakeOff = new TimeSpan(5 + (i / 2), i + 1, i + 4);
+                if (i % 2 == 0)
+                {
+                    actualTakeOff = new TimeSpan(5 + (i / 2), i + 1, i + 50);
+                }
+                else
+                {
+                    actualTakeOff = new TimeSpan(5 + (i / 2), i + 6, i + 7);
+                }
+                int prevStationRandom = RandomPrevStation.Next(1, 50);
+                busOnTrip.PrevStationAt = new TimeSpan(5 + (i / 2), i + 1, i + 4);             
+                busOnTrip.NextStationAt = new TimeSpan(5 + (i / 2), i + 7, i + 9);             
+                busOnTrip.PrevStation = prevStationRandom;
+                busOnTrip.LicenseNumber = busesList[i].LicenseNumber;
+                busOnTrip.LineId = linesList[i].LineId;                
+                busOnTrip.ActualTakeOff = actualTakeOff;
+                ++Configuration.MaxBusOnTripId;
+                busOnTrip.BusOnTripId = Configuration.MaxBusOnTripId;
+                busOnTrip.IsDeleted = false;
+                busOnTrip.CreateUserName = "shaeliya2";
+                busOnTrip.LicenseNumber = busesList[i + 10].LicenseNumber;
+                busOnTripsList.Add(busOnTrip);
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                BusOnTrip busOnTrip = new BusOnTrip();
+                TimeSpan actualTakeOff;
+                busOnTrip.PlannedTakeOff = new TimeSpan(5 + (i / 2), i + 1, i + 4);
+                if (i % 2 == 0)
+                {
+                    actualTakeOff = new TimeSpan(5 + (i / 2), i + 1, i + 50);
+                }
+                else
+                {
+                    actualTakeOff = new TimeSpan(5 + (i / 2), i + 6, i + 7);
+                }
+                int prevStationRandom = RandomPrevStation.Next(1, 50);
+                busOnTrip.PrevStationAt = new TimeSpan(5 + (i / 2), i + 1, i + 4);
+                busOnTrip.NextStationAt = new TimeSpan(5 + (i / 2), i + 7, i + 9);
+                busOnTrip.PrevStation = prevStationRandom;
+                busOnTrip.LicenseNumber = busesList[i].LicenseNumber;
+                busOnTrip.LineId = linesList[i].LineId;
+                busOnTrip.ActualTakeOff = actualTakeOff;
+                ++Configuration.MaxBusOnTripId;
+                busOnTrip.BusOnTripId = Configuration.MaxBusOnTripId;
+                busOnTrip.IsDeleted = false;
+                busOnTrip.CreateUserName = "orstavsk1";
+                busOnTrip.LicenseNumber = busesList[i + 10].LicenseNumber;
+                busOnTripsList.Add(busOnTrip);
+            }
+
+        }
+        #endregion Initialize BusOnTrip
+
+        #region Initialize LineTrip 
+        private static void InitializeLineTripList()
+        {
             lineTripsList = new List<LineTrip>();
 
-            #region Initialize User 
-             private static void InitializeUser()
+            for (int i = 0; i < 20; i++)
+            {
+                LineTrip lineTrip = new LineTrip();
+                ++Configuration.MaxLineTripId;
+                lineTrip.LineTripId = Configuration.MaxLineTripId;
+                lineTrip.LineId = linesList[i].LineId;
+                TimeSpan startAt = new TimeSpan(5 + (i / 2), i + 1, i + 4);
+                lineTrip.StartAt = startAt;
+                TimeSpan frequency = new TimeSpan(i / 2, 0, 0);
+                lineTrip.Frequency = frequency;
+                TimeSpan temp = new TimeSpan(0, 0, 0);
+                if (lineTrip.Frequency > temp)
+                {
+                    TimeSpan finishAt = new TimeSpan(22, i + 58, i + 58);
+                    lineTrip.FinishAt = finishAt;
+                }
+                lineTripsList.Add(lineTrip);
+            }
+
+        }
+
+        #endregion Initialize LineTrip
+
+        #region Initialize User 
+
+        //UpdateUserName-לא אתחלנו כאן את
+        private static void InitializeUser()
         {
             usersList = new List<User>();
             User user = new User();
@@ -182,34 +419,42 @@ namespace DS
             user.UserName = "orstavsk1";
             user.Password = "or1234";
             user.IsAdmin = true;
+            user.IsDeleted = false;
+            user.CreateUserName = "orstavsk1";
             usersList.Add(user);            
             user.FirstName = "shalhevet";
             user.LastName = "eliyahu";
             user.UserName = "shaeliya2";
             user.Password = "sh4567";
             user.IsAdmin = true;
+            user.IsDeleted = false;
+            user.CreateUserName = "shaeliya2";
             usersList.Add(user);
             user.FirstName = "dan";
             user.LastName = "zilbershtein";
             user.UserName = "daz3";
             user.Password = "d026Z";
             user.IsAdmin = false;
+            user.CreateUserName = "daz3";
             usersList.Add(user);
             user.FirstName = "orit";
             user.LastName = "rozenblit";
             user.UserName = "rozority52";
             user.Password = "roz46";
+            user.CreateUserName = "orstavsk1";
             user.IsAdmin = false;
+            user.IsDeleted = false;
             usersList.Add(user);
             user.FirstName = "oshri";
             user.LastName = "cohen";
             user.UserName = "osh63";
             user.Password = "Os782";
             user.IsAdmin = false;
+            user.IsDeleted = false;
+            user.CreateUserName = "shaeliya2";
             usersList.Add(user);
         }
         #endregion Initialize User
 
     }
-
 }

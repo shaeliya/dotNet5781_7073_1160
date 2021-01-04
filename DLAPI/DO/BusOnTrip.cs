@@ -26,11 +26,11 @@ namespace DO
         /// <summary>
         /// שם משתמש שייצר את הישות
         /// </summary>
-        public bool CreateUserName { get; set; } // Foregin key from User
+        public string CreateUserName { get; set; } // Foregin key from User
         /// <summary>
         /// שם משתמש שעדכן את הישות - לצורך תיעוד במקרה של עדכון / מחיקה
         /// </summary>
-        public bool UpdateUserName { get; set; } // Foregin key from User
+        public string UpdateUserName { get; set; } // Foregin key from User
 
     }
 }
