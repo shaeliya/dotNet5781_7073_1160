@@ -321,6 +321,10 @@ namespace BL
             var stationsOrderedList = line.StationsList.OrderBy(o => o.LineStationIndex);
             foreach (var (x, y) in Utilities.Pairwise(stationsOrderedList))
             {
+                /*
+                 1.	להוסיף לסטיישן אוף ליין מרחק לתחנה הבאה או תחנה קודמת, וכל מידע אחר שניצטרך בשביל התחנות עוקבות
+                 
+                 */
                 DO.AdjacentStations aj = new DO.AdjacentStations();
                 aj.StationId1 = x.StationId;
                 aj.StationId2 = y.StationId;
