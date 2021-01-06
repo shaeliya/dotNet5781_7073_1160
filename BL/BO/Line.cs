@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DO
+namespace BO
 {
     /// <summary>
     /// קו אוטובוס
@@ -19,12 +19,16 @@ namespace DO
         /// </summary>
         public bool IsDeleted { get; set; }
         /// <summary>
-        /// שם משתמש שייצר את הישות
+        ///  משתמש שייצר את הישות
         /// </summary>
-        public string CreateUserName { get; set; } // Foregin key from User
+        public User CreateUser { get; set; }
         /// <summary>
-        /// שם משתמש שעדכן את הישות - לצורך תיעוד במקרה של עדכון / מחיקה
+        ///  משתמש שעדכן את הישות - לצורך תיעוד במקרה של עדכון / מחיקה
         /// </summary>
-        public string UpdateUserName { get; set; } // Foregin key from User
+        public User UpdateUser { get; set; }
+
+        public IEnumerable<StationOfLine> StationsList { get; set; }
+
+
     }
 }

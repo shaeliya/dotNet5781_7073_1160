@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace DS
 {
     public static class DataSource
@@ -173,16 +172,15 @@ namespace DS
         private static void InitializeStationsList()
         {
             stationsList = new List<Station>();
-            Random RandomStationId = new Random();
             Random RandomLongitude = new Random(DateTime.Now.Millisecond);
             Random RandomLatitude = new Random(DateTime.Now.Millisecond);
-            CreateNewStations("HA-CALANIOT", RandomStationId, RandomLongitude, RandomLatitude);
-            CreateNewStations("HA-DUVDEVAN", RandomStationId, RandomLongitude, RandomLatitude);
-            CreateNewStations("HA-LIMON", RandomStationId, RandomLongitude, RandomLatitude);
-            CreateNewStations("HA-CHARZIT", RandomStationId, RandomLongitude, RandomLatitude);
-            CreateNewStations("HA-CHAMANIOT", RandomStationId, RandomLongitude, RandomLatitude);
+            CreateNewStations("HA-CALANIOT", RandomLongitude, RandomLatitude);
+            CreateNewStations("HA-DUVDEVAN", RandomLongitude, RandomLatitude);
+            CreateNewStations("HA-LIMON", RandomLongitude, RandomLatitude);
+            CreateNewStations("HA-CHARZIT", RandomLongitude, RandomLatitude);
+            CreateNewStations("HA-CHAMANIOT", RandomLongitude, RandomLatitude);
         }
-        private static void CreateNewStations(string str, Random RandomStationId, Random RandomLongitude, Random RandomLatitude)
+        private static void CreateNewStations(string name, Random RandomLongitude, Random RandomLatitude)
         {
             for (int i = 0; i < 10; i++)
             {
@@ -190,10 +188,9 @@ namespace DS
                 double Latitude = RandomLatitude.NextDouble() * (33.4 - 30.9) + 30.9;
                 double Longitude = RandomLongitude.NextDouble() * (35.6 - 34.2) + 34.2;
                 Station station = new Station();
-                ++Configuration.MaxStationId;
-                station.StationId = Configuration.MaxStationId;
-                station.Name = str + (i + 2);
-                station.Adress = str + (i + 2);
+                station.StationId = ++Configuration.MaxStationId;
+                station.Name = name + (i + 2);
+                station.Adress = name + (i + 2);
                 station.Latitude = Latitude;
                 station.Longitude = Longitude;
                 station.IsDeleted = false;
@@ -223,8 +220,7 @@ namespace DS
                 adjacentStations.Distance = distance;
                 adjacentStations.Time = time;
                 adjacentStations.IsDeleted = false;               
-                ++Configuration.MaxAdjacentStationsId;
-                adjacentStations.AdjacentStationsId = Configuration.MaxAdjacentStationsId;
+                adjacentStations.AdjacentStationsId =++ Configuration.MaxAdjacentStationsId;
                 int stationId1Random = RandomStationId1.Next(1, 50);
                 int stationId2Random = stationId1Random;
                 while (stationId1Random == stationId2Random)
@@ -254,8 +250,7 @@ namespace DS
                 Line line = new Line();
                 line.LineNumber = i;
                 line.Area = (Enums.Areas) area;
-                ++Configuration.MaxLineId;
-                line.LineId = Configuration.MaxLineId;
+                line.LineId = ++Configuration.MaxLineId;
                 line.IsDeleted = false;
                 line.CreateUserName = "orstavsk1";                
                 int firstStationIdRandom = RandomfirstStationId.Next(1, 50);
@@ -278,23 +273,13 @@ namespace DS
         {
             lineStationsList = new List<LineStation>();
             int temp = 0;
-            Random RandomPrevStationId = new Random(DateTime.Now.Millisecond);
-            Random RandomNextStationId = new Random(DateTime.Now.Millisecond);
             LineStation lineStation = new LineStation();
             for (int i = 0; i < 10; i++)//קווים
             {             
                 for (int j = 0; j < 10; j++)//תחנות
                 {                                                          
-                    int prevStationIdRandom = RandomPrevStationId.Next(1, 50);
-                    int nextStationIdRandom = prevStationIdRandom;
-                    while (nextStationIdRandom == prevStationIdRandom)
-                    {
-                         nextStationIdRandom = RandomPrevStationId.Next(1, 50);
-                    }
-                    lineStation.PrevStationId = prevStationIdRandom;
-                    lineStation.NextStationId = nextStationIdRandom;
-                    ++Configuration.MaxLineStationId;
-                    lineStation.LineStationId = Configuration.MaxLineStationId;
+                    lineStation.LineStationIndex = i + 1;
+                    lineStation.LineStationId = ++Configuration.MaxLineStationId;
                     lineStation.LineId = linesList[i].LineId;
                     lineStation.StationId = stationsList[j+temp].StationId;
                     lineStation.IsDeleted = false;
@@ -340,8 +325,7 @@ namespace DS
                 busOnTrip.LicenseNumber = busesList[i].LicenseNumber;
                 busOnTrip.LineId = linesList[i].LineId;                
                 busOnTrip.ActualTakeOff = actualTakeOff;
-                ++Configuration.MaxBusOnTripId;
-                busOnTrip.BusOnTripId = Configuration.MaxBusOnTripId;
+                busOnTrip.BusOnTripId = ++Configuration.MaxBusOnTripId;
                 busOnTrip.IsDeleted = false;
                 busOnTrip.CreateUserName = "shaeliya2";
                 busOnTrip.LicenseNumber = busesList[i + 10].LicenseNumber;
@@ -368,8 +352,7 @@ namespace DS
                 busOnTrip.LicenseNumber = busesList[i].LicenseNumber;
                 busOnTrip.LineId = linesList[i].LineId;
                 busOnTrip.ActualTakeOff = actualTakeOff;
-                ++Configuration.MaxBusOnTripId;
-                busOnTrip.BusOnTripId = Configuration.MaxBusOnTripId;
+                busOnTrip.BusOnTripId = ++Configuration.MaxBusOnTripId;
                 busOnTrip.IsDeleted = false;
                 busOnTrip.CreateUserName = "orstavsk1";
                 busOnTrip.LicenseNumber = busesList[i + 10].LicenseNumber;
@@ -387,8 +370,7 @@ namespace DS
             for (int i = 0; i < 20; i++)
             {
                 LineTrip lineTrip = new LineTrip();
-                ++Configuration.MaxLineTripId;
-                lineTrip.LineTripId = Configuration.MaxLineTripId;
+                lineTrip.LineTripId = ++Configuration.MaxLineTripId;
                 lineTrip.LineId = linesList[i].LineId;
                 TimeSpan startAt = new TimeSpan(5 + (i / 2), i + 1, i + 4);
                 lineTrip.StartAt = startAt;
@@ -413,46 +395,50 @@ namespace DS
         private static void InitializeUser()
         {
             usersList = new List<User>();
-            User user = new User();
-            user.FirstName = "orit";
-            user.LastName = "stavsky";
-            user.UserName = "orstavsk1";
-            user.Password = "or1234";
-            user.IsAdmin = true;
-            user.IsDeleted = false;
-            user.CreateUserName = "orstavsk1";
-            usersList.Add(user);            
-            user.FirstName = "shalhevet";
-            user.LastName = "eliyahu";
-            user.UserName = "shaeliya2";
-            user.Password = "sh4567";
-            user.IsAdmin = true;
-            user.IsDeleted = false;
-            user.CreateUserName = "shaeliya2";
-            usersList.Add(user);
-            user.FirstName = "dan";
-            user.LastName = "zilbershtein";
-            user.UserName = "daz3";
-            user.Password = "d026Z";
-            user.IsAdmin = false;
-            user.CreateUserName = "daz3";
-            usersList.Add(user);
-            user.FirstName = "orit";
-            user.LastName = "rozenblit";
-            user.UserName = "rozority52";
-            user.Password = "roz46";
-            user.CreateUserName = "orstavsk1";
-            user.IsAdmin = false;
-            user.IsDeleted = false;
-            usersList.Add(user);
-            user.FirstName = "oshri";
-            user.LastName = "cohen";
-            user.UserName = "osh63";
-            user.Password = "Os782";
-            user.IsAdmin = false;
-            user.IsDeleted = false;
-            user.CreateUserName = "shaeliya2";
-            usersList.Add(user);
+            User user1 = new User();
+            user1.FirstName = "orit";
+            user1.LastName = "stavsky";
+            user1.UserName = "orstavsk1";
+            user1.Password = "or1234";
+            user1.IsAdmin = true;
+            user1.IsDeleted = false;
+            user1.CreateUserName = "orstavsk1";
+            usersList.Add(user1);
+            User user2 = new User();
+            user2.FirstName = "shalhevet";
+            user2.LastName = "eliyahu";
+            user2.UserName = "shaeliya2";
+            user2.Password = "sh4567";
+            user2.IsAdmin = true;
+            user2.IsDeleted = false;
+            user2.CreateUserName = "shaeliya2";
+            usersList.Add(user2);
+            User user3 = new User();
+            user3.FirstName = "dan";
+            user3.LastName = "zilbershtein";
+            user3.UserName = "daz3";
+            user3.Password = "d026Z";
+            user3.IsAdmin = false;
+            user3.CreateUserName = "daz3";
+            usersList.Add(user3);
+            User user4 = new User();
+            user4.FirstName = "orit";
+            user4.LastName = "rozenblit";
+            user4.UserName = "rozority52";
+            user4.Password = "roz46";
+            user4.CreateUserName = "orstavsk1";
+            user4.IsAdmin = false;
+            user4.IsDeleted = false;
+            usersList.Add(user4);
+            User user5 = new User();
+            user5.FirstName = "oshri";
+            user5.LastName = "cohen";
+            user5.UserName = "osh63";
+            user5.Password = "Os782";
+            user5.IsAdmin = false;
+            user5.IsDeleted = false;
+            user5.CreateUserName = "shaeliya2";
+            usersList.Add(user5);
         }
         #endregion Initialize User
 

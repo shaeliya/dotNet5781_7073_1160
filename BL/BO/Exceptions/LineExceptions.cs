@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DO.Exceptions
+namespace BO.Exceptions
 {
+
     public class LineAlreadyExistsException : Exception
     {
         public int LineId;

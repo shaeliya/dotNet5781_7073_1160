@@ -46,11 +46,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="BLAPI\BLFactory.cs" />
+    <Compile Include="BO\AdjacentStations.cs" />
+    <Compile Include="BO\Bus.cs" />
+    <Compile Include="BO\BusOnTrip.cs" />
+    <Compile Include="BO\Enums.cs" />
+    <Compile Include="BO\Exceptions\AdjacentStationsExceptions.cs" />
+    <Compile Include="BO\Exceptions\BusExceptions.cs" />
+    <Compile Include="BO\Exceptions\BusOnTripExceptions.cs" />
+    <Compile Include="BO\LineOfStation.cs" />
+    <Compile Include="BO\StationOfLine.cs" />
+    <Compile Include="BO\Exceptions\LineExceptions.cs" />
+    <Compile Include="BO\Exceptions\LineStationExceptions.cs" />
+    <Compile Include="BO\Exceptions\LineTripExceptions.cs" />
+    <Compile Include="BO\Exceptions\StationExceptions.cs" />
+    <Compile Include="BO\Exceptions\UserExceptions.cs" />
+    <Compile Include="BO\Line.cs" />
+    <Compile Include="BO\LineTrip.cs" />
+    <Compile Include="BO\Station.cs" />
+    <Compile Include="BO\User.cs" />
+    <Compile Include="BLAPI\IBL.cs" />
+    <Compile Include="BLImp.cs" />
+    <Compile Include="Utilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DLAPI\DalApi.csproj">
+      <Project>{397661a4-aea6-4b1b-a2ac-bc104fd3fe4e}</Project>
+      <Name>DalApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

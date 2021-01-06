@@ -11,11 +11,10 @@ namespace DO
     /// </summary>
     public class LineStation
     {
-        public int LineStationId { get; set; }
+        public int LineStationId { get; set; } // מספר רץ אוטומטי של רשומה
         public int LineId { get; set; }
         public int StationId { get; set; }
-        public int PrevStationId { get; set; }
-        public int NextStationId { get; set; }
+        public int LineStationIndex { get; set; } // סדר התחנה בקו
         /// <summary>
         /// סימון שהישות נמחקה בכדי שלא נמחק אותה בפועל
         /// </summary>
