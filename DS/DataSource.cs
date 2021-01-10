@@ -15,7 +15,7 @@ namespace DS
         public static List<LineStation> lineStationsList;
         public static List<LineTrip> lineTripsList;
         public static List<Station> stationsList;
-        public static List<User> usersList;
+       
         static DataSource()
         {
             InitializeAllLists();
@@ -29,12 +29,12 @@ namespace DS
             InitializeLineTripList();
             InitializeBusOnTripList();
             InitializeLineStationList();
-            InitializeUser();
+           
         }
 
         #region Initialize Bus 
         
-        //UpdateUserName -לא אתחלנו כאן את 
+       
         private static void InitializeBus()
         {
             busesList = new List<Bus>();
@@ -103,7 +103,7 @@ namespace DS
             bus.TotalTrip = totalTrip;
             bus.FuelRemain = fuelRemain;
             bus.IsDeleted = false;
-            bus.CreateUserName = "orstavsk1";
+            
             return bus;
         }
         private static void UpdateStaus(Bus bus)
@@ -168,7 +168,7 @@ namespace DS
 
         #region Initialize Station
 
-        //UpdateUserName-לא אתחלנו כאן את     
+           
         private static void InitializeStationsList()
         {
             stationsList = new List<Station>();
@@ -194,7 +194,7 @@ namespace DS
                 station.Latitude = Latitude;
                 station.Longitude = Longitude;
                 station.IsDeleted = false;
-                station.CreateUserName = "shaeliya2";
+              
                 stationsList.Add(station);
             }
         }
@@ -203,7 +203,7 @@ namespace DS
 
         #region Initialize AdjacentStations
 
-        //UpdateUserName-לא אתחלנו כאן את
+       
         private static void InitializeAdjacentStationsList()
         {
             adjacentStationsList = new List<AdjacentStations>();
@@ -216,7 +216,7 @@ namespace DS
                 AdjacentStations adjacentStations = new AdjacentStations();              
                 double distance = RandomDistance.NextDouble() * (10.5 - 0.5) + 0.5;
                 TimeSpan time = new TimeSpan(0,  i + 2, i + 5);
-                adjacentStations.CreateUserName = "orstavsk1";
+                
                 adjacentStations.Distance = distance;
                 adjacentStations.Time = time;
                 adjacentStations.IsDeleted = false;               
@@ -237,13 +237,11 @@ namespace DS
        
         #region Initialize Line
        
-        //UpdateUserName-לא אתחלנו כאן את
+        
         private static void InitializeLineList()
     {
             linesList = new List<Line>();
             Random RandomArea = new Random(DateTime.Now.Millisecond);
-            Random RandomfirstStationId = new Random(DateTime.Now.Millisecond);
-            Random RandomlastStationId = new Random(DateTime.Now.Millisecond);
             for (int i = 1; i < 11; i++)
             {
                 int area = RandomArea.Next(0, 8);
@@ -251,16 +249,7 @@ namespace DS
                 line.LineNumber = i;
                 line.Area = (Enums.Areas) area;
                 line.LineId = ++Configuration.MaxLineId;
-                line.IsDeleted = false;
-                line.CreateUserName = "orstavsk1";                
-                int firstStationIdRandom = RandomfirstStationId.Next(1, 50);
-                int lastStationIdRandom = firstStationIdRandom;
-                while (lastStationIdRandom == firstStationIdRandom)
-                {
-                    lastStationIdRandom = RandomlastStationId.Next(1, 50);
-                }
-                line.FirstStationId = firstStationIdRandom;
-                line.LastStationId = lastStationIdRandom;
+                line.IsDeleted = false;                       
             }
         }
 
@@ -268,7 +257,7 @@ namespace DS
 
         #region Initialize LineStation 
 
-        //UpdateUserName-לא אתחלנו כאן את 
+       
         private static void InitializeLineStationList()
         {
             lineStationsList = new List<LineStation>();
@@ -283,7 +272,7 @@ namespace DS
                     lineStation.LineId = linesList[i].LineId;
                     lineStation.StationId = stationsList[j+temp].StationId;
                     lineStation.IsDeleted = false;
-                    lineStation.CreateUserName = "shaeliya2";
+                  
                     lineStationsList.Add(lineStation);
                 }
                 if (i >= 4 && i < 8) 
@@ -299,7 +288,7 @@ namespace DS
 
         #region Initialize BusOnTrip
 
-        //UpdateUserName-לא אתחלנו כאן את
+     
         private static void InitializeBusOnTripList()
         {
             busOnTripsList = new List<BusOnTrip>();
@@ -327,7 +316,7 @@ namespace DS
                 busOnTrip.ActualTakeOff = actualTakeOff;
                 busOnTrip.BusOnTripId = ++Configuration.MaxBusOnTripId;
                 busOnTrip.IsDeleted = false;
-                busOnTrip.CreateUserName = "shaeliya2";
+                
                 busOnTrip.LicenseNumber = busesList[i + 10].LicenseNumber;
                 busOnTripsList.Add(busOnTrip);
             }
@@ -354,7 +343,7 @@ namespace DS
                 busOnTrip.ActualTakeOff = actualTakeOff;
                 busOnTrip.BusOnTripId = ++Configuration.MaxBusOnTripId;
                 busOnTrip.IsDeleted = false;
-                busOnTrip.CreateUserName = "orstavsk1";
+               
                 busOnTrip.LicenseNumber = busesList[i + 10].LicenseNumber;
                 busOnTripsList.Add(busOnTrip);
             }
@@ -389,58 +378,7 @@ namespace DS
 
         #endregion Initialize LineTrip
 
-        #region Initialize User 
-
-        //UpdateUserName-לא אתחלנו כאן את
-        private static void InitializeUser()
-        {
-            usersList = new List<User>();
-            User user1 = new User();
-            user1.FirstName = "orit";
-            user1.LastName = "stavsky";
-            user1.UserName = "orstavsk1";
-            user1.Password = "or1234";
-            user1.IsAdmin = true;
-            user1.IsDeleted = false;
-            user1.CreateUserName = "orstavsk1";
-            usersList.Add(user1);
-            User user2 = new User();
-            user2.FirstName = "shalhevet";
-            user2.LastName = "eliyahu";
-            user2.UserName = "shaeliya2";
-            user2.Password = "sh4567";
-            user2.IsAdmin = true;
-            user2.IsDeleted = false;
-            user2.CreateUserName = "shaeliya2";
-            usersList.Add(user2);
-            User user3 = new User();
-            user3.FirstName = "dan";
-            user3.LastName = "zilbershtein";
-            user3.UserName = "daz3";
-            user3.Password = "d026Z";
-            user3.IsAdmin = false;
-            user3.CreateUserName = "daz3";
-            usersList.Add(user3);
-            User user4 = new User();
-            user4.FirstName = "orit";
-            user4.LastName = "rozenblit";
-            user4.UserName = "rozority52";
-            user4.Password = "roz46";
-            user4.CreateUserName = "orstavsk1";
-            user4.IsAdmin = false;
-            user4.IsDeleted = false;
-            usersList.Add(user4);
-            User user5 = new User();
-            user5.FirstName = "oshri";
-            user5.LastName = "cohen";
-            user5.UserName = "osh63";
-            user5.Password = "Os782";
-            user5.IsAdmin = false;
-            user5.IsDeleted = false;
-            user5.CreateUserName = "shaeliya2";
-            usersList.Add(user5);
-        }
-        #endregion Initialize User
+      
 
     }
 }

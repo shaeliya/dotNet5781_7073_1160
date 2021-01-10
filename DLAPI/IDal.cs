@@ -23,7 +23,8 @@ namespace DalApi
         void AddAdjacentStations(AdjacentStations adjacentStations);
         void UpdateAdjacentStations(AdjacentStations adjacentStations);
         void UpdateAdjacentStations(AdjacentStations id, Action<AdjacentStations> update); //method that knows to update specific fields in Bus
-        void DeleteAdjacentStations(AdjacentStations id);
+        void DeleteAdjacentStations(int id);
+        void DeleteAdjacentStationsBy(Predicate<AdjacentStations> predicate);
 
         #endregion AdjacentStations
 
@@ -35,7 +36,8 @@ namespace DalApi
         void AddBus(Bus bus);
         void UpdateBus(Bus bus);
         void UpdateBus(Bus id, Action<Bus> update); //method that knows to update specific fields in Bus
-        void DeleteBus(Bus id);
+        void DeleteBus(int id);
+        void DeleteBusBy(Predicate<Bus> predicate);
 
         #endregion Bus
 
@@ -47,7 +49,8 @@ namespace DalApi
         void AddBusOnTrip(BusOnTrip busOnTrip);
         void UpdateBusOnTrip(BusOnTrip busOnTrip);
         void UpdateBusOnTrip(BusOnTrip id, Action<BusOnTrip> update); //method that knows to update specific fields in Bus
-        void DeleteBusOnTrip(BusOnTrip id);
+        void DeleteBusOnTrip(int id);
+        void DeleteBusOnTripBy(Predicate<BusOnTrip> predicate);
 
         #endregion BusOnTrip
 
@@ -59,8 +62,8 @@ namespace DalApi
         void AddLine(Line line);
         void UpdateLine(Line line);
         void UpdateLine(Line id, Action<Line> update); //method that knows to update specific fields in Bus
-        void DeleteLine(Line id);
-
+        void DeleteLine(int id);
+        void DeleteLineBy(Predicate<Line> predicate);
         #endregion Line
 
 
@@ -71,7 +74,8 @@ namespace DalApi
         void AddLineStation(LineStation lineStation);
         void UpdateLineStation(LineStation lineStation);
         void UpdateLineStation(LineStation lineStation, Action<LineStation> update); //method that knows to update specific fields in Bus
-        void DeleteLineStation(LineStation lineStation);
+        void DeleteLineStation(int id);
+        void DeleteLineStationBy(Predicate<LineStation> predicate);
 
         #endregion LineStation
 
@@ -83,10 +87,10 @@ namespace DalApi
         void AddLineTrip(LineTrip lineTrip);
         void UpdateLineTrip(LineTrip lineTrip);
         void UpdateLineTrip(LineTrip id, Action<LineTrip> update); //method that knows to update specific fields in Bus
-        void DeleteLineTrip(LineTrip id);
+        void DeleteLineTrip(int id);
+        void DeleteLineTripBy(Predicate<LineTrip> predicate);
 
         #endregion LineTrip
-
 
         #region Station
         IEnumerable<Station> GetAllStation();
@@ -94,22 +98,10 @@ namespace DalApi
         Station GetStationById(int id);
         void AddStation(Station station);
         void UpdateStation(Station station);
-        void UpdateStation(Station id, Action<Station> update); //method that knows to update specific fields in Bus
-        void DeleteStation(Station id);
-
-        #endregion Station
-
-
-        #region User
-        IEnumerable<User> GetAllUser();
-        IEnumerable<User> GetAllUserBy(Predicate<User> predicate);
-        User GetUserById(string id);
-        void AddUser(User user);
-        void UpdateUser(User user);
-        void UpdateUser(User id, Action<User> update); //method that knows to update specific fields in Bus
-        void DeleteUser(User id);
-
-        #endregion User
+        void UpdateStation(Station station, Action<Station> update); //method that knows to update specific fields in Bus
+        void DeleteStation(int id);
+        void DeleteStationBy(Predicate<Station> predicate);
+        #endregion Station     
 
 
     }

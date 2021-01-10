@@ -10,170 +10,78 @@ using System.Threading.Tasks;
 
 namespace BL
 {
+   /*
+    לעבור על כל האקספשן שנזרקים מהדי או ולתפוס אותן פה
+   גם למי שהוספנו אקספשן - להוסיף אקספשן כללי
+    
+    */
+
+   
 
     public class BLImp :IBL
     {
         IDal dl = DLFactory.GetDL();
 
-
-        #region AdjacentStations
-        public IEnumerable<AdjacentStations> GetAllAdjacentStations()
-        {
-            var allAdjacentStations = DataSource.adjacentStationsList.Where(adjacentStations => !adjacentStations.IsDeleted)
-                                              .Select(adjacentStations => adjacentStations.Clone());
-            return allAdjacentStations;
-
-        }
-        public IEnumerable<AdjacentStations> GetAllAdjacentStationsBy(Predicate<AdjacentStations> predicate)
-        {
-            var adjacentStationsBy = DataSource.adjacentStationsList.Where(adjacentStations => !adjacentStations.IsDeleted && predicate(adjacentStations))
-                                                   .Select(adjacentStations => adjacentStations.Clone());
-            return adjacentStationsBy;
-        }
-        public AdjacentStations GetAdjacentStationsById(int adjacentStationsId)
-        {
-            var adjacentStationsById = DataSource.adjacentStationsList.Where(adjacentStations => adjacentStations.AdjacentStationsId == adjacentStationsId)
-                                                  .Select(adjacentStations => adjacentStations.Clone())
-                                                  .FirstOrDefault();
-
-            if (adjacentStationsById == null)
-            {
-                throw new AdjacentStationsNotFoundException(adjacentStationsId);
-            }
-
-            if (adjacentStationsById.IsDeleted)
-            {
-                throw new AdjacentStationsDeletedException(adjacentStationsId);
-            }
-
-            return adjacentStationsById;
-        }
-        public void AddAdjacentStations(AdjacentStations adjacentStations)
-        {
-            var adjacentStationsExist = DataSource.adjacentStationsList.FirstOrDefault(a => a.AdjacentStationsId == adjacentStations.AdjacentStationsId);
-            if (adjacentStationsExist != null)
-            {
-                throw new AdjacentStationsAlreadyExistsException(adjacentStations.AdjacentStationsId);
-
-            }
-            DataSource.adjacentStationsList.Add(adjacentStations.Clone());
-        }
-        public void UpdateAdjacentStations(AdjacentStations adjacentStations)
-        {
-            AdjacentStations adjacentStationsToUpdate = DataSource.adjacentStationsList.Find(a => a.AdjacentStationsId == adjacentStations.AdjacentStationsId);
-
-            if (adjacentStationsToUpdate == null)
-            {
-                throw new AdjacentStationsNotFoundException(adjacentStations.AdjacentStationsId);
-            }
-
-            if (adjacentStationsToUpdate.IsDeleted)
-            {
-                throw new AdjacentStationsDeletedException(adjacentStations.AdjacentStationsId, "Cannot update deleted adjacent stations");
-            }
-
-            DataSource.adjacentStationsList.Remove(adjacentStationsToUpdate);
-            DataSource.adjacentStationsList.Add(adjacentStations.Clone());
-        }
-        
-        public void DeleteAdjacentStations(int adjacentStationsId)
-        {
-            // לא ניתן למשתמש למחוק זוג תחנות עוקבות
-            // מחיקת זוג תחנות תעשה רק במקרה של מחיקת תחנה
-            // לכן אין צורך לטפל במחיקת קשרים שיש לישות 
-
-            var adjacentStationsToDelete = DataSource.adjacentStationsList.Find(adjacentStations => !adjacentStations.IsDeleted &&
-                                                                                                     adjacentStations.AdjacentStationsId == adjacentStationsId);
-
-            if (adjacentStationsToDelete == null)
-            {
-                throw new AdjacentStationsNotFoundException(adjacentStationsId, $"Cannot delete adjacent Stations Id: {adjacentStationsId} because it was not found");
-            }
-
-
-            adjacentStationsToDelete.IsDeleted = true;
-
-        }
-
-        public void DeleteAdjacentStationsBy(Predicate<AdjacentStations> predicate)
-        {
-            int deletedAdjacentStations = DataSource.adjacentStationsList.RemoveAll(predicate);
-            if (deletedAdjacentStations == 0)
-            {
-                throw new AdjacentStationsNotFoundException(0, $"Cannot delete adjacent Stations For requested predicate: {predicate}");
-            }
-        }
-
-        #endregion AdjacentStations 
-
-
         #region Bus
         public IEnumerable<Bus> GetAllBusses()
         {
-            var allBuses = DataSource.busesList.Where(bus => !bus.IsDeleted)
-                                               .Select(bus => bus.Clone());
-            return allBuses;
-
+            try
+            {
+                var allBusses = dl.GetAllBusses();
+                var allBussesDo = allBusses.Select(b => BusDoBoAdapter(b)).ToList();
+                return allBussesDo;
+            }
+            catch (DO.Exceptions.BusNotFoundException exDO)
+            {
+                throw new BusNotFoundException(0, "No Busses found in system", exDO);
+            }
         }
-        public IEnumerable<Bus> GetAllBussesBy(Predicate<Bus> predicate)
+        Bus BusDoBoAdapter(DO.Bus busDO)
         {
-            var bussesBy = DataSource.busesList.Where(bus => !bus.IsDeleted && predicate(bus))
-                                               .Select(bus => bus.Clone());
-            return bussesBy;
+            Bus busBO = new Bus();
+
+            // BO-לישות ב DO-הדומים מהישות ב Properties-נעתיק את כל ה
+            busDO.CopyPropertiesTo(busBO);
+          return busBO;
         }
 
         public Bus GetBusById(int licenseNumber)
         {
-            var busById = DataSource.busesList.Where(bus => bus.LicenseNumber == licenseNumber)
-                                               .Select(bus => bus.Clone())
-                                               .FirstOrDefault();
-
-            if (busById == null)
+            try
             {
-                throw new BusNotFoundException(licenseNumber);
+                Bus busBo = BusDoBoAdapter(dl.GetBusById(licenseNumber));
+
+                return busBo;
+            }
+            catch (DO.Exceptions.BusNotFoundException exDO)
+            {
+                throw new BusNotFoundException(licenseNumber, exDO.Message, exDO);
+            }
+            catch (DO.Exceptions.BusDeletedException exDO)
+            {
+                throw new BusDeletedException(licenseNumber, exDO.Message, exDO);
             }
 
-            if (busById.IsDeleted)
-            {
-                throw new BusDeletedException(licenseNumber);
-            }
-
-            return busById;
         }
 
         public void AddBus(Bus bus)
         {
-            var busExist = DataSource.busesList.FirstOrDefault(b => b.LicenseNumber == bus.LicenseNumber);
-            if (busExist != null)
-            {
-                throw new BusAlreadyExistsException(bus.LicenseNumber);
+            DO.Bus busDO = new DO.Bus();
 
-            }
-            DataSource.busesList.Add(bus.Clone());
+            // 1. נוסיף את הקו עצמו
+            bus.CopyPropertiesTo(busDO);
+            dl.AddBus(busDO);
+            
         }
         public void UpdateBus(Bus bus)
         {
-            Bus busToUpdate = DataSource.busesList.Find(b => b.LicenseNumber == bus.LicenseNumber);
-
-            if (busToUpdate == null)
-            {
-                throw new BusNotFoundException(bus.LicenseNumber);
-            }
-
-            if (busToUpdate.IsDeleted)
-            {
-                throw new BusDeletedException(bus.LicenseNumber, "Cannot update deleted bus");
-            }
-
-            DataSource.busesList.Remove(busToUpdate);
-            DataSource.busesList.Add(bus.Clone());
+            DO.Bus busDO = new DO.Bus();
+            bus.CopyPropertiesTo(busDO);
+            dl.UpdateBus(busDO);
         }
-        public void DeleteBus(Bus bus)
-        {
-            // פעולת המחיקה לא באמת מוחקת אלא מעדכנת את האוטובוס
-
-            bus.IsDeleted = true;
-            UpdateBus(bus);
+        public void DeleteBus(int licenseNumber)
+        {           
+            dl.DeleteBus(licenseNumber);
         }
 
         #endregion Bus
@@ -186,12 +94,6 @@ namespace BL
                                                    .Select(busOnTrip => busOnTrip.Clone());
             return allBusesOnTrip;
 
-        }
-        public IEnumerable<BusOnTrip> GetAllBusOnTripBy(Predicate<BusOnTrip> predicate)
-        {
-            var busOnTripsBy = DataSource.busOnTripsList.Where(busOnTrip => !busOnTrip.IsDeleted && predicate(busOnTrip))
-                                                  .Select(busOnTrip => busOnTrip.Clone());
-            return busOnTripsBy;
         }
         public BusOnTrip GetBusOnTripById(int busOnTripId)
         {
@@ -238,7 +140,10 @@ namespace BL
             DataSource.busOnTripsList.Remove(busOnTripToUpdate);
             DataSource.busOnTripsList.Add(busOnTrip.Clone());
         }
-        public void DeleteBusOnTrip(int id) { }
+        public void DeleteBusOnTrip(int id) 
+        {
+            dl.DeleteBusOnTrip(id);
+        }
 
         #endregion BusOnTrip
 
@@ -255,15 +160,41 @@ namespace BL
 
             // 1. נמצא את כל תחנות הקו
             var lineStations = dl.GetAllLineStationBy(ls => ls.LineId == lineDO.LineId);
-            
+
 
             // 2. StationOfLine לאובייקט של LineStation + Station נמיר את האובייקט של 
 
-            lineBO.StationsList = from ls in lineStations
-                                  let station = dl.GetStationById(ls.StationId) // DO-מביאים את התחנה מה
-                                  select (StationOfLine)station.CopyPropertiesToNewAndUnion(typeof(StationOfLine), ls);
+            lineBO.StationsList = lineStations.Select(ls => CreateStationOfLine(ls));
+                                 
+
+            // 3. של הקו LineTrip-נמצא את כל ה
+            var lineTrip = dl.GetAllLineTripBy(lt => lt.LineId == lineDO.LineId);
+
+            // 4. המתאים לו LineTrip-נביא עבור הקו שלנו את ה 
+            lineBO.LineTripList = lineTrip.Select(s => (LineTrip)s.CopyPropertiesToNew(typeof(LineTrip)));
 
             return lineBO;
+        }
+
+        private StationOfLine CreateStationOfLine(DO.LineStation lineStation)
+        {
+            
+            // DO-מביאים את התחנה מה            
+            DO.Station station = dl.GetStationById(lineStation.StationId);
+
+            StationOfLine sol = (StationOfLine)station.CopyPropertiesToNewAndUnion(typeof(StationOfLine), lineStation);
+
+            var nextLineStation = dl.GetAllLineStationBy(ls => ls.LineId == lineStation.LineId &&
+                                                               ls.LineStationIndex == lineStation.LineStationIndex + 1).FirstOrDefault();
+            var currAndNextStation = dl.GetAllAdjacentStationsBy(ajs => ajs.StationId1 == lineStation.StationId &&
+                                                                        ajs.StationId2 == nextLineStation.StationId ||
+                                                                        ajs.StationId2 == lineStation.StationId &&
+                                                                        ajs.StationId1 == nextLineStation.StationId).FirstOrDefault();
+            sol.TimeToNextStation = currAndNextStation.Time;
+            sol.DistanceToNextStation = currAndNextStation.Distance;
+
+            return sol;
+
         }
 
         public IEnumerable<Line> GetAllLine()
@@ -302,14 +233,14 @@ namespace BL
         }
         public void AddLine(Line line)
         {
-            DO.Line lineBO = new DO.Line();
+            DO.Line lineDO = new DO.Line();
 
             // 1. נוסיף את הקו עצמו
-            line.CopyPropertiesTo(lineBO);
+            line.CopyPropertiesTo(lineDO);
 
-            dl.AddLine(lineBO);
-            AddStationsFromLine(line);
-
+            dl.AddLine(lineDO);
+            AddStationsFromLine(line);            
+            line.LineTripList.ToList().ForEach(lt => AddLineTripFromLine(lt));
         }
 
         private void AddStationsFromLine(Line line)
@@ -341,6 +272,16 @@ namespace BL
             }
         }
 
+
+        private void AddLineTripFromLine(LineTrip lt)
+        {
+            DO.LineTrip lineTripDO = new DO.LineTrip();
+
+            lt.CopyPropertiesTo(lineTripDO);
+
+            dl.AddLineTrip(lineTripDO);
+        }
+
         private void AddLineStation(StationOfLine stationOfLine, Line line)
         {
             DO.LineStation ls = (DO.LineStation)stationOfLine.CopyPropertiesToNewAndUnion(typeof(DO.LineStation), line);
@@ -350,21 +291,21 @@ namespace BL
         }
 
         /// <summary>
-        /// עדכון שדות הקו בלבד - עדכון התחנות יעשה בפונקציה נפרדת
+        /// יעשה בפונקציה נפרדת IEnumerable-עדכון שדות הקו בלבד - עדכון ה
         /// </summary>
         /// <param name="line"></param>
         public void UpdateLine(Line line)
         {
-            DO.Line lineBO = new DO.Line();
-            line.CopyPropertiesTo(lineBO);
-            dl.UpdateLine(lineBO);
+            DO.Line lineDO = new DO.Line();
+            line.CopyPropertiesTo(lineDO);
+            dl.UpdateLine(lineDO);
         }
 
         /// <summary>
         /// עדכון תחנות הקו
         /// </summary>
         /// <param name="line"></param>
-        private void UpdateLinesStation(Line line)
+        public void UpdateLineStations(Line line)
         {
             line.StationsList.ToList().ForEach(s => DeleteLineStation(s, line));
             AddStationsFromLine(line);
@@ -373,226 +314,116 @@ namespace BL
         private void DeleteLineStation(StationOfLine stationOfLine, Line line)
         {
             DO.LineStation ls = (DO.LineStation)stationOfLine.CopyPropertiesToNewAndUnion(typeof(DO.LineStation), line);
-            dl.DeleteLineStation(ls);
+            dl.DeleteLineStation(ls.LineStationId);
         }
-        public void DeleteLine(Line line) 
+
+        /// <summary>
+        /// עדכון יציאות הקו
+        /// </summary>
+        /// <param name="line"></param>
+        public void UpdateLineTrips(Line line)
         {
-            DO.Line lineBO = new DO.Line();
-            line.CopyPropertiesTo(lineBO);
-            dl.DeleteLine(lineBO);
+            line.LineTripList.ToList().ForEach(lt => DeleteLineTrips(lt, line));
+            AddStationsFromLine(line);
+        }
+
+        private void DeleteLineTrips(LineTrip lineTrip, Line line)
+        {
+            DO.LineTrip lt = new DO.LineTrip();
+            lineTrip.CopyPropertiesTo(lt);
+            dl.DeleteLineTrip(lt.LineTripId);
+        }
+        public void DeleteLine(int lineId) 
+        {
+            dl.DeleteLine(lineId);
         }
 
         #endregion Line
 
 
-
-
-        #region LineTrip
-        public IEnumerable<LineTrip> GetAllLineTrip()
-        {
-            var allLineTrips = DataSource.lineTripsList.Where(lineTrip => !lineTrip.IsDeleted)
-                                                              .Select(lineTrip => lineTrip.Clone());
-            return allLineTrips;
-        }
-        public IEnumerable<LineTrip> GetAllLineTripBy(Predicate<LineTrip> predicate)
-        {
-            var lineTripBy = DataSource.lineTripsList.Where(lineTrip => !lineTrip.IsDeleted && predicate(lineTrip))
-                                                                    .Select(lineTrip => lineTrip.Clone());
-            return lineTripBy;
-        }
-        public LineTrip GetLineTripById(int lineTripId)
-        {
-            var lineTripById = DataSource.lineTripsList.Where(lineTrip => lineTrip.LineTripId == lineTripId)
-                                                            .Select(lineTrip => lineTrip.Clone())
-                                                            .FirstOrDefault();
-
-            if (lineTripById == null)
-            {
-                throw new LineTripNotFoundException(lineTripId);
-            }
-
-            if (lineTripById.IsDeleted)
-            {
-                throw new LineTripDeletedException(lineTripId);
-            }
-
-            return lineTripById;
-        }
-        public void AddLineTrip(LineTrip lineTrip)
-        {
-            var lineTripExist = DataSource.lineTripsList.FirstOrDefault(l => l.LineTripId == lineTrip.LineTripId);
-            if (lineTripExist != null)
-            {
-                throw new LineTripAlreadyExistsException(lineTrip.LineTripId);
-
-            }
-            DataSource.lineTripsList.Add(lineTrip.Clone());
-        }
-        void UpdateLineTrip(LineTrip lineTrip)
-        {
-            LineTrip lineTripToUpdate = DataSource.lineTripsList.Find(l => l.LineTripId == lineTrip.LineTripId);
-
-            if (lineTripToUpdate == null)
-            {
-                throw new LineTripNotFoundException(lineTrip.LineTripId);
-            }
-
-            if (lineTripToUpdate.IsDeleted)
-            {
-                throw new LineTripDeletedException(lineTrip.LineTripId, "Cannot update deleted line trip Id");
-            }
-
-            DataSource.lineTripsList.Remove(lineTripToUpdate);
-            DataSource.lineTripsList.Add(lineTrip.Clone());
-        }
-        void DeleteLineTrip(int id) { }
-
-        #endregion LineTrip
-
-
         #region Station
+       
 
         Station StationDoBoAdapter(DO.Station stationDO)
         {
             Station stationBO = new Station();
 
+            // BO-לישות ב DO-הדומים מהישות ב Properties-נעתיק את כל ה
             stationDO.CopyPropertiesTo(stationBO);
-            var lineStations = dl.GetAllLineStationBy(ls => ls.StationId == stationDO.StationId).ToList();
 
-            var lineIdList = from ls in lineStations
-                                let lineId = ls.LineId
-                                select dl.GetStationById(lineId);
+            // נטפל ברשימה של הקווים הנמצאים בתוך התחנה
 
+            // 1. נמצא את כל הקווים בתחנה
+          
+            var stationLines = dl.GetAllLineStationBy(sl => sl.StationId == stationDO.StationId);
 
-            stationBO.LinesList = lineIdList.Select()
+            // 2. LineOfStation לאובייקט של StationLine + Line נמיר את האובייקט של 
+
+            stationBO.LinesList = from sl in stationLines
+                                  let line = dl.GetLineById(sl.LineId) // DO-מביאים את הקו מה
+                                  select (LineOfStation)line.CopyPropertiesToNewAndUnion(typeof(LineOfStation), sl);
 
             return stationBO;
         }
+      
+
         public IEnumerable<Station> GetAllStation()
         {
-            var allstations = DataSource.stationsList.Where(station => !station.IsDeleted)
-                                                                 .Select(station => station.Clone());
-            return allstations;
+            try
+            {
+                var allStation = dl.GetAllStation();
+                var allStationDo = allStation.Select(s => StationDoBoAdapter(s)).ToList();
+                return allStationDo;
+            }
+            catch (DO.Exceptions.StationNotFoundException exDO)
+            {
+                throw new LineNotFoundException(0, "No Stations found in system", exDO);
+            }
         }
-        public IEnumerable<Station> GetAllStationBy(Predicate<Station> predicate)
-        {
-            var stationBy = DataSource.stationsList.Where(station => !station.IsDeleted && predicate(station))
-                                                                       .Select(station => station.Clone());
-            return stationBy;
-        }
+      
         public Station GetStationById(int stationId)
         {
-            var stationById = DataSource.stationsList.Where(station => station.StationId == stationId)
-                                                              .Select(station => station.Clone())
-                                                              .FirstOrDefault();
-
-            if (stationById == null)
+            try
             {
-                throw new StationNotFoundException(stationId);
+                var stationById = dl.GetStationById(stationId);
+
+                if (stationById == null)
+                {
+                    throw new StationNotFoundException(stationId);
+                }
+
+                return StationDoBoAdapter(stationById);
             }
 
-            if (stationById.IsDeleted)
+            catch (DO.Exceptions.StationNotFoundException exDO)
             {
-                throw new StationDeletedException(stationId);
+                throw new StationNotFoundException(0, "No Stations found in system", exDO);
             }
-
-            return stationById;
         }
+       
         public void AddStation(Station station)
         {
-            var stationExist = DataSource.stationsList.FirstOrDefault(l => l.StationId == station.StationId);
-            if (stationExist != null)
-            {
-                throw new StationAlreadyExistsException(station.StationId);
+            DO.Station stationDO = new DO.Station();
 
-            }
-            DataSource.stationsList.Add(station.Clone());
+            // 1.נוסיף את התחנה עצמה
+            station.CopyPropertiesTo(stationDO);
+
+            dl.AddStation(stationDO);
+          
         }
-        void UpdateStation(Station station)
+
+        public void UpdateStation(Station station)
         {
-            Station stationToUpdate = DataSource.stationsList.Find(l => l.StationId == station.StationId);
-
-            if (stationToUpdate == null)
-            {
-                throw new StationNotFoundException(station.StationId);
-            }
-
-            if (stationToUpdate.IsDeleted)
-            {
-                throw new StationDeletedException(station.StationId, "Cannot update deleted station Id");
-            }
-
-            DataSource.stationsList.Remove(stationToUpdate);
-            DataSource.stationsList.Add(station.Clone());
+            DO.Station stationDO = new DO.Station();
+            station.CopyPropertiesTo(stationDO);
+            dl.UpdateStation(stationDO);
         }
-        void DeleteStation(int id) { }
-
-        #endregion Station
-
-
-        #region User
-        public IEnumerable<User> GetAllUser()
+        public void DeleteStation(int stationId)
         {
-            var allUsers = DataSource.usersList.Where(user => !user.IsDeleted)
-                                                                   .Select(user => user.Clone());
-            return allUsers;
+            dl.DeleteStation(stationId);
         }
-        public IEnumerable<User> GetAllUserBy(Predicate<User> predicate)
-        {
-            var userBy = DataSource.usersList.Where(user => !user.IsDeleted && predicate(user))
-                                                                          .Select(user => user.Clone());
-            return userBy;
-        }
-        public User GetUserById(string userName)
-        {
 
-            var userById = DataSource.usersList.Where(user => user.UserName == userName)
-                                                              .Select(user => user.Clone())
-                                                              .FirstOrDefault();
-
-            if (userById == null)
-            {
-                throw new UserNotFoundException(userName);
-            }
-
-            if (userById.IsDeleted)
-            {
-                throw new UserDeletedException(userName);
-            }
-
-            return userById;
-        }
-        public void AddUser(User user)
-        {
-            var userExist = DataSource.usersList.FirstOrDefault(l => l.UserName == user.UserName);
-            if (userExist != null)
-            {
-                throw new UserAlreadyExistsException(user.UserName);
-
-            }
-            DataSource.usersList.Add(user.Clone());
-        }
-        void UpdateUser(User user)
-        {
-            User userToUpdate = DataSource.usersList.Find(l => l.UserName == user.UserName);
-
-            if (userToUpdate == null)
-            {
-                throw new UserNotFoundException(user.UserName);
-            }
-
-            if (userToUpdate.IsDeleted)
-            {
-                throw new UserDeletedException(user.UserName, "Cannot update deleted user name");
-            }
-
-            DataSource.usersList.Remove(userToUpdate);
-            DataSource.usersList.Add(user.Clone());
-        }
-        void DeleteUser(int id) { }
-
-        #endregion User
-
+        #endregion Station    
 
     }
 }

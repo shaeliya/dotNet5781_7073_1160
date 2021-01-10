@@ -20,15 +20,7 @@ namespace BO
         /// סימון שהישות נמחקה בכדי שלא נמחק אותה בפועל
         /// </summary>
         public bool IsDeleted { get; set; }
-        /// <summary>
-        ///  משתמש שייצר את הישות
-        /// </summary>
-        public User CreateUser { get; set; }
-        /// <summary>
-        ///  משתמש שעדכן את הישות - לצורך תיעוד במקרה של עדכון / מחיקה
-        /// </summary>
-        public User UpdateUser { get; set; }
-
+       
         public IEnumerable<LineOfStation> LinesList { get; set; }
     }
 }

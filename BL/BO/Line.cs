@@ -20,14 +20,9 @@ namespace BO
         public bool IsDeleted { get; set; }
         /// <summary>
         ///  משתמש שייצר את הישות
-        /// </summary>
-        public User CreateUser { get; set; }
-        /// <summary>
-        ///  משתמש שעדכן את הישות - לצורך תיעוד במקרה של עדכון / מחיקה
-        /// </summary>
-        public User UpdateUser { get; set; }
-
+        /// </summary>       
         public IEnumerable<StationOfLine> StationsList { get; set; }
+        public IEnumerable<LineTrip> LineTripList { get; set; }
 
 
     }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{397661A4-AEA6-4B1B-A2AC-BC104FD3FE4E}</ProjectGuid>
+    <ProjectGuid>{494C73C7-7817-4281-B2A8-F6802397E1B7}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>DLAPI</RootNamespace>
-    <AssemblyName>DLAPI</AssemblyName>
+    <RootNamespace>DLXML</RootNamespace>
+    <AssemblyName>DLXML</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,28 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DLConfig.cs" />
-    <Compile Include="DLFactory.cs" />
-    <Compile Include="DO\AdjacentStations.cs" />
-    <Compile Include="DO\Bus.cs" />
-    <Compile Include="DO\BusOnTrip.cs" />
-    <Compile Include="DO\Enums.cs" />
-    <Compile Include="DO\Exceptions\AdjacentStationsExceptions.cs" />
-    <Compile Include="DO\Exceptions\BusExceptions.cs" />
-    <Compile Include="DO\Exceptions\BusOnTripExceptions.cs" />
-    <Compile Include="DO\Exceptions\LineExceptions.cs" />
-    <Compile Include="DO\Exceptions\LineStationExceptions.cs" />
-    <Compile Include="DO\Exceptions\LineTripExceptions.cs" />
-    <Compile Include="DO\Exceptions\StationExceptions.cs" />
-    <Compile Include="DO\Line.cs" />
-    <Compile Include="DO\LineStation.cs" />
-    <Compile Include="DO\LineTrip.cs" />
-    <Compile Include="DO\Station.cs" />
-    <Compile Include="IDal.cs" />
+    <Compile Include="DLXML.cs" />
+    <Compile Include="XMLTools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DLAPI\DalApi.csproj">
+      <Project>{397661a4-aea6-4b1b-a2ac-bc104fd3fe4e}</Project>
+      <Name>DalApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

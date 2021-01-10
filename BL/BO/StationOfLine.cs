@@ -14,19 +14,14 @@ namespace BO
         public int StationId { get; set; } // קוד התחנה
         public string Name { get; set; }
         public int LineStationIndex { get; set; } // סדר התחנה בקו
+        public double DistanceToNextStation { get; set; }
+        public TimeSpan TimeToNextStation { get; set; }
 
         /// <summary>
         /// סימון שהישות נמחקה בכדי שלא נמחק אותה בפועל
         /// </summary>
         public bool IsDeleted { get; set; }
-        /// <summary>
-        ///  משתמש שייצר את הישות
-        /// </summary>
-        public User CreateUser { get; set; }
-        /// <summary>
-        ///  משתמש שעדכן את הישות - לצורך תיעוד במקרה של עדכון / מחיקה
-        /// </summary>
-        public User UpdateUser { get; set; }
+        
 
     }
 }

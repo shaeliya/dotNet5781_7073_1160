@@ -76,7 +76,7 @@ namespace DalApi
             // Since the property is static - the object parameter is irrelevant for the GetValue() function and we can use null
             try
             {
-                IDL dal = type.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static).GetValue(null) as IDL;
+                IDal dal = type.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static).GetValue(null) as IDal;
                 // If the instance property is not initialized (i.e. it does not hold a real instance reference)...
                 if (dal == null)
                     throw new DLConfigException($"Class {dlNameSpace}.{dlClass} instance is not initialized");
