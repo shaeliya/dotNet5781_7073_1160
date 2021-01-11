@@ -63,6 +63,7 @@
     <Compile Include="DO\LineStation.cs" />
     <Compile Include="DO\LineTrip.cs" />
     <Compile Include="DO\Station.cs" />
+    <Compile Include="DO\Exceptions\XMLFileLoadCreateException.cs" />
     <Compile Include="IDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

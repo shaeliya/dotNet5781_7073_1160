@@ -5,20 +5,14 @@ using DalApi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BL
 {
-   /*
-    לעבור על כל האקספשן שנזרקים מהדי או ולתפוס אותן פה
-   גם למי שהוספנו אקספשן - להוסיף אקספשן כללי
-    
-    */
-
-   
-
-    public class BLImp :IBL
+ 
+    public class BLImp : IBL
     {
         IDal dl = DLFactory.GetDL();
 
@@ -35,6 +29,12 @@ namespace BL
             {
                 throw new BusNotFoundException(0, "No Busses found in system", exDO);
             }
+            catch (GeneralException ex)
+
+            {
+
+                throw new GeneralException(MethodBase.GetCurrentMethod().Name, "General Error", ex);
+            }
         }
         Bus BusDoBoAdapter(DO.Bus busDO)
         {
@@ -42,7 +42,7 @@ namespace BL
 
             // BO-לישות ב DO-הדומים מהישות ב Properties-נעתיק את כל ה
             busDO.CopyPropertiesTo(busBO);
-          return busBO;
+            return busBO;
         }
 
         public Bus GetBusById(int licenseNumber)
@@ -61,7 +61,12 @@ namespace BL
             {
                 throw new BusDeletedException(licenseNumber, exDO.Message, exDO);
             }
+            catch (GeneralException ex)
 
+            {
+
+                throw new GeneralException(MethodBase.GetCurrentMethod().Name, "General Error", ex);
+            }
         }
 
         public void AddBus(Bus bus)
@@ -71,7 +76,7 @@ namespace BL
             // 1. נוסיף את הקו עצמו
             bus.CopyPropertiesTo(busDO);
             dl.AddBus(busDO);
-            
+
         }
         public void UpdateBus(Bus bus)
         {
@@ -80,7 +85,7 @@ namespace BL
             dl.UpdateBus(busDO);
         }
         public void DeleteBus(int licenseNumber)
-        {           
+        {
             dl.DeleteBus(licenseNumber);
         }
 
@@ -140,7 +145,7 @@ namespace BL
             DataSource.busOnTripsList.Remove(busOnTripToUpdate);
             DataSource.busOnTripsList.Add(busOnTrip.Clone());
         }
-        public void DeleteBusOnTrip(int id) 
+        public void DeleteBusOnTrip(int id)
         {
             dl.DeleteBusOnTrip(id);
         }
@@ -155,7 +160,7 @@ namespace BL
 
             // BO-לישות ב DO-הדומים מהישות ב Properties-נעתיק את כל ה
             lineDO.CopyPropertiesTo(lineBO);
-            
+
             // נטפל ברשימה של התחנות הנמצאת בתוך הקו
 
             // 1. נמצא את כל תחנות הקו
@@ -165,7 +170,7 @@ namespace BL
             // 2. StationOfLine לאובייקט של LineStation + Station נמיר את האובייקט של 
 
             lineBO.StationsList = lineStations.Select(ls => CreateStationOfLine(ls));
-                                 
+
 
             // 3. של הקו LineTrip-נמצא את כל ה
             var lineTrip = dl.GetAllLineTripBy(lt => lt.LineId == lineDO.LineId);
@@ -178,7 +183,7 @@ namespace BL
 
         private StationOfLine CreateStationOfLine(DO.LineStation lineStation)
         {
-            
+
             // DO-מביאים את התחנה מה            
             DO.Station station = dl.GetStationById(lineStation.StationId);
 
@@ -209,29 +214,38 @@ namespace BL
             {
                 throw new LineNotFoundException(0, "No Lines found in system", exDO);
             }
+            catch (GeneralException ex)
 
+            {
+
+                throw new GeneralException(MethodBase.GetCurrentMethod().Name, "General Error", ex);
+            }
         }
 
         public Line GetLineById(int lineId)
         {
             try
             {
-                var lineById = dl.GetLineById(lineId);
-
-                if (lineById == null)
-                {
-                    throw new LineNotFoundException(lineId);
-                }
-
-                return LineDoBoAdapter(lineById);
+                Line lineBo = LineDoBoAdapter(dl.GetLineById(lineId));
+                return lineBo;
             }
 
             catch (DO.Exceptions.LineNotFoundException exDO)
             {
                 throw new LineNotFoundException(0, "No Lines found in system", exDO);
             }
+            catch (DO.Exceptions.LineDeletedException exDO)
+            {
+                throw new LineDeletedException(lineId, exDO.Message, exDO);
+            }
+            catch (GeneralException ex)
+
+            {
+
+                throw new GeneralException(MethodBase.GetCurrentMethod().Name, "General Error", ex);
+            }
         }
-        public void AddLine(Line line)
+            public void AddLine(Line line)
         {
             DO.Line lineDO = new DO.Line();
 
@@ -268,7 +282,12 @@ namespace BL
                 {
                     // לא נעשה כלום, כי אם כבר קיים זה לא משנה לנו ונמשיך הלאה
                 }
+                catch (GeneralException ex)
 
+                {
+
+                    throw new GeneralException(MethodBase.GetCurrentMethod().Name, "General Error", ex);
+                }
             }
         }
 
@@ -379,25 +398,36 @@ namespace BL
             {
                 throw new LineNotFoundException(0, "No Stations found in system", exDO);
             }
+            catch (GeneralException ex)
+
+            {
+
+                throw new GeneralException(MethodBase.GetCurrentMethod().Name, "General Error", ex);
+            }
         }
       
         public Station GetStationById(int stationId)
         {
             try
             {
-                var stationById = dl.GetStationById(stationId);
+                Station stationBo  = StationDoBoAdapter(dl.GetStationById(stationId));
 
-                if (stationById == null)
-                {
-                    throw new StationNotFoundException(stationId);
-                }
+                return stationBo;
 
-                return StationDoBoAdapter(stationById);
             }
 
             catch (DO.Exceptions.StationNotFoundException exDO)
             {
                 throw new StationNotFoundException(0, "No Stations found in system", exDO);
+            }
+            catch (DO.Exceptions.StationDeletedException exDO)
+            {
+                throw new StationDeletedException(stationId, exDO.Message, exDO);
+            }
+            catch (GeneralException ex)
+
+            {
+                throw new GeneralException(MethodBase.GetCurrentMethod().Name, "General Error", ex);
             }
         }
        

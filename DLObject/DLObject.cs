@@ -233,10 +233,15 @@ namespace DL
 
             var busToDelete = DataSource.busesList.Find(bus => !bus.IsDeleted && bus.LicenseNumber == licenseNumber);
 
-
             if (busToDelete == null)
             {
                 throw new BusNotFoundException(licenseNumber, $"Cannot delete licenseNumber: {licenseNumber} because it was not found");
+            }
+            var busOnTtipToDelete = GetAllBusOnTripBy(b => b.LicenseNumber == licenseNumber);
+            if (busOnTtipToDelete != null)
+            {
+                var busOnTtipToDeleteList = busOnTtipToDelete.ToList();
+                busOnTtipToDeleteList.ForEach(l => DeleteBusOnTrip(l.LicenseNumber));
             }
 
             busToDelete.IsDeleted = true;
@@ -244,11 +249,17 @@ namespace DL
         }
         public void DeleteBusBy(Predicate<Bus> predicate)
         {
-            int deletedbus = DataSource.busesList.RemoveAll(predicate);
-            if (deletedbus == 0)
+            var allBussesBy = GetAllBussesBy(predicate);
+            if (allBussesBy != null)
+            {
+                var allBussesByList = allBussesBy.ToList();
+                allBussesByList.ForEach(b => DeleteBus(b.LicenseNumber));
+            }
+            else
             {
                 throw new BusNotFoundException(0, $"Cannot delete bus For requested predicate: {predicate}");
             }
+           
         }
 
 
@@ -344,10 +355,15 @@ namespace DL
         }
         public void DeleteBusOnTripBy(Predicate<BusOnTrip> predicate)
         {
-            int deletedBusOnTrip = DataSource.busOnTripsList.RemoveAll(predicate);
-            if (deletedBusOnTrip == 0)
+            var allBusOnTripBy = GetAllBusOnTripBy(predicate);
+            if (allBusOnTripBy != null)
             {
-                throw new BusOnTripNotFoundException(0, $"Cannot delete bus On Trip For requested predicate: {predicate}");
+                var allBusOnTripByList = allBusOnTripBy.ToList();
+                allBusOnTripByList.ForEach(b => DeleteBusOnTrip(b.BusOnTripId));
+            }
+            else
+            {
+                throw new BusOnTripNotFoundException(0, $"Cannot delete bus on trip For requested predicate: {predicate}");
             }
         }
 
@@ -483,10 +499,15 @@ namespace DL
         }
         public void DeleteLineBy(Predicate<Line> predicate)
         {
-            int deletedLine = DataSource.linesList.RemoveAll(predicate);
-            if (deletedLine == 0)
+            var allLineBy = GetAllLineBy(predicate);
+            if (allLineBy != null)
             {
-                throw new LineNotFoundException(0, $"Cannot delete Line For requested predicate: {predicate}");
+                var allLineByList = allLineBy.ToList();
+                allLineByList.ForEach(b => DeleteLine(b.LineId));
+            }
+            else
+            {
+                throw new LineNotFoundException(0, $"Cannot delete line For requested predicate: {predicate}");
             }
         }
 
@@ -585,10 +606,15 @@ namespace DL
         }
         public void DeleteLineStationBy(Predicate<LineStation> predicate)
         {
-            int deletedLineStation = DataSource.lineStationsList.RemoveAll(predicate);
-            if (deletedLineStation == 0)
+            var allLineStationBy = GetAllLineStationBy(predicate);
+            if (allLineStationBy != null)
             {
-                throw new LineStationNotFoundException(0, $"Cannot delete Line Station For requested predicate: {predicate}");
+                var allLineStationByList = allLineStationBy.ToList();
+                allLineStationByList.ForEach(ls => DeleteLineStation(ls.LineStationId));
+            }
+            else
+            {
+                throw new LineStationNotFoundException(0, $"Cannot delete line station For requested predicate: {predicate}");
             }
         }
 
@@ -681,10 +707,15 @@ namespace DL
         }
         public void DeleteLineTripBy (Predicate<LineTrip> predicate)
         {
-            int deletedLineTrip = DataSource.lineTripsList.RemoveAll(predicate);
-            if (deletedLineTrip == 0)
+            var allLineTripBy = GetAllLineTripBy(predicate);
+            if (allLineTripBy != null)
             {
-                throw new LineStationNotFoundException(0, $"Cannot delete Line Trip For requested predicate: {predicate}");
+                var allLineTripByList = allLineTripBy.ToList();
+                allLineTripByList.ForEach(lt => DeleteLineTrip(lt.LineTripId));
+            }
+            else
+            {
+                throw new LineTripNotFoundException(0, $"Cannot delete line trip For requested predicate: {predicate}");
             }
         }
 
@@ -803,10 +834,15 @@ namespace DL
         }
         public void DeleteStationBy(Predicate<Station> predicate)
         {
-            int deletedStation = DataSource.stationsList.RemoveAll(predicate);
-            if (deletedStation == 0)
+            var allStationBy = GetAllStationBy(predicate);
+            if (allStationBy != null)
             {
-                throw new StationNotFoundException(0, $"Cannot delete Station For requested predicate: {predicate}");
+                var allStationByList = allStationBy.ToList();
+                allStationByList.ForEach(s => DeleteStation(s.StationId));
+            }
+            else
+            {
+                throw new StationNotFoundException(0, $"Cannot delete station For requested predicate: {predicate}");
             }
         }
 

@@ -26,7 +26,7 @@ namespace DL
             }
             catch (Exception ex)
             {
-                throw new DO.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
+                throw new DO.Exceptions.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
             }
         }
 
@@ -47,7 +47,7 @@ namespace DL
             }
             catch (Exception ex)
             {
-                throw new DO.XMLFileLoadCreateException(filePath, $"fail to load xml file: {filePath}", ex);
+                throw new DO.Exceptions.XMLFileLoadCreateException(filePath, $"fail to load xml file: {filePath}", ex);
             }
         }
         #endregion
@@ -64,7 +64,7 @@ namespace DL
             }
             catch (Exception ex)
             {
-                throw new DO.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
+                throw new DO.Exceptions.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
             }
         }
         public static List<T> LoadListFromXMLSerializer<T>(string filePath)
@@ -85,7 +85,7 @@ namespace DL
             }
             catch (Exception ex)
             {
-                throw new DO.XMLFileLoadCreateException(filePath, $"fail to load xml file: {filePath}", ex);
+                throw new DO.Exceptions.XMLFileLoadCreateException(filePath, $"fail to load xml file: {filePath}", ex);
             }
         }
         #endregion

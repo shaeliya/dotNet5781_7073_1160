@@ -8,11 +8,12 @@ using System.Xml.Linq;
 using DalApi;
 using DO;
 using DO.Exceptions;
+using DS;
 //using DO;
 
 namespace DL
 {
-    sealed class DLXML : IDal    //internal
+    sealed class DLXML : IDal   //internal
     {
         #region singelton
         static readonly DLXML instance = new DLXML();
@@ -30,7 +31,7 @@ namespace DL
         string linePath = @"LineXml.xml"; //XMLSerializer
         string lineStationPath = @"LineStationXml.xml"; //XMLSerializer
         string lineTripPath = @"LineTripXml.xml"; //XMLSerializer
-
+        string stationPath = @"StationXml.xml"; //XMLSerializer
 
         #endregion
 
@@ -169,7 +170,6 @@ namespace DL
 
         #endregion AdjacentStations 
 
-
         #region Bus
         public IEnumerable<Bus> GetAllBusses()
         {
@@ -276,17 +276,17 @@ namespace DL
         }
         public void DeleteBusBy(Predicate<Bus> predicate)
         {
-            List<Bus> busesList =  GetAllBussesBy(predicate).ToList();
+            List<Bus> busesList = XMLTools.LoadListFromXMLSerializer<Bus>(busPath);
             busesList.ForEach(b => DeleteBus(b.LicenseNumber));
         }
 
 
         #endregion Bus
 
-
         #region BusOnTrip
         public IEnumerable<BusOnTrip> GetAllBusOnTrip()
         {
+            List<BusOnTrip> busOnTripsList = XMLTools.LoadListFromXMLSerializer<BusOnTrip>(busOnTripPath);
             var allBusesOnTrip = busOnTripsList.Where(busOnTrip => !busOnTrip.IsDeleted)
                                                    .Select(busOnTrip => busOnTrip);
             return allBusesOnTrip;
@@ -294,12 +294,14 @@ namespace DL
         }
         public IEnumerable<BusOnTrip> GetAllBusOnTripBy(Predicate<BusOnTrip> predicate)
         {
+            List<BusOnTrip> busOnTripsList = XMLTools.LoadListFromXMLSerializer<BusOnTrip>(busOnTripPath);
             var busOnTripsBy = busOnTripsList.Where(busOnTrip => !busOnTrip.IsDeleted && predicate(busOnTrip))
                                                   .Select(busOnTrip => busOnTrip);
             return busOnTripsBy;
         }
         public BusOnTrip GetBusOnTripById(int busOnTripId)
         {
+            List<BusOnTrip> busOnTripsList = XMLTools.LoadListFromXMLSerializer<BusOnTrip>(busOnTripPath);
             var busOnTripById = busOnTripsList.Where(busOnTrip => busOnTrip.BusOnTripId == busOnTripId)
                                                   .Select(busOnTrip => busOnTrip)
                                                   .FirstOrDefault();
@@ -318,6 +320,7 @@ namespace DL
         }
         public void AddBusOnTrip(BusOnTrip busOnTrip)
         {
+            List<BusOnTrip> busOnTripsList = XMLTools.LoadListFromXMLSerializer<BusOnTrip>(busOnTripPath);
             var busOnTripExist = busOnTripsList.FirstOrDefault(b => b.BusOnTripId == busOnTrip.BusOnTripId);
             if (busOnTripExist != null)
             {
@@ -325,9 +328,11 @@ namespace DL
 
             }
             busOnTripsList.Add(busOnTrip);
+            XMLTools.SaveListToXMLSerializer(busOnTripsList, busOnTripPath);
         }
         public void UpdateBusOnTrip(BusOnTrip busOnTrip)
         {
+            List<BusOnTrip> busOnTripsList = XMLTools.LoadListFromXMLSerializer<BusOnTrip>(busOnTripPath);
             BusOnTrip busOnTripToUpdate = busOnTripsList.Find(b => b.BusOnTripId == busOnTrip.BusOnTripId);
 
             if (busOnTripToUpdate == null)
@@ -342,9 +347,12 @@ namespace DL
 
             busOnTripsList.Remove(busOnTripToUpdate);
             busOnTripsList.Add(busOnTrip);
+            XMLTools.SaveListToXMLSerializer(busOnTripsList, busOnTripPath);
+
         }
         public void UpdateBusOnTrip(BusOnTrip busOnTrip, Action<BusOnTrip> update)
         {
+            List<BusOnTrip> busOnTripsList = XMLTools.LoadListFromXMLSerializer<BusOnTrip>(busOnTripPath);
             BusOnTrip busOnTripToUpdate = busOnTripsList.Find(b => b.BusOnTripId == busOnTrip.BusOnTripId);
 
             if (busOnTripToUpdate == null)
@@ -357,9 +365,12 @@ namespace DL
                 throw new BusOnTripDeletedException(busOnTrip.BusOnTripId, "Cannot update deleted bus on trip");
             }
             update(busOnTripToUpdate);
+            XMLTools.SaveListToXMLSerializer(busOnTripsList, busOnTripPath);
+
         }
         public void DeleteBusOnTrip(int busOnTripId)
         {
+            List<BusOnTrip> busOnTripsList = XMLTools.LoadListFromXMLSerializer<BusOnTrip>(busOnTripPath);
             var busOnTripToDelete = busOnTripsList.Find(bon => !bon.IsDeleted && bon.BusOnTripId == busOnTripId);
 
 
@@ -370,9 +381,12 @@ namespace DL
 
 
             busOnTripToDelete.IsDeleted = true;
+            XMLTools.SaveListToXMLSerializer(busOnTripsList, busOnTripPath);
+
         }
         public void DeleteBusOnTripBy(Predicate<BusOnTrip> predicate)
         {
+            List<BusOnTrip> busOnTripsList = XMLTools.LoadListFromXMLSerializer<BusOnTrip>(busOnTripPath);
             int deletedBusOnTrip = busOnTripsList.RemoveAll(predicate);
             if (deletedBusOnTrip == 0)
             {
@@ -382,10 +396,10 @@ namespace DL
 
         #endregion BusOnTrip
 
-
         #region Line
         public IEnumerable<Line> GetAllLine()
         {
+
             XElement lineRootElem = XMLTools.LoadListFromXMLElement(linePath);
 
             var allLine = from l in lineRootElem.Elements()
@@ -566,10 +580,11 @@ namespace DL
 
         #endregion Line
 
-
         #region LineStation
         public IEnumerable<LineStation> GetAllLineStation()
         {
+            List<LineStation> lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationPath);
+
             var allLineStations = lineStationsList.Where(lineStation => !lineStation.IsDeleted)
                                                            .Select(lineStation => lineStation);
             return allLineStations;
@@ -577,12 +592,16 @@ namespace DL
         }
         public IEnumerable<LineStation> GetAllLineStationBy(Predicate<LineStation> predicate)
         {
+            List<LineStation> lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationPath);
+
             var LineStationBy = lineStationsList.Where(lineStation => !lineStation.IsDeleted && predicate(lineStation))
                                                                  .Select(lineStation => lineStation);
             return LineStationBy;
         }
         public LineStation GetLineStationById(int lineStationId)
         {
+            List<LineStation> lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationPath);
+
             var LineStationById = lineStationsList.Where(lineStation => lineStation.LineStationId == lineStationId)
                                                          .Select(lineStation => lineStation)
                                                          .FirstOrDefault();
@@ -601,6 +620,8 @@ namespace DL
         }
         public void AddLineStation(LineStation lineStation)
         {
+            List<LineStation> lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationPath);
+
             var lineStationExist = lineStationsList.FirstOrDefault(l => l.LineStationId == lineStation.LineStationId);
             if (lineStationExist != null)
             {
@@ -608,10 +629,14 @@ namespace DL
 
             }
             lineStationsList.Add(lineStation);
+            XMLTools.SaveListToXMLSerializer(lineStationsList, lineStationPath);
+
         }
 
         public void UpdateLineStation(LineStation lineStation)
         {
+            List<LineStation> lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationPath);
+
             LineStation lineStationToUpdate = lineStationsList.Find(l => l.LineStationId == lineStation.LineStationId);
 
             if (lineStationToUpdate == null)
@@ -625,12 +650,16 @@ namespace DL
             }
 
             lineStationsList.Remove(lineStationToUpdate);
-            lineStationsList.Add(lineStation);
+            lineStationsList.Add(lineStation); 
+            XMLTools.SaveListToXMLSerializer(lineStationsList, lineStationPath);
+
         }
 
 
         public void UpdateLineStation(LineStation lineStation, Action<LineStation> update)
         {
+            List<LineStation> lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationPath);
+
             LineStation LineStationToUpdate = lineStationsList.Find(l => l.LineStationId == lineStation.LineStationId);
 
             if (LineStationToUpdate == null)
@@ -643,9 +672,12 @@ namespace DL
                 throw new LineStationDeletedException(lineStation.LineStationId, "Cannot update deleted LineStation");
             }
             update(LineStationToUpdate);
+            XMLTools.SaveListToXMLSerializer(lineStationsList, lineStationPath);
+
         }
         public void DeleteLineStation(int lineStationId)
         {
+            List<LineStation> lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationPath);
 
             var lineStationToDelete = lineStationsList.Find(lineStation => !lineStation.IsDeleted &&
                                                                                                      lineStation.LineStationId == lineStationId);
@@ -656,9 +688,13 @@ namespace DL
             }
 
             lineStationToDelete.IsDeleted = true;
+            XMLTools.SaveListToXMLSerializer(lineStationsList, lineStationPath);
+
         }
         public void DeleteLineStationBy(Predicate<LineStation> predicate)
         {
+            List<LineStation> lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationPath);
+
             int deletedLineStation = lineStationsList.RemoveAll(predicate);
             if (deletedLineStation == 0)
             {
@@ -668,22 +704,27 @@ namespace DL
 
         #endregion LineStationStation
 
-
         #region LineTrip
         public IEnumerable<LineTrip> GetAllLineTrip()
         {
+            List<LineTrip> lineTripsList = XMLTools.LoadListFromXMLSerializer<LineTrip>(lineTripPath);
+
             var allLineTrips = lineTripsList.Where(lineTrip => !lineTrip.IsDeleted)
                                                               .Select(lineTrip => lineTrip);
             return allLineTrips;
         }
         public IEnumerable<LineTrip> GetAllLineTripBy(Predicate<LineTrip> predicate)
         {
+            List<LineTrip> lineTripsList = XMLTools.LoadListFromXMLSerializer<LineTrip>(lineTripPath);
+
             var lineTripBy = lineTripsList.Where(lineTrip => !lineTrip.IsDeleted && predicate(lineTrip))
                                                                     .Select(lineTrip => lineTrip);
             return lineTripBy;
         }
         public LineTrip GetLineTripById(int lineTripId)
         {
+            List<LineTrip> lineTripsList = XMLTools.LoadListFromXMLSerializer<LineTrip>(lineTripPath);
+
             var lineTripById = lineTripsList.Where(lineTrip => lineTrip.LineTripId == lineTripId)
                                                             .Select(lineTrip => lineTrip)
                                                             .FirstOrDefault();
@@ -702,6 +743,8 @@ namespace DL
         }
         public void AddLineTrip(LineTrip lineTrip)
         {
+            List<LineTrip> lineTripsList = XMLTools.LoadListFromXMLSerializer<LineTrip>(lineTripPath);
+
             var lineTripExist = lineTripsList.FirstOrDefault(l => l.LineTripId == lineTrip.LineTripId);
             if (lineTripExist != null)
             {
@@ -709,9 +752,13 @@ namespace DL
 
             }
             lineTripsList.Add(lineTrip);
+            XMLTools.SaveListToXMLSerializer(lineTripsList, lineTripPath);
+
         }
         public void UpdateLineTrip(LineTrip lineTrip)
         {
+            List<LineTrip> lineTripsList = XMLTools.LoadListFromXMLSerializer<LineTrip>(lineTripPath);
+
             LineTrip lineTripToUpdate = lineTripsList.Find(l => l.LineTripId == lineTrip.LineTripId);
 
             if (lineTripToUpdate == null)
@@ -726,9 +773,13 @@ namespace DL
 
             lineTripsList.Remove(lineTripToUpdate);
             lineTripsList.Add(lineTrip);
+            XMLTools.SaveListToXMLSerializer(lineTripsList, lineTripPath);
+
         }
         public void UpdateLineTrip(LineTrip lineTrip, Action<LineTrip> update)
         {
+            List<LineTrip> lineTripsList = XMLTools.LoadListFromXMLSerializer<LineTrip>(lineTripPath);
+
             LineTrip lineTripToUpdate = lineTripsList.Find(l => l.LineTripId == lineTrip.LineTripId);
 
             if (lineTripToUpdate == null)
@@ -741,9 +792,13 @@ namespace DL
                 throw new LineTripDeletedException(lineTrip.LineTripId, "Cannot update deleted line Trip");
             }
             update(lineTripToUpdate);
+            XMLTools.SaveListToXMLSerializer(lineTripsList, lineTripPath);
+
         }
         public void DeleteLineTrip(int lineTripId)
         {
+            List<LineTrip> lineTripsList = XMLTools.LoadListFromXMLSerializer<LineTrip>(lineTripPath);
+
             var lineTripToDelete = lineTripsList.Find(lt => !lt.IsDeleted && lt.LineTripId == lineTripId);
 
             if (lineTripToDelete == null)
@@ -752,9 +807,13 @@ namespace DL
             }
 
             lineTripsList.Remove(lineTripToDelete);
+            XMLTools.SaveListToXMLSerializer(lineTripsList, lineTripPath);
+
         }
         public void DeleteLineTripBy(Predicate<LineTrip> predicate)
         {
+            List<LineTrip> lineTripsList = XMLTools.LoadListFromXMLSerializer<LineTrip>(lineTripPath);
+
             int deletedLineTrip = lineTripsList.RemoveAll(predicate);
             if (deletedLineTrip == 0)
             {
@@ -765,22 +824,28 @@ namespace DL
 
         #endregion LineTrip
 
-
         #region Station
         public IEnumerable<Station> GetAllStation()
         {
+
+            List<Station> stationsList = XMLTools.LoadListFromXMLSerializer<Station>(stationPath);
+
             var allstations = stationsList.Where(station => !station.IsDeleted)
                                                                  .Select(station => station);
             return allstations;
         }
         public IEnumerable<Station> GetAllStationBy(Predicate<Station> predicate)
         {
+            List<Station> stationsList = XMLTools.LoadListFromXMLSerializer<Station>(stationPath);
+
             var stationBy = stationsList.Where(station => !station.IsDeleted && predicate(station))
                                                                        .Select(station => station);
             return stationBy;
         }
         public Station GetStationById(int stationId)
         {
+            List<Station> stationsList = XMLTools.LoadListFromXMLSerializer<Station>(stationPath);
+
             var stationById = stationsList.Where(station => station.StationId == stationId)
                                                               .Select(station => station)
                                                               .FirstOrDefault();
@@ -799,6 +864,8 @@ namespace DL
         }
         public void AddStation(Station station)
         {
+            List<Station> stationsList = XMLTools.LoadListFromXMLSerializer<Station>(stationPath);
+
             var stationExist = stationsList.FirstOrDefault(l => l.StationId == station.StationId);
             if (stationExist != null)
             {
@@ -806,9 +873,13 @@ namespace DL
 
             }
             stationsList.Add(station);
+            XMLTools.SaveListToXMLSerializer(stationsList, stationPath);
+
         }
         public void UpdateStation(Station station)
         {
+            List<Station> stationsList = XMLTools.LoadListFromXMLSerializer<Station>(stationPath);
+
             Station stationToUpdate = stationsList.Find(l => l.StationId == station.StationId);
 
             if (stationToUpdate == null)
@@ -823,9 +894,13 @@ namespace DL
 
             stationsList.Remove(stationToUpdate);
             stationsList.Add(station);
+            XMLTools.SaveListToXMLSerializer(stationsList, stationPath);
+
         }
         public void UpdateStation(Station station, Action<Station> update)
         {
+            List<Station> stationsList = XMLTools.LoadListFromXMLSerializer<Station>(stationPath);
+
             Station stationToUpdate = stationsList.Find(l => l.StationId == station.StationId);
 
             if (stationToUpdate == null)
@@ -838,9 +913,13 @@ namespace DL
                 throw new StationDeletedException(station.StationId, "Cannot update deleted station");
             }
             update(stationToUpdate);
+            XMLTools.SaveListToXMLSerializer(stationsList, stationPath);
+
         }
         public void DeleteStation(int stationId)
         {
+            List<Station> stationsList = XMLTools.LoadListFromXMLSerializer<Station>(stationPath);
+
             var stationToDelete = stationsList.Find(sl => !sl.IsDeleted && sl.StationId == stationId);
 
             if (stationToDelete == null)
@@ -856,10 +935,14 @@ namespace DL
             }
 
             stationToDelete.IsDeleted = true;
+            XMLTools.SaveListToXMLSerializer(stationsList, stationPath);
+
 
         }
         public void DeleteAdjacentStationsAndLineStation(LineStation lineStation)
         {
+            List<LineStation> lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationPath);
+
             var nextLineStation = lineStationsList.Find(ls => ls.LineId == lineStation.LineId && ls.LineStationIndex == lineStation.LineStationIndex + 1);
             var prevLineStation = lineStationsList.Find(ls => ls.LineId == lineStation.LineId && ls.LineStationIndex == lineStation.LineStationIndex - 1);
 
@@ -874,9 +957,13 @@ namespace DL
             AddAdjacentStations(adjacentStations);
             DeleteAdjacentStationsBy(ajs => ajs.StationId1 == lineStation.StationId || ajs.StationId2 == lineStation.StationId);
             DeleteLineStation(lineStation.LineStationId);
+            XMLTools.SaveListToXMLSerializer(lineStationsList, lineStationPath);
+
         }
         public void DeleteStationBy(Predicate<Station> predicate)
         {
+            List<Station> stationsList = XMLTools.LoadListFromXMLSerializer<Station>(stationPath);
+
             int deletedStation = stationsList.RemoveAll(predicate);
             if (deletedStation == 0)
             {
@@ -886,7 +973,6 @@ namespace DL
 
 
         #endregion Station
-
 
     }
 }

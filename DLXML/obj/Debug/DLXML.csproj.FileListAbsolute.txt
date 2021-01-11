@@ -1,0 +1,2 @@
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\DLXML\obj\Debug\DLXML.csprojAssemblyReference.cache
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\DLXML\obj\Debug\DLXML.csproj.CoreCompileInputs.cache
