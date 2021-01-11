@@ -526,7 +526,15 @@ namespace DL
         }
         public void UpdateLine(Line line, Action<Line> update)
         {
-            throw new NotImplementedException();
+            XElement lineRootElem = XMLTools.LoadListFromXMLElement(linePath);
+            Line ln = (from l in lineRootElem.Elements()
+                       where int.Parse(l.Element("LineId").Value) == line.LineId
+                       select new Line { LineNumber = int.Parse(l.Element("LineNumber").Value) }).FirstOrDefault();
+            if(ln!= null)
+            {
+                update(ln);
+                UpdateLine(ln);
+            }
         }
         public void DeleteLine(int lineId)
         {
