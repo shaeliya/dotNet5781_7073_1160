@@ -15,26 +15,26 @@ namespace DS
         public static List<LineStation> lineStationsList;
         public static List<LineTrip> lineTripsList;
         public static List<Station> stationsList;
-       
+
         static DataSource()
         {
             InitializeAllLists();
         }
-        static void InitializeAllLists()
+        static public void InitializeAllLists()
         {
-            InitializeBus();         
+            InitializeBus();
             InitializeStationsList();
             InitializeAdjacentStationsList();
             InitializeLineList();
             InitializeLineTripList();
             InitializeBusOnTripList();
             InitializeLineStationList();
-           
+
         }
 
         #region Initialize Bus 
-        
-       
+
+
         private static void InitializeBus()
         {
             busesList = new List<Bus>();
@@ -103,7 +103,7 @@ namespace DS
             bus.TotalTrip = totalTrip;
             bus.FuelRemain = fuelRemain;
             bus.IsDeleted = false;
-            
+
             return bus;
         }
         private static void UpdateStaus(Bus bus)
@@ -168,7 +168,7 @@ namespace DS
 
         #region Initialize Station
 
-           
+
         private static void InitializeStationsList()
         {
             stationsList = new List<Station>();
@@ -184,7 +184,7 @@ namespace DS
         {
             for (int i = 0; i < 10; i++)
             {
-                
+
                 double Latitude = RandomLatitude.NextDouble() * (33.4 - 30.9) + 30.9;
                 double Longitude = RandomLongitude.NextDouble() * (35.6 - 34.2) + 34.2;
                 Station station = new Station();
@@ -194,7 +194,7 @@ namespace DS
                 station.Latitude = Latitude;
                 station.Longitude = Longitude;
                 station.IsDeleted = false;
-              
+
                 stationsList.Add(station);
             }
         }
@@ -203,24 +203,24 @@ namespace DS
 
         #region Initialize AdjacentStations
 
-       
+
         private static void InitializeAdjacentStationsList()
         {
             adjacentStationsList = new List<AdjacentStations>();
-            Random RandomDistance = new Random(DateTime.Now.Millisecond);           
+            Random RandomDistance = new Random(DateTime.Now.Millisecond);
             Random RandomStationId1 = new Random(DateTime.Now.Millisecond);
             Random RandomStationId2 = new Random(DateTime.Now.Millisecond);
 
             for (int i = 0; i < 100; i++)
             {
-                AdjacentStations adjacentStations = new AdjacentStations();              
+                AdjacentStations adjacentStations = new AdjacentStations();
                 double distance = RandomDistance.NextDouble() * (10.5 - 0.5) + 0.5;
-                TimeSpan time = new TimeSpan(0,  i + 2, i + 5);
-                
+                TimeSpan time = new TimeSpan(0, i + 2, i + 5);
+
                 adjacentStations.Distance = distance;
                 adjacentStations.Time = time;
-                adjacentStations.IsDeleted = false;               
-                adjacentStations.AdjacentStationsId =++ Configuration.MaxAdjacentStationsId;
+                adjacentStations.IsDeleted = false;
+                adjacentStations.AdjacentStationsId = ++Configuration.MaxAdjacentStationsId;
                 int stationId1Random = RandomStationId1.Next(1, 50);
                 int stationId2Random = stationId1Random;
                 while (stationId1Random == stationId2Random)
@@ -250,48 +250,47 @@ namespace DS
                 line.Area = (Enums.Areas)area;
                 line.LineId = ++Configuration.MaxLineId;
                 line.IsDeleted = false;
-                linesList.Add(line);               
-
+                linesList.Add(line);
             }
-            
+
         }
 
         #endregion Initialize Line
 
         #region Initialize LineStation 
 
-       
+
         private static void InitializeLineStationList()
         {
             lineStationsList = new List<LineStation>();
             int temp = 0;
             LineStation lineStation = new LineStation();
             for (int i = 0; i < 10; i++)//קווים
-            {             
+            {
                 for (int j = 0; j < 10; j++)//תחנות
-                {                                                          
+                {
                     lineStation.LineStationIndex = i + 1;
                     lineStation.LineStationId = ++Configuration.MaxLineStationId;
                     lineStation.LineId = linesList[i].LineId;
-                    lineStation.StationId = stationsList[j+temp].StationId;
+                    lineStation.StationId = stationsList[j + temp].StationId;
                     lineStation.IsDeleted = false;
-                  
+                    
                     lineStationsList.Add(lineStation);
                 }
-                if (i >= 4 && i < 8) 
+                if (i >= 4 && i < 8)
                 {
                     temp -= 10;
                 }
                 else { temp += 10; }
-               
+
             }
- 
+
         }
         #endregion Initialize LineStation 
 
         #region Initialize BusOnTrip
 
-     
+
         private static void InitializeBusOnTripList()
         {
             busOnTripsList = new List<BusOnTrip>();
@@ -311,15 +310,15 @@ namespace DS
                     actualTakeOff = new TimeSpan(5 + (i / 2), i + 6, i + 7);
                 }
                 int prevStationRandom = RandomPrevStation.Next(1, 50);
-                busOnTrip.PrevStationAt = new TimeSpan(5 + (i / 2), i + 1, i + 4);             
-                busOnTrip.NextStationAt = new TimeSpan(5 + (i / 2), i + 7, i + 9);             
+                busOnTrip.PrevStationAt = new TimeSpan(5 + (i / 2), i + 1, i + 4);
+                busOnTrip.NextStationAt = new TimeSpan(5 + (i / 2), i + 7, i + 9);
                 busOnTrip.PrevStation = prevStationRandom;
                 busOnTrip.LicenseNumber = busesList[i].LicenseNumber;
-                busOnTrip.LineId = linesList[i].LineId;                
+                busOnTrip.LineId = linesList[i].LineId;
                 busOnTrip.ActualTakeOff = actualTakeOff;
                 busOnTrip.BusOnTripId = ++Configuration.MaxBusOnTripId;
                 busOnTrip.IsDeleted = false;
-                
+
                 busOnTrip.LicenseNumber = busesList[i + 10].LicenseNumber;
                 busOnTripsList.Add(busOnTrip);
             }
@@ -346,7 +345,7 @@ namespace DS
                 busOnTrip.ActualTakeOff = actualTakeOff;
                 busOnTrip.BusOnTripId = ++Configuration.MaxBusOnTripId;
                 busOnTrip.IsDeleted = false;
-               
+
                 busOnTrip.LicenseNumber = busesList[i + 10].LicenseNumber;
                 busOnTripsList.Add(busOnTrip);
             }
@@ -359,29 +358,39 @@ namespace DS
         {
             lineTripsList = new List<LineTrip>();
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 10; i++)
             {
-                LineTrip lineTrip = new LineTrip();
-                lineTrip.LineTripId = ++Configuration.MaxLineTripId;
-                lineTrip.LineId = linesList[i].LineId;
-                TimeSpan startAt = new TimeSpan(5 + (i / 2), i + 1, i + 4);
-                lineTrip.StartAt = startAt;
-                TimeSpan frequency = new TimeSpan(i / 2, 0, 0);
-                lineTrip.Frequency = frequency;
-                TimeSpan temp = new TimeSpan(0, 0, 0);
-                if (lineTrip.Frequency > temp)
-                {
-                    TimeSpan finishAt = new TimeSpan(22, i + 58, i + 58);
-                    lineTrip.FinishAt = finishAt;
-                }
-                lineTripsList.Add(lineTrip);
+                createLineTrip(i);
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                createLineTrip(i);
             }
 
         }
 
+        private static void createLineTrip(int i)
+        {
+            LineTrip lineTrip = new LineTrip();
+            lineTrip.LineTripId = ++Configuration.MaxLineTripId;
+            lineTrip.LineId = linesList[i].LineId;
+            TimeSpan startAt = new TimeSpan(5 + (i / 2), i + 1, i + 4);
+            lineTrip.StartAt = startAt;
+            TimeSpan frequency = new TimeSpan(i / 2, 0, 0);
+            lineTrip.Frequency = frequency;
+            TimeSpan temp = new TimeSpan(0, 0, 0);
+            if (lineTrip.Frequency > temp)
+            {
+                TimeSpan finishAt = new TimeSpan(22, i + 58, i + 58);
+                lineTrip.FinishAt = finishAt;
+            }
+            lineTripsList.Add(lineTrip);
+        }
+
         #endregion Initialize LineTrip
 
-      
+
 
     }
 }

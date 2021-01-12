@@ -56,3 +56,5 @@ C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\De
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ActionsOnLineWindow.baml
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ActionsOnStationWindow.baml
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\PL_Transportation_System.csproj.CopyComplete
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\UpdateLineWindow.g.cs
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\UpdateLineWindow.baml

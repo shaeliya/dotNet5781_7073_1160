@@ -10,36 +10,11 @@ namespace BO
     /// <summary>
     /// קו אוטובוס
     /// </summary>
-    public class Line : INotifyPropertyChanged‏
-
+    public class Line 
     {
-        private int lineNumber;
-        private Enums.Areas area;
         public int LineId { get; set; } // קוד הקו
-        public int LineNumber// LineId מספר הקו - לא חד ערכי כי הוא יש גם הלוך וגם חזור ולכן יש
-        {
-            get
-            {
-                return lineNumber;
-            }
-            set
-            {
-                lineNumber = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("LineNumber"));
-            }
-        }
-        public Enums.Areas Area
-        {
-            get
-            {
-                return area;
-            }
-            set
-            {
-                area = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Area"));
-            }
-        }
+        public int LineNumber { get; set; } // LineId מספר הקו - לא חד ערכי כי הוא יש גם הלוך וגם חזור ולכן יש
+        public Enums.Areas Area { get; set; }
         /// <summary>
         /// סימון שהישות נמחקה בכדי שלא נמחק אותה בפועל
         /// </summary>
@@ -49,9 +24,9 @@ namespace BO
 
         public override string ToString()
         {
-            return string.Format("line number: " + lineNumber + "\t Area: " + area);
+            return string.Format("line number: " + LineNumber + "\t Area: " + Area +"\t Is deleted: " +IsDeleted);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+       
     }
 }

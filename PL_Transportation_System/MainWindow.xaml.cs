@@ -31,7 +31,7 @@ namespace PL_Transportation_System
 
         private void Line_Button_Click(object sender, RoutedEventArgs e)
         {
-            ActionsOnLineWindow actionsOnLineWindow = new ActionsOnLineWindow( bl);
+            ActionsOnLineWindow actionsOnLineWindow = new ActionsOnLineWindow( );
 
             actionsOnLineWindow.Show();
         }

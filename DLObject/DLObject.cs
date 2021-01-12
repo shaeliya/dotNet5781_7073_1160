@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace DL
 {
-     sealed class DLObject : IDal
+    sealed class DLObject : IDal
     {
         #region singelton
         static readonly DLObject instance = new DLObject();
@@ -58,7 +58,7 @@ namespace DL
             }
 
             return adjacentStationsById;
-        } 
+        }
         public void AddAdjacentStations(AdjacentStations adjacentStations)
         {
             var adjacentStationsExist = DataSource.adjacentStationsList.FirstOrDefault(a => a.AdjacentStationsId == adjacentStations.AdjacentStationsId);
@@ -113,15 +113,15 @@ namespace DL
                 throw new AdjacentStationsDeletedException(adjacentStations.AdjacentStationsId, "Cannot update deleted adjacent stations");
             }
             update(adjacentStationsToUpdate.Clone());
-        } 
+        }
         public void DeleteAdjacentStations(int adjacentStationsId)
         {
             // לא ניתן למשתמש למחוק זוג תחנות עוקבות
             // מחיקת זוג תחנות תעשה רק במקרה של מחיקת תחנה
             // לכן אין צורך לטפל במחיקת קשרים שיש לישות 
 
-            var adjacentStationsToDelete =  DataSource.adjacentStationsList.Find(adjacentStations => !adjacentStations.IsDeleted &&
-                                                                                                      adjacentStations.AdjacentStationsId == adjacentStationsId);
+            var adjacentStationsToDelete = DataSource.adjacentStationsList.Find(adjacentStations => !adjacentStations.IsDeleted &&
+                                                                                                     adjacentStations.AdjacentStationsId == adjacentStationsId);
 
             if (adjacentStationsToDelete == null)
             {
@@ -153,11 +153,11 @@ namespace DL
 
         #region Bus
         public IEnumerable<Bus> GetAllBusses()
-        {            
-            var allBuses = DataSource.busesList.Where(bus=>!bus.IsDeleted)
+        {
+            var allBuses = DataSource.busesList.Where(bus => !bus.IsDeleted)
                                                .Select(bus => bus.Clone());
             return allBuses;
-        
+
         }
         public IEnumerable<Bus> GetAllBussesBy(Predicate<Bus> predicate)
         {
@@ -226,7 +226,7 @@ namespace DL
                 throw new BusDeletedException(bus.LicenseNumber, "Cannot update deleted bus");
             }
             update(busToUpdate.Clone());
-        } 
+        }
         public void DeleteBus(int licenseNumber)
         {
             // פעולת המחיקה לא באמת מוחקת אלא מעדכנת את האוטובוס
@@ -259,7 +259,7 @@ namespace DL
             {
                 throw new BusNotFoundException(0, $"Cannot delete bus For requested predicate: {predicate}");
             }
-           
+
         }
 
 
@@ -339,7 +339,7 @@ namespace DL
                 throw new BusOnTripDeletedException(busOnTrip.BusOnTripId, "Cannot update deleted bus on trip");
             }
             update(busOnTripToUpdate.Clone());
-        } 
+        }
         public void DeleteBusOnTrip(int busOnTripId)
         {
             var busOnTripToDelete = DataSource.busOnTripsList.Find(bon => !bon.IsDeleted && bon.BusOnTripId == busOnTripId);
@@ -373,8 +373,8 @@ namespace DL
         #region Line
         public IEnumerable<Line> GetAllLine()
         {
-            var allLine = DataSource.linesList.Where(line => !line.IsDeleted)
-                                                       .Select(line => line.Clone());
+            var allLine = DataSource.linesList.Select(line => line.Clone());
+
 
             if (allLine == null)
             {
@@ -455,7 +455,7 @@ namespace DL
                 throw new LineDeletedException(line.LineId, "Cannot update deleted line");
             }
             update(lineToUpdate.Clone());
-        } 
+        }
         public void DeleteLine(int lineId)
         {
             var lineToDelete = DataSource.linesList.Find(l => !l.IsDeleted && l.LineId == lineId);
@@ -557,7 +557,7 @@ namespace DL
             }
             DataSource.lineStationsList.Add(lineStation.Clone());
         }
-     
+
         public void UpdateLineStation(LineStation lineStation)
         {
             LineStation lineStationToUpdate = DataSource.lineStationsList.Find(l => l.LineStationId == lineStation.LineStationId);
@@ -576,7 +576,7 @@ namespace DL
             DataSource.lineStationsList.Add(lineStation.Clone());
         }
 
-      
+
         public void UpdateLineStation(LineStation lineStation, Action<LineStation> update)
         {
             LineStation LineStationToUpdate = DataSource.lineStationsList.Find(l => l.LineStationId == lineStation.LineStationId);
@@ -592,7 +592,8 @@ namespace DL
             }
             update(LineStationToUpdate.Clone());
         }
-        public void DeleteLineStation(int lineStationId){
+        public void DeleteLineStation(int lineStationId)
+        {
 
             var lineStationToDelete = DataSource.lineStationsList.Find(lineStation => !lineStation.IsDeleted &&
                                                                                                      lineStation.LineStationId == lineStationId);
@@ -705,7 +706,7 @@ namespace DL
 
             DataSource.lineTripsList.Remove(lineTripToDelete);
         }
-        public void DeleteLineTripBy (Predicate<LineTrip> predicate)
+        public void DeleteLineTripBy(Predicate<LineTrip> predicate)
         {
             var allLineTripBy = GetAllLineTripBy(predicate);
             if (allLineTripBy != null)
@@ -780,7 +781,7 @@ namespace DL
 
             DataSource.stationsList.Remove(stationToUpdate);
             DataSource.stationsList.Add(station.Clone());
-        }        
+        }
         public void UpdateStation(Station station, Action<Station> update)
         {
             Station stationToUpdate = DataSource.stationsList.Find(l => l.StationId == station.StationId);

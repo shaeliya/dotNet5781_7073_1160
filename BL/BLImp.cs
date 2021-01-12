@@ -391,7 +391,8 @@ namespace BL
             try
             {
                 var allStation = dl.GetAllStation();
-                var allStationDo = allStation.Select(s => StationDoBoAdapter(s)).ToList();
+                var allStationDo = allStation.Where(station => !station.IsDeleted)
+                                                     .Select(s => StationDoBoAdapter(s)).ToList();
                 return allStationDo;
             }
             catch (DO.Exceptions.StationNotFoundException exDO)
