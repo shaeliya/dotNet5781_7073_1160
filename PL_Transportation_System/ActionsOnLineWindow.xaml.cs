@@ -14,7 +14,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace PL_Transportation_System
 {
     /// <summary>
@@ -23,7 +22,6 @@ namespace PL_Transportation_System
     public partial class ActionsOnLineWindow : Window
     {
         IBL bl = new BLImp();
-        BO.Line ln;
         public ActionsOnLineWindow()
         {
 
@@ -38,32 +36,7 @@ namespace PL_Transportation_System
             lvLine.DataContext =new ObservableCollection<BO.Line>( bl.GetAllLine());
         }
 
-        public class line : DependencyObject
-        {
-            public int lineNumber
-            {
-                get { return (int)GetValue(lineNumberProperty); }
-                set { SetValue(lineNumberProperty, value); }
-            }
-
-            // Using a DependencyProperty as the backing store for lineNumber.  This enables animation, styling, binding, etc...
-            public static readonly DependencyProperty lineNumberProperty =
-                DependencyProperty.Register("lineNumber", typeof(int), typeof(Line), new PropertyMetadata(0));
-
-
-            public Enum Area
-            {
-                get { return (Enum)GetValue(AreaProperty); }
-                set { SetValue(AreaProperty, value); }
-            }
-
-            // Using a DependencyProperty as the backing store for Area.  This enables animation, styling, binding, etc...
-            public static readonly DependencyProperty AreaProperty =
-                DependencyProperty.Register("Area", typeof(Enum), typeof(line), new PropertyMetadata(0));
-
-
-        }
-
+      
 
         private void Open_Update_Window_Button_Click(object sender, RoutedEventArgs e)
         {

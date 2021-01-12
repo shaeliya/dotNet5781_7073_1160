@@ -8,11 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-// לעושת מחיקה של 
-// bus
-// bus on trip
-// לבדוק שאין עוד מה למחוק
-// לבדוק שאין REMOVE 
 
 namespace DL
 {
@@ -375,7 +370,6 @@ namespace DL
         {
             var allLine = DataSource.linesList.Select(line => line.Clone());
 
-
             if (allLine == null)
             {
                 throw new LineNotFoundException(0, $"No Lines found in system");
@@ -460,7 +454,6 @@ namespace DL
         {
             var lineToDelete = DataSource.linesList.Find(l => !l.IsDeleted && l.LineId == lineId);
 
-
             if (lineToDelete == null)
             {
                 throw new LineNotFoundException(lineId, $"Cannot delete line id : {lineId} because it was not found");
@@ -490,13 +483,11 @@ namespace DL
             lineToDelete.IsDeleted = true;
         }
 
-        private void DeleteLineStationLineTripAndBusOnTrip(LineStation lineStation)
-        {
-            DeleteLineStation(lineStation.LineStationId);
+        //private void DeleteLineStationLineTripAndBusOnTrip(LineStation lineStation)
+        //{
+        //    DeleteLineStation(lineStation.LineStationId);
 
-
-
-        }
+        //}
         public void DeleteLineBy(Predicate<Line> predicate)
         {
             var allLineBy = GetAllLineBy(predicate);
@@ -703,8 +694,8 @@ namespace DL
             {
                 throw new LineTripNotFoundException(lineTripId, $"Cannot delete line Trip id: {lineTripId} because it was not found");
             }
-
-            DataSource.lineTripsList.Remove(lineTripToDelete);
+            lineTripToDelete.IsDeleted = true;
+            //DataSource.lineTripsList.Remove(lineTripToDelete);
         }
         public void DeleteLineTripBy(Predicate<LineTrip> predicate)
         {
