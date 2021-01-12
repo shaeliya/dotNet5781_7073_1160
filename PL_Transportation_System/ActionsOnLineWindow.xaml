@@ -14,6 +14,7 @@
                         <GridViewColumn/>
                     </GridView>
                 </ListView.View>
+                <Button Content="Button" Width="75"/>
             </ListView>
         </Grid>
 
