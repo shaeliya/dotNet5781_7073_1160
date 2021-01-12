@@ -19,3 +19,7 @@ C:\Users\אורית\source\repos\dotNet5781_7073_1160\DLObject\obj\Debug\DLObjec
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\DLObject\obj\Debug\DLObject.csproj.CopyComplete
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\DLObject\obj\Debug\DLObject.dll
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\DLObject\obj\Debug\DLObject.pdb
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\bin\DLObject.dll.config
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\bin\DLObject.dll
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\bin\DLObject.pdb
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLObject\obj\Debug\DLObject.csproj.CopyComplete

@@ -229,28 +229,31 @@ namespace DS
                 }
                 adjacentStations.StationId1 = stationId1Random;
                 adjacentStations.StationId2 = stationId2Random;
-
+                adjacentStationsList.Add(adjacentStations);
             }
         }
 
         #endregion Initialize AdjacentStations
-       
+
         #region Initialize Line
-       
-        
+
+
         private static void InitializeLineList()
-    {
+        {
             linesList = new List<Line>();
             Random RandomArea = new Random(DateTime.Now.Millisecond);
             for (int i = 1; i < 11; i++)
             {
-                int area = RandomArea.Next(0, 8);
                 Line line = new Line();
+                int area = RandomArea.Next(0, 8);
                 line.LineNumber = i;
-                line.Area = (Enums.Areas) area;
+                line.Area = (Enums.Areas)area;
                 line.LineId = ++Configuration.MaxLineId;
-                line.IsDeleted = false;                       
+                line.IsDeleted = false;
+                linesList.Add(line);               
+
             }
+            
         }
 
         #endregion Initialize Line

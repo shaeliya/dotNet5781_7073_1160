@@ -10,7 +10,7 @@ namespace BO
     /// <summary>
     /// אוטובוס
     /// </summary>
-    public class Bus : INotifyPropertyChanged
+    public class Bus /*: INotifyPropertyChanged*/
     {
         public int LicenseNumber { get; set; }
         public DateTime FromDate { get; set; }

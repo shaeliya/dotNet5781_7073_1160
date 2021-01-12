@@ -1,2 +1,10 @@
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\DLXML\obj\Debug\DLXML.csprojAssemblyReference.cache
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\DLXML\obj\Debug\DLXML.csproj.CoreCompileInputs.cache
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\bin\DLXML.dll.config
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\bin\DLXML.dll
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\bin\DLXML.pdb
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLXML\obj\Debug\DLXML.csprojAssemblyReference.cache
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLXML\obj\Debug\DLXML.csproj.CoreCompileInputs.cache
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLXML\obj\Debug\DLXML.csproj.CopyComplete
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLXML\obj\Debug\DLXML.dll
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLXML\obj\Debug\DLXML.pdb
