@@ -92,65 +92,65 @@ namespace BL
         #endregion Bus
 
 
-        #region BusOnTrip
-        public IEnumerable<BusOnTrip> GetAllBusOnTrip()
-        {
-            var allBusesOnTrip = DataSource.busOnTripsList.Where(busOnTrip => !busOnTrip.IsDeleted)
-                                                   .Select(busOnTrip => busOnTrip.Clone());
-            return allBusesOnTrip;
+        //#region BusOnTrip
+        //public IEnumerable<BusOnTrip> GetAllBusOnTrip()
+        //{
+        //    var allBusesOnTrip = DataSource.busOnTripsList.Where(busOnTrip => !busOnTrip.IsDeleted)
+        //                                           .Select(busOnTrip => busOnTrip.Clone());
+        //    return allBusesOnTrip;
 
-        }
-        public BusOnTrip GetBusOnTripById(int busOnTripId)
-        {
-            var busOnTripById = DataSource.busOnTripsList.Where(busOnTrip => busOnTrip.BusOnTripId == busOnTripId)
-                                                  .Select(busOnTrip => busOnTrip.Clone())
-                                                  .FirstOrDefault();
+        //}
+        //public BusOnTrip GetBusOnTripById(int busOnTripId)
+        //{
+        //    var busOnTripById = DataSource.busOnTripsList.Where(busOnTrip => busOnTrip.BusOnTripId == busOnTripId)
+        //                                          .Select(busOnTrip => busOnTrip.Clone())
+        //                                          .FirstOrDefault();
 
-            if (busOnTripById == null)
-            {
-                throw new BusOnTripNotFoundException(busOnTripId);
-            }
+        //    if (busOnTripById == null)
+        //    {
+        //        throw new BusOnTripNotFoundException(busOnTripId);
+        //    }
 
-            if (busOnTripById.IsDeleted)
-            {
-                throw new BusOnTripDeletedException(busOnTripId);
-            }
+        //    if (busOnTripById.IsDeleted)
+        //    {
+        //        throw new BusOnTripDeletedException(busOnTripId);
+        //    }
 
-            return busOnTripById;
-        }
-        public void AddBusOnTrip(BusOnTrip busOnTrip)
-        {
-            var busOnTripExist = DataSource.busOnTripsList.FirstOrDefault(b => b.BusOnTripId == busOnTrip.BusOnTripId);
-            if (busOnTripExist != null)
-            {
-                throw new BusOnTripAlreadyExistsException(busOnTrip.BusOnTripId);
+        //    return busOnTripById;
+        //}
+        //public void AddBusOnTrip(BusOnTrip busOnTrip)
+        //{
+        //    var busOnTripExist = DataSource.busOnTripsList.FirstOrDefault(b => b.BusOnTripId == busOnTrip.BusOnTripId);
+        //    if (busOnTripExist != null)
+        //    {
+        //        throw new BusOnTripAlreadyExistsException(busOnTrip.BusOnTripId);
 
-            }
-            DataSource.busOnTripsList.Add(busOnTrip.Clone());
-        }
-        public void UpdateBusOnTrip(BusOnTrip busOnTrip)
-        {
-            BusOnTrip busOnTripToUpdate = DataSource.busOnTripsList.Find(b => b.BusOnTripId == busOnTrip.BusOnTripId);
+        //    }
+        //    DataSource.busOnTripsList.Add(busOnTrip.Clone());
+        //}
+        //public void UpdateBusOnTrip(BusOnTrip busOnTrip)
+        //{
+        //    BusOnTrip busOnTripToUpdate = DataSource.busOnTripsList.Find(b => b.BusOnTripId == busOnTrip.BusOnTripId);
 
-            if (busOnTripToUpdate == null)
-            {
-                throw new BusOnTripNotFoundException(busOnTrip.BusOnTripId);
-            }
+        //    if (busOnTripToUpdate == null)
+        //    {
+        //        throw new BusOnTripNotFoundException(busOnTrip.BusOnTripId);
+        //    }
 
-            if (busOnTripToUpdate.IsDeleted)
-            {
-                throw new BusOnTripDeletedException(busOnTrip.BusOnTripId, "Cannot update deleted bus On Trip");
-            }
+        //    if (busOnTripToUpdate.IsDeleted)
+        //    {
+        //        throw new BusOnTripDeletedException(busOnTrip.BusOnTripId, "Cannot update deleted bus On Trip");
+        //    }
 
-            DataSource.busOnTripsList.Remove(busOnTripToUpdate);
-            DataSource.busOnTripsList.Add(busOnTrip.Clone());
-        }
-        public void DeleteBusOnTrip(int id)
-        {
-            dl.DeleteBusOnTrip(id);
-        }
+        //    DataSource.busOnTripsList.Remove(busOnTripToUpdate);
+        //    DataSource.busOnTripsList.Add(busOnTrip.Clone());
+        //}
+        //public void DeleteBusOnTrip(int id)
+        //{
+        //    dl.DeleteBusOnTrip(id);
+        //}
 
-        #endregion BusOnTrip
+        //#endregion BusOnTrip
 
 
         #region Line

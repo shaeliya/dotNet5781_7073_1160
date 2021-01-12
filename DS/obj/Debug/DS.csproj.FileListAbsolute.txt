@@ -15,3 +15,11 @@ C:\Users\shalh\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.csproj.CoreComp
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.csproj.CopyComplete
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.dll
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.pdb
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\bin\DS.dll.config
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\bin\DS.dll
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\bin\DS.pdb
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.csprojAssemblyReference.cache
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.csproj.CoreCompileInputs.cache
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.csproj.CopyComplete
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.dll
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.pdb

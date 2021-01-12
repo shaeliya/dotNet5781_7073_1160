@@ -7,3 +7,7 @@ C:\Users\97252\source\repos\dotNet5781_7073_1160\BL\obj\Debug\BL.pdb
 C:\Users\97252\source\repos\dotNet5781_7073_1160\bin\BL.dll.config
 C:\Users\97252\source\repos\dotNet5781_7073_1160\bin\BL.dll
 C:\Users\97252\source\repos\dotNet5781_7073_1160\BL\obj\Debug\BL.dll
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\BL\obj\Debug\BL.csprojAssemblyReference.cache
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\BL\obj\Debug\BL.dll
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\BL\obj\Debug\BL.pdb

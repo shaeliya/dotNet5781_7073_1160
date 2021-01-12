@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid HorizontalAlignment="Left" Height="438" Margin="0,-18,-0.4,0" VerticalAlignment="Top" Width="794">
+            <Button Content="Line" HorizontalAlignment="Left" Margin="126,206,0,0" VerticalAlignment="Top" Width="75" Click="Line_Button_Click"/>
+            <Button Content="Bus" HorizontalAlignment="Left" Margin="364,206,0,0" VerticalAlignment="Top" Width="75" Click="Bus_Button_Click"/>
+            <Button Content="Station" HorizontalAlignment="Left" Margin="649,210,0,0" VerticalAlignment="Top" Width="75" Click="Station_Button_Click"/>
+        </Grid>
+
     </Grid>
 </Window>

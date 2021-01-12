@@ -24,7 +24,6 @@ public partial class MainWindow : Window
             cbBusLines.ItemsSource = busLines;
             cbBusLines.DisplayMemberPath = " BusLineNumber ";
             cbBusLines.SelectedIndex = 0;
-           
         }
         private void cbBusLines_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {        

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace BO
     /// <summary>
     /// אוטובוס
     /// </summary>
-    public class Bus
+    public class Bus : INotifyPropertyChanged
     {
         public int LicenseNumber { get; set; }
         public DateTime FromDate { get; set; }
