@@ -269,7 +269,7 @@ namespace DS
             {
                 for (int j = 0; j < 10; j++)//תחנות
                 {
-                    lineStation.LineStationIndex = i + 1;
+                    lineStation.LineStationIndex = j + 1;
                     lineStation.LineStationId = ++Configuration.MaxLineStationId;
                     lineStation.LineId = linesList[i].LineId;
                     lineStation.StationId = stationsList[j + temp].StationId;

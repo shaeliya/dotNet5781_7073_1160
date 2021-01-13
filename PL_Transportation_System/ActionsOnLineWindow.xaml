@@ -15,7 +15,7 @@
                         <GridViewColumn Header="Update">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="Update" Margin="0,0,20,0" Width="80" Click="Open_Update_Window_Button_Click"  Background="#FF2DCD3B" />
+                                    <Button Content="Update" Margin="0,0,20,0" DataContext="{Binding}" Width="80" Click="Open_Update_Window_Button_Click"  Background="#FF2DCD3B" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn >

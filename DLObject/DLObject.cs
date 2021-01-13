@@ -431,7 +431,6 @@ namespace DL
             {
                 throw new LineDeletedException(line.LineId, "Cannot update deleted line");
             }
-
             DataSource.linesList.Remove(lineToUpdate);
             DataSource.linesList.Add(line.Clone());
         }

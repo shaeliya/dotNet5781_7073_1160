@@ -32,7 +32,19 @@ namespace PL_Transportation_System.PO
                 DependencyProperty.Register("Area", typeof(Enum), typeof(Line), new PropertyMetadata(0));
 
 
+        public IEnumerable<StationOfLine> StationsList
+        {
+            get { return (IEnumerable<StationOfLine>)GetValue(StationsListProperty); }
+            set { SetValue(StationsListProperty, value); }
         }
+
+        // Using a DependencyProperty as the backing store for StationsList.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StationsListProperty =
+            DependencyProperty.Register("StationsList", typeof(IEnumerable<StationOfLine>), typeof(Line), new PropertyMetadata(0));
+
+
+
+    }
 
     }
 

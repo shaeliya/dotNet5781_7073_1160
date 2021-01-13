@@ -36,13 +36,21 @@ namespace PL_Transportation_System
             lvLine.DataContext =new ObservableCollection<BO.Line>( bl.GetAllLine());
         }
 
-      
-
         private void Open_Update_Window_Button_Click(object sender, RoutedEventArgs e)
         {
-            UpdateLineWindow updateLineWindow = new UpdateLineWindow();
+            Button btn = (Button)sender;
+            if (btn.DataContext is BO.Line)
+            {
+                BO.Line line = (BO.Line)btn.DataContext;
+                UpdateLineWindow updateLineWindow = new UpdateLineWindow(line);
+                //updateLineWindow.SelectedLine = line;
+                updateLineWindow.Show();
 
-            updateLineWindow.Show();
+            }
+
+            //UpdateLineWindow updateLineWindow = new UpdateLineWindow();
+
+            //updateLineWindow.Show();
         }
         private void Open_Delete_Window_Button_Click(object sender, RoutedEventArgs e)
         {

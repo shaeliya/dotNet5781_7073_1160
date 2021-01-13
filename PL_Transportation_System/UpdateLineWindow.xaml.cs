@@ -1,5 +1,8 @@
-﻿using System;
+﻿using BL;
+using BLAPI;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +22,15 @@ namespace PL_Transportation_System
     /// </summary>
     public partial class UpdateLineWindow : Window
     {
-        public UpdateLineWindow()
+        IBL bl = new BLImp();
+        public BO.Line SelectedLine = new BO.Line();
+        public UpdateLineWindow(BO.Line selectedLine)
         {
             InitializeComponent();
+            SelectedLine = selectedLine;
+            lvupln.ItemsSource = new ObservableCollection<BO.StationOfLine>(SelectedLine.StationsList);
+
+
         }
     }
 }
