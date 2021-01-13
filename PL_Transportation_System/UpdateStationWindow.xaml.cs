@@ -34,7 +34,9 @@ namespace PL_Transportation_System
 
         private void Change_address_station_Button_Click(object sender, RoutedEventArgs e)
         {
-           BO.Station station= (((BO.Station)((Button)sender).DataContext).StationId);
+           int station= ((BO.Station)((Button)sender).DataContext).StationId;
+            ChangeStationDetails changeStationDetails = new ChangeStationDetails(station);
+            changeStationDetails.Show();
         }
     }
 }
