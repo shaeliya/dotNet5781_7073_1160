@@ -6,9 +6,23 @@ using System.Text;
 using System.Threading.Tasks;
 namespace DS
 {
+    //מחלקה המגדירה את זהות של ישות תחנות עוקבות
+    class AdjacentStationsComparer : IEqualityComparer<AdjacentStations>
+    {
+        public bool Equals(AdjacentStations x, AdjacentStations y)
+        {
+            return (x.StationId1 == y.StationId1 && x.StationId2 == y.StationId2) ||
+                (x.StationId1 == y.StationId2 && x.StationId2 == y.StationId1);
+        }
+
+        public int GetHashCode(AdjacentStations obj)
+        {
+            return 0;
+        }
+    }
     public static class DataSource
     {
-        public static List<AdjacentStations> adjacentStationsList;
+        public static HashSet<AdjacentStations> adjacentStationsList = new HashSet<AdjacentStations>(new AdjacentStationsComparer());
         public static List<Bus> busesList;
         public static List<BusOnTrip> busOnTripsList;
         public static List<Line> linesList;
@@ -24,11 +38,12 @@ namespace DS
         {
             InitializeBus();
             InitializeStationsList();
-            InitializeAdjacentStationsList();
             InitializeLineList();
+            InitializeLineStationList();
+
+         //   InitializeAdjacentStationsList();
             InitializeLineTripList();
             InitializeBusOnTripList();
-            InitializeLineStationList();
 
         }
 
@@ -206,10 +221,8 @@ namespace DS
 
         private static void InitializeAdjacentStationsList()
         {
-            adjacentStationsList = new List<AdjacentStations>();
             Random RandomDistance = new Random(DateTime.Now.Millisecond);
             Random RandomStationId1 = new Random(DateTime.Now.Millisecond);
-            Random RandomStationId2 = new Random(DateTime.Now.Millisecond);
 
             for (int i = 0; i < 100; i++)
             {
@@ -221,11 +234,11 @@ namespace DS
                 adjacentStations.Time = time;
                 adjacentStations.IsDeleted = false;
                 adjacentStations.AdjacentStationsId = ++Configuration.MaxAdjacentStationsId;
-                int stationId1Random = RandomStationId1.Next(1, 50);
-                int stationId2Random = stationId1Random;
+                int stationId1Random = i;
+                int stationId2Random = RandomStationId1.Next(1, 100);
                 while (stationId1Random == stationId2Random)
                 {
-                    stationId2Random = RandomStationId2.Next(1, 50);
+                    stationId2Random = RandomStationId1.Next(1, 100);
                 }
                 adjacentStations.StationId1 = stationId1Random;
                 adjacentStations.StationId2 = stationId2Random;
@@ -264,17 +277,29 @@ namespace DS
         {
             lineStationsList = new List<LineStation>();
             int temp = 0;
-            LineStation lineStation = new LineStation();
             for (int i = 0; i < 10; i++)//קווים
             {
                 for (int j = 0; j < 10; j++)//תחנות
                 {
+                    LineStation lineStation = new LineStation();
                     lineStation.LineStationIndex = j + 1;
                     lineStation.LineStationId = ++Configuration.MaxLineStationId;
                     lineStation.LineId = linesList[i].LineId;
                     lineStation.StationId = stationsList[j + temp].StationId;
                     lineStation.IsDeleted = false;
-                    
+                    if (lineStationsList.Count > 0 && j > 0)
+                    {
+                        var adj = new AdjacentStations
+                        {
+                            AdjacentStationsId = ++Configuration.MaxAdjacentStationsId,
+                            StationId1 = lineStation.StationId,
+                            StationId2 = lineStationsList.Last().StationId,
+                            Distance = new Random(DateTime.Now.Millisecond).NextDouble() * (10.5 - 0.5) + 0.5,
+                            IsDeleted = false,
+                            Time = new TimeSpan(0, i + 2, i + 5)
+                        };
+                        adjacentStationsList.Add(adj);
+                    }
                     lineStationsList.Add(lineStation);
                 }
                 if (i >= 4 && i < 8)

@@ -189,15 +189,22 @@ namespace BL
 
             StationOfLine sol = (StationOfLine)station.CopyPropertiesToNewAndUnion(typeof(StationOfLine), lineStation);
 
-            var nextLineStation = dl.GetAllLineStationBy(ls => ls.LineId == lineStation.LineId &&
-                                                               ls.LineStationIndex == lineStation.LineStationIndex + 1).FirstOrDefault();
-            var currAndNextStation = dl.GetAllAdjacentStationsBy(ajs => ajs.StationId1 == lineStation.StationId &&
-                                                                        ajs.StationId2 == nextLineStation.StationId ||
-                                                                        ajs.StationId2 == lineStation.StationId &&
-                                                                        ajs.StationId1 == nextLineStation.StationId).FirstOrDefault();
-            sol.TimeToNextStation = currAndNextStation.Time;
-            sol.DistanceToNextStation = currAndNextStation.Distance;
+            var nextLineStation = dl.GetAllLineStationBy(ls => ls.LineId == lineStation.LineId &&ls.LineStationIndex == lineStation.LineStationIndex + 1).FirstOrDefault();
+            if (nextLineStation == null)
+            {
+                sol.TimeToNextStation = TimeSpan.Zero;
+                sol.DistanceToNextStation = 0;
 
+            }
+            else
+            {
+                var currAndNextStation = dl.GetAllAdjacentStationsBy(ajs => (ajs.StationId1 == lineStation.StationId &&
+                                                                            ajs.StationId2 == nextLineStation.StationId) ||
+                                                                            (ajs.StationId2 == lineStation.StationId &&
+                                                                            ajs.StationId1 == nextLineStation.StationId)).FirstOrDefault();
+                sol.TimeToNextStation = currAndNextStation.Time;
+                sol.DistanceToNextStation = currAndNextStation.Distance;
+            }
             return sol;
 
         }

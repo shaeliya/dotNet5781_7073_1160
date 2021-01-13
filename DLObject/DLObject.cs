@@ -79,7 +79,7 @@ namespace DL
         }
         public void UpdateAdjacentStations(AdjacentStations adjacentStations)
         {
-            AdjacentStations adjacentStationsToUpdate = DataSource.adjacentStationsList.Find(a => a.AdjacentStationsId == adjacentStations.AdjacentStationsId);
+            AdjacentStations adjacentStationsToUpdate = DataSource.adjacentStationsList.FirstOrDefault(a => a.AdjacentStationsId == adjacentStations.AdjacentStationsId);
 
             if (adjacentStationsToUpdate == null)
             {
@@ -96,7 +96,7 @@ namespace DL
         }
         public void UpdateAdjacentStations(AdjacentStations adjacentStations, Action<AdjacentStations> update)
         {
-            AdjacentStations adjacentStationsToUpdate = DataSource.adjacentStationsList.Find(a => a.AdjacentStationsId == adjacentStations.AdjacentStationsId);
+            AdjacentStations adjacentStationsToUpdate = DataSource.adjacentStationsList.FirstOrDefault(a => a.AdjacentStationsId == adjacentStations.AdjacentStationsId);
 
             if (adjacentStationsToUpdate == null)
             {
@@ -115,7 +115,7 @@ namespace DL
             // מחיקת זוג תחנות תעשה רק במקרה של מחיקת תחנה
             // לכן אין צורך לטפל במחיקת קשרים שיש לישות 
 
-            var adjacentStationsToDelete = DataSource.adjacentStationsList.Find(adjacentStations => !adjacentStations.IsDeleted &&
+            var adjacentStationsToDelete = DataSource.adjacentStationsList.FirstOrDefault(adjacentStations => !adjacentStations.IsDeleted &&
                                                                                                      adjacentStations.AdjacentStationsId == adjacentStationsId);
 
             if (adjacentStationsToDelete == null)
