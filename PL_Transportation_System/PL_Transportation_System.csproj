@@ -56,9 +56,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="PO\Line.cs" />
+    <Compile Include="PO\Station.cs" />
     <Compile Include="PO\StationOfLine.cs" />
     <Compile Include="UpdateLineWindow.xaml.cs">
       <DependentUpon>UpdateLineWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateStationWindow.xaml.cs">
+      <DependentUpon>UpdateStationWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="ActionsOnbusWindow.xaml">
       <SubType>Designer</SubType>
@@ -94,6 +98,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UpdateLineWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateStationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

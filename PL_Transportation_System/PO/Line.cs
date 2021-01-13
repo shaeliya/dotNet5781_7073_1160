@@ -44,6 +44,18 @@ namespace PL_Transportation_System.PO
 
 
 
+        public bool IsDeleted
+        {
+            get { return (bool)GetValue(IsDeletedProperty); }
+            set { SetValue(IsDeletedProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsDeleted.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsDeletedProperty =
+            DependencyProperty.Register("IsDeleted", typeof(bool), typeof(Line), new PropertyMetadata(0));
+
+
+
     }
 
     }

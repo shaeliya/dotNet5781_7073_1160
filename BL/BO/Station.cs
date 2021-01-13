@@ -22,5 +22,10 @@ namespace BO
         public bool IsDeleted { get; set; }
        
         public IEnumerable<LineOfStation> LinesList { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("Name: " + Name + "\t Adress: " + Adress + "\t Is deleted: " + IsDeleted);
+        }
     }
 }

@@ -19,3 +19,7 @@ C:\Users\shalh\source\repos\dotNet5781_7073_1160\bin\BL.dll.config
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\bin\BL.dll
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\bin\BL.pdb
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\BL\obj\Debug\BL.csproj.CopyComplete
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\bin\BL.dll.config
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\bin\BL.dll
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\bin\BL.pdb
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\BL\obj\Debug\BL.csproj.CopyComplete

@@ -717,14 +717,12 @@ namespace DL
         #region Station
         public IEnumerable<Station> GetAllStation()
         {
-            var allstations = DataSource.stationsList.Where(station => !station.IsDeleted)
-                                                                 .Select(station => station.Clone());
+            var allstations = DataSource.stationsList.Select(station => station.Clone());
             return allstations;
         }
         public IEnumerable<Station> GetAllStationBy(Predicate<Station> predicate)
         {
-            var stationBy = DataSource.stationsList.Where(station => !station.IsDeleted && predicate(station))
-                                                                       .Select(station => station.Clone());
+            var stationBy = DataSource.stationsList.Select(station => station.Clone());
             return stationBy;
         }
         public Station GetStationById(int stationId)

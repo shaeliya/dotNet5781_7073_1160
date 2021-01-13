@@ -28,7 +28,7 @@ namespace PL_Transportation_System
         {
             InitializeComponent();
             SelectedLine = selectedLine;
-            lvupln.ItemsSource = new ObservableCollection<BO.StationOfLine>(SelectedLine.StationsList);
+            lvudateLine.ItemsSource = new ObservableCollection<BO.StationOfLine>(SelectedLine.StationsList);
 
 
         }
