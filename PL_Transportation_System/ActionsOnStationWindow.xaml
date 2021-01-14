@@ -8,7 +8,7 @@
         Title="ActionsOnStationWindow" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="station3.jpg"/>
+            <ImageBrush ImageSource="Sources/station.jpg"/>
         </Grid.Background>
         <ListView x:Name="lvStation" Height="320" Foreground="#FF042271" FontWeight="Bold"  FontFamily="Goudy Old Style" FontSize="15px" ItemsSource="{Binding}" VerticalAlignment="Top" Margin="33,10,28,0" Opacity="0.78">
             <ListView.View>

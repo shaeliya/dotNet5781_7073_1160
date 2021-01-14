@@ -14,7 +14,7 @@
                 <ColumnDefinition Width="14*"/>
             </Grid.ColumnDefinitions>
             <Grid.Background>
-                <ImageBrush ImageSource="BusBackground.jpg"/>
+                <ImageBrush ImageSource="Sources/MainWindowsBackground.jpg"/>
             </Grid.Background>
             <Button Content="Line" HorizontalAlignment="Left" Margin="180,205,0,0" VerticalAlignment="Top" Width="221" Click="Line_Button_Click" Height="91" FontFamily="Goudy Old Style" FontSize="20px" Background="White" Opacity="0.7"/>
             <Button Content="Bus" Margin="180,57,48.6,0" VerticalAlignment="Top" Click="Bus_Button_Click" Height="91" RenderTransformOrigin="0.841,0.484" FontFamily="Goudy Old Style" FontSize="20px" Background="White" Opacity="0.7"/>

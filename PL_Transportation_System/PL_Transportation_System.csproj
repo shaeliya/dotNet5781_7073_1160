@@ -153,34 +153,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="bus.jpg" />
+    <Resource Include="Sources\MainWindowsBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="bus4.jpg" />
+    <Resource Include="Sources\line.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="bus5.jpg" />
+    <Resource Include="Sources\station.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="BusBackground.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="line.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="line1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="station2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="station3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="buswin.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="buswin1.jpg" />
+    <Resource Include="Sources\bus.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

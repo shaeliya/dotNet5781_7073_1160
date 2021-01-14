@@ -7,8 +7,11 @@
         mc:Ignorable="d"
         Title="UpdateStationWindow" Height="450" Width="800">
     <Grid>
-        <ListBox x:Name="lvUpdateStation" HorizontalAlignment="Left" Height="268" Margin="71,29,0,0" VerticalAlignment="Top" Width="637">
-            
+        <Grid.Background>
+            <ImageBrush ImageSource="Sources/station.jpg"/>
+        </Grid.Background>
+        <ListBox x:Name="lvUpdateStation" Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" HorizontalAlignment="Left" Height="268" Margin="50,29,0,0" VerticalAlignment="Top" Width="685">
+
         </ListBox>
         <Button  Content="Change address station" HorizontalAlignment="Left" Margin="180,355,0,0" VerticalAlignment="Top" Width="75" Click="Change_address_station_Button_Click"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="523,355,0,0" VerticalAlignment="Top" Width="75"/>
