@@ -5,24 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL_Transportation_System"
         mc:Ignorable="d"
-        Title="ActionsOnLineWindow" Height="450" Width="800">
-    <Grid>
-        <Grid HorizontalAlignment="Left" Height="420" Margin="0,0,-0.4,0" VerticalAlignment="Top" Width="794">
-            <ListView x:Name="lvLine" HorizontalAlignment="Left"   ItemsSource="{Binding }" Height="331" Margin="93,56,0,0" VerticalAlignment="Top" Width="588">
+        Title="ActionsOnLineWindow" Height="450" Width="705.634">
+    <Grid Margin="0,0,34,0.4">
+        <Grid Height="420" Margin="0,0,-37,-2"  VerticalAlignment="Top">
+            <Grid.Background>
+                <ImageBrush ImageSource="line.jpg"/>
+            </Grid.Background>
+            <ListView x:Name="lvLine" Foreground="#FF042271"  FontFamily="Goudy Old Style" HorizontalAlignment="Left"   ItemsSource="{Binding }" Height="305" VerticalAlignment="Top" Width="606" FontWeight="Bold" Background="White" Opacity="0.8" Margin="40,27,0,0" FontSize="15px">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn/>
-                        <GridViewColumn Header="Update">
+                        <GridViewColumn Header="Update" >
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="Update" Margin="0,0,20,0" DataContext="{Binding}" Width="80" Click="Open_Update_Window_Button_Click"  Background="#FF2DCD3B" />
+                                    <Button Content="Update" Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Margin="0,0,20,0" DataContext="{Binding}" Width="80" Click="Open_Update_Window_Button_Click" Foreground="#FF042271" FontWeight="Bold"   />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn >
                         <GridViewColumn Header="Delete">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button x:Name="bdel" Content="Delete" Margin="0,0,20,0" Width="80" DataContext="{Binding}" Click="Open_Delete_Window_Button_Click"  Background="#FF2DCD3B" />
+                                    <Button x:Name="bdel" Foreground="#FF042271"  Background="White" Opacity="0.7" Content="Delete" Margin="0,0,20,0" Width="80" DataContext="{Binding}"  FontFamily="Goudy Old Style" FontSize="15px" Click="Open_Delete_Window_Button_Click" FontWeight="Bold"  />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn >

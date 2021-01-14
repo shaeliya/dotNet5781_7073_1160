@@ -18,8 +18,7 @@ namespace DO
             South,
             Center,
             Jerusalem,
-            TelAviv,
-            YehudaShomron,
+            TelAviv,           
             Haifa
         }
 

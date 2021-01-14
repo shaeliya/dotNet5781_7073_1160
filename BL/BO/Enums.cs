@@ -18,8 +18,7 @@ namespace BO
             South,
             Center,
             Jerusalem,
-            TelAviv,
-            YehudaShomron,
+            TelAviv,           
             Haifa
         }
 

@@ -7,21 +7,24 @@
         mc:Ignorable="d"
         Title="ActionsOnStationWindow" Height="450" Width="800">
     <Grid>
-        <ListView x:Name="lvStation" HorizontalAlignment="Left" Height="340" ItemsSource="{Binding}" Margin="50,37,0,0" VerticalAlignment="Top" Width="677">
+        <Grid.Background>
+            <ImageBrush ImageSource="station3.jpg"/>
+        </Grid.Background>
+        <ListView x:Name="lvStation" Height="320" Foreground="#FF042271" FontWeight="Bold"  FontFamily="Goudy Old Style" FontSize="15px" ItemsSource="{Binding}" VerticalAlignment="Top" Margin="33,10,28,0" Opacity="0.78">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                     <GridViewColumn Header="Update">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Update" Margin="0,0,20,0" DataContext="{Binding}" Width="80" Click="Open_Update_Window_Button_Click"  Background="#FF2DCD3B" />
+                                <Button Content="Update" Foreground="#FF042271"  Background="White" Opacity="0.7" Margin="0,0,20,0" DataContext="{Binding}" Width="80" Click="Open_Update_Window_Button_Click" FontWeight="Bold"   />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn >
                     <GridViewColumn Header="Delete">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="bdel" Content="Delete" Margin="0,0,20,0" Width="80" DataContext="{Binding}" Click="Open_Delete_Window_Button_Click"  Background="#FF2DCD3B" />
+                                <Button x:Name="bdel" Foreground="#FF042271" Content="Delete" Margin="0,0,20,0" Width="80" DataContext="{Binding}" Click="Open_Delete_Window_Button_Click"  Background="White" Opacity="0.7" FontWeight="Bold"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn >

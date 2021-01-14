@@ -30,7 +30,14 @@ namespace PL_Transportation_System
             SelectedLine = selectedLine;
             DataContext = new ObservableCollection<BO.StationOfLine>(SelectedLine.StationsList);
 
+        }
 
+        private void Add_Line_Station_Button_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext= new ObservableCollection<BO.StationOfLine>(SelectedLine.StationsList);
+            AddLineStation addLineStationWindow = new AddLineStation();
+            //addLineStationWindow.BusList = BusList;
+            addLineStationWindow.Show();
         }
     }
 }

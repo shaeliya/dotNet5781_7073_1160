@@ -34,5 +34,4 @@ C:\Users\אורית\source\repos\dotNet5781_7073_1160\RadialProgressbar\obj\Debu
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\RadialProgressbar\obj\Debug\RadialProgressbar.csproj.CoreCompileInputs.cache
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\RadialProgressbar\obj\Debug\RadialProgressbar.dll
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\RadialProgressbar\obj\Debug\RadialProgressbar.pdb
-C:\Users\shalh\source\repos\dotNet5781_7073_1160\RadialProgressbar\obj\Debug\RadialProgressbar.csprojAssemblyReference.cache
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\RadialProgressbar\obj\Debug\RadialProgressbar.csprojAssemblyReference.cache

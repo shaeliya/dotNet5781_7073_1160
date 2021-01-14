@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddLineStation.xaml.cs">
+      <DependentUpon>AddLineStation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ChangeStationDetails.xaml.cs">
       <DependentUpon>ChangeStationDetails.xaml</DependentUpon>
     </Compile>
@@ -76,6 +79,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ActionsOnStationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddLineStation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -145,6 +152,35 @@
       <Name>BL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="bus.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bus4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bus5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BusBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="line.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="line1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="station2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="station3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="buswin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="buswin1.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

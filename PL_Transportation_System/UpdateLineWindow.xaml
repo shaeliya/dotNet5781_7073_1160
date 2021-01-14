@@ -12,7 +12,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -21,7 +21,7 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
-                    <Label>Name : </Label>
+                    <Label>Name :</Label>
                     <Label Content="{Binding Name}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
@@ -37,12 +37,11 @@
             </Grid>
         </DataTemplate>
     </Window.Resources>
-        <Grid>
-
-        <Button Content="Button" HorizontalAlignment="Left" Margin="223,359,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="463,359,0,0" VerticalAlignment="Top" Width="75"/>
+    <Grid>
+        <Button Content="Add line station" DataContext="{Binding}" HorizontalAlignment="Left" Margin="183,359,0,0" VerticalAlignment="Top" Width="153" Click="Add_Line_Station_Button_Click"/>
+        <Button Content="Change bus details" HorizontalAlignment="Left" Margin="463,359,0,0" VerticalAlignment="Top" Width="156"/>
         <ListView  x:Name="lvudateLine" ItemTemplate="{StaticResource  lineTemplate}"  ItemsSource="{Binding}" HorizontalAlignment="Left" Height="354" Margin="10,0,0,0" VerticalAlignment="Top" Width="774">
-          
+
         </ListView>
 
     </Grid>

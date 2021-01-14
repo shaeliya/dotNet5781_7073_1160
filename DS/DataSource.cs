@@ -189,11 +189,11 @@ namespace DS
             stationsList = new List<Station>();
             Random RandomLongitude = new Random(DateTime.Now.Millisecond);
             Random RandomLatitude = new Random(DateTime.Now.Millisecond);
-            CreateNewStations("HA-CALANIOT", RandomLongitude, RandomLatitude);
-            CreateNewStations("HA-DUVDEVAN", RandomLongitude, RandomLatitude);
-            CreateNewStations("HA-LIMON", RandomLongitude, RandomLatitude);
+            CreateNewStations("HA-CALANIT", RandomLongitude, RandomLatitude);
+            CreateNewStations("HA-NARKISE", RandomLongitude, RandomLatitude);
+            CreateNewStations("HA-SAVIONE", RandomLongitude, RandomLatitude);
             CreateNewStations("HA-CHARZIT", RandomLongitude, RandomLatitude);
-            CreateNewStations("HA-CHAMANIOT", RandomLongitude, RandomLatitude);
+            CreateNewStations("HA-RAKEFET", RandomLongitude, RandomLatitude);
         }
         private static void CreateNewStations(string name, Random RandomLongitude, Random RandomLatitude)
         {
@@ -258,7 +258,7 @@ namespace DS
             for (int i = 1; i < 11; i++)
             {
                 Line line = new Line();
-                int area = RandomArea.Next(0, 8);
+                int area = RandomArea.Next(0, 7);
                 line.LineNumber = i;
                 line.Area = (Enums.Areas)area;
                 line.LineId = ++Configuration.MaxLineId;
