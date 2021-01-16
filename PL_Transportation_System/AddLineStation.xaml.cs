@@ -25,9 +25,20 @@ namespace PL_Transportation_System
         public AddLineStation()
         {
             InitializeComponent();
-
+            DataContext = this;
+            Stations = new ObservableCollection<PO.Station>(bl.GetAllStation().Select(s => s.CopyPropertiesToNew(typeof(PO.Station))).Cast<PO.Station>());
         }
         IBL bl = new BLImp();
+
+        public ObservableCollection<PO.Station> Stations
+        {
+            get { return (ObservableCollection<PO.Station>)GetValue(StationsProperty); }
+            set { SetValue(StationsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for StationsList.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StationsProperty =
+            DependencyProperty.Register("Stations", typeof(ObservableCollection<PO.Station>), typeof(AddLineStation), new FrameworkPropertyMetadata(new ObservableCollection<PO.Station>()));
 
         private void show_Line_stations_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

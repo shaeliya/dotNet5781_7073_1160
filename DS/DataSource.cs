@@ -262,7 +262,7 @@ namespace DS
                 line.LineNumber = i;
                 line.Area = (Enums.Areas)area;
                 line.LineId = ++Configuration.MaxLineId;
-                line.IsDeleted = false;
+                line.IsDeleted = i == 8;
                 linesList.Add(line);
             }
 

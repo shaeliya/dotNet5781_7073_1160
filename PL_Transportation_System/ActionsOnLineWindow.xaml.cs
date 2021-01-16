@@ -22,26 +22,46 @@ namespace PL_Transportation_System
     public partial class ActionsOnLineWindow : Window
     {
         IBL bl = new BLImp();
+
         public ActionsOnLineWindow()
         {
 
             InitializeComponent();
+            DataContext = this;
+            Lines = new ObservableCollection<PO.Line>(bl.GetAllLine().Select(l =>
+            {
+                var newL = (PO.Line)l.CopyPropertiesToNew(typeof(PO.Line));
+                newL.StationsList = l.StationsList.Select(s => s.CopyPropertiesToNew(typeof(PO.StationOfLine))).Cast<PO.StationOfLine>().ToList();
+                newL.IsUpdated = false;
+                return newL;
+            }).Cast<PO.Line>().OrderBy(l => l.LineNumber).ToList());
 
-            lvLine.ItemsSource = new ObservableCollection<BO.Line>(bl.GetAllLine());
             lvLine.DisplayMemberPath = " LineNumber ".ToString();
 
         }
+
+        public ObservableCollection<PO.Line> Lines
+        {
+            get { return (ObservableCollection<PO.Line>)GetValue(LinesProperty); }
+            set { SetValue(LinesProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for StationsList.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty LinesProperty =
+            DependencyProperty.Register("Lines", typeof(ObservableCollection<PO.Line>), typeof(ActionsOnLineWindow), new FrameworkPropertyMetadata(new ObservableCollection<PO.Line>()));
+
+
         void RefreshLinesListView()
         {
-            lvLine.DataContext =new ObservableCollection<BO.Line>( bl.GetAllLine());
+            lvLine.DataContext = new ObservableCollection<BO.Line>(bl.GetAllLine());
         }
 
         private void Open_Update_Window_Button_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-            if (btn.DataContext is BO.Line)
+            if (btn.DataContext is PO.Line)
             {
-                BO.Line line = (BO.Line)btn.DataContext;
+                var line = (PO.Line)btn.DataContext;
                 UpdateLineWindow updateLineWindow = new UpdateLineWindow(line);
                 //updateLineWindow.SelectedLine = line;
                 updateLineWindow.Show();
@@ -55,7 +75,7 @@ namespace PL_Transportation_System
         private void Open_Delete_Window_Button_Click(object sender, RoutedEventArgs e)
         {
             {
-                
+
                 MessageBoxResult res = MessageBox.Show("Are you sure deleting selected line?", "Verification", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (res == MessageBoxResult.No)
                     return;
@@ -67,11 +87,25 @@ namespace PL_Transportation_System
                 catch (BO.Exceptions.LineNotFoundException ex)
                 {
                     MessageBox.Show(ex.ToString(), "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
-                }           
+                }
                 Close();
-                
+
             }
 
+        }
+
+        private void UpdateAllClicked(object sender, RoutedEventArgs e)
+        {
+
+            var linesToUpdate = Lines.Where(l => l.IsUpdated).Select(l => {
+                var newL = (BO.Line)l.CopyPropertiesToNew(typeof(BO.Line));
+                newL.StationsList = l.StationsList.Select(s => s.CopyPropertiesToNew(typeof(BO.StationOfLine))).Cast<BO.StationOfLine>().ToList();
+                return newL;
+            });
+            foreach (var line in linesToUpdate)
+            {
+                bl.UpdateLine(line);
+            }
         }
     }
 }

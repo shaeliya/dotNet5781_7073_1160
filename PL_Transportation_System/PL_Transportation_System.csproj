@@ -61,6 +61,7 @@
     <Compile Include="ChangeStationDetails.xaml.cs">
       <DependentUpon>ChangeStationDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EnumConverter.cs" />
     <Compile Include="PO\Line.cs" />
     <Compile Include="PO\Station.cs" />
     <Compile Include="PO\StationOfLine.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="UpdateStationWindow.xaml.cs">
       <DependentUpon>UpdateStationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\DisplayAttributeBasedObjectDataProvider .cs" />
     <Page Include="ActionsOnbusWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

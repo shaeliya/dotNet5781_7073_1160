@@ -19,6 +19,7 @@
             <Button Content="Line" HorizontalAlignment="Left" Margin="180,205,0,0" VerticalAlignment="Top" Width="221" Click="Line_Button_Click" Height="91" FontFamily="Goudy Old Style" FontSize="20px" Background="White" Opacity="0.7"/>
             <Button Content="Bus" Margin="180,57,48.6,0" VerticalAlignment="Top" Click="Bus_Button_Click" Height="91" RenderTransformOrigin="0.841,0.484" FontFamily="Goudy Old Style" FontSize="20px" Background="White" Opacity="0.7"/>
             <Button Content="Station" Margin="180,350,48.6,0" VerticalAlignment="Top" Height="91" Click="Station_Button_Click" RenderTransformOrigin="0.5,0.5" FontFamily="Goudy Old Style" FontSize="20px" Background="White" Opacity="0.7"/>
+            <Label  Margin="262,15,236.8,628.8" FontSize="50"  FontFamily="Goudy Old Style" FontWeight="Bold">Bus System</Label>
         </Grid>
 
     </Grid>

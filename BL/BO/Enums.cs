@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace BO
 {
+    /// <summary>
+    /// אזורי תחנות
+    /// </summary>
+    public enum Areas
+    {
+        General,
+        North,
+        South,
+        Center,
+        Jerusalem,
+        TelAviv,
+        Haifa
+    }
     public class Enums
    {
-        /// <summary>
-        /// אזורי תחנות
-        /// </summary>
-        public enum Areas
-        {
-            General,
-            North,
-            South,
-            Center,
-            Jerusalem,
-            TelAviv,           
-            Haifa
-        }
-
+       
         /// <summary>
         /// סטטוסים אפשריים לאוטובוס
         /// </summary>

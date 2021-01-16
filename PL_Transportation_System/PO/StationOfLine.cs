@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace PL_Transportation_System.PO
 {
-    class StationOfLine: DependencyObject
+    public class StationOfLine: DependencyObject
     {
 
               
@@ -58,7 +58,7 @@ namespace PL_Transportation_System.PO
 
         // Using a DependencyProperty as the backing store for TimeToNextStation.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TimeToNextStationProperty =
-            DependencyProperty.Register("TimeToNextStation", typeof(TimeSpan), typeof(StationOfLine), new PropertyMetadata(0));
+            DependencyProperty.Register("TimeToNextStation", typeof(TimeSpan), typeof(StationOfLine), new PropertyMetadata(default(TimeSpan)));
 
 
         public bool IsDeleted
@@ -69,7 +69,7 @@ namespace PL_Transportation_System.PO
 
         // Using a DependencyProperty as the backing store for IsDeleted.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsDeletedProperty =
-            DependencyProperty.Register("IsDeleted", typeof(bool), typeof(Station), new PropertyMetadata(0));
+            DependencyProperty.Register("IsDeleted", typeof(bool), typeof(StationOfLine), new PropertyMetadata(false));
 
 
 

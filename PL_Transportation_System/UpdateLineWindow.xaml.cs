@@ -23,18 +23,18 @@ namespace PL_Transportation_System
     public partial class UpdateLineWindow : Window
     {
         IBL bl = new BLImp();
-        public BO.Line SelectedLine = new BO.Line();
-        public UpdateLineWindow(BO.Line selectedLine)
+        public PO.Line SelectedLine = new PO.Line();
+        public UpdateLineWindow(PO.Line selectedLine)
         {
             InitializeComponent();
             SelectedLine = selectedLine;
-            DataContext = new ObservableCollection<BO.StationOfLine>(SelectedLine.StationsList);
+            DataContext = new ObservableCollection<PO.StationOfLine>(SelectedLine.StationsList);
 
         }
 
         private void Add_Line_Station_Button_Click(object sender, RoutedEventArgs e)
         {
-            DataContext= new ObservableCollection<BO.StationOfLine>(SelectedLine.StationsList);
+            DataContext= new ObservableCollection<PO.StationOfLine>(SelectedLine.StationsList);
             AddLineStation addLineStationWindow = new AddLineStation();
             //addLineStationWindow.BusList = BusList;
             addLineStationWindow.Show();

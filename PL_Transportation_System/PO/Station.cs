@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace PL_Transportation_System.PO
 {
-    class Station: DependencyObject
+    public class Station: DependencyObject
     {
         /*            return string.Format("Name: " + Name + "\t Adress: " + Adress + "\t Is deleted: " + IsDeleted);
 */
@@ -44,7 +44,10 @@ namespace PL_Transportation_System.PO
 
         // Using a DependencyProperty as the backing store for IsDeleted.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsDeletedProperty =
-            DependencyProperty.Register("IsDeleted", typeof(bool), typeof(Station), new PropertyMetadata(0));
-
+            DependencyProperty.Register("IsDeleted", typeof(bool), typeof(Station), new PropertyMetadata(false));
+        public override string ToString()
+        {
+            return string.Format("Name: " + Name + "\t Adress: " + Adress + "\t Is deleted: " + IsDeleted);
+        }
     }
 }

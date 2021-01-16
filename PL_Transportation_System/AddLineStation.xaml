@@ -10,7 +10,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="Sources/line.jpg"/>
         </Grid.Background>
-        <ComboBox Name="cbLineStations" HorizontalAlignment="Left" VerticalAlignment="Top" Width="402" Height="45" Margin="10,52,0,0" SelectionChanged="show_Line_stations_ComboBox_SelectionChanged">
+        <ComboBox ItemsSource="{Binding Stations}" Name="cbLineStations" HorizontalAlignment="Left" VerticalAlignment="Top" Width="402" Height="45" Margin="10,52,0,0" SelectionChanged="show_Line_stations_ComboBox_SelectionChanged">
             <ComboBox.Background>
                 <ImageBrush/>
             </ComboBox.Background>

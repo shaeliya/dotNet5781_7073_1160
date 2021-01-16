@@ -70,3 +70,4 @@ C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\De
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\UpdateStationWindow.baml
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddLineStation.g.cs
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddLineStation.baml
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\GeneratedInternalTypeHelper.g.cs

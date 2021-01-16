@@ -8,28 +8,34 @@ using System.Windows;
 
 namespace PL_Transportation_System.PO
 {
-    class Line: DependencyObject
-    {     
-            public int lineNumber
-            {
-                get { return (int)GetValue(lineNumberProperty); }
-                set { SetValue(lineNumberProperty, value); }
-            }
+    public class Line : DependencyObject
+    {
+        public int LineId { get; set; } // קוד הקו
 
-            // Using a DependencyProperty as the backing store for lineNumber.  This enables animation, styling, binding, etc...
-            public static readonly DependencyProperty lineNumberProperty =
-                DependencyProperty.Register("lineNumber", typeof(int), typeof(Line), new PropertyMetadata(0));
+        public int LineNumber
+        {
+            get { return (int)GetValue(lineNumberProperty); }
+            set { SetValue(lineNumberProperty, value); }
+        }
 
+        // Using a DependencyProperty as the backing store for LineNumber.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty lineNumberProperty =
+            DependencyProperty.Register("LineNumber", typeof(int), typeof(Line), new FrameworkPropertyMetadata(0, FrameworkPropertyMetadataOptions.None, new PropertyChangedCallback(OnPropChanged)));
 
-            public Enum Area
-            {
-                get { return (Enum)GetValue(AreaProperty); }
-                set { SetValue(AreaProperty, value); }
-            }
+        private static void OnPropChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ((PO.Line)d).IsUpdated = true;
+        }
 
-            // Using a DependencyProperty as the backing store for Area.  This enables animation, styling, binding, etc...
-            public static readonly DependencyProperty AreaProperty =
-                DependencyProperty.Register("Area", typeof(Enum), typeof(Line), new PropertyMetadata(0));
+        public Areas Area
+        {
+            get { return (Areas)GetValue(AreaProperty); }
+            set { SetValue(AreaProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Area.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty AreaProperty =
+            DependencyProperty.Register("Area", typeof(Areas), typeof(Line), new FrameworkPropertyMetadata(default(Areas), FrameworkPropertyMetadataOptions.None, new PropertyChangedCallback(OnPropChanged)));
 
 
         public IEnumerable<StationOfLine> StationsList
@@ -40,10 +46,10 @@ namespace PL_Transportation_System.PO
 
         // Using a DependencyProperty as the backing store for StationsList.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StationsListProperty =
-            DependencyProperty.Register("StationsList", typeof(IEnumerable<StationOfLine>), typeof(Line), new PropertyMetadata(0));
+            DependencyProperty.Register("StationsList", typeof(IEnumerable<StationOfLine>), typeof(Line), new FrameworkPropertyMetadata(new List<StationOfLine>(), FrameworkPropertyMetadataOptions.None, new PropertyChangedCallback(OnPropChanged)));
 
 
-
+        public bool IsUpdated { get; set; }
         public bool IsDeleted
         {
             get { return (bool)GetValue(IsDeletedProperty); }
@@ -52,11 +58,11 @@ namespace PL_Transportation_System.PO
 
         // Using a DependencyProperty as the backing store for IsDeleted.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsDeletedProperty =
-            DependencyProperty.Register("IsDeleted", typeof(bool), typeof(Line), new PropertyMetadata(0));
+            DependencyProperty.Register("IsDeleted", typeof(bool), typeof(Line), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.None, new PropertyChangedCallback(OnPropChanged)));
 
 
 
     }
 
-    }
+}
 
