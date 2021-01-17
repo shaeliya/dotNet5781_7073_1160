@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("buswin1.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("carmain.png")]
 
 

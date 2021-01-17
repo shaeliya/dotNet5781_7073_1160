@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL_Transportation_System"
         mc:Ignorable="d"
-        Title="AddLineStation" Height="450" Width="800">
+        Title="Add line station" Height="450" Width="800" Icon="Sources/carMain.png">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Sources/line.jpg"/>
@@ -16,9 +16,9 @@
             </ComboBox.Background>
         </ComboBox>
         <Label  FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="What is the index of the station on the route?" HorizontalAlignment="Left" Margin="449,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.302,-0.566" Width="333"/>
-        <TextBox  Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" HorizontalAlignment="Left" Height="23" Margin="541,52,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="167"/>
+        <TextBox  Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" HorizontalAlignment="Left" Height="23" Margin="541,52,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="167"/>
         <Label  FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="What is the distance to the next station?" HorizontalAlignment="Left" Margin="449,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.302,-0.566" Width="333"/>
-        <TextBox  Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="167" Margin="541,171,0,0"/>
+        <TextBox  Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="167" Margin="541,171,0,0"/>
         <Label   FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="Select the desired station" HorizontalAlignment="Left" Margin="130,10,0,0" VerticalAlignment="Top"/>
 
     </Grid>

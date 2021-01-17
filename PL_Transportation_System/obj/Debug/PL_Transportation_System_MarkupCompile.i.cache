@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\
 PL_Transportation_System
 none
 false
 DEBUG;TRACE
-C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\App.xaml
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\App.xaml
 9689601643
 
 201161483094
-14349342549
+14-167646888
 ActionsOnBusWindow.xaml;ActionsOnLineWindow.xaml;ActionsOnStationWindow.xaml;AddLineStation.xaml;ChangeStationDetails.xaml;MainWindow.xaml;UpdateBusWindow.xaml;UpdateLineWindow.xaml;UpdateStationWindow.xaml;
 
 True

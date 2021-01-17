@@ -28,18 +28,18 @@ namespace PL_Transportation_System
         public ActionsOnBusWindow()
         {
             InitializeComponent();
-            DataContext = this;
-            //lvBus.ItemsSource = new ObservableCollection<BO.Bus>(bl.GetAllBusses());
+          //  DataContext = this;
+          //  lvBus.ItemsSource = new ObservableCollection<Bus>(bl.GetAllBusses());
             lvBus.DisplayMemberPath = " LicenseNumber ".ToString();
         }
-        //public ObservableCollection<PO.Bus> Buses
-        //{
-        //    get { return (ObservableCollection<PO.Bus>)GetValue(BusesProperty); }
-        //    set { SetValue(BusesProperty, value); }
-        //}
-        ////Using a DependencyProperty as the backing store for Buses.This enables animation, styling, binding, etc...
-        //public static readonly DependencyProperty BusesProperty =
-        //    DependencyProperty.Register("Buses", typeof(ObservableCollection<PO.Bus>), typeof(ActionsOnBusWindow), new FrameworkPropertyMetadata(new ObservableCollection<PO.Bus>()));
+        public ObservableCollection<Bus> Buses
+        {
+            get { return (ObservableCollection<Bus>)GetValue(BusesProperty); }
+            set { SetValue(BusesProperty, value); }
+        }
+        //Using a DependencyProperty as the backing store for Buses.This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty BusesProperty =
+            DependencyProperty.Register("Buses", typeof(ObservableCollection<Bus>), typeof(ActionsOnBusWindow), new FrameworkPropertyMetadata(new ObservableCollection<Bus>()));
 
 
 

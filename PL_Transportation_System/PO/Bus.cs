@@ -78,30 +78,30 @@ namespace PL_Transportation_System.PO
 
 
 
-    //    public double TotalTrip
-    //    {
-    //        get { return (double)GetValue(TotalTripProperty); }
-    //        set { SetValue(TotalTripProperty, value); }
-    //    }
+        public double TotalTrip
+        {
+            get { return (double)GetValue(TotalTripProperty); }
+            set { SetValue(TotalTripProperty, value); }
+        }
 
-    //    // Using a DependencyProperty as the backing store for TotalTrip.  This enables animation, styling, binding, etc...
-    //    public static readonly DependencyProperty TotalTripProperty =
-    //        DependencyProperty.Register("TotalTrip", typeof(double), typeof(Bus), new PropertyMetadata(0.0));
+        // Using a DependencyProperty as the backing store for TotalTrip.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TotalTripProperty =
+            DependencyProperty.Register("TotalTrip", typeof(double), typeof(Bus), new PropertyMetadata(0.0));
 
 
-    //    public BusStatuses Status
-    //    {
-    //        get { return (BusStatuses)GetValue(StatusProperty); }
-    //        set { SetValue(StatusProperty, value); }
-    //    }
+        //    public BusStatuses Status
+        //    {
+        //        get { return (BusStatuses)GetValue(StatusProperty); }
+        //        set { SetValue(StatusProperty, value); }
+        //    }
 
-    //    // Using a DependencyProperty as the backing store for Status.  This enables animation, styling, binding, etc...
-    //    public static readonly DependencyProperty StatusProperty =
-    //        DependencyProperty.Register("Status", typeof(BusStatuses), typeof(Bus), new FrameworkPropertyMetadata(default(BusStatuses), FrameworkPropertyMetadataOptions.None, new PropertyChangedCallback(OnPropChanged)));
+        //    // Using a DependencyProperty as the backing store for Status.  This enables animation, styling, binding, etc...
+        //    public static readonly DependencyProperty StatusProperty =
+        //        DependencyProperty.Register("Status", typeof(BusStatuses), typeof(Bus), new FrameworkPropertyMetadata(default(BusStatuses), FrameworkPropertyMetadataOptions.None, new PropertyChangedCallback(OnPropChanged)));
 
-    //    private static void OnPropChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
+        //    private static void OnPropChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        //    {
+        //        throw new NotImplementedException();
+        //    }
     }
 }

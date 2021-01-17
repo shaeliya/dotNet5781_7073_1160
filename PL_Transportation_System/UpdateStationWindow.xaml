@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL_Transportation_System"
         mc:Ignorable="d"
-        Title="UpdateStationWindow" Height="450" Width="800">
+        Title="Update station" Height="450" Width="800" Icon="Sources/carMain.png">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Sources/station.jpg"/>

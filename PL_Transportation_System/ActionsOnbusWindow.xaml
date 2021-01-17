@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:PL_Transportation_System"
         mc:Ignorable="d"
         xmlns:sys="clr-namespace:System;assembly=mscorlib" 
-        Title=".ActionsOnBusWindow" Height="450" Width="705.634"
+        Title="Actions on bus" Height="450" Width="705.634"
         xmlns:Bo="clr-namespace:BO;assembly=BL"
-        xmlns:utils="clr-namespace:PL_Transportation_System.Utils">
+        xmlns:utils="clr-namespace:PL_Transportation_System.Utils" Icon="carMain.png">
     <!--<Window.Resources>
         <local:EnumConverter x:Key="EnumToIntConverter" />
         <ObjectDataProvider x:Key="Status" MethodName="GetShortListOfApplicationGestures" ObjectType="{x:Type utils:DisplayAttributeBasedObjectDataProvider}">
@@ -26,13 +26,13 @@
             <Grid.Background>
                 <ImageBrush ImageSource="Sources/Bus.jpg"/>
             </Grid.Background>
-            <ListView ItemsSource="{Binding Bus, Mode=TwoWay}" x:Name="lvBus" Foreground="#FF042271"  FontFamily="Goudy Old Style" HorizontalAlignment="Left" Height="305" VerticalAlignment="Top" Width="606" FontWeight="Bold" Background="White" Opacity="0.8" Margin="40,27,0,0" FontSize="15px">
+            <ListView x:Name="lvBus" ItemsSource="{Binding Buses, Mode=TwoWay}"  Foreground="#FF042271"  FontFamily="Goudy Old Style" HorizontalAlignment="Left" Height="305" VerticalAlignment="Top" Width="606" FontWeight="Bold" Background="White" Opacity="0.8" Margin="40,27,0,0" FontSize="15px">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="License Number"
                             DisplayMemberBinding="{Binding Path=LicenseNumber}" />
-                        <!--<GridViewColumn Header="From Date"
-                            DisplayMemberBinding="{Binding Path=FromDate}" />-->
+                        <GridViewColumn Header="From Date"
+                            DisplayMemberBinding="{Binding Path=FromDate}" />
                         <GridViewColumn Header="Total Trip"
                             DisplayMemberBinding="{Binding Path=TotalTrip}" />
                         <!--<GridViewColumn Header="Fuel Remain"

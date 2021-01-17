@@ -216,37 +216,38 @@ namespace DS
 
         #endregion Initialize Station
 
-        #region Initialize AdjacentStations
+        //#region Initialize AdjacentStations
 
 
-        private static void InitializeAdjacentStationsList()
-        {
-            Random RandomDistance = new Random(DateTime.Now.Millisecond);
-            Random RandomStationId1 = new Random(DateTime.Now.Millisecond);
+        //private static void InitializeAdjacentStationsList()
+        //{
+        //    Random RandomDistance = new Random(DateTime.Now.Millisecond);
+        //    Random RandomStationId1 = new Random(DateTime.Now.Millisecond);
 
-            for (int i = 0; i < 100; i++)
-            {
-                AdjacentStations adjacentStations = new AdjacentStations();
-                double distance = RandomDistance.NextDouble() * (10.5 - 0.5) + 0.5;
-                TimeSpan time = new TimeSpan(0, i + 2, i + 5);
+        //    for (int i = 0; i < 100; i++)
+        //    {
+        //        AdjacentStations adjacentStations = new AdjacentStations();
+        //        double distance = RandomDistance.NextDouble() * (10.5 - 0.5) + 0.5;
+        //        TimeSpan time = new TimeSpan(0,2,5);
 
-                adjacentStations.Distance = distance;
-                adjacentStations.Time = time;
-                adjacentStations.IsDeleted = false;
-                adjacentStations.AdjacentStationsId = ++Configuration.MaxAdjacentStationsId;
-                int stationId1Random = i;
-                int stationId2Random = RandomStationId1.Next(1, 100);
-                while (stationId1Random == stationId2Random)
-                {
-                    stationId2Random = RandomStationId1.Next(1, 100);
-                }
-                adjacentStations.StationId1 = stationId1Random;
-                adjacentStations.StationId2 = stationId2Random;
-                adjacentStationsList.Add(adjacentStations);
-            }
-        }
+        //        adjacentStations.Distance = distance;
+        //        adjacentStations.Time = time;
+        //        adjacentStations.IsDeleted = false;
+        //        adjacentStations.AdjacentStationsId = ++Configuration.MaxAdjacentStationsId;
+        //        int stationId1Random = i;
+        //        int stationId2Random = RandomStationId1.Next(1, 100);
+        //        while (stationId1Random == stationId2Random)
+        //        {
+        //            stationId2Random = RandomStationId1.Next(1, 100);
+        //        }
+        //        adjacentStations.StationId1 = stationId1Random;
+        //        adjacentStations.StationId2 = stationId2Random;
+        //        adjacentStationsList.Add(adjacentStations);
 
-        #endregion Initialize AdjacentStations
+        //    }
+        //}
+
+        //#endregion Initialize AdjacentStations
 
         #region Initialize Line
 
@@ -296,7 +297,7 @@ namespace DS
                             StationId2 = lineStationsList.Last().StationId,
                             Distance = new Random(DateTime.Now.Millisecond).NextDouble() * (10.5 - 0.5) + 0.5,
                             IsDeleted = false,
-                            Time = new TimeSpan(0, i + 2, i + 5)
+                            Time = new TimeSpan(0,i*2-j*3,-5*j)
                         };
                         adjacentStationsList.Add(adj);
                     }

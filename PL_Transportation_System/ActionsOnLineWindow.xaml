@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:PL_Transportation_System"
         mc:Ignorable="d"
         xmlns:sys="clr-namespace:System;assembly=mscorlib" 
-        Title="ActionsOnLineWindow" Height="450" Width="705.634"
+        Title="Actions on line " Height="450" Width="705.634"
         xmlns:Bo="clr-namespace:BO;assembly=BL"
-        xmlns:utils="clr-namespace:PL_Transportation_System.Utils">
+        xmlns:utils="clr-namespace:PL_Transportation_System.Utils" Icon="Sources/carMain.png" ShowInTaskbar="False">
     <Window.Resources>
         <local:EnumConverter x:Key="EnumToIntConverter" />
         <ObjectDataProvider x:Key="Areas" MethodName="GetShortListOfApplicationGestures" ObjectType="{x:Type utils:DisplayAttributeBasedObjectDataProvider}">

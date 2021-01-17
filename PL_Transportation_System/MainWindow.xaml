@@ -5,21 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL_Transportation_System"
         mc:Ignorable="d"
-        Title="MainWindow" Height="636.207" Width="615.517">
+        Title="Bus system" Height="636.207" Width="615.517" Icon="Sources/carMain.png">
     <Grid Margin="12,-33,-11.8,32.8">
-        <Grid HorizontalAlignment="Left" Height="630" Margin="-17,10,0,-35" VerticalAlignment="Top" Width="614">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="422*"/>
-                <ColumnDefinition Width="141*"/>
-                <ColumnDefinition Width="14*"/>
-            </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Left" Height="607" Margin="-17,33,0,-33.4" VerticalAlignment="Top" Width="616">
             <Grid.Background>
                 <ImageBrush ImageSource="Sources/MainWindowsBackground.jpg"/>
             </Grid.Background>
-            <Button Content="Line" HorizontalAlignment="Left" Margin="180,205,0,0" VerticalAlignment="Top" Width="221" Click="Line_Button_Click" Height="91" FontFamily="Goudy Old Style" FontSize="20px" Background="White" Opacity="0.7"/>
-            <Button Content="Bus" Margin="180,57,48.6,0" VerticalAlignment="Top" Click="Bus_Button_Click" Height="91" RenderTransformOrigin="0.841,0.484" FontFamily="Goudy Old Style" FontSize="20px" Background="White" Opacity="0.7"/>
-            <Button Content="Station" Margin="180,350,48.6,0" VerticalAlignment="Top" Height="91" Click="Station_Button_Click" RenderTransformOrigin="0.5,0.5" FontFamily="Goudy Old Style" FontSize="20px" Background="White" Opacity="0.7"/>
-            <Label  Margin="262,15,236.8,628.8" FontSize="50"  FontFamily="Goudy Old Style" FontWeight="Bold">Bus System</Label>
+            <Label Margin="262,15,236.8,628.8" FontSize="50"  FontFamily="Goudy Old Style" FontWeight="Bold">Bus System</Label>
+            <Button Content="Line" HorizontalAlignment="Left" Margin="219,267,0,0" VerticalAlignment="Top" Width="175" Click="Line_Button_Click" Height="87" FontFamily="Goudy Old Style" FontSize="20px" Background="White" Foreground="#FF042271" FontWeight="Bold" Opacity="0.7"/>
+            <Button Content="Bus" Margin="220,147,221,0" VerticalAlignment="Top" Click="Bus_Button_Click" Height="87" Width="175" RenderTransformOrigin="0.841,0.484" FontFamily="Goudy Old Style" FontSize="20px" Background="White" Foreground="#FF042271" FontWeight="Bold" Opacity="0.7"/>
+            <Button Content="Station" Margin="220,386,221,0" VerticalAlignment="Top" Height="87" Width="175" Click="Station_Button_Click" RenderTransformOrigin="0.5,0.5" FontFamily="Goudy Old Style" FontSize="20px" Background="White" Foreground="#FF042271" FontWeight="Bold" Opacity="0.7"/>
+            <Label Margin="72,20,62,533" FontSize="40"  FontFamily="Goudy Old Style" Foreground="#FF042271" FontWeight="Bold">Welcome to our bus system</Label>
+            <Label Content="Choose one of the following options:"  Foreground="#FF042271" FontFamily="Goudy Old Style" FontSize="25" FontWeight="Bold" HorizontalAlignment="Left" Margin="112,88,0,0" VerticalAlignment="Top" Width="387" Grid.ColumnSpan="2"/>
         </Grid>
 
     </Grid>
