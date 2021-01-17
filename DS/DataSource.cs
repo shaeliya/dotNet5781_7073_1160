@@ -290,6 +290,7 @@ namespace DS
                     lineStation.IsDeleted = false;
                     if (lineStationsList.Count > 0 && j > 0)
                     {
+                        TimeSpan timeSpan = new TimeSpan(0, i * 2 - j * 3, -5 * j);
                         var adj = new AdjacentStations
                         {
                             AdjacentStationsId = ++Configuration.MaxAdjacentStationsId,
@@ -297,7 +298,7 @@ namespace DS
                             StationId2 = lineStationsList.Last().StationId,
                             Distance = new Random(DateTime.Now.Millisecond).NextDouble() * (10.5 - 0.5) + 0.5,
                             IsDeleted = false,
-                            Time = new TimeSpan(0,i*2-j*3,-5*j)
+                            Time = timeSpan.Duration()
                         };
                         adjacentStationsList.Add(adj);
                     }

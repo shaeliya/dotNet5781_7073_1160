@@ -74,7 +74,7 @@ namespace DalApi
         void AddLineStation(LineStation lineStation);
         void UpdateLineStation(LineStation lineStation);
         void UpdateLineStation(LineStation lineStation, Action<LineStation> update); //method that knows to update specific fields in Bus
-        void DeleteLineStation(int id);
+        void DeleteLineStation(int id, bool isForcedDelete);
         void DeleteLineStationBy(Predicate<LineStation> predicate);
 
         #endregion LineStation

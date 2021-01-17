@@ -10,9 +10,11 @@ namespace PL_Transportation_System.PO
     public class StationOfLine: DependencyObject
     {
 
-              
-        //public TimeSpan TimeToNextStation
 
+        //public TimeSpan TimeToNextStation
+        public int LineStationId { get; set; } // מספר רץ אוטומטי של רשומה
+
+        public int StationId { get; set; } // קוד התחנה
 
         public string Name
         {

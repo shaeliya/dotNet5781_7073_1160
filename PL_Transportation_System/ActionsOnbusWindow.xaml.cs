@@ -28,9 +28,10 @@ namespace PL_Transportation_System
         public ActionsOnBusWindow()
         {
             InitializeComponent();
-          //  DataContext = this;
-          //  lvBus.ItemsSource = new ObservableCollection<Bus>(bl.GetAllBusses());
-            lvBus.DisplayMemberPath = " LicenseNumber ".ToString();
+            DataContext = this;
+            var buses = bl.GetAllBusses().Select(b => (Bus)b.CopyPropertiesToNew(typeof(Bus)));
+            Buses = new ObservableCollection<Bus>(buses);           
+            //lvBus.DisplayMemberPath = " LicenseNumber ".ToString();
         }
         public ObservableCollection<Bus> Buses
         {

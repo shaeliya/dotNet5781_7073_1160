@@ -11,6 +11,7 @@ namespace BO
     /// </summary>
     public class StationOfLine
     {
+        public int LineStationId { get; set; } // מספר רץ אוטומטי של רשומה
         public int StationId { get; set; } // קוד התחנה
         public string Name { get; set; }
         public int LineStationIndex { get; set; } // סדר התחנה בקו

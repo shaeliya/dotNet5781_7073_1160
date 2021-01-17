@@ -74,6 +74,8 @@ namespace DL
 
             }
             adjacentStations.AdjacentStationsId = ++Configuration.MaxAdjacentStationsId;
+            
+            adjacentStations.Time = adjacentStations.Time.Duration();
 
             DataSource.adjacentStationsList.Add(adjacentStations.Clone());
         }
@@ -462,7 +464,7 @@ namespace DL
             if (lineStationsToDelete != null)
             {
                 var lineStationsToDeleteList = lineStationsToDelete.ToList();
-                lineStationsToDeleteList.ForEach(ls => DeleteLineStation(ls.LineStationId));
+                lineStationsToDeleteList.ForEach(ls => DeleteLineStation(ls.LineStationId, false));
             }
 
             var lineTripToDelete = GetAllLineTripBy(a => a.LineId == lineId);
@@ -582,7 +584,7 @@ namespace DL
             }
             update(LineStationToUpdate.Clone());
         }
-        public void DeleteLineStation(int lineStationId)
+        public void DeleteLineStation(int lineStationId, bool isForcedDelete)
         {
 
             var lineStationToDelete = DataSource.lineStationsList.Find(lineStation => !lineStation.IsDeleted &&
@@ -593,7 +595,15 @@ namespace DL
                 throw new LineStationNotFoundException(lineStationId, $"Cannot delete line Station id: {lineStationId} because it was not found");
             }
 
-            lineStationToDelete.IsDeleted = true;
+            if (isForcedDelete)
+            {
+                DataSource.lineStationsList.Remove(lineStationToDelete);
+            }
+            else
+            {
+                lineStationToDelete.IsDeleted = true;
+
+            }
         }
         public void DeleteLineStationBy(Predicate<LineStation> predicate)
         {
@@ -601,7 +611,7 @@ namespace DL
             if (allLineStationBy != null)
             {
                 var allLineStationByList = allLineStationBy.ToList();
-                allLineStationByList.ForEach(ls => DeleteLineStation(ls.LineStationId));
+                allLineStationByList.ForEach(ls => DeleteLineStation(ls.LineStationId, false));
             }
             else
             {
@@ -809,17 +819,21 @@ namespace DL
             var nextLineStation = DataSource.lineStationsList.Find(ls => ls.LineId == lineStation.LineId && ls.LineStationIndex == lineStation.LineStationIndex + 1);
             var prevLineStation = DataSource.lineStationsList.Find(ls => ls.LineId == lineStation.LineId && ls.LineStationIndex == lineStation.LineStationIndex - 1);
 
-            var currAndNextStation = GetAllAdjacentStationsBy(ajs => ajs.StationId1 == lineStation.StationId && ajs.StationId2 == nextLineStation.StationId || ajs.StationId2 == lineStation.StationId && ajs.StationId1 == nextLineStation.StationId).FirstOrDefault();
-            var currAndPrevStation = GetAllAdjacentStationsBy(ajs => ajs.StationId1 == lineStation.StationId && ajs.StationId2 == prevLineStation.StationId || ajs.StationId2 == lineStation.StationId && ajs.StationId1 == prevLineStation.StationId).FirstOrDefault();
-            AdjacentStations adjacentStations = new AdjacentStations();
-            adjacentStations.StationId1 = prevLineStation.LineStationId;
-            adjacentStations.StationId2 = nextLineStation.LineStationId;
-            adjacentStations.IsDeleted = false;
-            adjacentStations.Time = currAndNextStation.Time + currAndPrevStation.Time;
-            adjacentStations.Distance = currAndNextStation.Distance + currAndPrevStation.Distance;
-            AddAdjacentStations(adjacentStations);
+            // אם זאת תחנה ראשונה או אחרונה אין לי תחנות צמודות להוסיף
+            if (nextLineStation != null && prevLineStation != null)
+            {
+                var currAndNextStation = GetAllAdjacentStationsBy(ajs => ajs.StationId1 == lineStation.StationId && ajs.StationId2 == nextLineStation.StationId || ajs.StationId2 == lineStation.StationId && ajs.StationId1 == nextLineStation.StationId).FirstOrDefault();
+                var currAndPrevStation = GetAllAdjacentStationsBy(ajs => ajs.StationId1 == lineStation.StationId && ajs.StationId2 == prevLineStation.StationId || ajs.StationId2 == lineStation.StationId && ajs.StationId1 == prevLineStation.StationId).FirstOrDefault();
+                AdjacentStations adjacentStations = new AdjacentStations();
+                adjacentStations.StationId1 = prevLineStation.LineStationId;
+                adjacentStations.StationId2 = nextLineStation.LineStationId;
+                adjacentStations.IsDeleted = false;
+                adjacentStations.Time = currAndNextStation.Time + currAndPrevStation.Time;
+                adjacentStations.Distance = currAndNextStation.Distance + currAndPrevStation.Distance;
+                AddAdjacentStations(adjacentStations);
+            }
             DeleteAdjacentStationsBy(ajs => ajs.StationId1 == lineStation.StationId || ajs.StationId2 == lineStation.StationId);
-            DeleteLineStation(lineStation.LineStationId);
+            DeleteLineStation(lineStation.LineStationId, false);
         }
         public void DeleteStationBy(Predicate<Station> predicate)
         {

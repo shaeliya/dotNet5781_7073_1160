@@ -8,7 +8,7 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib" 
         Title="Actions on bus" Height="450" Width="705.634"
         xmlns:Bo="clr-namespace:BO;assembly=BL"
-        xmlns:utils="clr-namespace:PL_Transportation_System.Utils" Icon="carMain.png">
+        xmlns:utils="clr-namespace:PL_Transportation_System.Utils" Icon="Sources/carMain.png">
     <!--<Window.Resources>
         <local:EnumConverter x:Key="EnumToIntConverter" />
         <ObjectDataProvider x:Key="Status" MethodName="GetShortListOfApplicationGestures" ObjectType="{x:Type utils:DisplayAttributeBasedObjectDataProvider}">

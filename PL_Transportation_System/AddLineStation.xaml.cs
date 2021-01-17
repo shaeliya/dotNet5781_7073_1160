@@ -43,11 +43,11 @@ namespace PL_Transportation_System
         private void show_Line_stations_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            ShowLineStation((cbLineStations.SelectedValue as BO.Station).ToString());
+            ShowLineStation((cbLineStations.SelectedValue as PO.Station).ToString());
         }
         private void ShowLineStation(string index)
         {
-          IEnumerable < BO.Station> currentDisplayLineStation = (IEnumerable<BO.Station>)bl.GetAllStation().Select(s => s.IsDeleted == false);
+          IEnumerable <PO.Station> currentDisplayLineStation = (IEnumerable<PO.Station>)bl.GetAllStation().Where(s => s.IsDeleted == false);
            // DataContext = new ObservableCollection<BO.Station>(.StationsList);
 
             //cbLineStations.DataContext = currentDisplayLineStation;

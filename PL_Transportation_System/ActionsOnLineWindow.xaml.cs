@@ -34,9 +34,8 @@ namespace PL_Transportation_System
                 newL.StationsList = l.StationsList.Select(s => s.CopyPropertiesToNew(typeof(PO.StationOfLine))).Cast<PO.StationOfLine>().ToList();
                 newL.IsUpdated = false;
                 return newL;
-            }).Cast<PO.Line>()/*.OrderBy(l => l.LineNumber).ToList()*/);
+            }).Cast<PO.Line>());
 
-            lvLine.DisplayMemberPath = " LineNumber ".ToString();
 
         }
 

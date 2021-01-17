@@ -91,6 +91,7 @@ namespace DL
 
             }
             adjacentStations.AdjacentStationsId = ++Configuration.MaxAdjacentStationsId;
+            adjacentStations.Time = adjacentStations.Time.Duration();
 
             adjacentStationsList.Add(adjacentStations);
             XMLTools.SaveListToXMLSerializer(adjacentStationsList, adjacentStationsPath);
@@ -553,7 +554,7 @@ namespace DL
             if (lineStationsToDelete != null)
             {
                 var lineStationsToDeleteList = lineStationsToDelete.ToList();
-                lineStationsToDeleteList.ForEach(ls => DeleteLineStation(ls.LineStationId));
+                lineStationsToDeleteList.ForEach(ls => DeleteLineStation(ls.LineStationId, false));
             }
 
             var lineTripToDelete = GetAllLineTripBy(a => a.LineId == lineId);
@@ -577,7 +578,7 @@ namespace DL
 
         private void DeleteLineStationLineTripAndBusOnTrip(LineStation lineStation)
         {
-            DeleteLineStation(lineStation.LineStationId);
+            DeleteLineStation(lineStation.LineStationId, false);
 
         }
         public void DeleteLineBy(Predicate<Line> predicate)
@@ -683,7 +684,7 @@ namespace DL
             XMLTools.SaveListToXMLSerializer(lineStationsList, lineStationPath);
 
         }
-        public void DeleteLineStation(int lineStationId)
+        public void DeleteLineStation(int lineStationId, bool isForcedDelete)
         {
             List<LineStation> lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationPath);
 
@@ -694,8 +695,16 @@ namespace DL
             {
                 throw new LineStationNotFoundException(lineStationId, $"Cannot delete line Station id: {lineStationId} because it was not found");
             }
+            if (isForcedDelete)
+            {
 
-            lineStationToDelete.IsDeleted = true;
+                lineStationsList.Remove(lineStationToDelete);
+            }
+            else
+            {
+                lineStationToDelete.IsDeleted = true;
+            }
+
             XMLTools.SaveListToXMLSerializer(lineStationsList, lineStationPath);
 
         }
@@ -964,7 +973,8 @@ namespace DL
             adjacentStations.Distance = currAndNextStation.Distance + currAndPrevStation.Distance;
             AddAdjacentStations(adjacentStations);
             DeleteAdjacentStationsBy(ajs => ajs.StationId1 == lineStation.StationId || ajs.StationId2 == lineStation.StationId);
-            DeleteLineStation(lineStation.LineStationId);
+            DeleteLineStation(lineStation.LineStationId, false);
+            DeleteLineStation(lineStation.LineStationId, false);
             XMLTools.SaveListToXMLSerializer(lineStationsList, lineStationPath);
 
         }

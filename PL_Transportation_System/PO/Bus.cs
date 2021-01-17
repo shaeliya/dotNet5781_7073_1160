@@ -50,7 +50,7 @@ namespace PL_Transportation_System.PO
 
         private static void OnPropChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((PO.Line)d).IsUpdated = true;
+            ((PO.Bus)d).IsUpdated = true;
         }
 
         public bool IsDeleted
@@ -61,7 +61,9 @@ namespace PL_Transportation_System.PO
 
         // Using a DependencyProperty as the backing store for IsDeleted.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsDeletedProperty =
-            DependencyProperty.Register("IsDeleted", typeof(bool), typeof(Bus), new PropertyMetadata(0));
+            DependencyProperty.Register("IsDeleted", typeof(bool), typeof(Bus), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.None, new PropertyChangedCallback(OnPropChanged)));
+
+
 
 
 

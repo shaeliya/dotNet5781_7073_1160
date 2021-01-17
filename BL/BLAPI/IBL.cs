@@ -38,6 +38,8 @@ namespace BLAPI
         void UpdateLineStations(Line line);
         void UpdateLineTrips(Line line);
         void DeleteLine(int line);
+        void MoveLineStationUp(Line line, StationOfLine stationOfLine);
+        void MoveLineStationDown(Line line, StationOfLine stationOfLine);
 
         #endregion Line
 

@@ -64,8 +64,6 @@ namespace PL_Transportation_System
                 {
                     MessageBox.Show(ex.ToString(), "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                Close();
-
             }
 
         }

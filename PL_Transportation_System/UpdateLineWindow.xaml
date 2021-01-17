@@ -20,6 +20,8 @@
             <ListView.View>
 
                 <GridView>
+                    <GridViewColumn Header="Index"
+                            DisplayMemberBinding="{Binding Path=LineStationIndex}" />
                     <GridViewColumn Header="Name"
                             DisplayMemberBinding="{Binding Path=Name}" />
                     <GridViewColumn Header="Time To Next Station"
@@ -37,14 +39,14 @@
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Up"  Width="80"  Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" />
+                                <Button Content="Up"  Width="80"  Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" Click="MoveUp_Click"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Down"  Width="80"  Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271"/>
+                                <Button Content="Down"  Width="80"  Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" Click="MoveDown_Click"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
