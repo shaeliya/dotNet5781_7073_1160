@@ -34,7 +34,7 @@ namespace PL_Transportation_System
                 newL.StationsList = l.StationsList.Select(s => s.CopyPropertiesToNew(typeof(PO.StationOfLine))).Cast<PO.StationOfLine>().ToList();
                 newL.IsUpdated = false;
                 return newL;
-            }).Cast<PO.Line>().OrderBy(l => l.LineNumber).ToList());
+            }).Cast<PO.Line>()/*.OrderBy(l => l.LineNumber).ToList()*/);
 
             lvLine.DisplayMemberPath = " LineNumber ".ToString();
 
@@ -46,7 +46,7 @@ namespace PL_Transportation_System
             set { SetValue(LinesProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for StationsList.  This enables animation, styling, binding, etc...
+        // Using a DependencyProperty as the backing store for lines.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LinesProperty =
             DependencyProperty.Register("Lines", typeof(ObservableCollection<PO.Line>), typeof(ActionsOnLineWindow), new FrameworkPropertyMetadata(new ObservableCollection<PO.Line>()));
 
@@ -72,28 +72,7 @@ namespace PL_Transportation_System
 
             //updateLineWindow.Show();
         }
-        private void Open_Delete_Window_Button_Click(object sender, RoutedEventArgs e)
-        {
-            {
-
-                MessageBoxResult res = MessageBox.Show("Are you sure deleting selected line?", "Verification", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (res == MessageBoxResult.No)
-                    return;
-                try
-                {
-                    bl.DeleteLine(((BO.Line)((Button)sender).DataContext).LineId);
-                    RefreshLinesListView();
-                }
-                catch (BO.Exceptions.LineNotFoundException ex)
-                {
-                    MessageBox.Show(ex.ToString(), "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                Close();
-
-            }
-
-        }
-
+        
         private void UpdateAllClicked(object sender, RoutedEventArgs e)
         {
 

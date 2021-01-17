@@ -42,8 +42,8 @@ namespace PL_Transportation_System
 
         private void show_Line_stations_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           
-                       ShowLineStation((cbLineStations.SelectedValue as BO.Station).ToString());
+
+            ShowLineStation((cbLineStations.SelectedValue as BO.Station).ToString());
         }
         private void ShowLineStation(string index)
         {

@@ -35,6 +35,7 @@ namespace PL_Transportation_System.PO
             DependencyProperty.Register("Adress", typeof(string), typeof(Station), new PropertyMetadata(""));
 
 
+        public bool IsUpdated { get; set; }
 
         public bool IsDeleted
         {

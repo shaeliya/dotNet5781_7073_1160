@@ -15,8 +15,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="17*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Add line station" Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="139,351,0,0" VerticalAlignment="Top" Width="166" Click="Add_Line_Station_Button_Click" Grid.Column="1" Height="49"/>
-        <Button Content="Change bus details" Foreground="#FF042271" FontWeight="Bold"  Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" HorizontalAlignment="Left" Margin="426,351,0,0" VerticalAlignment="Top" Width="156" Grid.Column="1" Height="49"/>
+        <Button Content="Add line station" Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="242,349,0,0" VerticalAlignment="Top" Width="166" Click="Add_Line_Station_Button_Click" Grid.Column="1" Height="49"/>
         <ListView  x:Name="lvudateLine" HorizontalContentAlignment="Stretch" Foreground="#FF042271" FontWeight="Bold"  FontSize="15px" Background="White" Opacity="0.8"  FontFamily="Goudy Old Style" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="321" Margin="42,10,0,0" VerticalAlignment="Top" Width="718" Grid.ColumnSpan="2">
             <ListView.View>
 
@@ -27,13 +26,7 @@
                             DisplayMemberBinding="{Binding Path=TimeToNextStation}" />
                     <GridViewColumn Header="Distance To Next Station"
                             DisplayMemberBinding="{Binding Path=DistanceToNextStation}" />
-                    <GridViewColumn Header="Is Deleted" >
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <CheckBox IsChecked="{Binding IsDeleted, Mode=TwoWay}"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    
                     <GridViewColumn Header="Is Deleted" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -44,14 +37,14 @@
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Up"/>
+                                <Button Content="Up"  Width="80"  Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Down"/>
+                                <Button Content="Down"  Width="80"  Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

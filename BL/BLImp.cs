@@ -215,7 +215,7 @@ namespace BL
             {
                 var allLine = dl.GetAllLine();
                 var allLineDo = allLine.Select(l => LineDoBoAdapter(l)).ToList();
-                return allLineDo;
+                return allLineDo.OrderBy(l => l.LineNumber).ToList();
             }
             catch (DO.Exceptions.LineNotFoundException exDO)
             {

@@ -38,9 +38,9 @@ namespace PL_Transportation_System
 
         private void Bus_Button_Click(object sender, RoutedEventArgs e)
         {
-            ActionsOnbusWindow actionsOnbusWindow = new ActionsOnbusWindow();
+            ActionsOnBusWindow actionsOnBusWindow = new ActionsOnBusWindow();
 
-            actionsOnbusWindow.Show();
+            actionsOnBusWindow.Show();
         }
 
         private void Station_Button_Click(object sender, RoutedEventArgs e)

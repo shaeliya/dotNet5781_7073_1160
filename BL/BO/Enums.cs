@@ -19,22 +19,23 @@ namespace BO
         TelAviv,
         Haifa
     }
+    public enum BusStatuses
+    {
+        ReadyToGo,
+        MidTravel,
+        Refueling,
+        InTreatment,
+        NeedFuel,
+        NeedTreatment,
+        NeedFuelAndTreatment
+
+    }
     public class Enums
    {
        
         /// <summary>
         /// סטטוסים אפשריים לאוטובוס
         /// </summary>
-        public enum BusStatuses
-        {
-            ReadyToGo,
-            MidTravel,
-            Refueling,
-            InTreatment,
-            NeedFuel,
-            NeedTreatment,
-            NeedFuelAndTreatment
-
-        }
+       
     }
 }
