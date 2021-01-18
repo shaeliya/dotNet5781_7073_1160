@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 namespace DS
 {
+    
+
     //מחלקה המגדירה את זהות של ישות תחנות עוקבות
     class AdjacentStationsComparer : IEqualityComparer<AdjacentStations>
     {
@@ -22,6 +24,7 @@ namespace DS
     }
     public static class DataSource
     {
+        private static Random r = new Random();
         public static HashSet<AdjacentStations> adjacentStationsList = new HashSet<AdjacentStations>(new AdjacentStationsComparer());
         public static List<Bus> busesList;
         public static List<BusOnTrip> busOnTripsList;
@@ -59,7 +62,7 @@ namespace DS
             Bus bus;
             for (int i = 0; i < 20; i++)
             {
-                fuelRemain = RandomFuel.NextDouble() * (1201.0 - 0.0) + 0.0;
+                fuelRemain = r.NextDouble() * (1201.0 - 0.0) + 0.0;
                 fromDate = RandomfromDate();
                 lastTreatmentDate = RandomLastTreatmentDate(fromDate);
                 bus = CreateNewBus(fromDate, lastTreatmentDate, fuelRemain);
@@ -69,39 +72,39 @@ namespace DS
 
         private static DateTime RandomfromDate()
         {
-            Random gen = new Random();
+           // Random gen = new Random();
             DateTime start = new DateTime(1995, 1, 1);
             int range = (DateTime.Today - start).Days;
-            return start.AddDays(gen.Next(range));
+            return start.AddDays(r.Next(range));
         }
         private static DateTime RandomLastTreatmentDate(DateTime busStartDate)
         {
-            Random gen = new Random();
+           // Random gen = new Random();
             DateTime start = new DateTime(busStartDate.Year, busStartDate.Month, busStartDate.Day);
             int range = (DateTime.Today - start).Days;
-            return start.AddDays(gen.Next(range));
+            return start.AddDays(r.Next(range));
         }
 
 
         private static Bus CreateNewBus(DateTime fromDate, DateTime lastTreatmentDate, double fuelRemain)
         {
             Bus bus = new Bus();
-            Random RandomLicenseNumber = new Random(DateTime.Now.Millisecond);
+           // Random RandomLicenseNumber = new Random(DateTime.Now.Millisecond);
             int licenseNumber;
             double totalTrip, treatment;
             if (fromDate.Year < 2018)
             {
-                int licenseNumberRandom = RandomLicenseNumber.Next(1000000, 10000000);
+                int licenseNumberRandom = r.Next(1000000, 10000000);
                 licenseNumber = licenseNumberRandom;
             }
             else
             {
-                int licenseNumberRandom = RandomLicenseNumber.Next(10000000, 100000000);
+                int licenseNumberRandom = r.Next(10000000, 100000000);
                 licenseNumber = licenseNumberRandom;
             }
-            Random RandomTotalTrip = new Random(DateTime.Now.Millisecond);
+            //Random RandomTotalTrip = new Random(DateTime.Now.Millisecond);
             Random RandomTreatment = new Random(DateTime.Now.Millisecond);
-            treatment = RandomTreatment.NextDouble() * (20000.0 - 0.0) + 0.0;
+            treatment = r.NextDouble() * (20000.0 - 0.0) + 0.0;
             double min;
             if (1200 - fuelRemain > treatment)
             {
@@ -111,7 +114,7 @@ namespace DS
             {
                 min = treatment;
             }
-            totalTrip = RandomTotalTrip.NextDouble() * (9999999999.9 - min) + min;
+            totalTrip = r.NextDouble() * (9999999999.9 - min) + min;
 
             bus.LicenseNumber = licenseNumber;
             bus.FromDate = fromDate;
@@ -259,7 +262,7 @@ namespace DS
             for (int i = 1; i < 11; i++)
             {
                 Line line = new Line();
-                int area = RandomArea.Next(0, 7);
+                int area = r.Next(0, 7);
                 line.LineNumber = i;
                 line.Area = (Enums.Areas)area;
                 line.LineId = ++Configuration.MaxLineId;
@@ -296,7 +299,7 @@ namespace DS
                             AdjacentStationsId = ++Configuration.MaxAdjacentStationsId,
                             StationId1 = lineStation.StationId,
                             StationId2 = lineStationsList.Last().StationId,
-                            Distance = new Random(DateTime.Now.Millisecond).NextDouble() * (10.5 - 0.5) + 0.5,
+                            Distance = new r.NextDouble() * (10.5 - 0.5) + 0.5,
                             IsDeleted = false,
                             Time = timeSpan.Duration()
                         };
@@ -336,7 +339,7 @@ namespace DS
                 {
                     actualTakeOff = new TimeSpan(5 + (i / 2), i + 6, i + 7);
                 }
-                int prevStationRandom = RandomPrevStation.Next(1, 50);
+                int prevStationRandom = r.Next(1, 50);
                 busOnTrip.PrevStationAt = new TimeSpan(5 + (i / 2), i + 1, i + 4);
                 busOnTrip.NextStationAt = new TimeSpan(5 + (i / 2), i + 7, i + 9);
                 busOnTrip.PrevStation = prevStationRandom;
@@ -363,7 +366,7 @@ namespace DS
                 {
                     actualTakeOff = new TimeSpan(5 + (i / 2), i + 6, i + 7);
                 }
-                int prevStationRandom = RandomPrevStation.Next(1, 50);
+                int prevStationRandom = r.Next(1, 50);
                 busOnTrip.PrevStationAt = new TimeSpan(5 + (i / 2), i + 1, i + 4);
                 busOnTrip.NextStationAt = new TimeSpan(5 + (i / 2), i + 7, i + 9);
                 busOnTrip.PrevStation = prevStationRandom;
