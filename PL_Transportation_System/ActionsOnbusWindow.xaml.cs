@@ -44,19 +44,21 @@ namespace PL_Transportation_System
 
 
 
-        //private void UpdateAllClicked(object sender, RoutedEventArgs e)
-        //{
-        //    var busesToUpdate = Buses.Where(b => b.IsUpdated).Select(b =>
-        //    {
-        //        var newL = (BO.Bus)b.CopyPropertiesToNew(typeof(BO.Bus));
-        //        newL.StationsList = b.StationsList.Select(s => s.CopyPropertiesToNew(typeof(BO.StationOfLine))).Cast<BO.StationOfLine>().ToList();
-        //        return newL;
-        //    });
-        //    foreach (var line in linesToUpdate)
-        //    {
-        //        bl.UpdateLine(line);
-        //    }
-        //}
+        private void UpdateAllClicked(object sender, RoutedEventArgs e)
+        {
+
+            var BusesToUpdate = Buses.Where(b => b.IsUpdated).Select(b =>
+            {
+                var newB = (BO.Bus)b.CopyPropertiesToNew(typeof(BO.Bus));
+                return newB;
+
+            });
+                foreach (var bus in BusesToUpdate)
+                {
+                    bl.UpdateBus(bus);
+                }
+            
+           }
     }
 
 }

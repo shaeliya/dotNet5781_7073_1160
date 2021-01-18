@@ -58,14 +58,14 @@ namespace DS
             busesList = new List<Bus>();
             DateTime fromDate, lastTreatmentDate;
             double fuelRemain;
-            Random RandomFuel = new Random(DateTime.Now.Millisecond);
             Bus bus;
+            
             for (int i = 0; i < 20; i++)
             {
                 fuelRemain = r.NextDouble() * (1201.0 - 0.0) + 0.0;
                 fromDate = RandomfromDate();
                 lastTreatmentDate = RandomLastTreatmentDate(fromDate);
-                bus = CreateNewBus(fromDate, lastTreatmentDate, fuelRemain);
+                bus = CreateNewBus(fromDate,  fuelRemain);
                 busesList.Add(bus);
             }
         }
@@ -73,20 +73,20 @@ namespace DS
         private static DateTime RandomfromDate()
         {
            // Random gen = new Random();
-            DateTime start = new DateTime(1995, 1, 1);
-            int range = (DateTime.Today - start).Days;
-            return start.AddDays(r.Next(range));
+            DateTime start = new DateTime(1995, 1, 1).Date;
+            int range = (DateTime.Today - start.Date).Days;
+            return start.AddDays(r.Next(range)).Date;
         }
         private static DateTime RandomLastTreatmentDate(DateTime busStartDate)
         {
            // Random gen = new Random();
-            DateTime start = new DateTime(busStartDate.Year, busStartDate.Month, busStartDate.Day);
+            DateTime start = new DateTime(busStartDate.Year, busStartDate.Month, busStartDate.Day).Date;
             int range = (DateTime.Today - start).Days;
             return start.AddDays(r.Next(range));
         }
 
 
-        private static Bus CreateNewBus(DateTime fromDate, DateTime lastTreatmentDate, double fuelRemain)
+        private static Bus CreateNewBus(DateTime fromDate, double fuelRemain)
         {
             Bus bus = new Bus();
            // Random RandomLicenseNumber = new Random(DateTime.Now.Millisecond);
@@ -103,7 +103,6 @@ namespace DS
                 licenseNumber = licenseNumberRandom;
             }
             //Random RandomTotalTrip = new Random(DateTime.Now.Millisecond);
-            Random RandomTreatment = new Random(DateTime.Now.Millisecond);
             treatment = r.NextDouble() * (20000.0 - 0.0) + 0.0;
             double min;
             if (1200 - fuelRemain > treatment)
@@ -299,7 +298,7 @@ namespace DS
                             AdjacentStationsId = ++Configuration.MaxAdjacentStationsId,
                             StationId1 = lineStation.StationId,
                             StationId2 = lineStationsList.Last().StationId,
-                            Distance = new r.NextDouble() * (10.5 - 0.5) + 0.5,
+                            Distance = r.NextDouble() * (10.5 - 0.5) + 0.5,
                             IsDeleted = false,
                             Time = timeSpan.Duration()
                         };
@@ -419,8 +418,6 @@ namespace DS
         }
 
         #endregion Initialize LineTrip
-
-
 
     }
 }

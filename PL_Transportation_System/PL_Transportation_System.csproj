@@ -64,6 +64,7 @@
     <Compile Include="EnumConverter.cs" />
     <Compile Include="PO\Bus.cs" />
     <Compile Include="PO\Line.cs" />
+    <Compile Include="PO\LineOfStation.cs" />
     <Compile Include="PO\Station.cs" />
     <Compile Include="PO\StationOfLine.cs" />
     <Compile Include="UpdateBusWindow.xaml.cs">

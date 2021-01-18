@@ -32,7 +32,7 @@
                         <GridViewColumn Header="License Number"
                             DisplayMemberBinding="{Binding Path=LicenseNumber}" />
                         <GridViewColumn Header="From Date"
-                            DisplayMemberBinding="{Binding Path=FromDate}" />
+                            DisplayMemberBinding="{Binding Path=FromDate , StringFormat=dd/MM/yyyy}" />
                         <GridViewColumn Header="Total Trip"
                             DisplayMemberBinding="{Binding Path=TotalTrip}" />
                         <!--<GridViewColumn Header="Fuel Remain"
@@ -56,7 +56,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <!--<Button Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Click="UpdateAllClicked" Content="Update All" Margin="210,342,220.6,-9.4" Grid.RowSpan="2"/>-->
+            <Button Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Click="UpdateAllClicked" Content="Update All" Margin="210,342,220.6,-9.4" Grid.RowSpan="2"/>
         </Grid>
     </Grid>
 </Window>

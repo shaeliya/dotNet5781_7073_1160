@@ -13,7 +13,17 @@
         <ListView x:Name="lvStation" Height="320" Foreground="#FF042271" FontWeight="Bold"  FontFamily="Goudy Old Style" FontSize="15px" ItemsSource="{Binding}" VerticalAlignment="Top" Margin="33,10,28,0" Opacity="0.78">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header=" Name"
+                            DisplayMemberBinding="{Binding Path=Name}" />
+                    <GridViewColumn Header=" Adress"
+                            DisplayMemberBinding="{Binding Path=Adress}" />
+                    <GridViewColumn Header="Is Deleted">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsDeleted, Mode=TwoWay}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="Update">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -21,16 +31,8 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn >
-                    <GridViewColumn Header="Delete">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button x:Name="bdel" Foreground="#FF042271" Content="Delete" Margin="0,0,20,0" Width="80" DataContext="{Binding}" Click="Open_Delete_Window_Button_Click"  Background="White" Opacity="0.7" FontWeight="Bold"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn >
                 </GridView>
             </ListView.View>
         </ListView>
-
     </Grid>
 </Window>
