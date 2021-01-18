@@ -12,6 +12,22 @@ namespace PL_Transportation_System.PO
         /*            return string.Format("Name: " + Name + "\t Adress: " + Adress + "\t Is deleted: " + IsDeleted);
 */
 
+        public int StationId { get; set; } // קוד התחנה
+
+        public IEnumerable<LineOfStation> LinesList
+        {
+            get { return (IEnumerable<LineOfStation>)GetValue(LinesListProperty); }
+            set { SetValue(LinesListProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for LinesList.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty LinesListProperty =
+            DependencyProperty.Register("LinesList", typeof(IEnumerable<LineOfStation>), typeof(Station), new FrameworkPropertyMetadata(new List<LineOfStation>(), FrameworkPropertyMetadataOptions.None, new PropertyChangedCallback(OnPropChanged)));
+
+        private static void OnPropChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ((Station)d).IsUpdated = true;
+        }
         public string Name
         {
             get { return (string)GetValue(NameProperty); }
@@ -45,7 +61,7 @@ namespace PL_Transportation_System.PO
 
         // Using a DependencyProperty as the backing store for IsDeleted.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsDeletedProperty =
-            DependencyProperty.Register("IsDeleted", typeof(bool), typeof(Station), new PropertyMetadata(false));
+            DependencyProperty.Register("IsDeleted", typeof(bool), typeof(Station), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.None, new PropertyChangedCallback(OnPropChanged)));
         public override string ToString()
         {
             return string.Format("Name: " + Name + "\t Adress: " + Adress + "\t Is deleted: " + IsDeleted);

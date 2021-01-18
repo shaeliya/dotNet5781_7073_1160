@@ -48,14 +48,18 @@
                         <GridViewColumn Header="Update" >
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="Update" Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Margin="0,0,20,0" DataContext="{Binding}" Width="80" Click="Open_Update_Window_Button_Click" Foreground="#FF042271" FontWeight="Bold"   />
+                                    <Button Opacity="1" FontSize="15px" Margin="0,0,20,0" DataContext="{Binding}" Height="40" Width="40" Click="Open_Update_Window_Button_Click">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="Sources/update.jpg"/>
+                                        </Button.Background>
+                                    </Button>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn >
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Button Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Click="UpdateAllClicked" Content="Update All" Margin="210,342,220.6,-9.4" Grid.RowSpan="2"/>
+            <Button  FontSize="15px" Click="UpdateAllClicked" Content="Update All" Margin="210,342,220.6,-9.4" Grid.RowSpan="2"/>
         </Grid>
     </Grid>
 </Window>

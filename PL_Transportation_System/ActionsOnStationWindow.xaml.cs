@@ -26,21 +26,37 @@ namespace PL_Transportation_System
         public ActionsOnStationWindow()
         {
             InitializeComponent();
-            lvStation.ItemsSource = new ObservableCollection<BO.Station>(bl.GetAllStation());
+            DataContext = this;
+            Stations = new ObservableCollection<PO.Station>(bl.GetAllStation().Select(s =>
+            {
+                var newS = (PO.Station)s.CopyPropertiesToNew(typeof(PO.Station));
+                newS.LinesList = s.LinesList.Select(l => l.CopyPropertiesToNew(typeof(PO.LineOfStation))).Cast<PO.LineOfStation>().ToList();
+                newS.IsUpdated = false;
+                return newS;
+            }).Cast<PO.Station>());
         }
+        public ObservableCollection<PO.Station> Stations
+        {
+            get { return (ObservableCollection<PO.Station>)GetValue(StationsProperty); }
+            set { SetValue(StationsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for stations.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StationsProperty =
+            DependencyProperty.Register("Stations", typeof(ObservableCollection<PO.Station>), typeof(ActionsOnStationWindow), new FrameworkPropertyMetadata(new ObservableCollection<PO.Station>()));
 
         void RefreshLinesListView()
         {
             lvStation.ItemsSource = new ObservableCollection<BO.Station>(bl.GetAllStation());
         }
 
-        private void Open_Update_Window_Button_Click(object sender, RoutedEventArgs e)
+        private void Open_Details_Window_Button_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
             if (btn.DataContext is BO.Station)
             {
                 BO.Station station = (BO.Station)btn.DataContext;
-                UpdateStationWindow updateStationWindow = new UpdateStationWindow(station);
+                StationDetailsWindow updateStationWindow = new StationDetailsWindow(station);
                 //updateLineWindow.SelectedLine = line;
                 updateStationWindow.Show();
             }
@@ -65,6 +81,26 @@ namespace PL_Transportation_System
                     MessageBox.Show(ex.ToString(), "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+
+        }
+    
+
+        private void UpdateAllClicked(object sender, RoutedEventArgs e)
+        {
+            var stationsToUpdate = Stations.Where(s => s.IsUpdated).Select(s => {
+                var newS = (BO.Station)s.CopyPropertiesToNew(typeof(BO.Station));
+                newS.LinesList = s.LinesList.Select(l => l.CopyPropertiesToNew(typeof(BO.LineOfStation))).Cast<BO.LineOfStation>().ToList();
+                return newS;
+            });
+            foreach (var station in stationsToUpdate)
+            {
+                bl.UpdateStation(station);
+            }
+
+        }
+
+        private void AddStation(object sender, RoutedEventArgs e)
+        {
 
         }
     }

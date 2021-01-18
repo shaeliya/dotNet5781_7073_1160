@@ -1,6 +1,7 @@
 ﻿using BO;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,15 +39,15 @@ namespace PL_Transportation_System.PO
             DependencyProperty.Register("Area", typeof(Areas), typeof(Line), new FrameworkPropertyMetadata(default(Areas), FrameworkPropertyMetadataOptions.None, new PropertyChangedCallback(OnPropChanged)));
 
 
-        public IEnumerable<StationOfLine> StationsList
+        public ObservableCollection<StationOfLine> StationsList
         {
-            get { return (IEnumerable<StationOfLine>)GetValue(StationsListProperty); }
+            get { return (ObservableCollection<StationOfLine>)GetValue(StationsListProperty); }
             set { SetValue(StationsListProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for StationsList.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StationsListProperty =
-            DependencyProperty.Register("StationsList", typeof(IEnumerable<StationOfLine>), typeof(Line), new FrameworkPropertyMetadata(new List<StationOfLine>(), FrameworkPropertyMetadataOptions.None, new PropertyChangedCallback(OnPropChanged)));
+            DependencyProperty.Register("StationsList", typeof(ObservableCollection<StationOfLine>), typeof(Line), new FrameworkPropertyMetadata(new ObservableCollection<StationOfLine>(), FrameworkPropertyMetadataOptions.None, new PropertyChangedCallback(OnPropChanged)));
 
 
         public bool IsUpdated { get; set; }

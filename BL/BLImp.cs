@@ -456,7 +456,7 @@ namespace BL
             {
                 var allStation = dl.GetAllStation();
                 var allStationDo = allStation.Select(s => StationDoBoAdapter(s)).ToList();
-                return allStationDo;
+                return allStationDo.OrderBy(s => s.StationId);
             }
             catch (DO.Exceptions.StationNotFoundException exDO)
             {

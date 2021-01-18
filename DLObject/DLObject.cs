@@ -405,7 +405,7 @@ namespace DL
 
             if (lineById.IsDeleted)
             {
-                throw new LineDeletedException(lineId);
+                //throw new LineDeletedException(lineId);
             }
 
             return lineById;
@@ -748,7 +748,7 @@ namespace DL
 
             if (stationById.IsDeleted)
             {
-                throw new StationDeletedException(stationId);
+              //  throw new StationDeletedException(stationId);
             }
 
             return stationById;
@@ -774,7 +774,7 @@ namespace DL
 
             if (stationToUpdate.IsDeleted)
             {
-                throw new StationDeletedException(station.StationId, "Cannot update deleted station Id");
+                //throw new StationDeletedException(station.StationId, "Cannot update deleted station Id");
             }
 
             DataSource.stationsList.Remove(stationToUpdate);

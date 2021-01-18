@@ -10,7 +10,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="Sources/station.jpg"/>
         </Grid.Background>
-        <ListView x:Name="lvStation" Height="320" Foreground="#FF042271" FontWeight="Bold"  FontFamily="Goudy Old Style" FontSize="15px" ItemsSource="{Binding}" VerticalAlignment="Top" Margin="33,10,28,0" Opacity="0.78">
+        <ListView x:Name="lvStation" Height="315" Foreground="#FF042271" FontWeight="Bold"  FontFamily="Goudy Old Style" FontSize="15px" ItemsSource="{Binding Stations}" VerticalAlignment="Top" Margin="33,10,27.6,0" Opacity="0.78">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header=" Name"
@@ -24,15 +24,18 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Update">
+                    <GridViewColumn Header="View details">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Update" Foreground="#FF042271"  Background="White" Opacity="0.7" Margin="0,0,20,0" DataContext="{Binding}" Width="80" Click="Open_Update_Window_Button_Click" FontWeight="Bold"   />
+                                <Button Content="View details"  Margin="0,0,20,0" DataContext="{Binding}" Width="80" Click="Open_Details_Window_Button_Click" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn >
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <Button HorizontalAlignment="Left" FontSize="15px" Click="AddStation" Content="Add Station" Margin="249,346,263.6,10"/>
+        <Button HorizontalAlignment="Right"  FontSize="15px" Click="UpdateAllClicked" Content="Update All" Margin="210,342,220.6,-9.4" Grid.RowSpan="2"/>
     </Grid>
 </Window>

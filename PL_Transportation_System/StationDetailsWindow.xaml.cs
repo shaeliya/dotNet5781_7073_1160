@@ -18,25 +18,29 @@ using System.Windows.Shapes;
 namespace PL_Transportation_System
 {
     /// <summary>
-    /// Interaction logic for UpdateStationWindow.xaml
+    /// Interaction logic for StationDetailsWindow.xaml
     /// </summary>
-    public partial class UpdateStationWindow : Window
+    public partial class StationDetailsWindow : Window
     {
         //IBL bl = new BLImp();
         public BO.Station SelectedStation = new BO.Station();
 
-        public UpdateStationWindow(BO.Station selectedStation)
+        public StationDetailsWindow(BO.Station selectedStation)
         {
             InitializeComponent();
             SelectedStation = selectedStation;
             lvUpdateStation.ItemsSource = new ObservableCollection<BO.LineOfStation>(SelectedStation.LinesList);
         }
 
-        private void Change_address_station_Button_Click(object sender, RoutedEventArgs e)
+        
+        private void ChangeAddressStation(object sender, RoutedEventArgs e)
         {
-           int station= ((BO.Station)((Button)sender).DataContext).StationId;
-            ChangeStationDetails changeStationDetails = new ChangeStationDetails(station);
-            changeStationDetails.Show();
+
+        }
+
+        private void ChangeNameStation(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

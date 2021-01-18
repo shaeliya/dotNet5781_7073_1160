@@ -23,31 +23,30 @@ namespace PL_Transportation_System
     public partial class UpdateLineWindow : Window
     {
         IBL bl = new BLImp();
-        public PO.Line SelectedLine = new PO.Line();
 
-        public ObservableCollection<PO.StationOfLine> StationsList
+        public PO.Line SelectedLine 
         {
-            get { return (ObservableCollection<PO.StationOfLine>)GetValue(StationsOfLine); }
-            set { SetValue(StationsOfLine, value); }
+            get { return (PO.Line)GetValue(SelectedLineProperty); }
+            set { SetValue(SelectedLineProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for StationOfLine.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty StationsOfLine =
-            DependencyProperty.Register("StationsList", typeof(ObservableCollection<PO.StationOfLine>), typeof(ActionsOnLineWindow), new FrameworkPropertyMetadata(new ObservableCollection<PO.StationOfLine>()));
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedLineProperty =
+            DependencyProperty.Register("SelectedLine", typeof(PO.Line), typeof(UpdateLineWindow), new PropertyMetadata(null));
+
 
         public UpdateLineWindow(PO.Line selectedLine)
         {
             InitializeComponent();
             SelectedLine = selectedLine;
-            StationsList = new ObservableCollection<PO.StationOfLine>(SelectedLine.StationsList);
-            DataContext = StationsList;
+            DataContext = this;
 
         }
-
+     
         private void Add_Line_Station_Button_Click(object sender, RoutedEventArgs e)
         {
-            DataContext= new ObservableCollection<PO.StationOfLine>(SelectedLine.StationsList);
-            AddLineStation addLineStationWindow = new AddLineStation();
+            if (SelectedLine == null) return;
+            AddLineStation addLineStationWindow = new AddLineStation(SelectedLine);
             //addLineStationWindow.BusList = BusList;
             addLineStationWindow.Show();
         }
@@ -58,9 +57,19 @@ namespace PL_Transportation_System
             if (btn.DataContext is PO.StationOfLine)
             {
                 var stationOfLine = (PO.StationOfLine)btn.DataContext;
+
+                //Update Data Source
                 var line = LinePoToBoAdapter();
                 var stationOfLineBO = (BO.StationOfLine)stationOfLine.CopyPropertiesToNew(typeof(BO.StationOfLine));
                 bl.MoveLineStationUp(line, stationOfLineBO);
+
+                //Update Ui
+                SelectedLine.StationsList.RemoveAt(stationOfLine.LineStationIndex - 1);
+                SelectedLine.StationsList[stationOfLine.LineStationIndex - 2].LineStationIndex = stationOfLine.LineStationIndex;
+                SelectedLine.StationsList.Insert(stationOfLine.LineStationIndex - 2, stationOfLine);
+                stationOfLine.LineStationIndex--;
+
+
             }
         }
 
@@ -71,9 +80,17 @@ namespace PL_Transportation_System
             if (btn.DataContext is PO.StationOfLine)
             {
                 var stationOfLine = (PO.StationOfLine)btn.DataContext;
+
+                //Update Data Source
                 var line = LinePoToBoAdapter();
                 var stationOfLineBO = (BO.StationOfLine)stationOfLine.CopyPropertiesToNew(typeof(BO.StationOfLine));
                 bl.MoveLineStationDown(line, stationOfLineBO);
+
+                //Update Ui
+                SelectedLine.StationsList.RemoveAt(stationOfLine.LineStationIndex - 1);
+                SelectedLine.StationsList[stationOfLine.LineStationIndex - 1].LineStationIndex = stationOfLine.LineStationIndex;
+                SelectedLine.StationsList.Insert(stationOfLine.LineStationIndex, stationOfLine);
+                stationOfLine.LineStationIndex++;
             }
         }
 

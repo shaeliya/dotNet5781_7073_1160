@@ -59,6 +59,11 @@ namespace PL_Transportation_System
                 }
             
            }
+
+        private void AddBus(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }

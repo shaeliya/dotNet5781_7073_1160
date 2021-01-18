@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\App.xaml
-9689601643
+81281023230
 
-21-130166451
-14349342549
-ActionsOnBusWindow.xaml;ActionsOnLineWindow.xaml;ActionsOnStationWindow.xaml;AddLineStation.xaml;ChangeStationDetails.xaml;MainWindow.xaml;UpdateBusWindow.xaml;UpdateLineWindow.xaml;UpdateStationWindow.xaml;
+20-1447102355
+152066484014
+ActionsOnBusWindow.xaml;ActionsOnLineWindow.xaml;ActionsOnStationWindow.xaml;AddLineStation.xaml;MainWindow.xaml;UpdateBusWindow.xaml;UpdateLineWindow.xaml;StationDetailsWindow.xaml;
 
 True
 

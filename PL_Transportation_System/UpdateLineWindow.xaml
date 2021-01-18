@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL_Transportation_System"
         mc:Ignorable="d"
-        Title="Update line " Height="450" Width="800" Icon="Sources/carMain.png">
-
+        Title="Update line" Height="450" Width="800" Icon="Sources/carMain.png">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Sources/line.jpg"/>
@@ -15,10 +14,9 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="17*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Add line station" Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="242,349,0,0" VerticalAlignment="Top" Width="166" Click="Add_Line_Station_Button_Click" Grid.Column="1" Height="49"/>
-        <ListView  x:Name="lvudateLine" HorizontalContentAlignment="Stretch" Foreground="#FF042271" FontWeight="Bold"  FontSize="15px" Background="White" Opacity="0.8"  FontFamily="Goudy Old Style" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="321" Margin="42,10,0,0" VerticalAlignment="Top" Width="718" Grid.ColumnSpan="2">
+        <Button Content="Add line station"  FontSize="15px"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="242,349,0,0" VerticalAlignment="Top" Width="166" Click="Add_Line_Station_Button_Click" Grid.Column="1" Height="49"/>
+        <ListView  x:Name="lvudateLine" HorizontalContentAlignment="Stretch" Foreground="#FF042271" FontWeight="Bold"  FontSize="15px" Background="White" Opacity="0.8"  FontFamily="Goudy Old Style" ItemsSource="{Binding SelectedLine.StationsList}" HorizontalAlignment="Left" Height="321" Margin="42,10,0,0" VerticalAlignment="Top" Width="718" Grid.ColumnSpan="2">
             <ListView.View>
-
                 <GridView>
                     <GridViewColumn Header="Index"
                             DisplayMemberBinding="{Binding Path=LineStationIndex}" />
@@ -28,7 +26,6 @@
                             DisplayMemberBinding="{Binding Path=TimeToNextStation}" />
                     <GridViewColumn Header="Distance To Next Station"
                             DisplayMemberBinding="{Binding Path=DistanceToNextStation}" />
-                    
                     <GridViewColumn Header="Is Deleted" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -36,17 +33,25 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn>
+                    <GridViewColumn Header="Move Up" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Up"  Width="80"  Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" Click="MoveUp_Click"/>
+                                <Button Height="40" Width="40" FontSize="15px" Opacity="1" Click="MoveUp_Click">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="Sources/up.png"/>
+                                    </Button.Background>
+                                </Button>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn>
+                    <GridViewColumn Header="Move Down">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Down"  Width="80"  Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" Click="MoveDown_Click"/>
+                                <Button  Width="40" Height="40" FontSize="15px" Opacity="1" Click="MoveDown_Click">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="Sources/Down.png"/>
+                                    </Button.Background>
+                                </Button>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

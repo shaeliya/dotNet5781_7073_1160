@@ -43,16 +43,13 @@ C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\o
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ChangeStationDetails.baml
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\bin\PL_Transportation_System.exe.config
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\PL_Transportation_System.csprojAssemblyReference.cache
-C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ChangeStationDetails.baml
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ActionsOnBusWindow.g.cs
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ActionsOnLineWindow.g.cs
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ActionsOnStationWindow.g.cs
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddLineStation.g.cs
-C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ChangeStationDetails.g.cs
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\MainWindow.g.cs
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\UpdateBusWindow.g.cs
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\UpdateLineWindow.g.cs
-C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\UpdateStationWindow.g.cs
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\App.g.cs
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\PL_Transportation_System_MarkupCompile.cache
@@ -64,7 +61,6 @@ C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\De
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\MainWindow.baml
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\UpdateBusWindow.baml
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\UpdateLineWindow.baml
-C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\UpdateStationWindow.baml
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\PL_Transportation_System.g.resources
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\PL_Transportation_System.Properties.Resources.resources
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\PL_Transportation_System.csproj.GenerateResource.cache
@@ -78,3 +74,6 @@ C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\o
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddLineStation.baml
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\UpdateBusWindow.baml
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\StationDetailsWindow.g.cs
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\StationDetailsWindow.baml
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\App.baml
