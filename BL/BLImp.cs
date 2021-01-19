@@ -92,66 +92,6 @@ namespace BL
         #endregion Bus
 
 
-        //#region BusOnTrip
-        //public IEnumerable<BusOnTrip> GetAllBusOnTrip()
-        //{
-        //    var allBusesOnTrip = DataSource.busOnTripsList.Where(busOnTrip => !busOnTrip.IsDeleted)
-        //                                           .Select(busOnTrip => busOnTrip.Clone());
-        //    return allBusesOnTrip;
-
-        //}
-        //public BusOnTrip GetBusOnTripById(int busOnTripId)
-        //{
-        //    var busOnTripById = DataSource.busOnTripsList.Where(busOnTrip => busOnTrip.BusOnTripId == busOnTripId)
-        //                                          .Select(busOnTrip => busOnTrip.Clone())
-        //                                          .FirstOrDefault();
-
-        //    if (busOnTripById == null)
-        //    {
-        //        throw new BusOnTripNotFoundException(busOnTripId);
-        //    }
-
-        //    if (busOnTripById.IsDeleted)
-        //    {
-        //        throw new BusOnTripDeletedException(busOnTripId);
-        //    }
-
-        //    return busOnTripById;
-        //}
-        //public void AddBusOnTrip(BusOnTrip busOnTrip)
-        //{
-        //    var busOnTripExist = DataSource.busOnTripsList.FirstOrDefault(b => b.BusOnTripId == busOnTrip.BusOnTripId);
-        //    if (busOnTripExist != null)
-        //    {
-        //        throw new BusOnTripAlreadyExistsException(busOnTrip.BusOnTripId);
-
-        //    }
-        //    DataSource.busOnTripsList.Add(busOnTrip.Clone());
-        //}
-        //public void UpdateBusOnTrip(BusOnTrip busOnTrip)
-        //{
-        //    BusOnTrip busOnTripToUpdate = DataSource.busOnTripsList.Find(b => b.BusOnTripId == busOnTrip.BusOnTripId);
-
-        //    if (busOnTripToUpdate == null)
-        //    {
-        //        throw new BusOnTripNotFoundException(busOnTrip.BusOnTripId);
-        //    }
-
-        //    if (busOnTripToUpdate.IsDeleted)
-        //    {
-        //        throw new BusOnTripDeletedException(busOnTrip.BusOnTripId, "Cannot update deleted bus On Trip");
-        //    }
-
-        //    DataSource.busOnTripsList.Remove(busOnTripToUpdate);
-        //    DataSource.busOnTripsList.Add(busOnTrip.Clone());
-        //}
-        //public void DeleteBusOnTrip(int id)
-        //{
-        //    dl.DeleteBusOnTrip(id);
-        //}
-
-        //#endregion BusOnTrip
-
 
         #region Line
         Line LineDoBoAdapter(DO.Line lineDO)
@@ -526,6 +466,108 @@ namespace BL
         }
 
         #endregion Station    
+
+
+        public List<LineTiming> GetAllCurrentLinesForStation(Station station)
+        {
+            List<LineTiming> lineTimingList = new List<LineTiming>();
+
+            // 1. נמצא את כל תחנות-הקווים העוברים בתחנה
+            var allLineStations = dl.GetAllLineStationBy(ls => !ls.IsDeleted &&
+                                                              ls.StationId == station.StationId);
+
+            if (allLineStations != null)
+            {
+                // 2. נמצא את הקווים עצמם
+                var allLines = allLineStations.Select(ls => LineDoBoAdapter(dl.GetLineById(ls.LineId)));
+
+                // 3. שמגיעים לתחנה שלנו בתוך חצי שעה LineTrip-נמצא את כל ה
+
+                List<LineTiming> allLineTimingsWithin30Minutes = FindAllLineTimingsWithin30Minutes(station, allLines);
+                var lineTrip = allLineTimingsWithin30Minutes.FirstOrDefault();
+            }
+
+            return lineTimingList;
+        }
+
+        /// <summary>
+        /// שמגיעים לתחנה שלנו בתוך חצי שעה LineTrip-פונקציה שמחזירה את כל ה
+        /// LineTiming-הפונקציה  ממירה אותם ל
+        /// </summary>
+        /// <param name="station"></param>
+        /// <param name="allLines"></param>
+        /// <returns></returns>
+        private List<LineTiming> FindAllLineTimingsWithin30Minutes(Station station, IEnumerable<Line> allLines)
+        {
+            List<LineTiming> allLineTripsWithin30Minutes = new List<LineTiming>();
+
+            allLines.ToList().ForEach(line =>
+            {
+                // של הקו LineTrip-נמצא את כל ה
+                var allLineTrips = dl.GetAllLineTripBy(lt => lt.LineId == line.LineId);
+                allLineTrips.ToList().ForEach(lt =>
+                {
+                    double lineTimeFromStartToStation;
+                    bool isLineTripInStationWithin30Minutes = CheckIfLineTripInStationWithin30Minutes(lt, line, station, out lineTimeFromStartToStation);
+                    if (isLineTripInStationWithin30Minutes)
+                    {
+                        LineTiming lineTiming = new LineTiming()
+                        {
+
+                            LineId = line.LineId,
+                            LineNumber = line.LineNumber,
+                            LastStation = line.StationsList.OrderByDescending(s => s.LineStationIndex).FirstOrDefault().Name,
+                            TripStart = lt.StartAt,
+                            ExpectedTimeTillArrive = DateTime.Today.TimeOfDay + TimeSpan.FromMinutes(lineTimeFromStartToStation)
+                        };
+                        allLineTripsWithin30Minutes.Add(lineTiming);
+                    }
+                });                
+            });
+
+            return allLineTripsWithin30Minutes;
+        }
+
+        /// <summary>
+        /// true הפונקציה מחזירה 
+        /// אם הקו יגיע לתחנה תוך 30 דקות מעכשיו
+        /// </summary>
+        /// <param name="lineTrip"></param>
+        /// <param name="line"></param>
+        /// <param name="station"></param>
+        /// <returns></returns>
+        private bool CheckIfLineTripInStationWithin30Minutes(DO.LineTrip lineTrip, Line line, Station station, out double lineTimeFromStartToStation)
+        {
+            lineTimeFromStartToStation = GetLineTimeFromStartToStation(line, station);
+            TimeSpan timeToStation = lineTrip.StartAt + TimeSpan.FromMinutes(lineTimeFromStartToStation);
+            TimeSpan nowPlus30Minutes = DateTime.Now.TimeOfDay + TimeSpan.FromMinutes(30);
+
+            if(timeToStation >= DateTime.Now.TimeOfDay &&
+               timeToStation <= nowPlus30Minutes)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+
+
+        /// <summary>
+        /// פונקציה שמחשבת כמה זמן לוקח לקו להגיע מתחנת ההתחלה לתחנה רצויה
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="station"></param>
+        /// <returns></returns>
+        private double GetLineTimeFromStartToStation(Line line, Station station)
+        {
+            var currentStationInLine = line.StationsList.Where(s => s.StationId == station.StationId).FirstOrDefault();
+            double timeUntilCuurentStation = line.StationsList.OrderBy(s => s.LineStationIndex).
+                                                               Where(s => s.LineStationIndex < currentStationInLine.LineStationIndex).
+                                                               Sum(s => s.TimeToNextStation.TotalMinutes);
+            return timeUntilCuurentStation;
+
+        }
 
     }
 }

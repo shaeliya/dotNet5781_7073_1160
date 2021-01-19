@@ -55,6 +55,7 @@
     <Compile Include="BO\Exceptions\BusOnTripExceptions.cs" />
     <Compile Include="BO\Exceptions\GeneralException.cs" />
     <Compile Include="BO\LineOfStation.cs" />
+    <Compile Include="BO\LineTiming.cs" />
     <Compile Include="BO\StationOfLine.cs" />
     <Compile Include="BO\Exceptions\LineExceptions.cs" />
     <Compile Include="BO\Exceptions\LineStationExceptions.cs" />

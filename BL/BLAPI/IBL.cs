@@ -20,16 +20,6 @@ namespace BLAPI
         #endregion Bus
 
 
-        //#region BusOnTrip
-        //IEnumerable<BusOnTrip> GetAllBusOnTrip();
-        //BusOnTrip GetBusOnTripById(int id);
-        //void AddBusOnTrip(BusOnTrip busOnTrip);
-        //void UpdateBusOnTrip(BusOnTrip busOnTrip);
-        //void DeleteBusOnTrip(int id);
-
-        //#endregion BusOnTrip
-
-
         #region Line
         IEnumerable<Line> GetAllLine();
         Line GetLineById(int id);

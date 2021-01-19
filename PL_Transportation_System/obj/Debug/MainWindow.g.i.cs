@@ -72,7 +72,7 @@ namespace PL_Transportation_System {
             {
             case 1:
             
-            #line 15 "..\..\MainWindow.xaml"
+            #line 14 "..\..\MainWindow.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Line_Button_Click);
             
             #line default
@@ -80,7 +80,7 @@ namespace PL_Transportation_System {
             return;
             case 2:
             
-            #line 16 "..\..\MainWindow.xaml"
+            #line 15 "..\..\MainWindow.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Bus_Button_Click);
             
             #line default
@@ -88,7 +88,23 @@ namespace PL_Transportation_System {
             return;
             case 3:
             
+            #line 16 "..\..\MainWindow.xaml"
+            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Station_Button_Click);
+            
+            #line default
+            #line hidden
+            return;
+            case 4:
+            
             #line 17 "..\..\MainWindow.xaml"
+            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Station_Button_Click);
+            
+            #line default
+            #line hidden
+            return;
+            case 5:
+            
+            #line 18 "..\..\MainWindow.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Station_Button_Click);
             
             #line default
