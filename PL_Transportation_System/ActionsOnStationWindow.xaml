@@ -15,6 +15,10 @@
                 <GridView>
                     <GridViewColumn Header=" Name"
                             DisplayMemberBinding="{Binding Path=Name}" />
+                    <GridViewColumn Header=" Longitude"
+                            DisplayMemberBinding="{Binding Path=Longitude}" />
+                    <GridViewColumn Header=" Latitude"
+                            DisplayMemberBinding="{Binding Path=Latitude}" />
                     <GridViewColumn Header=" Adress"
                             DisplayMemberBinding="{Binding Path=Adress}" />
                     <GridViewColumn Header="Is Deleted">

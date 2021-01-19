@@ -13,6 +13,8 @@ namespace PL_Transportation_System.PO
 */
 
         public int StationId { get; set; } // קוד התחנה
+        public double Latitude { get; set; } 
+        public double Longitude { get; set; } 
 
         public IEnumerable<LineOfStation> LinesList
         {

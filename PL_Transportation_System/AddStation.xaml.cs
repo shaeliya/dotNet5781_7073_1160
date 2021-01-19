@@ -1,5 +1,6 @@
 ﻿using BL;
 using BLAPI;
+using PL_Transportation_System.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,49 +31,84 @@ namespace PL_Transportation_System
         IBL bl = new BLImp();
 
 
-        private void keyCheck(object sender, KeyEventArgs e)
-        {
-            if (((int)e.Key < (int)Key.D0 || (int)e.Key > (int)Key.D9) && ((int)e.Key < (int)Key.NumPad0 || (int)e.Key > (int)Key.NumPad9) && e.Key != Key.OemPeriod && e.Key != Key.Escape && e.Key != Key.Back)
-                e.Handled = true;
-        }
+          
 
         private void Add_Button_Click(object sender, RoutedEventArgs e)
         {
-
-            try
+            bool isValid = StationValidityCheck();
+            if (isValid)
             {
-                ValidityCheck();
-                BO.Station station = new BO.Station();
-                station.Name = tbName.Text;
-                station.Longitude = Convert.ToDouble(tbLongitude.Text);
-                station.Latitude = Convert.ToDouble(tbLatitude.Text);
-                station.Adress = tbAdress.Text;
-                bl.AddStation(station);
-                MessageBox.Show("Station Added Successfully!");
-                Close();
-            }
-            catch (BO.Exceptions.StationAlreadyExistsException)
-            {
-                MessageBox.Show("Station Already Exists!");
+                try
+                {
+                    BO.Station station = new BO.Station();
+                    station.Name = tbName.Text;
+                    station.Longitude = Convert.ToDouble(tbLongitude.Text);
+                    station.Latitude = Convert.ToDouble(tbLatitude.Text);
+                    station.Adress = tbAdress.Text;
+                    bl.AddStation(station);
+                    MessageBox.Show("Station Added Successfully!");
+                    Close();
+                }
+                catch (BO.Exceptions.StationAlreadyExistsException)
+                {
+                    MessageBox.Show("Station Already Exists!");
 
+                }
             }
-
         }
-        private bool ValidityCheck()
+
+        private bool StationValidityCheck()
         {
+            if (string.IsNullOrWhiteSpace(tbName.Text))
+            {
+                MessageBox.Show("Must Enter Name");
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(tbLongitude.Text))
+            {
+                MessageBox.Show("Must Enter Longitude");
+                return false;
+            }
+            bool isDouble = false;
+            double doubleValue;
+
+            isDouble = double.TryParse(tbLongitude.Text, out doubleValue);
+
+            if (!isDouble)
+            {
+                MessageBox.Show("Longitude is inccorect format");
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(tbLatitude.Text))
+            {
+                MessageBox.Show("Must Enter Latitude");
+                return false;
+            }
+            isDouble = double.TryParse(tbLatitude.Text, out doubleValue);
+            if (!isDouble)
+            {
+                MessageBox.Show("Latitude is inccorect format");
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(tbAdress.Text))
+            {
+                MessageBox.Show("Must Enter Adress");
+                return false;
+            }
+                             
             return true;
-
         }
 
 
-        private void Cancel_Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure you want to close the window without saving?", "Close Confirmation", System.Windows.MessageBoxButton.YesNo);
-
-            if (messageBoxResult == MessageBoxResult.Yes)
+            private void Cancel_Button_Click(object sender, RoutedEventArgs e)
             {
-                Close();
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure you want to close the window without saving?", "Close Confirmation", System.Windows.MessageBoxButton.YesNo);
+
+                if (messageBoxResult == MessageBoxResult.Yes)
+                {
+                    Close();
+                }
             }
         }
     }
-}
+
