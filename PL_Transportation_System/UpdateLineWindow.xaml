@@ -36,7 +36,7 @@
                     <GridViewColumn Header="Move Up" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Visibility="Hidden" Height="40" Width="40" FontSize="15px" Opacity="1" Click="MoveUp_Click">
+                                <Button Height="40" Width="40" FontSize="15px" Opacity="1" Click="MoveUp_Click">
                                     <Button.Background>
                                         <ImageBrush ImageSource="Sources/up.png"/>
                                     </Button.Background>
@@ -47,7 +47,7 @@
                     <GridViewColumn Header="Move Down">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button  Width="40" Height="40" FontSize="15px" Opacity="1" Click="MoveDown_Click">
+                                <Button Width="40" Height="40" FontSize="15px" Opacity="1" Click="MoveDown_Click">
                                     <Button.Background>
                                         <ImageBrush ImageSource="Sources/Down.png"/>
                                     </Button.Background>

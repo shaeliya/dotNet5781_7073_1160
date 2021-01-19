@@ -37,10 +37,6 @@ C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\o
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ActionsOnStationWindow.baml
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\UpdateLineWindow.g.cs
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\UpdateLineWindow.baml
-C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\UpdateStationWindow.g.cs
-C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\UpdateStationWindow.baml
-C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ChangeStationDetails.g.cs
-C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ChangeStationDetails.baml
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\bin\PL_Transportation_System.exe.config
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\PL_Transportation_System.csprojAssemblyReference.cache
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ActionsOnBusWindow.g.cs
@@ -77,3 +73,6 @@ C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\o
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\StationDetailsWindow.g.cs
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\StationDetailsWindow.baml
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\App.baml
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\StationDetailsWindow.g.cs
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\App.baml
+C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\StationDetailsWindow.baml

@@ -101,8 +101,8 @@ namespace PL_Transportation_System
             {
                 Name = SelectedStation.Name,
                 StationId = SelectedStation.StationId,
-                DistanceToNextStation = DistanceToNextStation,
-                TimeToNextStation = TimeToNextStation,
+                DistanceToNextStation =DistanceToNextStation,
+               TimeToNextStation = TimeToNextStation,
                 LineStationIndex = StationIndex
             };
             var lineBO = (BO.Line)line.CopyPropertiesToNew(typeof(BO.Line));
@@ -114,8 +114,12 @@ namespace PL_Transportation_System
 
             //RefreshLine();
 
-
-
         }
+        private void keyCheck(object sender, KeyEventArgs e)
+        {
+            if (((int)e.Key < (int)Key.D0 || (int)e.Key > (int)Key.D9) && ((int)e.Key < (int)Key.NumPad0 || (int)e.Key > (int)Key.NumPad9) && e.Key != Key.OemPeriod && e.Key != Key.Escape && e.Key != Key.Back)
+                e.Handled = true;
+        }
+       
     }
 }
