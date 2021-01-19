@@ -34,22 +34,41 @@ namespace PL_Transportation_System
         public static readonly DependencyProperty SelectedLineProperty =
             DependencyProperty.Register("SelectedLine", typeof(PO.Line), typeof(UpdateLineWindow), new PropertyMetadata(null));
 
+     
 
+        
         public UpdateLineWindow(PO.Line selectedLine)
         {
             InitializeComponent();
             SelectedLine = selectedLine;
-            DataContext = this;
+            DataContext = this;                         
+        }
 
-        }
-     
-        private void Add_Line_Station_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (SelectedLine == null) return;
-            AddLineStation addLineStationWindow = new AddLineStation(SelectedLine);
-            //addLineStationWindow.BusList = BusList;
-            addLineStationWindow.Show();
-        }
+    
+            private void Add_Line_Station_Button_Click(object sender, RoutedEventArgs e)
+            {
+                if (SelectedLine == null) return;
+                AddLineStation addLineStationWindow = new AddLineStation(SelectedLine);
+                //addLineStationWindow.BusList = BusList;
+                addLineStationWindow.Show();
+            }
+
+        //        private void MoveUp_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Button btn = (Button)sender;
+        //    if (btn.DataContext is PO.StationOfLine)
+        //    {
+        //        var stationOfLine = (PO.StationOfLine)btn.DataContext;
+
+        //        //Update Data Source
+        //        var line = LinePoToBoAdapter();
+        //        var stationOfLineBO = (BO.StationOfLine)stationOfLine.CopyPropertiesToNew(typeof(BO.StationOfLine));
+        //        bl.MoveLineStationUp(line, stationOfLineBO);
+
+        //        RefreshLine();
+
+        //    }
+        //}
 
         private void MoveUp_Click(object sender, RoutedEventArgs e)
         {
@@ -72,6 +91,12 @@ namespace PL_Transportation_System
 
             }
         }
+        private void RefreshLine()
+        {
+            var lineBO = bl.GetLineById(SelectedLine.LineId);
+            lineBO.CopyPropertiesTo(SelectedLine);
+        }
+
 
 
         private void MoveDown_Click(object sender, RoutedEventArgs e)
@@ -93,6 +118,22 @@ namespace PL_Transportation_System
                 stationOfLine.LineStationIndex++;
             }
         }
+
+        //private void MoveDown_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Button btn = (Button)sender;
+        //    if (btn.DataContext is PO.StationOfLine)
+        //    {
+        //        var stationOfLine = (PO.StationOfLine)btn.DataContext;
+
+        //        //Update Data Source
+        //        var line = LinePoToBoAdapter();
+        //        var stationOfLineBO = (BO.StationOfLine)stationOfLine.CopyPropertiesToNew(typeof(BO.StationOfLine));
+        //        bl.MoveLineStationDown(line, stationOfLineBO);
+
+        //        RefreshLine();
+        //    }
+        //}
 
         private BO.Line LinePoToBoAdapter()
         {

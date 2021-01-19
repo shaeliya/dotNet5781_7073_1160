@@ -379,6 +379,21 @@ namespace BL
             line.CopyPropertiesTo(lineDO);
             dl.UpdateLine(lineDO);
         }
+        public void AddLineStationToLine(Line line, StationOfLine stationOfLine)
+        {
+            line.StationsList = line.StationsList.Where(sol => sol.LineStationIndex >= stationOfLine.LineStationIndex).
+                Select(sol =>
+                {
+                    sol.LineStationIndex += 1;
+                    return sol;
+                });
+
+
+
+            line.StationsList = line.StationsList.Append(stationOfLine);
+            UpdateLineStations(line);
+
+        }
 
         /// <summary>
         /// עדכון תחנות הקו
@@ -386,19 +401,12 @@ namespace BL
         /// <param name="line"></param>
         public void UpdateLineStations(Line line)
         {
-            DO.Line lineDO = dl.GetLineById(line.LineId);
-            line.StationsList.ToList().ForEach(s => DeleteLineStation(s, line));
-            var aa = dl.GetAllLineStationBy(ls => ls.LineId == line.LineId).ToList();
+          var lineStationsForLine = dl.GetAllLineStationBy(ls => ls.LineId == line.LineId).ToList();
+            lineStationsForLine.ToList().ForEach(ls => dl.DeleteLineStation(ls.LineStationId, true));
             AddStationsFromLine(line);
-            aa = dl.GetAllLineStationBy(ls => ls.LineId == line.LineId).ToList();
 
         }
 
-        private void DeleteLineStation(StationOfLine stationOfLine, Line line)
-        {
-            DO.LineStation ls = (DO.LineStation)stationOfLine.CopyPropertiesToNewAndUnion(typeof(DO.LineStation), line);
-            dl.DeleteLineStation(ls.LineStationId, true);
-        }
 
         /// <summary>
         /// עדכון יציאות הקו

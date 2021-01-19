@@ -192,7 +192,9 @@ namespace DL
             }
             DataSource.busesList.Add(bus.Clone());
         }
-        public void UpdateBus(Bus bus)
+       
+            public void UpdateBus(Bus bus)
+
         {
             Bus busToUpdate = DataSource.busesList.Find(b => b.LicenseNumber == bus.LicenseNumber);
 
@@ -201,14 +203,15 @@ namespace DL
                 throw new BusNotFoundException(bus.LicenseNumber);
             }
 
-            if (busToUpdate.IsDeleted)
-            {
-                throw new BusDeletedException(bus.LicenseNumber, "Cannot update deleted bus");
-            }
+            //if (busToUpdate.IsDeleted)
+            //{
+            //    throw new BusDeletedException(bus.LicenseNumber, "Cannot update deleted bus");
+            //}
 
             DataSource.busesList.Remove(busToUpdate);
             DataSource.busesList.Add(bus.Clone());
         }
+
         public void UpdateBus(Bus bus, Action<Bus> update)
         {
             Bus busToUpdate = DataSource.busesList.Find(b => b.LicenseNumber == bus.LicenseNumber);

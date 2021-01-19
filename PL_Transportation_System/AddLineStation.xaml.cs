@@ -30,7 +30,7 @@ namespace PL_Transportation_System
             Stations = new ObservableCollection<PO.Station>(bl.GetAllStation().Where(StationsFilter).Select(s => s.CopyPropertiesToNew(typeof(PO.Station))).Cast<PO.Station>());
         }
         IBL bl = new BLImp();
-        bool StationsFilter (BO.Station station)
+        bool StationsFilter(BO.Station station)
         {
             return station.IsDeleted == false && line.StationsList.Any(s => s.LineStationId == station.StationId) == false;
         }
@@ -97,7 +97,7 @@ namespace PL_Transportation_System
 
         private void AddStationToLineClicked(object sender, RoutedEventArgs e)
         {
-            var item = new PO.StationOfLine()
+            var stationOfLine = new PO.StationOfLine()
             {
                 Name = SelectedStation.Name,
                 StationId = SelectedStation.StationId,
@@ -105,17 +105,17 @@ namespace PL_Transportation_System
                 TimeToNextStation = TimeToNextStation,
                 LineStationIndex = StationIndex
             };
-            foreach (var stationOfLine in line.StationsList.Skip(StationIndex - 1))
-            {
-                stationOfLine.LineStationIndex++;
-            }
-            line.StationsList.Insert(StationIndex - 1, item);
-
-            var newL = (BO.Line)line.CopyPropertiesToNew(typeof(BO.Line));
-            newL.StationsList = line.StationsList.Select(s => s.CopyPropertiesToNew(typeof(BO.StationOfLine))).Cast<BO.StationOfLine>().ToList();
-            bl.UpdateLineStations(newL);
+            var lineBO = (BO.Line)line.CopyPropertiesToNew(typeof(BO.Line));
+            var stationOfLineBO = (BO.StationOfLine)stationOfLine.CopyPropertiesToNew(typeof(BO.StationOfLine));
+            lineBO.StationsList = line.StationsList.Select(s => s.CopyPropertiesToNew(typeof(BO.StationOfLine))).Cast<BO.StationOfLine>().ToList();
+            bl.AddLineStationToLine(lineBO, stationOfLineBO);
             //bl.up
             Close();
+
+            //RefreshLine();
+
+
+
         }
     }
 }

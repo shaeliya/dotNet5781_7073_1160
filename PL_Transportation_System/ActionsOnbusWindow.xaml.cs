@@ -33,6 +33,7 @@ namespace PL_Transportation_System
             Buses = new ObservableCollection<Bus>(buses);           
             //lvBus.DisplayMemberPath = " LicenseNumber ".ToString();
         }
+      
         public ObservableCollection<Bus> Buses
         {
             get { return (ObservableCollection<Bus>)GetValue(BusesProperty); }
@@ -50,6 +51,7 @@ namespace PL_Transportation_System
             var BusesToUpdate = Buses.Where(b => b.IsUpdated).Select(b =>
             {
                 var newB = (BO.Bus)b.CopyPropertiesToNew(typeof(BO.Bus));
+                
                 return newB;
 
             });
@@ -57,7 +59,7 @@ namespace PL_Transportation_System
                 {
                     bl.UpdateBus(bus);
                 }
-            
+          
            }
 
         private void AddBus(object sender, RoutedEventArgs e)

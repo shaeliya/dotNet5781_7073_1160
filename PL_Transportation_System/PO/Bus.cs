@@ -50,7 +50,7 @@ namespace PL_Transportation_System.PO
 
         private static void OnPropChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            ((PO.Bus)d).IsUpdated = true;
+            ((Bus)d).IsUpdated = true;
         }
 
         public bool IsDeleted

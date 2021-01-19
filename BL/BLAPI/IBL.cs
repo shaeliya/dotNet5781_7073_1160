@@ -35,6 +35,7 @@ namespace BLAPI
         Line GetLineById(int id);
         void AddLine(Line line);
         void UpdateLine(Line line);
+        void AddLineStationToLine(Line line, StationOfLine stationOfLine);
         void UpdateLineStations(Line line);
         void UpdateLineTrips(Line line);
         void DeleteLine(int line);

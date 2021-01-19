@@ -10,7 +10,6 @@
         <converters:StatusToColorConverter x:Key="StatusToColorConverter"/>
         <converters:StatusToImageConverter x:Key="StatusToImageConverter"/>
     </Window.Resources>
-
     <Grid Margin="0,0,3.4,4">
         <Grid.Background>
             <ImageBrush ImageSource="Resources/Images/BusBackground.jpg"/>
@@ -42,13 +41,10 @@
                                             NumericBrush="{Binding Status, Converter={StaticResource StatusToColorConverter}}"
                                             Glow="False" />
                                         <Image Grid.Column="1" Height="63" Width="63" Source="{Binding Status, Converter={StaticResource StatusToImageConverter}}">
-
                                             <Image.ToolTip>
                                                 <ToolTip Content="{Binding Path=Status}" />
                                             </Image.ToolTip>
-
                                         </Image>
-
                                     </Grid>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>

@@ -36,7 +36,7 @@
                     <GridViewColumn Header="Move Up" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Height="40" Width="40" FontSize="15px" Opacity="1" Click="MoveUp_Click">
+                                <Button Visibility="Hidden" Height="40" Width="40" FontSize="15px" Opacity="1" Click="MoveUp_Click">
                                     <Button.Background>
                                         <ImageBrush ImageSource="Sources/up.png"/>
                                     </Button.Background>
