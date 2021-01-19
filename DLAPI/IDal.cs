@@ -42,19 +42,6 @@ namespace DalApi
         #endregion Bus
 
 
-        #region BusOnTrip
-        IEnumerable<BusOnTrip> GetAllBusOnTrip();
-        IEnumerable<BusOnTrip> GetAllBusOnTripBy(Predicate<BusOnTrip> predicate);
-        BusOnTrip GetBusOnTripById(int id);
-        void AddBusOnTrip(BusOnTrip busOnTrip);
-        void UpdateBusOnTrip(BusOnTrip busOnTrip);
-        void UpdateBusOnTrip(BusOnTrip id, Action<BusOnTrip> update); //method that knows to update specific fields in Bus
-        void DeleteBusOnTrip(int id);
-        void DeleteBusOnTripBy(Predicate<BusOnTrip> predicate);
-
-        #endregion BusOnTrip
-
-
         #region Line
         IEnumerable<Line> GetAllLine();
         IEnumerable<Line> GetAllLineBy(Predicate<Line> predicate);

@@ -27,7 +27,6 @@ namespace DS
         private static Random r = new Random();
         public static HashSet<AdjacentStations> adjacentStationsList = new HashSet<AdjacentStations>(new AdjacentStationsComparer());
         public static List<Bus> busesList;
-        public static List<BusOnTrip> busOnTripsList;
         public static List<Line> linesList;
         public static List<LineStation> lineStationsList;
         public static List<LineTrip> lineTripsList;
@@ -46,7 +45,6 @@ namespace DS
 
          //   InitializeAdjacentStationsList();
             InitializeLineTripList();
-            InitializeBusOnTripList();
 
         }
 
@@ -317,71 +315,6 @@ namespace DS
         }
         #endregion Initialize LineStation 
 
-        #region Initialize BusOnTrip
-
-
-        private static void InitializeBusOnTripList()
-        {
-            busOnTripsList = new List<BusOnTrip>();
-            Random RandomPrevStation = new Random(DateTime.Now.Millisecond);
-
-            for (int i = 0; i < 10; i++)
-            {
-                BusOnTrip busOnTrip = new BusOnTrip();
-                TimeSpan actualTakeOff;
-                busOnTrip.PlannedTakeOff = new TimeSpan(5 + (i / 2), i + 1, i + 4);
-                if (i % 2 == 0)
-                {
-                    actualTakeOff = new TimeSpan(5 + (i / 2), i + 1, i + 50);
-                }
-                else
-                {
-                    actualTakeOff = new TimeSpan(5 + (i / 2), i + 6, i + 7);
-                }
-                int prevStationRandom = r.Next(1, 50);
-                busOnTrip.PrevStationAt = new TimeSpan(5 + (i / 2), i + 1, i + 4);
-                busOnTrip.NextStationAt = new TimeSpan(5 + (i / 2), i + 7, i + 9);
-                busOnTrip.PrevStation = prevStationRandom;
-                busOnTrip.LicenseNumber = busesList[i].LicenseNumber;
-                busOnTrip.LineId = linesList[i].LineId;
-                busOnTrip.ActualTakeOff = actualTakeOff;
-                busOnTrip.BusOnTripId = ++Configuration.MaxBusOnTripId;
-                busOnTrip.IsDeleted = false;
-
-                busOnTrip.LicenseNumber = busesList[i + 10].LicenseNumber;
-                busOnTripsList.Add(busOnTrip);
-            }
-
-            for (int i = 0; i < 10; i++)
-            {
-                BusOnTrip busOnTrip = new BusOnTrip();
-                TimeSpan actualTakeOff;
-                busOnTrip.PlannedTakeOff = new TimeSpan(5 + (i / 2), i + 1, i + 4);
-                if (i % 2 == 0)
-                {
-                    actualTakeOff = new TimeSpan(5 + (i / 2), i + 1, i + 50);
-                }
-                else
-                {
-                    actualTakeOff = new TimeSpan(5 + (i / 2), i + 6, i + 7);
-                }
-                int prevStationRandom = r.Next(1, 50);
-                busOnTrip.PrevStationAt = new TimeSpan(5 + (i / 2), i + 1, i + 4);
-                busOnTrip.NextStationAt = new TimeSpan(5 + (i / 2), i + 7, i + 9);
-                busOnTrip.PrevStation = prevStationRandom;
-                busOnTrip.LicenseNumber = busesList[i].LicenseNumber;
-                busOnTrip.LineId = linesList[i].LineId;
-                busOnTrip.ActualTakeOff = actualTakeOff;
-                busOnTrip.BusOnTripId = ++Configuration.MaxBusOnTripId;
-                busOnTrip.IsDeleted = false;
-
-                busOnTrip.LicenseNumber = busesList[i + 10].LicenseNumber;
-                busOnTripsList.Add(busOnTrip);
-            }
-
-        }
-        #endregion Initialize BusOnTrip
-
         #region Initialize LineTrip 
         private static void InitializeLineTripList()
         {
@@ -405,18 +338,9 @@ namespace DS
             lineTrip.LineTripId = ++Configuration.MaxLineTripId;
             lineTrip.LineId = linesList[i].LineId;
             TimeSpan startAt = new TimeSpan(5 + (i / 2), i + 1, i + 4);
-            lineTrip.StartAt = startAt;
-            TimeSpan frequency = new TimeSpan(i / 2, 0, 0);
-            lineTrip.Frequency = frequency;
-            TimeSpan temp = new TimeSpan(0, 0, 0);
-            if (lineTrip.Frequency > temp)
-            {
-                TimeSpan finishAt = new TimeSpan(22, i + 58, i + 58);
-                lineTrip.FinishAt = finishAt;
-            }
+            lineTrip.StartAt = startAt;           
             lineTripsList.Add(lineTrip);
         }
-
         #endregion Initialize LineTrip
 
     }

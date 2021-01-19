@@ -237,13 +237,7 @@ namespace DL
             {
                 throw new BusNotFoundException(licenseNumber, $"Cannot delete licenseNumber: {licenseNumber} because it was not found");
             }
-            var busOnTtipToDelete = GetAllBusOnTripBy(b => b.LicenseNumber == licenseNumber);
-            if (busOnTtipToDelete != null)
-            {
-                var busOnTtipToDeleteList = busOnTtipToDelete.ToList();
-                busOnTtipToDeleteList.ForEach(l => DeleteBusOnTrip(l.LicenseNumber));
-            }
-
+           
             busToDelete.IsDeleted = true;
 
         }
@@ -264,110 +258,6 @@ namespace DL
 
 
         #endregion Bus
-
-
-        #region BusOnTrip
-        public IEnumerable<BusOnTrip> GetAllBusOnTrip()
-        {
-            var allBusesOnTrip = DataSource.busOnTripsList.Where(busOnTrip => !busOnTrip.IsDeleted)
-                                                   .Select(busOnTrip => busOnTrip.Clone());
-            return allBusesOnTrip;
-
-        }
-        public IEnumerable<BusOnTrip> GetAllBusOnTripBy(Predicate<BusOnTrip> predicate)
-        {
-            var busOnTripsBy = DataSource.busOnTripsList.Where(busOnTrip => !busOnTrip.IsDeleted && predicate(busOnTrip))
-                                                  .Select(busOnTrip => busOnTrip.Clone());
-            return busOnTripsBy;
-        }
-        public BusOnTrip GetBusOnTripById(int busOnTripId)
-        {
-            var busOnTripById = DataSource.busOnTripsList.Where(busOnTrip => busOnTrip.BusOnTripId == busOnTripId)
-                                                  .Select(busOnTrip => busOnTrip.Clone())
-                                                  .FirstOrDefault();
-
-            if (busOnTripById == null)
-            {
-                throw new BusOnTripNotFoundException(busOnTripId);
-            }
-
-            if (busOnTripById.IsDeleted)
-            {
-                throw new BusOnTripDeletedException(busOnTripId);
-            }
-
-            return busOnTripById;
-        }
-        public void AddBusOnTrip(BusOnTrip busOnTrip)
-        {
-            var busOnTripExist = DataSource.busOnTripsList.FirstOrDefault(b => b.BusOnTripId == busOnTrip.BusOnTripId);
-            if (busOnTripExist != null)
-            {
-                throw new BusOnTripAlreadyExistsException(busOnTrip.BusOnTripId);
-
-            }
-            DataSource.busOnTripsList.Add(busOnTrip.Clone());
-        }
-        public void UpdateBusOnTrip(BusOnTrip busOnTrip)
-        {
-            BusOnTrip busOnTripToUpdate = DataSource.busOnTripsList.Find(b => b.BusOnTripId == busOnTrip.BusOnTripId);
-
-            if (busOnTripToUpdate == null)
-            {
-                throw new BusOnTripNotFoundException(busOnTrip.BusOnTripId);
-            }
-
-            if (busOnTripToUpdate.IsDeleted)
-            {
-                throw new BusOnTripDeletedException(busOnTrip.BusOnTripId, "Cannot update deleted bus On Trip");
-            }
-
-            DataSource.busOnTripsList.Remove(busOnTripToUpdate);
-            DataSource.busOnTripsList.Add(busOnTrip.Clone());
-        }
-        public void UpdateBusOnTrip(BusOnTrip busOnTrip, Action<BusOnTrip> update)
-        {
-            BusOnTrip busOnTripToUpdate = DataSource.busOnTripsList.Find(b => b.BusOnTripId == busOnTrip.BusOnTripId);
-
-            if (busOnTripToUpdate == null)
-            {
-                throw new BusOnTripNotFoundException(busOnTrip.BusOnTripId);
-            }
-
-            if (busOnTripToUpdate.IsDeleted)
-            {
-                throw new BusOnTripDeletedException(busOnTrip.BusOnTripId, "Cannot update deleted bus on trip");
-            }
-            update(busOnTripToUpdate.Clone());
-        }
-        public void DeleteBusOnTrip(int busOnTripId)
-        {
-            var busOnTripToDelete = DataSource.busOnTripsList.Find(bon => !bon.IsDeleted && bon.BusOnTripId == busOnTripId);
-
-
-            if (busOnTripToDelete == null)
-            {
-                throw new BusOnTripNotFoundException(busOnTripId, $"Cannot delete bus On Trip id : {busOnTripId} because it was not found");
-            }
-
-
-            busOnTripToDelete.IsDeleted = true;
-        }
-        public void DeleteBusOnTripBy(Predicate<BusOnTrip> predicate)
-        {
-            var allBusOnTripBy = GetAllBusOnTripBy(predicate);
-            if (allBusOnTripBy != null)
-            {
-                var allBusOnTripByList = allBusOnTripBy.ToList();
-                allBusOnTripByList.ForEach(b => DeleteBusOnTrip(b.BusOnTripId));
-            }
-            else
-            {
-                throw new BusOnTripNotFoundException(0, $"Cannot delete bus on trip For requested predicate: {predicate}");
-            }
-        }
-
-        #endregion BusOnTrip
 
 
         #region Line
@@ -477,21 +367,11 @@ namespace DL
                 lineTripToDeleteList.ForEach(lt => DeleteLineTrip(lt.LineTripId));
             }
 
-            var busOnTripToDelete = GetAllBusOnTripBy(a => a.LineId == lineId);
-            if (busOnTripToDelete != null)
-            {
-                var busOnTripToDeleteList = busOnTripToDelete.ToList();
-                busOnTripToDeleteList.ForEach(lt => DeleteBusOnTrip(lt.BusOnTripId));
-            }
-
+          
             lineToDelete.IsDeleted = true;
         }
 
-        //private void DeleteLineStationLineTripAndBusOnTrip(LineStation lineStation)
-        //{
-        //    DeleteLineStation(lineStation.LineStationId);
-
-        //}
+       
         public void DeleteLineBy(Predicate<Line> predicate)
         {
             var allLineBy = GetAllLineBy(predicate);

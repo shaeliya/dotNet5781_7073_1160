@@ -9,7 +9,6 @@ namespace DS
     public static class Configuration
     {
         public static int MaxAdjacentStationsId;
-        public static int MaxBusOnTripId;
         public static int MaxLineId;
         public static int MaxLineStationId;
         public static int MaxLineTripId;
@@ -18,7 +17,6 @@ namespace DS
         static Configuration()
         {
             MaxAdjacentStationsId = 0;
-            MaxBusOnTripId = 0;
             MaxLineId = 0;
             MaxLineStationId = 0;
             MaxLineTripId = 0;

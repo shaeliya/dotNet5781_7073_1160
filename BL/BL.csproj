@@ -49,10 +49,8 @@
     <Compile Include="BLAPI\BLFactory.cs" />
     <Compile Include="BO\AdjacentStations.cs" />
     <Compile Include="BO\Bus.cs" />
-    <Compile Include="BO\BusOnTrip.cs" />
     <Compile Include="BO\Enums.cs" />
     <Compile Include="BO\Exceptions\BusExceptions.cs" />
-    <Compile Include="BO\Exceptions\BusOnTripExceptions.cs" />
     <Compile Include="BO\Exceptions\GeneralException.cs" />
     <Compile Include="BO\LineOfStation.cs" />
     <Compile Include="BO\LineTiming.cs" />

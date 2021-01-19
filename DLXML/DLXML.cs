@@ -27,7 +27,6 @@ namespace DL
         string adjacentStationsPath = @"AdjacentStationsXml.xml"; //XElement
 
         string busPath = @"BusXml.xml"; //XMLSerializer
-        string busOnTripPath = @"BusOnTripXml.xml"; //XMLSerializer
         string linePath = @"LineXml.xml"; //XMLSerializer
         string lineStationPath = @"LineStationXml.xml"; //XMLSerializer
         string lineTripPath = @"LineTripXml.xml"; //XMLSerializer
@@ -284,119 +283,6 @@ namespace DL
 
         #endregion Bus
 
-        #region BusOnTrip
-        public IEnumerable<BusOnTrip> GetAllBusOnTrip()
-        {
-            List<BusOnTrip> busOnTripsList = XMLTools.LoadListFromXMLSerializer<BusOnTrip>(busOnTripPath);
-            var allBusesOnTrip = busOnTripsList.Where(busOnTrip => !busOnTrip.IsDeleted)
-                                                   .Select(busOnTrip => busOnTrip);
-            return allBusesOnTrip;
-
-        }
-        public IEnumerable<BusOnTrip> GetAllBusOnTripBy(Predicate<BusOnTrip> predicate)
-        {
-            List<BusOnTrip> busOnTripsList = XMLTools.LoadListFromXMLSerializer<BusOnTrip>(busOnTripPath);
-            var busOnTripsBy = busOnTripsList.Where(busOnTrip => !busOnTrip.IsDeleted && predicate(busOnTrip))
-                                                  .Select(busOnTrip => busOnTrip);
-            return busOnTripsBy;
-        }
-        public BusOnTrip GetBusOnTripById(int busOnTripId)
-        {
-            List<BusOnTrip> busOnTripsList = XMLTools.LoadListFromXMLSerializer<BusOnTrip>(busOnTripPath);
-            var busOnTripById = busOnTripsList.Where(busOnTrip => busOnTrip.BusOnTripId == busOnTripId)
-                                                  .Select(busOnTrip => busOnTrip)
-                                                  .FirstOrDefault();
-
-            if (busOnTripById == null)
-            {
-                throw new BusOnTripNotFoundException(busOnTripId);
-            }
-
-            if (busOnTripById.IsDeleted)
-            {
-                throw new BusOnTripDeletedException(busOnTripId);
-            }
-
-            return busOnTripById;
-        }
-        public void AddBusOnTrip(BusOnTrip busOnTrip)
-        {
-            List<BusOnTrip> busOnTripsList = XMLTools.LoadListFromXMLSerializer<BusOnTrip>(busOnTripPath);
-            var busOnTripExist = busOnTripsList.FirstOrDefault(b => b.BusOnTripId == busOnTrip.BusOnTripId);
-            if (busOnTripExist != null)
-            {
-                throw new BusOnTripAlreadyExistsException(busOnTrip.BusOnTripId);
-
-            }
-            busOnTripsList.Add(busOnTrip);
-            XMLTools.SaveListToXMLSerializer(busOnTripsList, busOnTripPath);
-        }
-        public void UpdateBusOnTrip(BusOnTrip busOnTrip)
-        {
-            List<BusOnTrip> busOnTripsList = XMLTools.LoadListFromXMLSerializer<BusOnTrip>(busOnTripPath);
-            BusOnTrip busOnTripToUpdate = busOnTripsList.Find(b => b.BusOnTripId == busOnTrip.BusOnTripId);
-
-            if (busOnTripToUpdate == null)
-            {
-                throw new BusOnTripNotFoundException(busOnTrip.BusOnTripId);
-            }
-
-            if (busOnTripToUpdate.IsDeleted)
-            {
-                throw new BusOnTripDeletedException(busOnTrip.BusOnTripId, "Cannot update deleted bus On Trip");
-            }
-
-            busOnTripsList.Remove(busOnTripToUpdate);
-            busOnTripsList.Add(busOnTrip);
-            XMLTools.SaveListToXMLSerializer(busOnTripsList, busOnTripPath);
-
-        }
-        public void UpdateBusOnTrip(BusOnTrip busOnTrip, Action<BusOnTrip> update)
-        {
-            List<BusOnTrip> busOnTripsList = XMLTools.LoadListFromXMLSerializer<BusOnTrip>(busOnTripPath);
-            BusOnTrip busOnTripToUpdate = busOnTripsList.Find(b => b.BusOnTripId == busOnTrip.BusOnTripId);
-
-            if (busOnTripToUpdate == null)
-            {
-                throw new BusOnTripNotFoundException(busOnTrip.BusOnTripId);
-            }
-
-            if (busOnTripToUpdate.IsDeleted)
-            {
-                throw new BusOnTripDeletedException(busOnTrip.BusOnTripId, "Cannot update deleted bus on trip");
-            }
-            update(busOnTripToUpdate);
-            XMLTools.SaveListToXMLSerializer(busOnTripsList, busOnTripPath);
-
-        }
-        public void DeleteBusOnTrip(int busOnTripId)
-        {
-            List<BusOnTrip> busOnTripsList = XMLTools.LoadListFromXMLSerializer<BusOnTrip>(busOnTripPath);
-            var busOnTripToDelete = busOnTripsList.Find(bon => !bon.IsDeleted && bon.BusOnTripId == busOnTripId);
-
-
-            if (busOnTripToDelete == null)
-            {
-                throw new BusOnTripNotFoundException(busOnTripId, $"Cannot delete bus On Trip id : {busOnTripId} because it was not found");
-            }
-
-
-            busOnTripToDelete.IsDeleted = true;
-            XMLTools.SaveListToXMLSerializer(busOnTripsList, busOnTripPath);
-
-        }
-        public void DeleteBusOnTripBy(Predicate<BusOnTrip> predicate)
-        {
-            List<BusOnTrip> busOnTripsList = XMLTools.LoadListFromXMLSerializer<BusOnTrip>(busOnTripPath);
-            int deletedBusOnTrip = busOnTripsList.RemoveAll(predicate);
-            if (deletedBusOnTrip == 0)
-            {
-                throw new BusOnTripNotFoundException(0, $"Cannot delete bus On Trip For requested predicate: {predicate}");
-            }
-        }
-
-        #endregion BusOnTrip
-
         #region Line
         public IEnumerable<Line> GetAllLine()
         {
@@ -564,23 +450,13 @@ namespace DL
                 lineTripToDeleteList.ForEach(lt => DeleteLineTrip(lt.LineTripId));
             }
 
-            var busOnTripToDelete = GetAllBusOnTripBy(a => a.LineId == lineId);
-            if (busOnTripToDelete != null)
-            {
-                var busOnTripToDeleteList = busOnTripToDelete.ToList();
-                busOnTripToDeleteList.ForEach(lt => DeleteBusOnTrip(lt.BusOnTripId));
-            }
-
+           
             lineToDelete.Element("IsDeleted").Value = "true";
 
             XMLTools.SaveListToXMLElement(lineRootElem, linePath);
         }
 
-        private void DeleteLineStationLineTripAndBusOnTrip(LineStation lineStation)
-        {
-            DeleteLineStation(lineStation.LineStationId, false);
 
-        }
         public void DeleteLineBy(Predicate<Line> predicate)
         {
             throw new NotImplementedException();

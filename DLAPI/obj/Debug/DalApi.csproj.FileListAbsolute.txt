@@ -10,3 +10,4 @@ C:\Users\shalh\source\repos\dotNet5781_7073_1160\bin\DLAPI.pdb
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLAPI\obj\Debug\DalApi.csproj.CoreCompileInputs.cache
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLAPI\obj\Debug\DLAPI.dll
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLAPI\obj\Debug\DLAPI.pdb
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLAPI\obj\Debug\DalApi.csprojAssemblyReference.cache

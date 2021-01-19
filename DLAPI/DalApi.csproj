@@ -50,11 +50,9 @@
     <Compile Include="DLFactory.cs" />
     <Compile Include="DO\AdjacentStations.cs" />
     <Compile Include="DO\Bus.cs" />
-    <Compile Include="DO\BusOnTrip.cs" />
     <Compile Include="DO\Enums.cs" />
     <Compile Include="DO\Exceptions\AdjacentStationsExceptions.cs" />
     <Compile Include="DO\Exceptions\BusExceptions.cs" />
-    <Compile Include="DO\Exceptions\BusOnTripExceptions.cs" />
     <Compile Include="DO\Exceptions\LineExceptions.cs" />
     <Compile Include="DO\Exceptions\LineStationExceptions.cs" />
     <Compile Include="DO\Exceptions\LineTripExceptions.cs" />
