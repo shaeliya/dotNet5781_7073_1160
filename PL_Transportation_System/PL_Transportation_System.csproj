@@ -55,6 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddBus.xaml.cs">
+      <DependentUpon>AddBus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ShowLinesOfStation.xaml.cs">
+      <DependentUpon>ShowLinesOfStation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddStation.xaml.cs">
+      <DependentUpon>AddStation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddLineStation.xaml.cs">
       <DependentUpon>AddLineStation.xaml</DependentUpon>
     </Compile>
@@ -74,6 +83,15 @@
       <DependentUpon>StationDetailsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\DisplayAttributeBasedObjectDataProvider .cs" />
+    <Compile Include="Utils\Utils.cs" />
+    <Page Include="AddBus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ShowLinesOfStation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ActionsOnBusWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -85,6 +103,10 @@
     <Page Include="ActionsOnStationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddStation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="AddLineStation.xaml">
       <SubType>Designer</SubType>

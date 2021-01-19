@@ -24,10 +24,10 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="View details">
+                    <GridViewColumn Header="View Lines of Station">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="View details"  Margin="0,0,20,0" DataContext="{Binding}" Width="80" Click="Open_Details_Window_Button_Click" />
+                                <Button Content="View Lines of Station"  Margin="0,0,20,0" DataContext="{Binding}" Width="80" Click="OpenLinesOfStationsWindow_Button_Click" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn >

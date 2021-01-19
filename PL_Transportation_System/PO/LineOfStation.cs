@@ -10,9 +10,7 @@ namespace PL_Transportation_System.PO
 {
    public class LineOfStation: DependencyObject
     {
-
-
-       
+        public int LineId { get; set; } // קוד הקו
 
         public int LineNumber
         {

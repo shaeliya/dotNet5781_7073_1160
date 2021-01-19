@@ -49,41 +49,7 @@ namespace PL_Transportation_System
         {
             lvStation.ItemsSource = new ObservableCollection<BO.Station>(bl.GetAllStation());
         }
-
-        private void Open_Details_Window_Button_Click(object sender, RoutedEventArgs e)
-        {
-            Button btn = (Button)sender;
-            if (btn.DataContext is BO.Station)
-            {
-                BO.Station station = (BO.Station)btn.DataContext;
-                StationDetailsWindow updateStationWindow = new StationDetailsWindow(station);
-                //updateLineWindow.SelectedLine = line;
-                updateStationWindow.Show();
-            }
-
-            //UpdateLineWindow updateLineWindow = new UpdateLineWindow();
-
-            //updateLineWindow.Show();
-        }
-        private void Open_Delete_Window_Button_Click(object sender, RoutedEventArgs e)
-        {
-            {
-                MessageBoxResult res = MessageBox.Show("Are you sure deleting selected station?", "Verification", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (res == MessageBoxResult.No)
-                    return;
-                try
-                {
-                    bl.DeleteStation(((BO.Station)((Button)sender).DataContext).StationId);
-                    RefreshLinesListView();
-                }
-                catch (BO.Exceptions.StationNotFoundException ex)
-                {
-                    MessageBox.Show(ex.ToString(), "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-
-        }
-    
+            
 
         private void UpdateAllClicked(object sender, RoutedEventArgs e)
         {
@@ -101,7 +67,21 @@ namespace PL_Transportation_System
 
         private void AddStation(object sender, RoutedEventArgs e)
         {
+            AddStation addStationwindow = new AddStation();
+            addStationwindow.Show();
+        }
 
+        private void OpenLinesOfStationsWindow_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (btn.DataContext is PO.Station)
+            {
+                PO.Station station = (PO.Station)btn.DataContext;
+                ShowLinesOfStation showLinesOfStation = new ShowLinesOfStation(station);
+                showLinesOfStation.Show();
+            }
+
+          
         }
     }
 }

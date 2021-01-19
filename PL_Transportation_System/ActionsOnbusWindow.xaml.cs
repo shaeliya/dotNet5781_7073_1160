@@ -64,7 +64,8 @@ namespace PL_Transportation_System
 
         private void AddBus(object sender, RoutedEventArgs e)
         {
-
+            AddBus addBusWindow = new AddBus();
+            addBusWindow.Show();
         }
     }
 
