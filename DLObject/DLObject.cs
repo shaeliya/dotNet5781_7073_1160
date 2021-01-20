@@ -151,7 +151,7 @@ namespace DL
         #region Bus
         public IEnumerable<Bus> GetAllBusses()
         {
-            var allBuses = DataSource.busesList.Where(bus => !bus.IsDeleted)
+            var allBuses = DataSource.busesList/*לא להיות סתומים !!!!.Where(bus => !bus.IsDeleted)*/
                                                .Select(bus => bus.Clone());
             return allBuses;
 

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BL
 {
- 
+
     public class BLImp : IBL
     {
         IDal dl = DLFactory.GetDL();
@@ -21,7 +21,7 @@ namespace BL
         {
             try
             {
-                var allBusses = dl.GetAllBusses();
+                var allBusses = dl.GetAllBusses().OrderBy(b => b.LicenseNumber);
                 var allBussesDo = allBusses.Select(b => BusDoBoAdapter(b)).ToList();
                 return allBussesDo;
             }
@@ -109,7 +109,7 @@ namespace BL
 
             // 2. StationOfLine לאובייקט של LineStation + Station נמיר את האובייקט של 
 
-            lineBO.StationsList = lineStations.Select(ls => CreateStationOfLine(ls)).OrderBy(o=>o.LineStationIndex);
+            lineBO.StationsList = lineStations.Select(ls => CreateStationOfLine(ls)).OrderBy(o => o.LineStationIndex);
 
 
             // 3. של הקו LineTrip-נמצא את כל ה
@@ -129,7 +129,7 @@ namespace BL
 
             StationOfLine sol = (StationOfLine)station.CopyPropertiesToNewAndUnion(typeof(StationOfLine), lineStation);
 
-            var nextLineStation = dl.GetAllLineStationBy(ls => ls.LineId == lineStation.LineId &&ls.LineStationIndex == lineStation.LineStationIndex + 1).FirstOrDefault();
+            var nextLineStation = dl.GetAllLineStationBy(ls => ls.LineId == lineStation.LineId && ls.LineStationIndex == lineStation.LineStationIndex + 1).FirstOrDefault();
             if (nextLineStation == null)
             {
                 sol.TimeToNextStation = TimeSpan.Zero;
@@ -213,7 +213,7 @@ namespace BL
             {
                 // נבדוק שהאינדקס באמת קיים - כי אולי מחקנו אותו
                 var prevLineStation = dl.GetAllLineStationBy(ls => ls.LineId == line.LineId && ls.LineStationIndex == prevIndex).FirstOrDefault();
-                if(prevLineStation!=null)
+                if (prevLineStation != null)
                 {
                     var currStation = line.StationsList.Where(ls => ls.LineStationIndex == currIndex).FirstOrDefault();
                     var prevStation = line.StationsList.Where(ls => ls.LineStationIndex == prevIndex).FirstOrDefault();
@@ -240,7 +240,7 @@ namespace BL
             {
                 var nextLineStation = dl.GetAllLineStationBy(ls => ls.LineId == line.LineId && ls.LineStationIndex == nextIndex).FirstOrDefault();
 
-                if(nextLineStation!=null)
+                if (nextLineStation != null)
                 {
                     var currStation = line.StationsList.Where(ls => ls.LineStationIndex == currIndex).FirstOrDefault();
                     var nextStation = line.StationsList.Where(ls => ls.LineStationIndex == nextIndex).FirstOrDefault();
@@ -319,13 +319,12 @@ namespace BL
             dl.UpdateLine(lineDO);
         }
         public void AddLineStationToLine(Line line, StationOfLine stationOfLine)
-        {
-            line.StationsList = line.StationsList.Where(sol => sol.LineStationIndex >= stationOfLine.LineStationIndex).
-                Select(sol =>
-                {
-                    sol.LineStationIndex += 1;
-                    return sol;
-                });
+        {//החיפזון מהשטן
+            line.StationsList.Where(sol => sol.LineStationIndex >= stationOfLine.LineStationIndex).ToList().ForEach
+                 (sol =>
+                 {
+                     sol.LineStationIndex++;
+                 });
 
 
 
@@ -340,7 +339,7 @@ namespace BL
         /// <param name="line"></param>
         public void UpdateLineStations(Line line)
         {
-          var lineStationsForLine = dl.GetAllLineStationBy(ls => ls.LineId == line.LineId).ToList();
+            var lineStationsForLine = dl.GetAllLineStationBy(ls => ls.LineId == line.LineId).ToList();
             lineStationsForLine.ToList().ForEach(ls => dl.DeleteLineStation(ls.LineStationId, true));
             AddStationsFromLine(line);
 
@@ -363,7 +362,7 @@ namespace BL
             lineTrip.CopyPropertiesTo(lt);
             dl.DeleteLineTrip(lt.LineTripId);
         }
-        public void DeleteLine(int lineId) 
+        public void DeleteLine(int lineId)
         {
             dl.DeleteLine(lineId);
         }
@@ -372,7 +371,7 @@ namespace BL
 
 
         #region Station
-       
+
 
         Station StationDoBoAdapter(DO.Station stationDO)
         {
@@ -384,7 +383,7 @@ namespace BL
             // נטפל ברשימה של הקווים הנמצאים בתוך התחנה
 
             // 1. נמצא את כל הקווים בתחנה
-          
+
             var stationLines = dl.GetAllLineStationBy(sl => sl.StationId == stationDO.StationId);
 
             // 2. LineOfStation לאובייקט של StationLine + Line נמיר את האובייקט של 
@@ -395,7 +394,7 @@ namespace BL
 
             return stationBO;
         }
-      
+
 
         public IEnumerable<Station> GetAllStation()
         {
@@ -416,12 +415,12 @@ namespace BL
                 throw new GeneralException(MethodBase.GetCurrentMethod().Name, "General Error", ex);
             }
         }
-      
+
         public Station GetStationById(int stationId)
         {
             try
             {
-                Station stationBo  = StationDoBoAdapter(dl.GetStationById(stationId));
+                Station stationBo = StationDoBoAdapter(dl.GetStationById(stationId));
 
                 return stationBo;
 
@@ -441,7 +440,7 @@ namespace BL
                 throw new GeneralException(MethodBase.GetCurrentMethod().Name, "General Error", ex);
             }
         }
-       
+
         public void AddStation(Station station)
         {
             DO.Station stationDO = new DO.Station();
@@ -450,7 +449,7 @@ namespace BL
             station.CopyPropertiesTo(stationDO);
 
             dl.AddStation(stationDO);
-          
+
         }
 
         public void UpdateStation(Station station)
@@ -521,7 +520,7 @@ namespace BL
                         };
                         allLineTripsWithin30Minutes.Add(lineTiming);
                     }
-                });                
+                });
             });
 
             return allLineTripsWithin30Minutes;
@@ -541,7 +540,7 @@ namespace BL
             TimeSpan timeToStation = lineTrip.StartAt + TimeSpan.FromMinutes(lineTimeFromStartToStation);
             TimeSpan nowPlus30Minutes = DateTime.Now.TimeOfDay + TimeSpan.FromMinutes(30);
 
-            if(timeToStation >= DateTime.Now.TimeOfDay &&
+            if (timeToStation >= DateTime.Now.TimeOfDay &&
                timeToStation <= nowPlus30Minutes)
             {
                 return true;
@@ -566,6 +565,16 @@ namespace BL
                                                                Sum(s => s.TimeToNextStation.TotalMinutes);
             return timeUntilCuurentStation;
 
+        }
+
+        public double? GetDistanceBetweenStations(int stationId1, int stationId2)
+        {
+            return dl.GetAllAdjacentStationsBy(adj => (adj.StationId1 == stationId1 && adj.StationId2 == stationId2) || (adj.StationId1 == stationId2 && adj.StationId2 == stationId1)).FirstOrDefault()?.Distance;
+        }
+
+        public TimeSpan? GetTimeBetweenStations(int stationId1, int stationId2)
+        {
+            return dl.GetAllAdjacentStationsBy(adj => (adj.StationId1 == stationId1 && adj.StationId2 == stationId2) || (adj.StationId1 == stationId2 && adj.StationId2 == stationId1)).FirstOrDefault()?.Time;
         }
 
     }

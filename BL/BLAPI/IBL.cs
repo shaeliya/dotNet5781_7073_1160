@@ -43,7 +43,7 @@ namespace BLAPI
         void DeleteStation(int id);
 
         #endregion Station
-    
-
+        TimeSpan?  GetTimeBetweenStations(int stationId1, int stationId2);
+        double? GetDistanceBetweenStations(int stationId1, int stationId2);
     }
 }

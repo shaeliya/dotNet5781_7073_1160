@@ -6,7 +6,11 @@
         xmlns:local="clr-namespace:PL_Transportation_System"
         mc:Ignorable="d"
         Title="Update line" Height="450" Width="800" Icon="Sources/carMain.png">
-    <Grid>
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="boolConv"/>
+
+    </Window.Resources>
+        <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="Sources/line.jpg"/>
         </Grid.Background>
@@ -36,7 +40,9 @@
                     <GridViewColumn Header="Move Up" >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Height="40" Width="40" FontSize="15px" Opacity="1" Click="MoveUp_Click">
+                                <Button Visibility="{Binding RelativeSource={RelativeSource Self},
+                                    Path=IsEnabled, Converter={StaticResource boolConv}}"
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=MoveUpCommand}" CommandParameter="{Binding}" Height="40" Width="40" FontSize="15px" Opacity="1">
                                     <Button.Background>
                                         <ImageBrush ImageSource="Sources/up.png"/>
                                     </Button.Background>
@@ -47,7 +53,9 @@
                     <GridViewColumn Header="Move Down">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Width="40" Height="40" FontSize="15px" Opacity="1" Click="MoveDown_Click">
+                                <Button Visibility="{Binding RelativeSource={RelativeSource Self},
+                                    Path=IsEnabled, Converter={StaticResource boolConv}}"
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=MoveDownCommand}" CommandParameter="{Binding}" Width="40" Height="40" FontSize="15px" Opacity="1">
                                     <Button.Background>
                                         <ImageBrush ImageSource="Sources/Down.png"/>
                                     </Button.Background>
@@ -79,6 +87,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="btnAddLineTrip" Content="Add line trip"  FontSize="15px"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="270,361,0,0" VerticalAlignment="Top" Width="166" Click="Add_Line_Trip_Button_Click" Grid.Column="1" Height="49"/>
+        <Button x:Name="btnAddLineTrip" Visibility="Hidden" Content="Add line trip"  FontSize="15px"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="270,361,0,0" VerticalAlignment="Top" Width="166" Click="Add_Line_Trip_Button_Click" Grid.Column="1" Height="49"/>
     </Grid>
 </Window>
