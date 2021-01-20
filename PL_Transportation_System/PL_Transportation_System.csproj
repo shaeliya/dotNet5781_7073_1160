@@ -64,6 +64,7 @@
     <Compile Include="AddLine.xaml.cs">
       <DependentUpon>AddLine.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PO\LineTrip.cs" />
     <Compile Include="ShowLinesOfStation.xaml.cs">
       <DependentUpon>ShowLinesOfStation.xaml</DependentUpon>
     </Compile>
@@ -79,9 +80,6 @@
     <Compile Include="PO\LineOfStation.cs" />
     <Compile Include="PO\Station.cs" />
     <Compile Include="PO\StationOfLine.cs" />
-    <Compile Include="ShowLineTrip.xaml.cs">
-      <DependentUpon>ShowLineTrip.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UpdateBusWindow.xaml.cs">
       <DependentUpon>UpdateBusWindow.xaml</DependentUpon>
     </Compile>
@@ -150,10 +148,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ShowLineTrip.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UpdateBusWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

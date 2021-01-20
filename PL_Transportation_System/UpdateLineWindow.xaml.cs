@@ -24,6 +24,16 @@ namespace PL_Transportation_System
     {
         IBL bl = new BLImp();
 
+        private void rbStation_check(object sender, RoutedEventArgs e)
+        {
+            lvudateLine.Visibility = Visibility.Visible;
+            btnAddLineStation.Visibility = Visibility.Visible;
+        }
+        private void rbLineTrip_check(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         public PO.Line SelectedLine 
         {
             get { return (PO.Line)GetValue(SelectedLineProperty); }

@@ -34,9 +34,7 @@ namespace PL_Transportation_System
                 newL.StationsList = new ObservableCollection<PO.StationOfLine>(l.StationsList.Select(s => s.CopyPropertiesToNew(typeof(PO.StationOfLine))).Cast<PO.StationOfLine>());
                 newL.IsUpdated = false;
                 return newL;
-            }).Cast<PO.Line>());
-
-
+            }).Cast<PO.Line>());   
         }
 
         public ObservableCollection<PO.Line> Lines

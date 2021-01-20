@@ -77,8 +77,15 @@ namespace PL_Transportation_System
             if (btn.DataContext is PO.Station)
             {
                 PO.Station station = (PO.Station)btn.DataContext;
-                ShowLinesOfStation showLinesOfStation = new ShowLinesOfStation(station);
-                showLinesOfStation.Show();
+                if (!station.IsDeleted)
+                {
+                    ShowLinesOfStation showLinesOfStation = new ShowLinesOfStation(station);
+                    showLinesOfStation.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Cannot update deleted station");
+                }
             }
 
           

@@ -29,7 +29,55 @@ namespace PL_Transportation_System
             this.line = line;
             Stations = new ObservableCollection<PO.Station>(bl.GetAllStation().Where(StationsFilter).Select(s => s.CopyPropertiesToNew(typeof(PO.Station))).Cast<PO.Station>());
         }
+
         IBL bl = new BLImp();
+
+        private void rbStart_check(object sender, RoutedEventArgs e)
+        {
+            lbIndex.Visibility = Visibility.Visible;
+            tbIndex.Visibility = Visibility.Visible;
+            lbDistanceTo.Visibility = Visibility.Visible;
+            tbDistanceTo.Visibility = Visibility.Visible;
+            lbStation.Visibility = Visibility.Visible;
+            cbLineStations.Visibility = Visibility.Visible;
+            tbTimeTo.Visibility = Visibility.Visible;
+            lbTimeTo.Visibility = Visibility.Visible;
+            tbDistanceFrom.Visibility = Visibility.Hidden;
+            lbDistanceFrom.Visibility = Visibility.Hidden;
+            lbTimeFrom.Visibility = Visibility.Hidden;
+            tbTimeFrom.Visibility = Visibility.Hidden;
+        }
+        private void rbMiddle_check(object sender, RoutedEventArgs e)
+        {
+            lbIndex.Visibility = Visibility.Visible;
+            tbIndex.Visibility = Visibility.Visible;
+            lbDistanceTo.Visibility = Visibility.Visible;
+            tbDistanceTo.Visibility = Visibility.Visible;
+            lbStation.Visibility = Visibility.Visible;
+            cbLineStations.Visibility = Visibility.Visible;
+            tbTimeTo.Visibility = Visibility.Visible;
+            lbTimeTo.Visibility = Visibility.Visible;
+            tbDistanceFrom.Visibility = Visibility.Visible;
+            lbDistanceFrom.Visibility = Visibility.Visible;
+            lbTimeFrom.Visibility = Visibility.Visible;
+            tbTimeFrom.Visibility = Visibility.Visible;
+        }
+        private void rbEnd_check(object sender, RoutedEventArgs e)
+        {
+            lbIndex.Visibility = Visibility.Visible;
+            tbIndex.Visibility = Visibility.Visible;
+            lbDistanceTo.Visibility = Visibility.Hidden;
+            tbDistanceTo.Visibility = Visibility.Hidden;
+            lbStation.Visibility = Visibility.Visible;
+            cbLineStations.Visibility = Visibility.Visible;
+            tbTimeTo.Visibility = Visibility.Hidden;
+            lbTimeTo.Visibility = Visibility.Hidden;
+            tbDistanceFrom.Visibility = Visibility.Visible;
+            lbDistanceFrom.Visibility = Visibility.Visible;
+            lbTimeFrom.Visibility = Visibility.Visible;
+            tbTimeFrom.Visibility = Visibility.Visible;
+        }
+
         bool StationsFilter(BO.Station station)
         {
             return station.IsDeleted == false && line.StationsList.Any(s => s.LineStationId == station.StationId) == false;
@@ -110,6 +158,7 @@ namespace PL_Transportation_System
                         TimeToNextStation = TimeToNextStation,
                         LineStationIndex = StationIndex
                     };
+
                     var lineBO = (BO.Line)line.CopyPropertiesToNew(typeof(BO.Line));
                     var stationOfLineBO = (BO.StationOfLine)stationOfLine.CopyPropertiesToNew(typeof(BO.StationOfLine));
                     lineBO.StationsList = line.StationsList.Select(s => s.CopyPropertiesToNew(typeof(BO.StationOfLine))).Cast<BO.StationOfLine>().ToList();
