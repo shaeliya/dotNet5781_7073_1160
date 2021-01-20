@@ -59,7 +59,8 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Button  FontSize="15px" Click="UpdateAllClicked" Content="Update All" Margin="210,342,220.6,-9.4" Grid.RowSpan="2"/>
+            <Button HorizontalAlignment="Left" FontSize="15px" Click="AddLine" Content="Add Line" Margin="110,342,0,-14.4" Width="181" Grid.RowSpan="2"/>
+            <Button  FontSize="15px" Click="UpdateAllClicked" Content="Update All" Margin="420,342,87.6,-14.4" Grid.RowSpan="2"/>
         </Grid>
     </Grid>
 </Window>

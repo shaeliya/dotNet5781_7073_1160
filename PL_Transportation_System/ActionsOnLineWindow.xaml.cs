@@ -85,6 +85,12 @@ namespace PL_Transportation_System
                 bl.UpdateLine(line);
             }
         }
+
+        private void AddLine(object sender, RoutedEventArgs e)
+        {
+            AddLine addLinewindow = new AddLine();
+            addLinewindow.Show();
+        }
     }
 }
 

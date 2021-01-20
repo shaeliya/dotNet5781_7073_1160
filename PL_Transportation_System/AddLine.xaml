@@ -1,0 +1,45 @@
+﻿<Window x:Class="PL_Transportation_System.AddLine"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL_Transportation_System"
+        mc:Ignorable="d"
+        Title="AddLine" Height="430.131" Width="326.828">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF56DBDD"/>
+                <GradientStop Color="White" Offset="0.641"/>
+                <GradientStop Color="#FF35BF32" Offset="1"/>
+                <GradientStop Color="#FFBBE9BA" Offset="0.854"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Label Content="Add Line" FontWeight="Bold" Foreground="#FF104008" Margin="106,10,-105.2,354.8"/>
+        <StackPanel Margin="44,77,43.8,172.8">
+            <StackPanel Orientation="Horizontal">
+                <Label>Line Number:</Label>
+                <TextBox Width="93" Name="tbName"  Background="#FFFEFFFF"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,22.8,0">
+                <Label>Area:</Label>
+                <ComboBox DataContext="{Binding}"  Width="97" Height="32"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"/>
+
+        </StackPanel>
+        <Grid Margin="0,334,9.8,-9.2">
+            <Button  Content="Add" FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="32,-72,167.6,103.6"/>
+            <Button  Content="Cancel" FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="193,-69,13.6,104.6" RenderTransformOrigin="0.5,0.5"/>
+
+        </Grid>
+    </Grid>
+</Window>

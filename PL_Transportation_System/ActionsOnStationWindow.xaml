@@ -39,7 +39,7 @@
             </ListView.View>
         </ListView>
 
-        <Button HorizontalAlignment="Left" FontSize="15px" Click="AddStation" Content="Add Station" Margin="249,346,263.6,10"/>
-        <Button HorizontalAlignment="Right"  FontSize="15px" Click="UpdateAllClicked" Content="Update All" Margin="210,342,220.6,-9.4" Grid.RowSpan="2"/>
+        <Button HorizontalAlignment="Left" FontSize="15px" Click="AddStation" Content="Add Station" Margin="145,342,0,10" Width="181"/>
+        <Button HorizontalAlignment="Right"  FontSize="15px" Click="UpdateAllClicked" Content="Update All" Margin="0,342,138.6,10" Width="181"/>
     </Grid>
 </Window>
