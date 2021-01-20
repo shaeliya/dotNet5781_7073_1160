@@ -28,10 +28,13 @@ namespace PL_Transportation_System
         {
             lvudateLine.Visibility = Visibility.Visible;
             btnAddLineStation.Visibility = Visibility.Visible;
+            lvudateLineTrip.Visibility = Visibility.Hidden;
         }
         private void rbLineTrip_check(object sender, RoutedEventArgs e)
         {
-
+            lvudateLine.Visibility = Visibility.Hidden;
+            btnAddLineStation.Visibility = Visibility.Hidden;
+            lvudateLineTrip.Visibility = Visibility.Visible;
         }
 
         public PO.Line SelectedLine 
@@ -150,6 +153,11 @@ namespace PL_Transportation_System
             var lineBO = (BO.Line)SelectedLine.CopyPropertiesToNew(typeof(BO.Line));
             lineBO.StationsList = SelectedLine.StationsList.Select(s => s.CopyPropertiesToNew(typeof(BO.StationOfLine))).Cast<BO.StationOfLine>().ToList();
             return lineBO;
+        }
+
+        private void Add_Line_Trip_Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
