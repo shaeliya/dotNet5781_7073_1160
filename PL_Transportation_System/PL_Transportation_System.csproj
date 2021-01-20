@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ActionsOnLineTrip.xaml.cs">
+      <DependentUpon>ActionsOnLineTrip.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddBus.xaml.cs">
       <DependentUpon>AddBus.xaml</DependentUpon>
     </Compile>
@@ -76,6 +79,9 @@
     <Compile Include="PO\LineOfStation.cs" />
     <Compile Include="PO\Station.cs" />
     <Compile Include="PO\StationOfLine.cs" />
+    <Compile Include="ShowLineTrip.xaml.cs">
+      <DependentUpon>ShowLineTrip.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateBusWindow.xaml.cs">
       <DependentUpon>UpdateBusWindow.xaml</DependentUpon>
     </Compile>
@@ -87,6 +93,10 @@
     </Compile>
     <Compile Include="Utils\DisplayAttributeBasedObjectDataProvider .cs" />
     <Compile Include="Utils\Utils.cs" />
+    <Page Include="ActionsOnLineTrip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddBus.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -140,6 +150,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ShowLineTrip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UpdateBusWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

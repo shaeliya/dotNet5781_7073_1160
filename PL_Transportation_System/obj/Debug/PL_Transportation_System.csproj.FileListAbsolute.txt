@@ -90,3 +90,7 @@ C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\o
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddLine.baml
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ShowLinesOfStation.baml
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddStation.baml
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddLine.g.cs
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddLine.baml
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ActionsOnLineTrip.g.cs
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ActionsOnLineTrip.baml

@@ -50,10 +50,10 @@ namespace PL_Transportation_System
             DependencyProperty.Register("Lines", typeof(ObservableCollection<PO.Line>), typeof(ActionsOnLineWindow), new FrameworkPropertyMetadata(new ObservableCollection<PO.Line>()));
 
 
-        void RefreshLinesListView()
-        {
-            lvLine.DataContext = new ObservableCollection<BO.Line>(bl.GetAllLine());
-        }
+        //void RefreshLinesListView()
+        //{
+        //    lvLine.DataContext = new ObservableCollection<BO.Line>(bl.GetAllLine());
+        //}
 
         private void Open_Update_Window_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -61,10 +61,16 @@ namespace PL_Transportation_System
             if (btn.DataContext is PO.Line)
             {
                 var line = (PO.Line)btn.DataContext;
-                UpdateLineWindow updateLineWindow = new UpdateLineWindow(line);
-                //updateLineWindow.SelectedLine = line;
-                updateLineWindow.Show();
-
+                if(!line.IsDeleted)
+                {
+                    UpdateLineWindow updateLineWindow = new UpdateLineWindow(line);
+                    //updateLineWindow.SelectedLine = line;
+                    updateLineWindow.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Cannot update deleted line");
+                }
             }
 
             //UpdateLineWindow updateLineWindow = new UpdateLineWindow();
@@ -85,7 +91,7 @@ namespace PL_Transportation_System
                 bl.UpdateLine(line);
             }
         }
-
+        
         private void AddLine(object sender, RoutedEventArgs e)
         {
             AddLine addLinewindow = new AddLine();

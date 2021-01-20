@@ -30,12 +30,4 @@ namespace BO
         NeedFuelAndTreatment
 
     }
-    public class Enums
-   {
-       
-        /// <summary>
-        /// סטטוסים אפשריים לאוטובוס
-        /// </summary>
-       
-    }
 }

@@ -16,12 +16,13 @@
             </ComboBox.Background>
         </ComboBox>
         <Label  FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="What is the index of the station on the route?" HorizontalAlignment="Left" Margin="449,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.302,-0.566" Width="333"/>
-        <TextBox Text="{Binding StationIndex, Mode=TwoWay}" KeyDown="keyCheck" Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" HorizontalAlignment="Left" Height="23" Margin="541,52,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="167"/>
-        <Label  FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="What is the distance to the next station?" HorizontalAlignment="Left" Margin="449,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.302,-0.566" Width="333"/>
+        <TextBox Name="tbIndex" Text="{Binding StationIndex, Mode=TwoWay}" KeyDown="keyCheckWithoutPoint" Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" HorizontalAlignment="Left" Height="23" Margin="541,52,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="167"/>
+        <Label  FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="Please enter the distance to the next station?" HorizontalAlignment="Left" Margin="449,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.302,-0.566" Width="333"/>
         <TextBox  Text="{Binding DistanceToNextStation, Mode=TwoWay}" KeyDown="keyCheck" Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="167" Margin="541,171,0,0"/>
         <Label   FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="Select the desired station" HorizontalAlignment="Left" Margin="130,10,0,0" VerticalAlignment="Top"/>
         <Button  FontSize="15px" Click="AddStationToLineClicked" Content="Add station to line" Margin="192,310,238.6,23"/>
-        <TextBox Text="{Binding TimeToNextStation, Mode=TwoWay}" KeyDown="keyCheck" HorizontalAlignment="Left" Height="23" Margin="91,200,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Text="{Binding TimeToNextStation, Mode=TwoWay}" KeyDown="keyCheck" HorizontalAlignment="Left" Height="23" Margin="91,168,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontWeight="Bold" FontSize="15px" Content="Please enter the time to the next station" HorizontalAlignment="Left" Margin="29,119,0,0" VerticalAlignment="Top" Height="36" Width="271"/>
 
 
     </Grid>

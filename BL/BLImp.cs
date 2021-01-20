@@ -200,8 +200,7 @@ namespace BL
             line.CopyPropertiesTo(lineDO);
 
             dl.AddLine(lineDO);
-            AddStationsFromLine(line);
-            line.LineTripList.ToList().ForEach(lt => AddLineTripFromLine(lt));
+            //line.LineTripList.ToList().ForEach(lt => AddLineTripFromLine(lt));
         }
 
         public void MoveLineStationUp(Line line, StationOfLine stationOfLine)

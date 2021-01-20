@@ -322,22 +322,31 @@ namespace DS
 
             for (int i = 0; i < 10; i++)
             {
-                createLineTrip(i);
+                createLineTrip1(i);
             }
 
             for (int i = 0; i < 10; i++)
             {
-                createLineTrip(i);
+                createLineTrip2(i);
             }
 
         }
 
-        private static void createLineTrip(int i)
+        private static void createLineTrip1(int i)
         {
             LineTrip lineTrip = new LineTrip();
             lineTrip.LineTripId = ++Configuration.MaxLineTripId;
             lineTrip.LineId = linesList[i].LineId;
             TimeSpan startAt = new TimeSpan(5 + (i / 2), i + 1, i + 4);
+            lineTrip.StartAt = startAt;           
+            lineTripsList.Add(lineTrip);
+        }
+        private static void createLineTrip2(int i)
+        {
+            LineTrip lineTrip = new LineTrip();
+            lineTrip.LineTripId = ++Configuration.MaxLineTripId;
+            lineTrip.LineId = linesList[i].LineId;
+            TimeSpan startAt = new TimeSpan(6 + (i / 4), i + 5, i + 23);
             lineTrip.StartAt = startAt;           
             lineTripsList.Add(lineTrip);
         }

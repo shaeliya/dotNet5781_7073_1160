@@ -97,29 +97,58 @@ namespace PL_Transportation_System
 
         private void AddStationToLineClicked(object sender, RoutedEventArgs e)
         {
-            var stationOfLine = new PO.StationOfLine()
+            bool isValid = LineStationValidityCheck();
+            if (isValid)
             {
-                Name = SelectedStation.Name,
-                StationId = SelectedStation.StationId,
-                DistanceToNextStation =DistanceToNextStation,
-               TimeToNextStation = TimeToNextStation,
-                LineStationIndex = StationIndex
-            };
-            var lineBO = (BO.Line)line.CopyPropertiesToNew(typeof(BO.Line));
-            var stationOfLineBO = (BO.StationOfLine)stationOfLine.CopyPropertiesToNew(typeof(BO.StationOfLine));
-            lineBO.StationsList = line.StationsList.Select(s => s.CopyPropertiesToNew(typeof(BO.StationOfLine))).Cast<BO.StationOfLine>().ToList();
-            bl.AddLineStationToLine(lineBO, stationOfLineBO);
-            //bl.up
-            Close();
+                try
+                {
+                    var stationOfLine = new PO.StationOfLine()
+                    {
+                        Name = SelectedStation.Name,
+                        StationId = SelectedStation.StationId,
+                        DistanceToNextStation = DistanceToNextStation,
+                        TimeToNextStation = TimeToNextStation,
+                        LineStationIndex = StationIndex
+                    };
+                    var lineBO = (BO.Line)line.CopyPropertiesToNew(typeof(BO.Line));
+                    var stationOfLineBO = (BO.StationOfLine)stationOfLine.CopyPropertiesToNew(typeof(BO.StationOfLine));
+                    lineBO.StationsList = line.StationsList.Select(s => s.CopyPropertiesToNew(typeof(BO.StationOfLine))).Cast<BO.StationOfLine>().ToList();
+                    bl.AddLineStationToLine(lineBO, stationOfLineBO);
+                    MessageBox.Show("LineStation Added Successfully!");
+                    Close();
+                }
+                catch (BO.Exceptions.StationAlreadyExistsException)
+                {
+                    MessageBox.Show("Line station Already Exists!");
 
-            //RefreshLine();
-
+                }
+            }
         }
-        private void keyCheck(object sender, KeyEventArgs e)
+        private bool LineStationValidityCheck()
+        {
+
+            if (Convert.ToInt32 (tbIndex.Text) == 0 ||Convert.ToInt32(tbIndex.Text)>line.StationsList.Select(s => s.LineStationIndex).Max()+1)
+            {
+                MessageBox.Show(" The index is unvalid");
+                return false;
+            }
+            return true;
+        }
+    private void keyCheck(object sender, KeyEventArgs e)
         {
             if (((int)e.Key < (int)Key.D0 || (int)e.Key > (int)Key.D9) && ((int)e.Key < (int)Key.NumPad0 || (int)e.Key > (int)Key.NumPad9) && e.Key != Key.OemPeriod && e.Key != Key.Escape && e.Key != Key.Back)
                 e.Handled = true;
         }
-       
+        private void keyCheckWithoutPoint(object sender, KeyEventArgs e)
+        {
+            if (((int)e.Key < (int)Key.D0 || (int)e.Key > (int)Key.D9) && ((int)e.Key < (int)Key.NumPad0 || (int)e.Key > (int)Key.NumPad9) && e.Key != Key.Escape && e.Key != Key.Back)
+                e.Handled = true;
+        }
+
     }
+
+
 }
+
+
+
