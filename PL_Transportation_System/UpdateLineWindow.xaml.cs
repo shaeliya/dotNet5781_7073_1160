@@ -27,6 +27,16 @@ namespace PL_Transportation_System
         IBL bl = new BLImp();
         Random _rand = new Random();
 
+        public UpdateLineWindow(PO.Line selectedLine)
+        {
+            InitializeComponent();
+            SelectedLine = selectedLine;
+            MoveUpCommand = new RelayCommand(MoveUp, CanMoveUp);
+            MoveDownCommand = new RelayCommand(MoveDown, CanMoveDown);
+            DataContext = this;
+            //    var lineTrips = bl.GetAllLine().Select(b => b.CopyPropertiesToNew(typeof(BO.LineTrip))).Cast<BO.LineTrip>().ToList();
+            //    LineTrips = new ObservableCollection<LineTrip>(lineTrips);
+        }
         private void rbStation_check(object sender, RoutedEventArgs e)
         {
             lvudateLine.Visibility = Visibility.Visible;
@@ -54,16 +64,6 @@ namespace PL_Transportation_System
         public ICommand MoveUpCommand { get; set; }
         public ICommand MoveDownCommand { get; set; }
 
-        public UpdateLineWindow(PO.Line selectedLine)
-        {
-            InitializeComponent();
-            SelectedLine = selectedLine;
-            MoveUpCommand = new RelayCommand(MoveUp, CanMoveUp);
-            MoveDownCommand = new RelayCommand(MoveDown, CanMoveDown);
-            DataContext = this;
-            //    var lineTrips = bl.GetAllLine().Select(b => b.CopyPropertiesToNew(typeof(BO.LineTrip))).Cast<BO.LineTrip>().ToList();
-            //    LineTrips = new ObservableCollection<LineTrip>(lineTrips);
-        }
         public ObservableCollection<LineTrip> LineTrips
         {
             get { return (ObservableCollection<LineTrip>)GetValue(LineTripProperty); }
