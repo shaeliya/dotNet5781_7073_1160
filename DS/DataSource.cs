@@ -329,7 +329,35 @@ namespace DS
             {
                 createLineTrip2(i);
             }
-
+            for (int i = 0; i < 10; i++)
+            {
+                createLineTrip3(i);
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                createLineTrip4(i);
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                createLineTrip5(i);
+            }
+              for (int i = 0; i < 10; i++)
+            {
+                createLineTrip6(i);
+            }
+              for (int i = 0; i < 10; i++)
+            {
+                createLineTrip7(i);
+            }
+              for (int i = 0; i < 10; i++)
+            {
+                createLineTrip8(i);
+            }
+              for (int i = 0; i < 10; i++)
+            {
+                createLineTrip9(i);
+            }
+            
         }
 
         private static void createLineTrip1(int i)
@@ -350,6 +378,70 @@ namespace DS
             lineTrip.StartAt = startAt;           
             lineTripsList.Add(lineTrip);
         }
+        private static void createLineTrip3(int i)
+        {
+            LineTrip lineTrip = new LineTrip();
+            lineTrip.LineTripId = ++Configuration.MaxLineTripId;
+            lineTrip.LineId = linesList[i].LineId;
+            TimeSpan startAt = new TimeSpan(7 + (i / 2), i + 20, i + 23);
+            lineTrip.StartAt = startAt;           
+            lineTripsList.Add(lineTrip);
+        }
+         private static void createLineTrip4(int i)
+        {
+            LineTrip lineTrip = new LineTrip();
+            lineTrip.LineTripId = ++Configuration.MaxLineTripId;
+            lineTrip.LineId = linesList[i].LineId;
+            TimeSpan startAt = new TimeSpan(10 + (i / 5), i + 39, i + 25);
+            lineTrip.StartAt = startAt;           
+            lineTripsList.Add(lineTrip);
+        }
+         private static void createLineTrip5(int i)
+        {
+            LineTrip lineTrip = new LineTrip();
+            lineTrip.LineTripId = ++Configuration.MaxLineTripId;
+            lineTrip.LineId = linesList[i].LineId;
+            TimeSpan startAt = new TimeSpan(12 + (i / 5), i + 42, i + 29);
+            lineTrip.StartAt = startAt;           
+            lineTripsList.Add(lineTrip);
+        }
+         private static void createLineTrip6(int i)
+        {
+            LineTrip lineTrip = new LineTrip();
+            lineTrip.LineTripId = ++Configuration.MaxLineTripId;
+            lineTrip.LineId = linesList[i].LineId;
+            TimeSpan startAt = new TimeSpan(15 + (i / 5), i + 58, i + 47);
+            lineTrip.StartAt = startAt;           
+            lineTripsList.Add(lineTrip);
+        }
+         private static void createLineTrip7(int i)
+        {
+            LineTrip lineTrip = new LineTrip();
+            lineTrip.LineTripId = ++Configuration.MaxLineTripId;
+            lineTrip.LineId = linesList[i].LineId;
+            TimeSpan startAt = new TimeSpan(17 + (i / 5), i + 26, i + 21);
+            lineTrip.StartAt = startAt;           
+            lineTripsList.Add(lineTrip);
+        }
+         private static void createLineTrip8(int i)
+        {
+            LineTrip lineTrip = new LineTrip();
+            lineTrip.LineTripId = ++Configuration.MaxLineTripId;
+            lineTrip.LineId = linesList[i].LineId;
+            TimeSpan startAt = new TimeSpan(20 + (i / 5), i + 8, i + 0);
+            lineTrip.StartAt = startAt;           
+            lineTripsList.Add(lineTrip);
+        }
+          private static void createLineTrip9(int i)
+        {
+            LineTrip lineTrip = new LineTrip();
+            lineTrip.LineTripId = ++Configuration.MaxLineTripId;
+            lineTrip.LineId = linesList[i].LineId;
+            TimeSpan startAt = new TimeSpan(22 + (i / 5), i + 17, i + 9);
+            lineTrip.StartAt = startAt;           
+            lineTripsList.Add(lineTrip);
+        }
+
         #endregion Initialize LineTrip
 
     }

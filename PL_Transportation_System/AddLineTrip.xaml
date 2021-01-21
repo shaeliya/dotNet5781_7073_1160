@@ -1,0 +1,17 @@
+﻿<Window x:Class="PL_Transportation_System.AddLineTrip"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL_Transportation_System"
+        mc:Ignorable="d"
+        Title="AddLineTrip" Height="250" Width="298.4">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Sources/line.jpg"/>
+        </Grid.Background>
+        <Label Name="lbStartAt"  FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="Start At:" HorizontalAlignment="Left" Margin="62,73,-15,0" VerticalAlignment="Top" Width="245"/>
+        <TextBox Name="tbStartAt" Text="{Binding StartAt}" KeyDown="keyCheck" HorizontalAlignment="Left" Height="23" Margin="131,77,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="93" RenderTransformOrigin="0.138,0.53"/>
+        <Button Content="Add line trip" HorizontalAlignment="Left" Margin="74,155,0,0" VerticalAlignment="Top" Width="137" Height="51" Click="Add_Line_Trip_Button_Click"/>
+    </Grid>
+</Window>

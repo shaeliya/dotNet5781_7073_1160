@@ -91,14 +91,7 @@ namespace PL_Transportation_System
         {
             return station.IsDeleted == false && line.StationsList.Any(s => s.LineStationId == station.StationId) == false;
         }
-        public ObservableCollection<PO.Station> Stations
-        {
-            get { return (ObservableCollection<PO.Station>)GetValue(StationsProperty); }
-            set { SetValue(StationsProperty, value); }
-        }
-
-
-
+        
         public double DistanceToNextStation
         {
             get { return (double)GetValue(DistanceToNextStationProperty); }
@@ -108,9 +101,6 @@ namespace PL_Transportation_System
         // Using a DependencyProperty as the backing store for DistanceToNextStation.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DistanceToNextStationProperty =
             DependencyProperty.Register("DistanceToNextStation", typeof(double), typeof(AddLineStation), new PropertyMetadata(0.0));
-
-
-
 
         public TimeSpan TimeToNextStation
         {
@@ -133,12 +123,15 @@ namespace PL_Transportation_System
         public static readonly DependencyProperty StationIndexProperty =
             DependencyProperty.Register("StationIndex", typeof(int), typeof(AddLineStation), new PropertyMetadata(0));
 
-
+        public ObservableCollection<PO.Station> Stations
+        {
+            get { return (ObservableCollection<PO.Station>)GetValue(StationsProperty); }
+            set { SetValue(StationsProperty, value); }
+        }
         // Using a DependencyProperty as the backing store for StationsList.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StationsProperty =
             DependencyProperty.Register("Stations", typeof(ObservableCollection<PO.Station>), typeof(AddLineStation), new FrameworkPropertyMetadata(new ObservableCollection<PO.Station>()));
         private readonly PO.Line line;
-
 
         public PO.Station SelectedStation
         {
@@ -149,8 +142,6 @@ namespace PL_Transportation_System
         // Using a DependencyProperty as the backing store for Station.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedStationProperty =
             DependencyProperty.Register("SelectedStation", typeof(PO.Station), typeof(AddLineStation), new PropertyMetadata(default(PO.Station)));
-
-
 
         private void AddStationToLineStartClicked(object sender, RoutedEventArgs e)
         {
@@ -172,7 +163,7 @@ namespace PL_Transportation_System
                     var stationOfLineBO = (BO.StationOfLine)stationOfLine.CopyPropertiesToNew(typeof(BO.StationOfLine));
                     lineBO.StationsList = line.StationsList.Select(s => s.CopyPropertiesToNew(typeof(BO.StationOfLine))).Cast<BO.StationOfLine>().ToList();
                     bl.AddLineStationToLine(lineBO, stationOfLineBO);
-                    MessageBox.Show("LineStation Added Successfully!");
+                    MessageBox.Show("Line Station Added Successfully!");
                     Close();
                 }
                 catch (BO.Exceptions.StationAlreadyExistsException)

@@ -538,12 +538,12 @@ namespace DL
         }
         public void AddLineTrip(LineTrip lineTrip)
         {
-            var lineTripExist = DataSource.lineTripsList.FirstOrDefault(l => l.LineTripId == lineTrip.LineTripId);
-            if (lineTripExist != null)
-            {
-                throw new LineTripAlreadyExistsException(lineTrip.LineTripId);
+            //var lineTripExist = DataSource.lineTripsList.FirstOrDefault(l => l.LineTripId == lineTrip.LineTripId);
+            ////if (lineTripExist != null)
+            ////{
+            ////    throw new LineTripAlreadyExistsException(lineTrip.LineTripId);
 
-            }
+            ////}
             DataSource.lineTripsList.Add(lineTrip.Clone());
         }
         public void UpdateLineTrip(LineTrip lineTrip)

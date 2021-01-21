@@ -91,8 +91,6 @@ namespace BL
 
         #endregion Bus
 
-
-
         #region Line
         Line LineDoBoAdapter(DO.Line lineDO)
         {
@@ -113,7 +111,7 @@ namespace BL
 
 
             // 3. של הקו LineTrip-נמצא את כל ה
-            var lineTrip = dl.GetAllLineTripBy(lt => lt.LineId == lineDO.LineId);
+            var lineTrip = dl.GetAllLineTripBy(lt => lt.LineId == lineDO.LineId).OrderBy(lt => lt.StartAt).ToList();
 
             // 4. המתאים לו LineTrip-נביא עבור הקו שלנו את ה 
             lineBO.LineTripList = lineTrip.Select(s => (LineTrip)s.CopyPropertiesToNew(typeof(LineTrip)));
@@ -291,13 +289,18 @@ namespace BL
         }
 
 
-        private void AddLineTripFromLine(LineTrip lt)
+        private void AddLineTripFromLine(Line line)
         {
-            DO.LineTrip lineTripDO = new DO.LineTrip();
+            line.LineTripList.ToList().ForEach(lt => AddLineTrip(lt, line));
+        }
 
-            lt.CopyPropertiesTo(lineTripDO);
 
-            dl.AddLineTrip(lineTripDO);
+        private void AddLineTrip(LineTrip lineTrip, Line line)
+        {
+            DO.LineTrip ls = (DO.LineTrip)lineTrip.CopyPropertiesToNewAndUnion(typeof(DO.LineTrip), line);
+
+            dl.AddLineTrip(ls);
+
         }
 
         private void AddLineStation(StationOfLine stationOfLine, Line line)
@@ -319,7 +322,7 @@ namespace BL
             dl.UpdateLine(lineDO);
         }
         public void AddLineStationToLine(Line line, StationOfLine stationOfLine)
-        {//החיפזון מהשטן
+        {   
             line.StationsList.Where(sol => sol.LineStationIndex >= stationOfLine.LineStationIndex).ToList().ForEach
                  (sol =>
                  {
@@ -352,23 +355,18 @@ namespace BL
         /// <param name="line"></param>
         public void UpdateLineTrips(Line line)
         {
-            line.LineTripList.ToList().ForEach(lt => DeleteLineTrips(lt, line));
-            AddStationsFromLine(line);
+            var lineTripsForLine = dl.GetAllLineTripBy(lt => lt.LineId == line.LineId).ToList();
+
+            lineTripsForLine.ToList().ForEach(lt => DeleteLineTrip(lt.LineTripId));
+            AddLineTripFromLine(line);
         }
 
-        private void DeleteLineTrips(LineTrip lineTrip, Line line)
-        {
-            DO.LineTrip lt = new DO.LineTrip();
-            lineTrip.CopyPropertiesTo(lt);
-            dl.DeleteLineTrip(lt.LineTripId);
-        }
         public void DeleteLine(int lineId)
         {
             dl.DeleteLine(lineId);
         }
 
         #endregion Line
-
 
         #region Station
 
@@ -463,9 +461,60 @@ namespace BL
             dl.DeleteStation(stationId);
         }
 
-        #endregion Station    
+        #endregion  Station 
+        
+        #region LineTrip 
+        public void AddLineTrip(LineTrip lineTrip)
+        {
+            DO.LineTrip lineTripDO = new DO.LineTrip();
 
+             //נוסיף את הקו עצמו
+            lineTrip.CopyPropertiesTo(lineTripDO);
+            dl.AddLineTrip(lineTripDO);
+        }
+        public void DeleteLineTrip(int id)
+        {
+            dl.DeleteLineTrip(id);
+        }
 
+        public void AddLineTripToLine(Line line, LineTrip lineTrip)
+        {
+           
+            line.LineTripList = line.LineTripList.Append(lineTrip);
+            UpdateLineTrips(line);
+
+        }
+        public IEnumerable<LineTrip> GetAllLineTrips()
+        {
+            try
+            {
+                var allLineTrip = dl.GetAllLineTrip();
+                var allLineTripDo = allLineTrip.Select(l => LineDoBoAdapter(l)).ToList();
+                return allLineTripDo.OrderBy(l => l.StartAt);
+            }
+            catch (DO.Exceptions.StationNotFoundException exDO)
+            {
+                throw new LineNotFoundException(0, "No Stations found in system", exDO);
+            }
+            catch (GeneralException ex)
+
+            {
+
+                throw new GeneralException(MethodBase.GetCurrentMethod().Name, "General Error", ex);
+            }
+        }
+        LineTrip LineDoBoAdapter(DO.LineTrip lineTripDO)
+        {
+            LineTrip LineTripBO = new LineTrip();
+
+            // BO-לישות ב DO-הדומים מהישות ב Properties-נעתיק את כל ה
+            lineTripDO.CopyPropertiesTo(LineTripBO);
+            
+            return LineTripBO;
+        }
+        #endregion LineTrip   
+
+        #region LineTiming 
         public List<LineTiming> GetAllCurrentLinesForStation(Station station)
         {
             List<LineTiming> lineTimingList = new List<LineTiming>();
@@ -549,8 +598,6 @@ namespace BL
             return false;
         }
 
-
-
         /// <summary>
         /// פונקציה שמחשבת כמה זמן לוקח לקו להגיע מתחנת ההתחלה לתחנה רצויה
         /// </summary>
@@ -578,4 +625,5 @@ namespace BL
         }
 
     }
+    #endregion LineTiming   
 }

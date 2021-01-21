@@ -32,8 +32,6 @@ namespace PL_Transportation_System.PO
         public static readonly DependencyProperty StartAtProperty =
             DependencyProperty.Register("StartAt", typeof(TimeSpan), typeof(LineTrip), new PropertyMetadata(default(TimeSpan)));
 
-
-
-
+         
     }
 }

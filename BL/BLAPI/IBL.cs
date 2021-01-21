@@ -34,6 +34,12 @@ namespace BLAPI
 
         #endregion Line
 
+        #region LineTrip 
+        void AddLineTrip(LineTrip lineTrip);
+         void DeleteLineTrip(int id);
+        void AddLineTripToLine(Line line, LineTrip lineTrip);
+        IEnumerable<LineTrip> GetAllLineTrips();
+        #endregion LineTrip
 
         #region Station
         IEnumerable<Station> GetAllStation();

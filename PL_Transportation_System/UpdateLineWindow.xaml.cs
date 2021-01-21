@@ -66,11 +66,11 @@ namespace PL_Transportation_System
 
         public ObservableCollection<LineTrip> LineTrips
         {
-            get { return (ObservableCollection<LineTrip>)GetValue(LineTripProperty); }
-            set { SetValue(LineTripProperty, value); }
+            get { return (ObservableCollection<LineTrip>)GetValue(LineTripsProperty); }
+            set { SetValue(LineTripsProperty, value); }
         }
         //Using a DependencyProperty as the backing store for Buses.This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty LineTripProperty =
+        public static readonly DependencyProperty LineTripsProperty =
             DependencyProperty.Register("LineTrip", typeof(ObservableCollection<LineTrip>), typeof(UpdateLineWindow), new FrameworkPropertyMetadata(new ObservableCollection<LineTrip>()));
 
 
@@ -82,23 +82,14 @@ namespace PL_Transportation_System
             //addLineStationWindow.BusList = BusList;
             addLineStationWindow.Show();
         }
+         private void Add_Line_Trip_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectedLine == null) return;
+            AddLineTrip addLineTripWindow = new AddLineTrip(SelectedLine);
+            addLineTripWindow.Show();
+        }
 
-        //        private void MoveUp_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Button btn = (Button)sender;
-        //    if (btn.DataContext is PO.StationOfLine)
-        //    {
-        //        var stationOfLine = (PO.StationOfLine)btn.DataContext;
-
-        //        //Update Data Source
-        //        var line = LinePoToBoAdapter();
-        //        var stationOfLineBO = (BO.StationOfLine)stationOfLine.CopyPropertiesToNew(typeof(BO.StationOfLine));
-        //        bl.MoveLineStationUp(line, stationOfLineBO);
-
-        //        RefreshLine();
-
-        //    }
-        //}
+      
 
         private void MoveUp(object dataContext)
         {
@@ -180,14 +171,6 @@ namespace PL_Transportation_System
             return stationOfLine.LineStationIndex < SelectedLine.StationsList.Count();
         }
 
-        private void RefreshLine()
-        {
-            var lineBO = bl.GetLineById(SelectedLine.LineId);
-            lineBO.CopyPropertiesTo(SelectedLine);
-        }
-
-
-
         private void MoveDown(object dataContext)
         {
             var stationOfLine = (PO.StationOfLine)dataContext;
@@ -256,9 +239,6 @@ namespace PL_Transportation_System
             return lineBO;
         }
 
-        private void Add_Line_Trip_Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }
