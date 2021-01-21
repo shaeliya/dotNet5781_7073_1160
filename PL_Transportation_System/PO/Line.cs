@@ -49,6 +49,16 @@ namespace PL_Transportation_System.PO
         public static readonly DependencyProperty StationsListProperty =
             DependencyProperty.Register("StationsList", typeof(ObservableCollection<StationOfLine>), typeof(Line), new FrameworkPropertyMetadata(new ObservableCollection<StationOfLine>(), FrameworkPropertyMetadataOptions.None, new PropertyChangedCallback(OnPropChanged)));
 
+        public ObservableCollection<LineTrip> LineTripList
+        {
+            get { return (ObservableCollection<LineTrip>)GetValue(LineTripListProperty); }
+            set { SetValue(LineTripListProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for LineTripList.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty LineTripListProperty =
+            DependencyProperty.Register("LineTripList", typeof(ObservableCollection<LineTrip>), typeof(Line), new FrameworkPropertyMetadata(new ObservableCollection<LineTrip>(), FrameworkPropertyMetadataOptions.None, new PropertyChangedCallback(OnPropChanged)));
+
 
         public bool IsUpdated { get; set; }
         public bool IsDeleted

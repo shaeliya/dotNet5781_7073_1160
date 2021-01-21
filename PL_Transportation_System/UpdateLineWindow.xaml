@@ -19,12 +19,13 @@
             <ColumnDefinition Width="17*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="btnAddLineStation" Visibility="Hidden" Content="Add line station"  FontSize="15px"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="270,361,0,0" VerticalAlignment="Top" Width="166" Click="Add_Line_Station_Button_Click" Grid.Column="1" Height="49"/>
-        <ListView  x:Name="lvudateLine" Visibility="Hidden" HorizontalContentAlignment="Stretch" Foreground="#FF042271" FontWeight="Bold"  FontSize="15px" Background="White" Opacity="0.8"  FontFamily="Goudy Old Style" ItemsSource="{Binding SelectedLine.StationsList}" HorizontalAlignment="Left" Height="274" Margin="38,65,0,0" VerticalAlignment="Top" Width="718" Grid.ColumnSpan="2">
+        <ListView  x:Name="lvudateLine"  HorizontalContentAlignment="Stretch" Foreground="#FF042271" FontWeight="Bold"  FontSize="15px" Background="White" Opacity="0.8"  FontFamily="Goudy Old Style" ItemsSource="{Binding SelectedLine.StationsList}" HorizontalAlignment="Left" Height="274" Margin="38,65,0,0" VerticalAlignment="Top" Width="718" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Index"
                             DisplayMemberBinding="{Binding Path=LineStationIndex}" />
                     <GridViewColumn Header="Name"
+                                    Width="150"
                             DisplayMemberBinding="{Binding Path=Name}" />
                     <GridViewColumn Header="Time To Next Station"
                             DisplayMemberBinding="{Binding Path=TimeToNextStation}" />
@@ -72,7 +73,7 @@
         <Label Content="What would you like to update?" Grid.Column="1" HorizontalAlignment="Left" Margin="28,10,0,0" VerticalAlignment="Top"/>
         <RadioButton Content="Stations" Checked="rbStation_check" Grid.Column="1" HorizontalAlignment="Left" Margin="223,14,0,0" VerticalAlignment="Top"/>
         <RadioButton Content="Line trip" Checked="rbLineTrip_check" Grid.Column="1" HorizontalAlignment="Left" Margin="313,16,0,0" VerticalAlignment="Top"/>
-        <ListView  x:Name="lvudateLineTrip"  HorizontalContentAlignment="Stretch" Foreground="#FF042271" FontWeight="Bold"  FontSize="15px" Background="White" Opacity="0.8"  FontFamily="Goudy Old Style" HorizontalAlignment="Left" Height="274" Margin="38,65,0,0" VerticalAlignment="Top" Width="718" Grid.ColumnSpan="2">
+        <ListView  x:Name="lvudateLineTrip" ItemsSource="{Binding SelectedLine.LineTripList, Mode=TwoWay}" Visibility="Hidden" HorizontalContentAlignment="Stretch" Foreground="#FF042271" FontWeight="Bold"  FontSize="15px" Background="White" Opacity="0.8"  FontFamily="Goudy Old Style" HorizontalAlignment="Left" Height="274" Margin="38,65,0,0" VerticalAlignment="Top" Width="718" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Start at"

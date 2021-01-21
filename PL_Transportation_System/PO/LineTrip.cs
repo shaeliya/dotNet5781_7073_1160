@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace PL_Transportation_System.PO
 {
-    class LineTrip: DependencyObject
+   public class LineTrip: DependencyObject
     {
         /*
         

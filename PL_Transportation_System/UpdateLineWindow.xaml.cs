@@ -1,5 +1,6 @@
 ﻿using BL;
 using BLAPI;
+using PL_Transportation_System.PO;
 using PL_Transportation_System.Utils;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace PL_Transportation_System
     {
         IBL bl = new BLImp();
         Random _rand = new Random();
+
         private void rbStation_check(object sender, RoutedEventArgs e)
         {
             lvudateLine.Visibility = Visibility.Visible;
@@ -59,7 +61,18 @@ namespace PL_Transportation_System
             MoveUpCommand = new RelayCommand(MoveUp, CanMoveUp);
             MoveDownCommand = new RelayCommand(MoveDown, CanMoveDown);
             DataContext = this;
+            //var lineTrips = bl.GetAllLine().Select(b => b.CopyPropertiesToNew(typeof(BO.LineTrip))).Cast<BO.LineTrip>().ToList();
+            //LineTrips = new ObservableCollection<LineTrip>(lineTrips).Co;
         }
+        public ObservableCollection<LineTrip> LineTrips
+        {
+            get { return (ObservableCollection<LineTrip>)GetValue(LineTripProperty); }
+            set { SetValue(LineTripProperty, value); }
+        }
+        //Using a DependencyProperty as the backing store for Buses.This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty LineTripProperty =
+            DependencyProperty.Register("LineTrip", typeof(ObservableCollection<LineTrip>), typeof(UpdateLineWindow), new FrameworkPropertyMetadata(new ObservableCollection<LineTrip>()));
+
 
 
         private void Add_Line_Station_Button_Click(object sender, RoutedEventArgs e)
