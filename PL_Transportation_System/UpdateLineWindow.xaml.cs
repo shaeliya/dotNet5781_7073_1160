@@ -61,8 +61,8 @@ namespace PL_Transportation_System
             MoveUpCommand = new RelayCommand(MoveUp, CanMoveUp);
             MoveDownCommand = new RelayCommand(MoveDown, CanMoveDown);
             DataContext = this;
-            //var lineTrips = bl.GetAllLine().Select(b => b.CopyPropertiesToNew(typeof(BO.LineTrip))).Cast<BO.LineTrip>().ToList();
-            //LineTrips = new ObservableCollection<LineTrip>(lineTrips).Co;
+            //    var lineTrips = bl.GetAllLine().Select(b => b.CopyPropertiesToNew(typeof(BO.LineTrip))).Cast<BO.LineTrip>().ToList();
+            //    LineTrips = new ObservableCollection<LineTrip>(lineTrips);
         }
         public ObservableCollection<LineTrip> LineTrips
         {
@@ -252,6 +252,7 @@ namespace PL_Transportation_System
         {
             var lineBO = (BO.Line)SelectedLine.CopyPropertiesToNew(typeof(BO.Line));
             lineBO.StationsList = SelectedLine.StationsList.Select(s => s.CopyPropertiesToNew(typeof(BO.StationOfLine))).Cast<BO.StationOfLine>().ToList();
+            lineBO.LineTripList = SelectedLine.LineTripList.Select(lt => lt.CopyPropertiesToNew(typeof(BO.LineTrip))).Cast<BO.LineTrip>().ToList();
             return lineBO;
         }
 

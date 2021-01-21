@@ -46,6 +46,9 @@ namespace PL_Transportation_System
             lbDistanceFrom.Visibility = Visibility.Hidden;
             lbTimeFrom.Visibility = Visibility.Hidden;
             tbTimeFrom.Visibility = Visibility.Hidden;
+            btnAddStart.Visibility = Visibility.Visible;
+            btnAddMiddle.Visibility = Visibility.Hidden;
+            btnAddEnd.Visibility = Visibility.Hidden;
         }
         private void rbMiddle_check(object sender, RoutedEventArgs e)
         {
@@ -61,6 +64,9 @@ namespace PL_Transportation_System
             lbDistanceFrom.Visibility = Visibility.Visible;
             lbTimeFrom.Visibility = Visibility.Visible;
             tbTimeFrom.Visibility = Visibility.Visible;
+            btnAddStart.Visibility = Visibility.Hidden;
+            btnAddMiddle.Visibility = Visibility.Visible;
+            btnAddEnd.Visibility = Visibility.Hidden;
         }
         private void rbEnd_check(object sender, RoutedEventArgs e)
         {
@@ -76,6 +82,9 @@ namespace PL_Transportation_System
             lbDistanceFrom.Visibility = Visibility.Visible;
             lbTimeFrom.Visibility = Visibility.Visible;
             tbTimeFrom.Visibility = Visibility.Visible;
+            btnAddStart.Visibility = Visibility.Hidden;
+            btnAddMiddle.Visibility = Visibility.Hidden;
+            btnAddEnd.Visibility = Visibility.Visible;
         }
 
         bool StationsFilter(BO.Station station)
@@ -143,7 +152,67 @@ namespace PL_Transportation_System
 
 
 
-        private void AddStationToLineClicked(object sender, RoutedEventArgs e)
+        private void AddStationToLineStartClicked(object sender, RoutedEventArgs e)
+        {
+            bool isValid = LineStationValidityCheck();
+            if (isValid)
+            {
+                try
+                {
+                    var stationOfLine = new PO.StationOfLine()
+                    {
+                        Name = SelectedStation.Name,
+                        StationId = SelectedStation.StationId,
+                        DistanceToNextStation = DistanceToNextStation,
+                        TimeToNextStation = TimeToNextStation,
+                        LineStationIndex = StationIndex
+                    };
+
+                    var lineBO = (BO.Line)line.CopyPropertiesToNew(typeof(BO.Line));
+                    var stationOfLineBO = (BO.StationOfLine)stationOfLine.CopyPropertiesToNew(typeof(BO.StationOfLine));
+                    lineBO.StationsList = line.StationsList.Select(s => s.CopyPropertiesToNew(typeof(BO.StationOfLine))).Cast<BO.StationOfLine>().ToList();
+                    bl.AddLineStationToLine(lineBO, stationOfLineBO);
+                    MessageBox.Show("LineStation Added Successfully!");
+                    Close();
+                }
+                catch (BO.Exceptions.StationAlreadyExistsException)
+                {
+                    MessageBox.Show("Line station Already Exists!");
+
+                }
+            }
+        }
+        private void AddStationToLineMiddleClicked(object sender, RoutedEventArgs e)
+        {
+            bool isValid = LineStationValidityCheck();
+            if (isValid)
+            {
+                try
+                {
+                    var stationOfLine = new PO.StationOfLine()
+                    {
+                        Name = SelectedStation.Name,
+                        StationId = SelectedStation.StationId,
+                        DistanceToNextStation = DistanceToNextStation,
+                        TimeToNextStation = TimeToNextStation,
+                        LineStationIndex = StationIndex
+                    };
+
+                    var lineBO = (BO.Line)line.CopyPropertiesToNew(typeof(BO.Line));
+                    var stationOfLineBO = (BO.StationOfLine)stationOfLine.CopyPropertiesToNew(typeof(BO.StationOfLine));
+                    lineBO.StationsList = line.StationsList.Select(s => s.CopyPropertiesToNew(typeof(BO.StationOfLine))).Cast<BO.StationOfLine>().ToList();
+                    bl.AddLineStationToLine(lineBO, stationOfLineBO);
+                    MessageBox.Show("LineStation Added Successfully!");
+                    Close();
+                }
+                catch (BO.Exceptions.StationAlreadyExistsException)
+                {
+                    MessageBox.Show("Line station Already Exists!");
+
+                }
+            }
+        }
+        private void AddStationToLineEndClicked(object sender, RoutedEventArgs e)
         {
             bool isValid = LineStationValidityCheck();
             if (isValid)
