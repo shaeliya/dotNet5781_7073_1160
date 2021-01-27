@@ -22,12 +22,13 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="99*"/>
-                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="20*"/>
                         <ColumnDefinition Width="8*"/>
                         <ColumnDefinition Width="606*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="btnAddLineStation" Opacity="1" Content="Add line station"  FontSize="15px"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="129.4,276,0,0" VerticalAlignment="Top" Width="166" Click="Add_Line_Station_Button_Click" Height="49" Grid.Column="3"/>
-                    <ListView  Opacity="1" x:Name="lvudateLine" HorizontalContentAlignment="Stretch" Foreground="#FF042271" FontWeight="Bold"  FontSize="15px" Background="White"  FontFamily="Goudy Old Style" ItemsSource="{Binding SelectedLine.StationsList}" Height="262" Margin="15,5,13.613,0" VerticalAlignment="Top" Grid.ColumnSpan="4">
+                    <Button x:Name="btnAddLineStation" Opacity="1" Content="Add line station"  FontSize="15px"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="129.787,276,0,0" VerticalAlignment="Top" Width="166" Click="Add_Line_Station_Button_Click" Height="49" Grid.Column="4"/>
+                    <ListView  Opacity="1" x:Name="lvudateLine" HorizontalContentAlignment="Stretch" Foreground="#FF042271" FontWeight="Bold"  FontSize="15px" Background="White"  FontFamily="Goudy Old Style" ItemsSource="{Binding SelectedLine.StationsList}" Height="262" Margin="15,5,13.613,0" VerticalAlignment="Top" Grid.ColumnSpan="5">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Index"
@@ -100,7 +101,10 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <Button x:Name="btnAddLineTrip" Opacity="1" Content="Add line trip"  FontSize="15px"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="236.6,288,0,0" VerticalAlignment="Top" Width="166" Click="Add_Line_Trip_Button_Click" Height="49" Grid.Column="2"/>
+                    <!--<Button  FontSize="15px" Click="UpdateAllClicked" Content="Update All" Margin="420,342,87.6,-14.4" Grid.RowSpan="2"/>-->
+
+                    <Button x:Name="btnAddLineTrip" Opacity="1" Content="Add line trip"  FontSize="15px"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="169.6,289,0,0" VerticalAlignment="Top" Width="166" Click="Add_Line_Trip_Button_Click" Height="49" Grid.Column="2"/>
+                    <!--<Button  Grid.Column="2" HorizontalAlignment="Left" Opacity="1" Margin="424.6,286,0,0" VerticalAlignment="Top" Width="168"  FontSize="15px" Click="UpdateAllClicked" Content="Update All" Height="51" />-->
                 </Grid>
             </TabItem>
         </TabControl>

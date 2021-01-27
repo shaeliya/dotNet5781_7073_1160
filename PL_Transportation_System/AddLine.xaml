@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL_Transportation_System"
         mc:Ignorable="d"
-        Title="AddLine" Height="430.131" Width="326.828"
+        Title="AddLine" Height="388.594" Width="408.56"
         xmlns:Bo="clr-namespace:BO;assembly=BL"
         xmlns:utils="clr-namespace:PL_Transportation_System.Utils">
     <Window.Resources>
@@ -16,40 +16,35 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </Window.Resources>
-
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Sources/line.jpg"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF56DBDD"/>
-                <GradientStop Color="White" Offset="0.641"/>
-                <GradientStop Color="#FF35BF32" Offset="1"/>
-                <GradientStop Color="#FFBBE9BA" Offset="0.854"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Label Content="Add Line" FontWeight="Bold" Foreground="#FF104008" Margin="106,10,-105.2,354.8"/>
+        <ListBox Opacity="0.7" HorizontalAlignment="Left" Height="295" Margin="18,18,0,0" VerticalAlignment="Top" Width="360"/>
+        <Label Content="Add Bus" FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="20"  FontWeight="Bold" Margin="137,24,122.4,289.2"/>
+        <Label Content="Add Line" FontWeight="Bold"  Margin="106,10,-105.2,354.8"/>
         <StackPanel Margin="44,77,43.8,172.8">
             <StackPanel Orientation="Horizontal">
-                <Label>Line Number:</Label>
+                <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold">Line Number:</Label>
                 <TextBox Width="93" Name="tbLineNumber"  Background="#FFFEFFFF"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,22.8,0">
-                <Label>Area:</Label>
-                <ComboBox Name="cbArea" ItemsSource="{Binding Source={StaticResource Areas}}"  SelectedIndex="{Binding Area, Converter={StaticResource EnumToIntConverter}, Mode=TwoWay}" Width="200"/>
+                <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold">Area:</Label>
+                <ComboBox Name="cbArea"  ItemsSource="{Binding Source={StaticResource Areas}}"  SelectedIndex="{Binding Area, Converter={StaticResource EnumToIntConverter}, Mode=TwoWay}" Width="200"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal"/>
 
         </StackPanel>
         <Grid Margin="0,334,9.8,-9.2">
-            <Button  Content="Add" FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="32,-72,167.6,103.6" Click="Button_Click"/>
-            <Button  Content="Cancel" FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="193,-69,13.6,104.6" RenderTransformOrigin="0.5,0.5"/>
-
+            <Button  Content="Add" FontSize="20"   Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="40,-132,230.6,105.4" Click="Button_Click"/>
+            <Button  Content="Cancel" FontSize="20"   Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="214,-131,33.6,103.4" RenderTransformOrigin="0.5,0.5"/>
         </Grid>
     </Grid>
 </Window>

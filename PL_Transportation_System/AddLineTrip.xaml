@@ -10,8 +10,12 @@
         <Grid.Background>
             <ImageBrush ImageSource="Sources/line.jpg"/>
         </Grid.Background>
+        <ListBox Opacity="0.6" HorizontalAlignment="Left" Height="196" Margin="10,8,0,0" VerticalAlignment="Top" Width="259"/>
+
+        <Label Content="Add Line Trip" FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold" Margin="85,8,61,169"/>
+
         <Label Name="lbStartAt"  FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="Start At:" HorizontalAlignment="Left" Margin="62,73,-15,0" VerticalAlignment="Top" Width="245"/>
         <TextBox Name="tbStartAt" Text="{Binding StartAt}" KeyDown="keyCheck" HorizontalAlignment="Left" Height="23" Margin="131,77,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="93" RenderTransformOrigin="0.138,0.53"/>
-        <Button Content="Add line trip" HorizontalAlignment="Left" Margin="74,155,0,0" VerticalAlignment="Top" Width="137" Height="51" Click="Add_Line_Trip_Button_Click"/>
+        <Button Content="Add line trip" HorizontalAlignment="Left" Margin="76,137,0,0" VerticalAlignment="Top" Width="137" Height="51"  Click="Add_Line_Trip_Button_Click"/>
     </Grid>
 </Window>

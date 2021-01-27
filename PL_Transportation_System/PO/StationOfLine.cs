@@ -62,7 +62,11 @@ namespace PL_Transportation_System.PO
         public static readonly DependencyProperty TimeToNextStationProperty =
             DependencyProperty.Register("TimeToNextStation", typeof(TimeSpan), typeof(StationOfLine), new PropertyMetadata(default(TimeSpan)));
 
-
+        private static void OnPropChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ((PO.StationOfLine)d).IsUpdated = true;
+        }
+        public bool IsUpdated { get; set; }
         public bool IsDeleted
         {
             get { return (bool)GetValue(IsDeletedProperty); }

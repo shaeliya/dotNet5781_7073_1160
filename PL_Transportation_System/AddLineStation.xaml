@@ -10,7 +10,8 @@
         <Grid.Background>
             <ImageBrush ImageSource="Sources/line.jpg"/>
         </Grid.Background>
-        <ComboBox Name="cbLineStations"  SelectedIndex="0" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" ItemsSource="{Binding Stations}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="211" Height="29" Margin="79,80,0,0" SelectedItem="{Binding SelectedStation , Mode=TwoWay}" Background="White">
+        <ComboBox IsSynchronizedWithCurrentItem="True"
+          Name="cbLineStations"   Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" ItemsSource="{Binding Stations}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="211" Height="29" Margin="79,80,0,0" SelectedItem="{Binding SelectedStation , Mode=TwoWay}" Background="White">
            
         </ComboBox>
         <Label Name="lbIndex"  FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="Index:" HorizontalAlignment="Left" Margin="16,126,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.302,-0.566" Width="333"/>

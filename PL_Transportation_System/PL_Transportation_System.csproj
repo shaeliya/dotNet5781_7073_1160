@@ -204,6 +204,10 @@
       <Project>{aa755339-a5ff-4c9d-90bd-d1ad51c2a032}</Project>
       <Name>DLObject</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RadialProgressbar\RadialProgressbar.csproj">
+      <Project>{0CFB816B-3D82-453E-9F00-640414ACCFFC}</Project>
+      <Name>RadialProgressbar</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Sources\MainWindowsBackground.jpg" />
@@ -228,6 +232,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Sources\update.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\view.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

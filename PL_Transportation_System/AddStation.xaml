@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL_Transportation_System"
         mc:Ignorable="d"
-        Title="Add Station" Height="450" Width="336.111" Icon="Sources/carMain.png">
+        Title="Add Station" Height="416.762" Width="385.968" Icon="Sources/carMain.png">
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="Sources/station.jpg"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="237*"/>
             <ColumnDefinition Width="238*"/>
@@ -15,37 +18,31 @@
             <RowDefinition Height="55*"/>
             <RowDefinition Height="414*"/>
         </Grid.RowDefinitions>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF56DBDD"/>
-                <GradientStop Color="White" Offset="0.641"/>
-                <GradientStop Color="#FF35BF32" Offset="1"/>
-                <GradientStop Color="#FFBBE9BA" Offset="0.854"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <Label Content="Add Bus" FontWeight="Bold" Foreground="#FF104008" Grid.ColumnSpan="2" Margin="168,10,-167.6,1.2"/>
+        <ListBox Opacity="0.6" HorizontalAlignment="Left" Height="348" Margin="15,9,0,0" VerticalAlignment="Top" Width="351" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+
+        <Label Content="Add Station" FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="25px"  FontWeight="Bold" Grid.ColumnSpan="2" Margin="137,9,86.2,330.2" Grid.RowSpan="2"/>
         <StackPanel Margin="44,29.8,43.4,172.6" Grid.Row="1" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
-                <Label>Name:</Label>
+                <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold">Name:</Label>
                 <TextBox Width="93" Name="tbName"  Background="#FFFEFFFF"/>
-            </StackPanel>            
+            </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label>Longitude:</Label>
+                <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold">Longitude:</Label>
                 <TextBox Width="106" Name="tbLongitude"  Background="#FFFEFFFF"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label>Latitude:</Label>
+                <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold">Latitude:</Label>
                 <TextBox Width="71" Name="tbLatitude"  Background="#FFFEFFFF"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label>Adress:</Label>
+                <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold">Adress:</Label>
                 <TextBox Width="71" Name="tbAdress"  Background="#FFFEFFFF"/>
-            </StackPanel>           
+            </StackPanel>
 
         </StackPanel>
         <Grid Margin="0,286.8,9.4,-9.4" Grid.Row="1" Grid.ColumnSpan="2">
-            <Button Click="Add_Button_Click" Content="Add" FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="32,-72,167.6,103.6"/>
-            <Button Click="Cancel_Button_Click" Content="Cancel" FontSize="20" Foreground="Black" BorderBrush="#FFA8AE20" BorderThickness="2px" Background="White" Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="193,-69,13.6,104.6" RenderTransformOrigin="0.5,0.5"/>
+            <Button Click="Add_Button_Click" Content="Add" FontSize="20"  BorderThickness="2px" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="32,-71,192.8,83.2"/>
+            <Button Click="Cancel_Button_Click" Content="Cancel" FontSize="20" BorderThickness="2px"  FontFamily="Goudy Old Style" FontWeight="Bold" Margin="193,-72,18.8,84.2" RenderTransformOrigin="0.5,0.5"/>
 
         </Grid>
     </Grid>

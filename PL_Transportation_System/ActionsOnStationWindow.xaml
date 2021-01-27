@@ -10,7 +10,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="Sources/station.jpg"/>
         </Grid.Background>
-        <ListView x:Name="lvStation" Height="315" Foreground="#FF042271" FontWeight="Bold"  FontFamily="Goudy Old Style" FontSize="15px" ItemsSource="{Binding Stations}" VerticalAlignment="Top" Margin="33,10,27.6,0" Opacity="0.78">
+        <ListView x:Name="lvStation" Height="315" Foreground="#FF042271" FontWeight="Bold"  FontFamily="Goudy Old Style" FontSize="15px" ItemsSource="{Binding Stations}" VerticalAlignment="Top" Margin="33,10,27.6,0" Opacity="0.8">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header=" Name"
@@ -31,7 +31,11 @@
                     <GridViewColumn Header="View Lines of Station">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="View Lines of Station"  Margin="0,0,20,0" DataContext="{Binding}" Width="80" Click="OpenLinesOfStationsWindow_Button_Click" />
+                                <Button Height="40" Width="40"  Margin="0,0,20,0" DataContext="{Binding}" Click="OpenLinesOfStationsWindow_Button_Click" >
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="Sources/view.jpg"/>
+                                    </Button.Background>
+                                </Button>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn >
@@ -39,7 +43,7 @@
             </ListView.View>
         </ListView>
 
-        <Button HorizontalAlignment="Left" FontSize="15px" Click="AddStation" Content="Add Station" Margin="145,342,0,10" Width="181"/>
+        <Button HorizontalAlignment="Left" FontSize="15px" Click="AddStation" Content="Add Station" Margin="145,342,0,10"  Width="181"/>
         <Button HorizontalAlignment="Right"  FontSize="15px" Click="UpdateAllClicked" Content="Update All" Margin="0,342,138.6,10" Width="181"/>
     </Grid>
 </Window>

@@ -64,14 +64,14 @@ namespace PL_Transportation_System
         public ICommand MoveUpCommand { get; set; }
         public ICommand MoveDownCommand { get; set; }
 
-        public ObservableCollection<LineTrip> LineTrips
+        public ObservableCollection<StationOfLine> StationOfLines
         {
-            get { return (ObservableCollection<LineTrip>)GetValue(LineTripsProperty); }
-            set { SetValue(LineTripsProperty, value); }
+            get { return (ObservableCollection<StationOfLine>)GetValue(StationOfLinesProperty); }
+            set { SetValue(StationOfLinesProperty, value); }
         }
         //Using a DependencyProperty as the backing store for Buses.This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty LineTripsProperty =
-            DependencyProperty.Register("LineTrip", typeof(ObservableCollection<LineTrip>), typeof(UpdateLineWindow), new FrameworkPropertyMetadata(new ObservableCollection<LineTrip>()));
+        public static readonly DependencyProperty StationOfLinesProperty =
+            DependencyProperty.Register("StationOfLines", typeof(ObservableCollection<StationOfLine>), typeof(UpdateLineWindow), new FrameworkPropertyMetadata(new ObservableCollection<StationOfLine>()));
 
 
 
@@ -239,6 +239,6 @@ namespace PL_Transportation_System
             return lineBO;
         }
 
-        
+     
     }
 }
