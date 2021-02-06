@@ -25,7 +25,7 @@ namespace BLAPI
         Line GetLineById(int id);
         void AddLine(Line line);
         void UpdateLine(Line line);
-        void AddLineStationToLine(Line line, StationOfLine stationOfLine);
+        void AddLineStationToLine(Line line, StationOfLine stationOfLine, double distanceFromPrevStation, TimeSpan timeFromPrevStation);
         void UpdateLineStations(Line line);
         void UpdateLineTrips(Line line);
         void DeleteLine(int line);

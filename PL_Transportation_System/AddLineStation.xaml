@@ -11,8 +11,12 @@
             <ImageBrush ImageSource="Sources/line.jpg"/>
         </Grid.Background>
         <ComboBox IsSynchronizedWithCurrentItem="True"
-          Name="cbLineStations"   Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" ItemsSource="{Binding Stations}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="211" Height="29" Margin="79,80,0,0" SelectedItem="{Binding SelectedStation , Mode=TwoWay}" Background="White">
-           
+          Name="cbLineStations"  Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" ItemsSource="{Binding Stations}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="711" Height="29" Margin="79,80,0,0" SelectedItem="{Binding SelectedStation, Mode=TwoWay}"  Background="White">
+            <ComboBox.ItemTemplateSelector>
+                <DataTemplateSelector>
+                    
+                </DataTemplateSelector>
+            </ComboBox.ItemTemplateSelector>
         </ComboBox>
         <Label Name="lbIndex"  FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="Index:" HorizontalAlignment="Left" Margin="16,126,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.302,-0.566" Width="333"/>
         <TextBox Name="tbIndex"  Text="{Binding StationIndex, Mode=TwoWay}" KeyDown="keyCheckWithoutPoint" Background="White" Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" HorizontalAlignment="Left" Height="27" Margin="89,128,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="80"/>
@@ -21,14 +25,14 @@
         <Label Name="lbStation"   FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="Station:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top"/>
         <TextBox Name="tbTimeTo"  Text="{Binding TimeToNextStation, Mode=TwoWay}" KeyDown="keyCheck" HorizontalAlignment="Left" Height="23" Margin="489,180,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="93"/>
         <Label Name="lbTimeTo"   FontFamily="Goudy Old Style" Foreground="#FF042271" FontWeight="Bold" FontSize="15px" Content="Time to next station:" HorizontalAlignment="Left" Margin="343,174,0,0" VerticalAlignment="Top" Height="36" Width="141"/>
-        <RadioButton Content="Start" Checked="rbStart_check" HorizontalAlignment="Left" Margin="231,43,0,0" VerticalAlignment="Top" Width="60"/>
+        <RadioButton Content="Start" Name="rbStart" Checked="rbStart_check" HorizontalAlignment="Left" Margin="231,43,0,0" VerticalAlignment="Top" Width="60"/>
         <RadioButton Content="Middle" Checked="rbMiddle_check" HorizontalAlignment="Left" Margin="291,43,0,0" VerticalAlignment="Top"/>
         <RadioButton Content="End" Checked="rbEnd_check" HorizontalAlignment="Left" Margin="360,45,0,0" VerticalAlignment="Top"/>
         <Label Content="Where would you like to add a station?" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top"/>
-        <TextBox  Name="tbDistanceFrom" KeyDown="keyCheck" HorizontalAlignment="Left" Height="23" Margin="214,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox  Name="tbDistanceFrom" Text="{Binding DistanceFromPrevStation, Mode=TwoWay}" KeyDown="keyCheck" HorizontalAlignment="Left" Height="23" Margin="214,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label  Name="lbDistanceFrom" FontFamily="Goudy Old Style" Foreground="#FF042271" FontWeight="Bold" FontSize="15px" Content="Distance from previous station:" HorizontalAlignment="Left" Margin="8,216,0,0" VerticalAlignment="Top"/>
         <Label Name="lbTimeFrom" FontFamily="Goudy Old Style" Foreground="#FF042271" FontWeight="Bold" FontSize="15px" Content="Time from previous station:" HorizontalAlignment="Left" Margin="343,215,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="tbTimeFrom" KeyDown="keyCheck" HorizontalAlignment="Left" Height="23" Margin="538,221,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="tbTimeFrom" Text="{Binding TimeFromPrevStation, Mode=TwoWay}" KeyDown="keyCheck" HorizontalAlignment="Left" Height="23" Margin="538,221,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
         <Button Name="btnAddStart"  FontSize="15px" Click="AddStationToLineStartClicked" Content="Add station to line" Margin="187,304,269.6,37"/>
         <Button Name="btnAddMiddle" FontSize="15px" Click="AddStationToLineMiddleClicked" Content="Add station to line" Margin="187,304,269.6,37"/>
         <Button Name="btnAddEnd" FontSize="15px" Click="AddStationToLineEndClicked" Content="Add station to line" Margin="187,304,269.6,37"/>

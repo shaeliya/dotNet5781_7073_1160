@@ -28,7 +28,7 @@
                         <ColumnDefinition Width="606*"/>
                     </Grid.ColumnDefinitions>
                     <Button x:Name="btnAddLineStation" Opacity="1" Content="Add line station"  FontSize="15px"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="129.787,276,0,0" VerticalAlignment="Top" Width="166" Click="Add_Line_Station_Button_Click" Height="49" Grid.Column="4"/>
-                    <ListView  Opacity="1" x:Name="lvudateLine" HorizontalContentAlignment="Stretch" Foreground="#FF042271" FontWeight="Bold"  FontSize="15px" Background="White"  FontFamily="Goudy Old Style" ItemsSource="{Binding SelectedLine.StationsList}" Height="262" Margin="15,5,13.613,0" VerticalAlignment="Top" Grid.ColumnSpan="5">
+                    <ListView  Opacity="1" x:Name="lvudateLine" HorizontalContentAlignment="Stretch" Foreground="#FF042271" FontWeight="Bold"  FontSize="15px" Background="White"  FontFamily="Goudy Old Style" ItemsSource="{Binding SelectedLine.StationsList, Mode=TwoWay}" Height="262" Margin="15,5,13.613,0" VerticalAlignment="Top" Grid.ColumnSpan="5">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Index"

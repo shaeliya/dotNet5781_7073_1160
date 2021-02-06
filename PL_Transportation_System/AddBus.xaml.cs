@@ -58,6 +58,11 @@ namespace PL_Transportation_System
                 {
                     MessageBox.Show("Bus Already Exists");
                 }
+                catch
+                {
+                    MessageBox.Show("General Error");
+
+                }
             }
         }
 

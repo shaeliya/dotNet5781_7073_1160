@@ -259,7 +259,9 @@ namespace BL
 
             // 3. נוסיף זוגות של תחנות צמודות
             var stationsOrderedList = line.StationsList.OrderBy(o => o.LineStationIndex);
-            foreach (var (x, y) in Utilities.Pairwise(stationsOrderedList))
+            var pairwise = Utilities.Pairwise(stationsOrderedList);
+
+            foreach (var (x, y) in pairwise)
             {
                 /*
                  1.	להוסיף לסטיישן אוף ליין מרחק לתחנה הבאה או תחנה קודמת, וכל מידע אחר שניצטרך בשביל התחנות עוקבות
@@ -305,9 +307,17 @@ namespace BL
 
         private void AddLineStation(StationOfLine stationOfLine, Line line)
         {
-            DO.LineStation ls = (DO.LineStation)stationOfLine.CopyPropertiesToNewAndUnion(typeof(DO.LineStation), line);
+            try
+            {
+                DO.LineStation ls = (DO.LineStation)stationOfLine.CopyPropertiesToNewAndUnion(typeof(DO.LineStation), line);
 
-            dl.AddLineStation(ls);
+                dl.AddLineStation(ls);
+            }
+            catch (DO.Exceptions.LineAlreadyExistsException exDO)
+            {
+                throw new LineAlreadyExistsException(stationOfLine.LineStationId, "Line Already Exists", exDO);
+
+            }
 
         }
 
@@ -321,15 +331,38 @@ namespace BL
             line.CopyPropertiesTo(lineDO);
             dl.UpdateLine(lineDO);
         }
-        public void AddLineStationToLine(Line line, StationOfLine stationOfLine)
-        {   
+        public void AddLineStationToLine(Line line, StationOfLine stationOfLine, double distanceFromPrevStation, TimeSpan timeFromPrevStation)
+        {
+
+            // LineStation לא הוספנו את המרחק והזמן מהתחנה הקודמת ליישות
+            // כי אין בה צורך , משום שהמרחק מהתחנה הקודמת נמצא לנו בתחנה הקודמת
+            // בשדה: מרחק לתחנה הבאה. כנל לגבי זמן
+            // ולכן המקום היחיד בו נצטרך מרחק וזמן מתחנה קודמת הוא בהוספה של 
+            // תחנה באמצע או בסוף ולכן נקבל מידע זה בפונקציה במקום לתחזק מידע
+            // לאורך כל הדרך LineStation מיותר ביישות
+
+
+
+            // אם מוסיפים תחנה באמצע או בסוף צריך לטפל במרחק וזמן לתחנה הבאה
+            // של התחנה שלפני התחנה שמוסיפים
+
+            if (distanceFromPrevStation > 0)
+            {             
+
+                var stationToUpdate = line.StationsList.Where(sol => sol.LineStationIndex == stationOfLine.LineStationIndex - 1).FirstOrDefault();
+                                
+                if(stationToUpdate!=null)
+                {
+                    stationToUpdate.DistanceToNextStation = distanceFromPrevStation;
+                    stationToUpdate.TimeToNextStation = timeFromPrevStation;
+                }
+            }
+
             line.StationsList.Where(sol => sol.LineStationIndex >= stationOfLine.LineStationIndex).ToList().ForEach
                  (sol =>
                  {
                      sol.LineStationIndex++;
                  });
-
-
 
             line.StationsList = line.StationsList.Append(stationOfLine);
             UpdateLineStations(line);

@@ -430,6 +430,7 @@ namespace DL
                 throw new LineStationAlreadyExistsException(lineStation.LineStationId);
 
             }
+            lineStation.LineStationId = ++Configuration.MaxLineStationId;
             DataSource.lineStationsList.Add(lineStation.Clone());
         }
 

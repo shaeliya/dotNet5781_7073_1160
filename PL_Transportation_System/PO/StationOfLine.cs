@@ -39,7 +39,6 @@ namespace PL_Transportation_System.PO
             DependencyProperty.Register("LineStationIndex", typeof(int), typeof(StationOfLine), new PropertyMetadata(0));
 
 
-
         public double DistanceToNextStation
         {
             get { return (double)GetValue(DistanceToNextStationProperty); }
