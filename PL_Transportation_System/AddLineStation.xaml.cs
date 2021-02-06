@@ -211,7 +211,6 @@ namespace PL_Transportation_System
                     lineBO.StationsList = line.StationsList.Select(s => s.CopyPropertiesToNew(typeof(BO.StationOfLine))).Cast<BO.StationOfLine>().ToList();
                     bl.AddLineStationToLine(lineBO, stationOfLineBO, distanceFromPrevStation, timeFromPrevStation);
                     lineBO = bl.GetLineById(lineBO.LineId);
-                    var newline = (PO.Line)lineBO.CopyPropertiesToNew(typeof(PO.Line));
                     line.StationsList = new ObservableCollection<PO.StationOfLine>(lineBO.StationsList.Select(s => s.CopyPropertiesToNew(typeof(PO.StationOfLine))).Cast<PO.StationOfLine>());
                     MessageBox.Show("Line Station Added Successfully!");
                     Close();

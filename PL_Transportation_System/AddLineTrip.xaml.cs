@@ -79,7 +79,10 @@ namespace PL_Transportation_System
             var lineBO = (BO.Line)line.CopyPropertiesToNew(typeof(BO.Line));
             var lineTripBO = (BO.LineTrip)lineTrip.CopyPropertiesToNew(typeof(BO.LineTrip));
             lineBO.LineTripList = line.LineTripList.Select(l => l.CopyPropertiesToNew(typeof(BO.LineTrip))).Cast<BO.LineTrip>().ToList();
-            bl.AddLineTripToLine(lineBO, lineTripBO); 
+            bl.AddLineTripToLine(lineBO, lineTripBO);
+            lineBO = bl.GetLineById(lineBO.LineId);
+            line.LineTripList = new ObservableCollection<PO.LineTrip>(lineBO.LineTripList.Select(s => s.CopyPropertiesToNew(typeof(PO.LineTrip))).Cast<PO.LineTrip>());
+
             MessageBox.Show("Line trip Added Successfully!");
        
 
