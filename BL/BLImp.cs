@@ -548,7 +548,7 @@ namespace BL
         #endregion LineTrip   
 
         #region LineTiming 
-        public List<LineTiming> GetAllCurrentLinesForStation(Station station)
+        public List<LineTiming> GetAllCurrentLinesForStation(Station station, TimeSpan timeSpan)
         {
             List<LineTiming> lineTimingList = new List<LineTiming>();
 
@@ -563,8 +563,7 @@ namespace BL
 
                 // 3. שמגיעים לתחנה שלנו בתוך חצי שעה LineTrip-נמצא את כל ה
 
-                List<LineTiming> allLineTimingsWithin30Minutes = FindAllLineTimingsWithin30Minutes(station, allLines);
-                var lineTrip = allLineTimingsWithin30Minutes.FirstOrDefault();
+                lineTimingList = FindAllLineTimingsWithin30Minutes(station, allLines, timeSpan);                
             }
 
             return lineTimingList;
@@ -577,7 +576,7 @@ namespace BL
         /// <param name="station"></param>
         /// <param name="allLines"></param>
         /// <returns></returns>
-        private List<LineTiming> FindAllLineTimingsWithin30Minutes(Station station, IEnumerable<Line> allLines)
+        private List<LineTiming> FindAllLineTimingsWithin30Minutes(Station station, IEnumerable<Line> allLines, TimeSpan timeSpan)
         {
             List<LineTiming> allLineTripsWithin30Minutes = new List<LineTiming>();
 
@@ -587,8 +586,8 @@ namespace BL
                 var allLineTrips = dl.GetAllLineTripBy(lt => lt.LineId == line.LineId);
                 allLineTrips.ToList().ForEach(lt =>
                 {
-                    double lineTimeFromStartToStation;
-                    bool isLineTripInStationWithin30Minutes = CheckIfLineTripInStationWithin30Minutes(lt, line, station, out lineTimeFromStartToStation);
+                    TimeSpan etaToStation;
+                    bool isLineTripInStationWithin30Minutes = CheckIfLineTripInStationWithin30Minutes(lt, line, station, timeSpan, out etaToStation);
                     if (isLineTripInStationWithin30Minutes)
                     {
                         LineTiming lineTiming = new LineTiming()
@@ -598,7 +597,7 @@ namespace BL
                             LineNumber = line.LineNumber,
                             LastStation = line.StationsList.OrderByDescending(s => s.LineStationIndex).FirstOrDefault().Name,
                             TripStart = lt.StartAt,
-                            ExpectedTimeTillArrive = DateTime.Today.TimeOfDay + TimeSpan.FromMinutes(lineTimeFromStartToStation)
+                            ExpectedTimeTillArrive = etaToStation
                         };
                         allLineTripsWithin30Minutes.Add(lineTiming);
                     }
@@ -616,14 +615,14 @@ namespace BL
         /// <param name="line"></param>
         /// <param name="station"></param>
         /// <returns></returns>
-        private bool CheckIfLineTripInStationWithin30Minutes(DO.LineTrip lineTrip, Line line, Station station, out double lineTimeFromStartToStation)
+        private bool CheckIfLineTripInStationWithin30Minutes(DO.LineTrip lineTrip, Line line, Station station, TimeSpan timeSpan, out TimeSpan etaToStation)
         {
-            lineTimeFromStartToStation = GetLineTimeFromStartToStation(line, station);
-            TimeSpan timeToStation = lineTrip.StartAt + TimeSpan.FromMinutes(lineTimeFromStartToStation);
-            TimeSpan nowPlus30Minutes = DateTime.Now.TimeOfDay + TimeSpan.FromMinutes(30);
+            double lineTimeFromStartToStation = GetLineTimeFromStartToStation(line, station);
+            etaToStation = lineTrip.StartAt + TimeSpan.FromMinutes(lineTimeFromStartToStation);
+            TimeSpan nowPlus30Minutes = timeSpan + TimeSpan.FromMinutes(30);
 
-            if (timeToStation >= DateTime.Now.TimeOfDay &&
-               timeToStation <= nowPlus30Minutes)
+            if (etaToStation >= timeSpan &&
+               etaToStation <= nowPlus30Minutes)
             {
                 return true;
             }

@@ -1,0 +1,57 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL_Transportation_System"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:Bo="clr-namespace:BO;assembly=BL"
+        xmlns:utils="clr-namespace:PL_Transportation_System.Utils" xmlns:RadialProgressbar="clr-namespace:RadialProgressbar;assembly=RadialProgressbar" x:Class="PL_Transportation_System.ShowLineTimingWindow"
+        mc:Ignorable="d" 
+        Title="Actions on line " Height="450" Width="705.634"
+        Icon="Sources/carMain.png" ShowInTaskbar="False">
+    <Window.Resources>
+        <local:EnumConverter x:Key="EnumToIntConverter" />
+        <ObjectDataProvider x:Key="Areas" MethodName="GetShortListOfApplicationGestures" ObjectType="{x:Type utils:DisplayAttributeBasedObjectDataProvider}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Bo:Areas"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+    <Grid Margin="0,0,34,0.4">
+        <Grid Height="420" Margin="0,0,-37,-2"  VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" MinHeight="341.6"/>
+                <RowDefinition Height="50.4"/>
+            </Grid.RowDefinitions>
+            <Grid.Background>
+                <ImageBrush ImageSource="Sources/line.jpg"/>
+            </Grid.Background>
+            <Label Margin="179,11,181.6,298.4" Content="Choose a station to start simulation" RenderTransformOrigin="1.821,-0.669" FontSize="20"/>
+            <ComboBox IsSynchronizedWithCurrentItem="True"
+          x:Name="cbLineStations"  Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" ItemsSource="{Binding Stations}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="445" Height="29" Margin="135,55,0,0" SelectedItem="{Binding SelectedStation, Mode=TwoWay}"  Background="White" SelectionChanged="cbLineStations_SelectionChanged">
+                <ComboBox.ItemTemplateSelector>
+                    <DataTemplateSelector/>
+                </ComboBox.ItemTemplateSelector>
+            </ComboBox>
+            <ListView ItemsSource="{Binding LineTimings, Mode=TwoWay}" x:Name="lvLineTimings" Foreground="#FF042271"  FontFamily="Goudy Old Style" HorizontalAlignment="Left" Width="606" FontWeight="Bold" Background="White" Opacity="0.8" Margin="56,173,0,41.6" FontSize="15px" Grid.RowSpan="2">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Line Number"
+                            DisplayMemberBinding="{Binding LineNumber}" />
+                        <GridViewColumn Header="Last Station"
+                            DisplayMemberBinding="{Binding LastStation}" />
+                        <GridViewColumn Header="ETA"
+                            DisplayMemberBinding="{Binding ExpectedTimeTillArrive}" />
+                        <GridViewColumn Header="Trip Start"
+                            DisplayMemberBinding="{Binding TripStart}" />
+
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Label x:Name="lblCurrentTime" HorizontalAlignment="Left" Margin="190,82,0,0" VerticalAlignment="Top" Width="355" Height="84" FontSize="36" FontWeight="Bold"/>
+            <Button Name="btnStopSimulation" FontSize="15px" Click="StopSimulation_Clicked" Content="Stop Simulation" Margin="267,40.6,265.6,-13.4" Grid.Row="1"/>
+        </Grid>
+    </Grid>
+</Window>

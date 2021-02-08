@@ -23,3 +23,5 @@ C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLObject\obj\Debug\DLObject.csp
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLObject\obj\Debug\DLObject.csproj.CopyComplete
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLObject\obj\Debug\DLObject.dll
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLObject\obj\Debug\DLObject.pdb
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DLObject\obj\Debug\DLObject.csprojAssemblyReference.cache
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DLObject\obj\Debug\DLObject.csproj.CopyComplete
