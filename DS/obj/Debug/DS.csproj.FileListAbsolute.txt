@@ -23,3 +23,5 @@ C:\Users\shalh\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.csproj.CoreComp
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.csproj.CopyComplete
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.dll
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.pdb
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.csprojAssemblyReference.cache
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DS\obj\Debug\DS.csproj.CopyComplete

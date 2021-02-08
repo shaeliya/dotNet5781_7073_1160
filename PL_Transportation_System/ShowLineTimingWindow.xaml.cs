@@ -47,7 +47,7 @@ namespace PL_Transportation_System
         }
         // Using a DependencyProperty as the backing store for StationsList.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StationsProperty =
-            DependencyProperty.Register("Stations", typeof(ObservableCollection<PO.Station>), typeof(AddLineStation), new FrameworkPropertyMetadata(new ObservableCollection<PO.Station>()));
+            DependencyProperty.Register("Stations", typeof(ObservableCollection<PO.Station>), typeof(ShowLineTimingWindow), new FrameworkPropertyMetadata(new ObservableCollection<PO.Station>()));
         private static void OnPropChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
         }
