@@ -25,9 +25,9 @@ namespace PL_Transportation_System
     public partial class ShowLineTimingWindow : Window
     {
         IBL bl = new BLImp();
-        Stopwatch stopwatch;
-        BackgroundWorker timeWorker;
-        TimeSpan currentTime;
+        Stopwatch stopwatch; // שעון
+        BackgroundWorker timeWorker; 
+        TimeSpan currentTime; // זמן נוכחי
 
 
         public ObservableCollection<PO.LineTiming> LineTimings
@@ -71,7 +71,7 @@ namespace PL_Transportation_System
             stopwatch = new Stopwatch();
             timeWorker = new BackgroundWorker();
             timeWorker.WorkerReportsProgress = true;
-            timeWorker.WorkerSupportsCancellation = true;
+            timeWorker.WorkerSupportsCancellation = true; // לאפשר עצירה שעון
             timeWorker.DoWork += DoWork;
             timeWorker.ProgressChanged += ProgressChanged;
             SetCurrentTime();
@@ -86,34 +86,56 @@ namespace PL_Transportation_System
             lblCurrentTime.Content = currentTime.ToString("hh':'mm':'ss");
         }
 
+        /// <summary>
+        /// ProgressChanged הפונקציה שנרקאת כשנזרק אירוע
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            // מוסיפה 10 דקות לזמן הנוכחי
             currentTime = currentTime.Add(new TimeSpan(0, 10, 0));
 
+            // מעדכנת את השעון במסך עצמו
             Update_lblCurrentTime();
+
+            // כדי שאוכל להפעיל עליה את הפונקציה BO לתחנה PO ממירה את התחנה
             var stationBO = (BO.Station)SelectedStation.CopyPropertiesToNew(typeof(BO.Station));
             stationBO.LinesList = SelectedStation.LinesList.Select(l => l.CopyPropertiesToNew(typeof(BO.LineOfStation))).Cast<BO.LineOfStation>().ToList();
+            // שמביאה את כל התחנות לחצי השעה הקרובה - השאילתה שכתבנו BL-קריאה לפונקציה ב
             var allCurrentLinesForStation = bl.GetAllCurrentLinesForStation(stationBO, currentTime);
 
+            // כדי שאוכל להציג אותם בחלון PO לזמני הקו BO ממירה את זמני הקו
             var allCurrentLinesForStationPO = allCurrentLinesForStation.Select(lt => (PO.LineTiming)lt.CopyPropertiesToNew(typeof(PO.LineTiming))).Cast<PO.LineTiming>();
 
-
+            // מציגה את רשימת זמני הקוים
             LineTimings = new ObservableCollection<PO.LineTiming>(allCurrentLinesForStationPO);
 
 
-
         }
 
+        /// <summary>
+        /// מבצע Worker-הפונקציה שה
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DoWork(object sender, DoWorkEventArgs e)
         {
+            // כל עוד לא ביטלנו - עצרנו
             while (!timeWorker.CancellationPending)
             {
+                // ProgressChanged מרים (מפעיל) אירוע של 
                 timeWorker.ReportProgress(0);
-                Thread.Sleep(3000);
+                // ישן שנייה
+                Thread.Sleep(1000);
             }
         }
 
-
+        /// <summary>
+        /// ComboBox-הפונקציה שנקראת בשינוי של בחירה ב
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbLineStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (SelectedStation == null)
@@ -123,25 +145,23 @@ namespace PL_Transportation_System
 
             if (!timeWorker.IsBusy)
             {
+                // timeWorker-מפעיל את ה
                 timeWorker.RunWorkerAsync();
             }
 
-            if (stopwatch.IsRunning)
+            if (!stopwatch.IsRunning)           
             {
-                stopwatch.Restart();
-            }
-            else
-            {
+                // מפעילה את השעון וקובעת את הזמן
                 stopwatch.Start();
+                SetCurrentTime();
             }
-            SetCurrentTime();
 
         }
 
         private void SetCurrentTime()
         {
-            //currentTime = DateTime.Now.TimeOfDay;
-            currentTime = new TimeSpan(6,0,0);
+            currentTime = DateTime.Now.TimeOfDay;
+            //currentTime = new TimeSpan(7,0,0);
         }
 
         private void StopSimulation_Clicked(object sender, RoutedEventArgs e)
