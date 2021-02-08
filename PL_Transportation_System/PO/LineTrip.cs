@@ -17,6 +17,12 @@ namespace PL_Transportation_System.PO
         /// </summary>
         */
 
+
+        public bool IsUpdated { get; set; }
+        private static void OnPropChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ((PO.LineTrip)d).IsUpdated = true;
+        }
         public int LineTripId { get; set; }
         public Line Line { get; set; }
         public bool IsDeleted { get; set; }

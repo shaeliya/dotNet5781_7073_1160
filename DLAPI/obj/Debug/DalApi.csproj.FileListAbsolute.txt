@@ -10,3 +10,9 @@ C:\Users\shalh\source\repos\dotNet5781_7073_1160\bin\DLAPI.pdb
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLAPI\obj\Debug\DalApi.csproj.CoreCompileInputs.cache
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLAPI\obj\Debug\DLAPI.dll
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\DLAPI\obj\Debug\DLAPI.pdb
+C:\Users\97252\source\repos\dotNet5781_7073_1160\bin\DLAPI.dll.config
+C:\Users\97252\source\repos\dotNet5781_7073_1160\bin\DLAPI.dll
+C:\Users\97252\source\repos\dotNet5781_7073_1160\bin\DLAPI.pdb
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DLAPI\obj\Debug\DalApi.csproj.CoreCompileInputs.cache
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DLAPI\obj\Debug\DLAPI.dll
+C:\Users\97252\source\repos\dotNet5781_7073_1160\DLAPI\obj\Debug\DLAPI.pdb

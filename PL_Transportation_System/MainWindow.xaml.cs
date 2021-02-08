@@ -50,13 +50,6 @@ namespace PL_Transportation_System
             actionsOnStationWindow.Show();
         }
 
-        private void LineTrip_Button_Click(object sender, RoutedEventArgs e)
-        {
-            ActionsOnLineTrip actionsOnLineTrip = new ActionsOnLineTrip();
-
-            actionsOnLineTrip.Show();
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ShowLineTimingWindow showLineTimingWindow = new ShowLineTimingWindow();

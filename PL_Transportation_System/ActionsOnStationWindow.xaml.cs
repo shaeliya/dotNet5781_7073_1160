@@ -3,6 +3,7 @@ using BLAPI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,11 @@ namespace PL_Transportation_System
         {
             InitializeComponent();
             DataContext = this;
+            GetStations();
+        }
+
+        private void GetStations()
+        {
             Stations = new ObservableCollection<PO.Station>(bl.GetAllStation().Select(s =>
             {
                 var newS = (PO.Station)s.CopyPropertiesToNew(typeof(PO.Station));
@@ -35,6 +41,7 @@ namespace PL_Transportation_System
                 return newS;
             }).Cast<PO.Station>());
         }
+
         public ObservableCollection<PO.Station> Stations
         {
             get { return (ObservableCollection<PO.Station>)GetValue(StationsProperty); }
@@ -68,7 +75,13 @@ namespace PL_Transportation_System
         private void AddStation(object sender, RoutedEventArgs e)
         {
             AddStation addStationwindow = new AddStation();
+            addStationwindow.Closing += OnCloseWindow;
             addStationwindow.Show();
+        }
+
+        private void OnCloseWindow(object sender, CancelEventArgs e)
+        {
+            GetStations();
         }
 
         private void OpenLinesOfStationsWindow_Button_Click(object sender, RoutedEventArgs e)

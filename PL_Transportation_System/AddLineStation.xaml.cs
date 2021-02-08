@@ -122,7 +122,7 @@ namespace PL_Transportation_System
             get { return (TimeSpan)GetValue(TimeToNextStationProperty); }
             set { SetValue(TimeToNextStationProperty, value); }
         }
-        
+
         // Using a DependencyProperty as the backing store for TimeToNextStation.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TimeToNextStationProperty =
             DependencyProperty.Register("TimeToNextStation", typeof(TimeSpan), typeof(AddLineStation), new PropertyMetadata(default(TimeSpan)));
@@ -192,7 +192,7 @@ namespace PL_Transportation_System
 
         private void AddStationToLine(int index, double distanceToNextStation, TimeSpan timeToNextStation, double distanceFromPrevStation, TimeSpan timeFromPrevStation)
         {
-            bool isValid = LineStationValidityCheck(index);
+            bool isValid = LineStationValidityCheck(index, distanceToNextStation, timeToNextStation, distanceFromPrevStation, timeFromPrevStation);
             if (isValid)
             {
                 try
@@ -228,7 +228,7 @@ namespace PL_Transportation_System
             }
         }
 
-        private bool LineStationValidityCheck(int index)
+        private bool LineStationValidityCheck(int index, double distanceToNextStation, TimeSpan timeToNextStation, double distanceFromPrevStation, TimeSpan timeFromPrevStation)
         {
 
             if (Convert.ToInt32(index) == 0 || Convert.ToInt32(index) > line.StationsList.Select(s => s.LineStationIndex).Max() + 1)
@@ -236,6 +236,24 @@ namespace PL_Transportation_System
                 MessageBox.Show(" The index is unvalid");
                 return false;
             }
+
+            if ((distanceToNextStation == 0 || timeToNextStation == new TimeSpan()) &&
+                index != line.StationsList.Count + 1)
+            {
+                MessageBox.Show("Must enter distance and time to next station");
+                return false;
+            }
+
+
+            if ((distanceFromPrevStation == 0 || timeFromPrevStation == new TimeSpan()) &&
+                index != 1)
+            {
+                MessageBox.Show("Must enter distance and time from prev station");
+                return false;
+            }
+
+
+
             return true;
         }
         private void keyCheck(object sender, KeyEventArgs e)

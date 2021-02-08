@@ -4,6 +4,7 @@ using PL_Transportation_System.PO;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,11 +30,16 @@ namespace PL_Transportation_System
         {
             InitializeComponent();
             DataContext = this;
-            var buses = bl.GetAllBusses().Select(b => (Bus)b.CopyPropertiesToNew(typeof(Bus)));
-            Buses = new ObservableCollection<Bus>(buses);           
+            GetBusses();
             //lvBus.DisplayMemberPath = " LicenseNumber ".ToString();
         }
-      
+
+        private void GetBusses()
+        {
+            var buses = bl.GetAllBusses().Select(b => (Bus)b.CopyPropertiesToNew(typeof(Bus)));
+            Buses = new ObservableCollection<Bus>(buses);
+        }
+
         public ObservableCollection<Bus> Buses
         {
             get { return (ObservableCollection<Bus>)GetValue(BusesProperty); }
@@ -66,6 +72,13 @@ namespace PL_Transportation_System
         {
             AddBus addBusWindow = new AddBus();
             addBusWindow.Show();
+            addBusWindow.Closing += OnCloseWindow;
+
+        }
+
+        private void OnCloseWindow(object sender, CancelEventArgs e)
+        {
+            GetBusses();
         }
     }
 

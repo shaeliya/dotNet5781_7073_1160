@@ -82,14 +82,14 @@ namespace PL_Transportation_System
             //addLineStationWindow.BusList = BusList;
             addLineStationWindow.Show();
         }
-         private void Add_Line_Trip_Button_Click(object sender, RoutedEventArgs e)
+        private void Add_Line_Trip_Button_Click(object sender, RoutedEventArgs e)
         {
             if (SelectedLine == null) return;
             AddLineTrip addLineTripWindow = new AddLineTrip(SelectedLine);
             addLineTripWindow.Show();
         }
 
-      
+
 
         private void MoveUp(object dataContext)
         {
@@ -105,7 +105,7 @@ namespace PL_Transportation_System
             var prevToPrev = line.StationsList.FirstOrDefault(s => s.LineStationIndex == stationOfLine.LineStationIndex - 2);
             double distanceToNextStation = 0.0;
             var timeToNext = default(TimeSpan);
-            
+
             currStation.DistanceToNextStation = prevStation.DistanceToNextStation;
             currStation.TimeToNextStation = prevStation.TimeToNextStation;
 
@@ -135,7 +135,7 @@ namespace PL_Transportation_System
 
             bl.MoveLineStationUp(line, currStation);
 
-            
+
 
             //Update Ui
             SelectedLine.StationsList.RemoveAt(stationOfLine.LineStationIndex - 1);
@@ -239,6 +239,13 @@ namespace PL_Transportation_System
             return lineBO;
         }
 
-     
+        private void UpdateAllClicked(object sender, RoutedEventArgs e)
+        {
+            var lineBO = LinePoToBoAdapter();
+            bl.UpdateLineTrips(lineBO);
+
+            MessageBox.Show("Line Trip updated successfuly!");
+        }
     }
 }
+

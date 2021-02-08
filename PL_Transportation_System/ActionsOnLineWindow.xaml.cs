@@ -3,6 +3,7 @@ using BLAPI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,11 @@ namespace PL_Transportation_System
 
             InitializeComponent();
             DataContext = this;
+            GetLines();
+        }
+
+        private void GetLines()
+        {
             Lines = new ObservableCollection<PO.Line>(bl.GetAllLine().Select(l =>
             {
                 var newL = (PO.Line)l.CopyPropertiesToNew(typeof(PO.Line));
@@ -35,7 +41,7 @@ namespace PL_Transportation_System
                 newL.LineTripList = new ObservableCollection<PO.LineTrip>(l.LineTripList.Select(s => s.CopyPropertiesToNew(typeof(PO.LineTrip))).Cast<PO.LineTrip>());
                 newL.IsUpdated = false;
                 return newL;
-            }).Cast<PO.Line>());   
+            }).Cast<PO.Line>());
         }
 
         public ObservableCollection<PO.Line> Lines
@@ -64,7 +70,10 @@ namespace PL_Transportation_System
                 {
                     UpdateLineWindow updateLineWindow = new UpdateLineWindow(line);
                     //updateLineWindow.SelectedLine = line;
+                    updateLineWindow.Closing += OnCloseWindow;
                     updateLineWindow.Show();
+
+
                 }
                 else
                 {
@@ -72,11 +81,18 @@ namespace PL_Transportation_System
                 }
             }
 
+
             //UpdateLineWindow updateLineWindow = new UpdateLineWindow();
 
             //updateLineWindow.Show();
         }
-        
+
+
+        private void OnCloseWindow(object sender, CancelEventArgs e)
+        {
+            GetLines();
+        }
+
         private void UpdateAllClicked(object sender, RoutedEventArgs e)
         {
 
@@ -94,6 +110,7 @@ namespace PL_Transportation_System
         private void AddLine(object sender, RoutedEventArgs e)
         {
             AddLine addLinewindow = new AddLine();
+            addLinewindow.Closing += OnCloseWindow;
             addLinewindow.Show();
         }
     }

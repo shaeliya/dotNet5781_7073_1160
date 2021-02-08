@@ -55,9 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ActionsOnLineTrip.xaml.cs">
-      <DependentUpon>ActionsOnLineTrip.xaml</DependentUpon>
-    </Compile>
     <Compile Include="PO\LineTiming.cs" />
     <Compile Include="ShowLineTimingWindow.xaml.cs">
       <DependentUpon>ShowLineTimingWindow.xaml</DependentUpon>
@@ -99,10 +96,6 @@
     <Compile Include="Utils\DisplayAttributeBasedObjectDataProvider .cs" />
     <Compile Include="Utils\RelayCommand.cs" />
     <Compile Include="Utils\Utils.cs" />
-    <Page Include="ActionsOnLineTrip.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ShowLineTimingWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

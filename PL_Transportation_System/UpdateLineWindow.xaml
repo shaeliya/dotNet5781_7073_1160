@@ -103,7 +103,9 @@
                     </ListView>
                     <!--<Button  FontSize="15px" Click="UpdateAllClicked" Content="Update All" Margin="420,342,87.6,-14.4" Grid.RowSpan="2"/>-->
 
-                    <Button x:Name="btnAddLineTrip" Opacity="1" Content="Add line trip"  FontSize="15px"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="169.6,289,0,0" VerticalAlignment="Top" Width="166" Click="Add_Line_Trip_Button_Click" Height="49" Grid.Column="2"/>
+                    <Button x:Name="btnAddLineTrip" Opacity="1" Content="Add line trip"  FontSize="15px"  DataContext="{Binding}" HorizontalAlignment="Left" Margin="147.6,281,0,14.8" Width="166" Click="Add_Line_Trip_Button_Click" Grid.Column="2"/>
+                    <Button  FontSize="15px" Click="UpdateAllClicked" Content="Update All" Margin="382.6,281,186.2,14.8" Grid.Column="2"/>
+
                     <!--<Button  Grid.Column="2" HorizontalAlignment="Left" Opacity="1" Margin="424.6,286,0,0" VerticalAlignment="Top" Width="168"  FontSize="15px" Click="UpdateAllClicked" Content="Update All" Height="51" />-->
                 </Grid>
             </TabItem>

@@ -101,7 +101,6 @@ C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\De
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddLineTrip.g.cs
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddLineTrip.baml
 C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\PL_Transportation_System.csprojAssemblyReference.cache
-C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ActionsOnLineTrip.g.cs
 C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddBus.g.cs
 C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddLine.g.cs
 C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddLineTrip.g.cs
@@ -116,7 +115,6 @@ C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\De
 C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\StationDetailsWindow.g.cs
 C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\App.baml
-C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ActionsOnLineTrip.baml
 C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddBus.baml
 C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddLine.baml
 C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddLineTrip.baml
