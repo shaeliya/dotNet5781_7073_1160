@@ -34,7 +34,7 @@
                     <DataTemplateSelector/>
                 </ComboBox.ItemTemplateSelector>
             </ComboBox>
-            <ListView ItemsSource="{Binding LineTimings, Mode=TwoWay}" x:Name="lvLineTimings" Foreground="#FF042271"  FontFamily="Goudy Old Style" HorizontalAlignment="Left" Width="606" FontWeight="Bold" Background="White" Opacity="0.8" Margin="56,173,0,41.6" FontSize="15px" Grid.RowSpan="2">
+            <ListView ItemsSource="{Binding LineTimings, Mode=TwoWay}" x:Name="lvLineTimings" Foreground="#FF042271"  FontFamily="Goudy Old Style" HorizontalAlignment="Left" Width="606" FontWeight="Bold" Background="White" Opacity="0.8" Margin="56,213,0,1.4" FontSize="15px" Grid.RowSpan="2">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Line Number"
@@ -50,8 +50,9 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Label x:Name="lblCurrentTime" HorizontalAlignment="Left" Margin="190,82,0,0" VerticalAlignment="Top" Width="355" Height="84" FontSize="36" FontWeight="Bold"/>
-            <Button Name="btnStopSimulation" FontSize="15px" Click="StopSimulation_Clicked" Content="Stop Simulation" Margin="267,40.6,265.6,-13.4" Grid.Row="1"/>
+            <Label x:Name="lblCurrentTime" HorizontalAlignment="Left" Margin="264,92,0,0" VerticalAlignment="Top" Width="177" Height="71" FontSize="36" FontWeight="Bold"/>
+            <Button Name="btnStopSimulation" FontSize="15px" Click="StopSimulation_Clicked" Content="Stop Simulation" Margin="159,176,373.6,147.2"/>
+            <Button Name="btnRestartSimulation" FontSize="15px" Click="RestartSimulation_Clicked" Content="Restart Simulation" Margin="375,176,157.6,147.2"/>
         </Grid>
     </Grid>
 </Window>

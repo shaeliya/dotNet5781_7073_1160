@@ -74,9 +74,7 @@ namespace PL_Transportation_System
             timeWorker.WorkerSupportsCancellation = true; // לאפשר עצירה שעון
             timeWorker.DoWork += DoWork;
             timeWorker.ProgressChanged += ProgressChanged;
-            SetCurrentTime();
-            //Update_lblCurrentTime();
-
+            StartWorkerAndStopwatch();
             Stations = new ObservableCollection<PO.Station>(bl.GetAllStation().Select(s => s.CopyPropertiesToNew(typeof(PO.Station))).Cast<PO.Station>());
 
         }
@@ -99,18 +97,21 @@ namespace PL_Transportation_System
             // מעדכנת את השעון במסך עצמו
             Update_lblCurrentTime();
 
-            // כדי שאוכל להפעיל עליה את הפונקציה BO לתחנה PO ממירה את התחנה
-            var stationBO = (BO.Station)SelectedStation.CopyPropertiesToNew(typeof(BO.Station));
-            stationBO.LinesList = SelectedStation.LinesList.Select(l => l.CopyPropertiesToNew(typeof(BO.LineOfStation))).Cast<BO.LineOfStation>().ToList();
-            // שמביאה את כל התחנות לחצי השעה הקרובה - השאילתה שכתבנו BL-קריאה לפונקציה ב
-            var allCurrentLinesForStation = bl.GetAllCurrentLinesForStation(stationBO, currentTime);
+            // עדכון הזמן חייב להעשות בכל מקרה. אבל עדכון תחנות נבצע רק אם נבחרה תחנה
+            if (SelectedStation != null)
+            {
+                // כדי שאוכל להפעיל עליה את הפונקציה BO לתחנה PO ממירה את התחנה
+                var stationBO = (BO.Station)SelectedStation.CopyPropertiesToNew(typeof(BO.Station));
+                stationBO.LinesList = SelectedStation.LinesList.Select(l => l.CopyPropertiesToNew(typeof(BO.LineOfStation))).Cast<BO.LineOfStation>().ToList();
+                // שמביאה את כל התחנות לחצי השעה הקרובה - השאילתה שכתבנו BL-קריאה לפונקציה ב
+                var allCurrentLinesForStation = bl.GetAllCurrentLinesForStation(stationBO, currentTime);
 
-            // כדי שאוכל להציג אותם בחלון PO לזמני הקו BO ממירה את זמני הקו
-            var allCurrentLinesForStationPO = allCurrentLinesForStation.Select(lt => (PO.LineTiming)lt.CopyPropertiesToNew(typeof(PO.LineTiming))).Cast<PO.LineTiming>();
+                // כדי שאוכל להציג אותם בחלון PO לזמני הקו BO ממירה את זמני הקו
+                var allCurrentLinesForStationPO = allCurrentLinesForStation.Select(lt => (PO.LineTiming)lt.CopyPropertiesToNew(typeof(PO.LineTiming))).Cast<PO.LineTiming>();
 
-            // מציגה את רשימת זמני הקוים
-            LineTimings = new ObservableCollection<PO.LineTiming>(allCurrentLinesForStationPO);
-
+                // מציגה את רשימת זמני הקוים
+                LineTimings = new ObservableCollection<PO.LineTiming>(allCurrentLinesForStationPO);
+            }
 
         }
 
@@ -133,7 +134,7 @@ namespace PL_Transportation_System
 
         /// <summary>
         /// ComboBox-הפונקציה שנקראת בשינוי של בחירה ב
-        /// </summary>
+        /// </summary>.
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void cbLineStations_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -143,19 +144,30 @@ namespace PL_Transportation_System
                 return;
             }
 
+            StartWorkerAndStopwatch();
+
+        }
+
+        /// <summary>
+        /// :במקרים הבאים Stopwatch-ואת ה Worker-נתחיל את ה
+        /// 1. Ctor-בתחילת החלון ב 
+        /// 2. RestartSimulation אם לוחצים על הכפתור 
+        /// 3. אם משנים את הבחירה במסך והסימולציה כבר עצרה
+        /// </summary>
+        private void StartWorkerAndStopwatch()
+        {
             if (!timeWorker.IsBusy)
             {
                 // timeWorker-מפעיל את ה
                 timeWorker.RunWorkerAsync();
             }
 
-            if (!stopwatch.IsRunning)           
+            if (!stopwatch.IsRunning)
             {
                 // מפעילה את השעון וקובעת את הזמן
                 stopwatch.Start();
                 SetCurrentTime();
             }
-
         }
 
         private void SetCurrentTime()
@@ -167,6 +179,11 @@ namespace PL_Transportation_System
         private void StopSimulation_Clicked(object sender, RoutedEventArgs e)
         {
             timeWorker.CancelAsync();
+        }
+
+        private void RestartSimulation_Clicked(object sender, RoutedEventArgs e)
+        {
+            StartWorkerAndStopwatch();
         }
     }
 }
