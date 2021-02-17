@@ -92,8 +92,6 @@ C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\o
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddStation.baml
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddLine.g.cs
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddLine.baml
-C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ActionsOnLineTrip.g.cs
-C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ActionsOnLineTrip.baml
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ActionsOnLineTrip.g.cs
 C:\Users\אורית\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ActionsOnLineTrip.baml
 C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\AddLineTrip.g.cs
@@ -130,3 +128,5 @@ C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\De
 C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\PL_Transportation_System.csproj.CopyComplete
 C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ShowLineTimingWindow.g.cs
 C:\Users\97252\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ShowLineTimingWindow.baml
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ShowLineTimingWindow.g.cs
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\PL_Transportation_System\obj\Debug\ShowLineTimingWindow.baml
