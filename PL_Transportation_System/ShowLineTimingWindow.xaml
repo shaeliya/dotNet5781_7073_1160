@@ -27,7 +27,7 @@
             <Grid.Background>
                 <ImageBrush ImageSource="Sources/line.jpg"/>
             </Grid.Background>
-            <Label Margin="179,11,181.6,298.4"  Foreground="#FF042271"  FontFamily="Goudy Old Style" Content="Choose a station to start simulation" RenderTransformOrigin="1.821,-0.669" FontSize="20"/>
+            <Label Margin="179,11,181.6,298.4" FontWeight="Bold" Foreground="#FF042271" FontFamily="Goudy Old Style" Content="Choose a station to start simulation" RenderTransformOrigin="1.821,-0.669" FontSize="20"/>
             <ComboBox IsSynchronizedWithCurrentItem="True"
           x:Name="cbLineStations"  Opacity="0.7" FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" ItemsSource="{Binding Stations}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="503" Height="29" Margin="106,55,0,0" SelectedItem="{Binding SelectedStation, Mode=TwoWay}"  Background="White" SelectionChanged="cbLineStations_SelectionChanged">
                 <ComboBox.ItemTemplateSelector>
