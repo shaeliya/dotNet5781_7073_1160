@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AddLine" Height="388.594" Width="408.56"
         xmlns:Bo="clr-namespace:BO;assembly=BL"
-        xmlns:utils="clr-namespace:PL_Transportation_System.Utils">
+        xmlns:utils="clr-namespace:PL_Transportation_System.Utils" Icon="Sources/carMain.png">
     <Window.Resources>
         <local:EnumConverter x:Key="EnumToIntConverter" />
         <ObjectDataProvider x:Key="Areas" MethodName="GetShortListOfApplicationGestures" ObjectType="{x:Type utils:DisplayAttributeBasedObjectDataProvider}">
@@ -21,15 +21,16 @@
             <ImageBrush ImageSource="Sources/line.jpg"/>
         </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="117*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <ListBox Opacity="0.7" HorizontalAlignment="Left" Height="295" Margin="18,18,0,0" VerticalAlignment="Top" Width="360"/>
-        <Label Content="Add Bus" FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="20"  FontWeight="Bold" Margin="137,24,122.4,289.2"/>
-        <Label Content="Add Line" FontWeight="Bold"  Margin="106,10,-105.2,354.8"/>
-        <StackPanel Margin="44,77,43.8,172.8">
+        <ListBox Opacity="0.7" HorizontalAlignment="Left" Height="295" Margin="18,18,0,0" VerticalAlignment="Top" Width="360" Grid.ColumnSpan="2"/>
+        <Label Content="Add Bus" FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="20"  FontWeight="Bold" Margin="85.545,24,122.4,289.2" Grid.Column="1"/>
+        <Label Content="Add Line" FontWeight="Bold"  Margin="54.545,10,-105.6,349.2" Grid.Column="1"/>
+        <StackPanel Margin="44,77,43.4,173.2" Grid.ColumnSpan="2">
             <StackPanel Orientation="Horizontal">
                 <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold">Line Number:</Label>
                 <TextBox Width="93" Name="tbLineNumber"  Background="#FFFEFFFF"/>
@@ -42,7 +43,7 @@
             <StackPanel Orientation="Horizontal"/>
 
         </StackPanel>
-        <Grid Margin="0,334,9.8,-9.2">
+        <Grid Margin="0,334,9.4,-8.8" Grid.ColumnSpan="2">
             <Button  Content="Add" FontSize="20"   Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="40,-132,230.6,105.4" Click="Button_Click"/>
             <Button  Content="Cancel" FontSize="20"   Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="214,-131,33.6,103.4" RenderTransformOrigin="0.5,0.5"/>
         </Grid>
