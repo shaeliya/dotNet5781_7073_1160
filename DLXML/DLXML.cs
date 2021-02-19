@@ -16,10 +16,31 @@ namespace DL
 {
     sealed class DLXML : IDal   //internal
     {
+        
         #region singelton
         static readonly DLXML instance = new DLXML();
         static DLXML() { }// static ctor to ensure instance init is done just before first usage
-        DLXML() { } // default => private
+        DLXML() {
+            if (!File.Exists(busPath))
+                DL.XMLTools.SaveListToXMLSerializer<DO.Bus>(DS.DataSource.busesList, busPath);
+
+          
+           
+            if (!File.Exists(lineStationPath))
+                DL.XMLTools.SaveListToXMLSerializer<DO.LineStation>(DS.DataSource.lineStationsList, lineStationPath);
+
+            if (!File.Exists(linePath))
+                DL.XMLTools.SaveListToXMLSerializer<DO.Line>(DS.DataSource.linesList, linePath);
+
+            if (!File.Exists(stationPath))
+                DL.XMLTools.SaveListToXMLSerializer<DO.Station>(DS.DataSource.stationsList, stationPath);
+
+            if (!File.Exists(adjacentStationsPath))
+                DL.XMLTools.SaveListToXMLSerializer<DO.AdjacentStations>(DS.DataSource.adjacentStationsList, adjacentStationsPath);
+
+            if (!File.Exists(lineTripPath))
+                DL.XMLTools.SaveListToXMLSerializer<DO.LineTrip>(DS.DataSource.lineTripsList, lineTripPath);
+        } // default => private
         public static DLXML Instance { get => instance; }// The public Instance property to use
         #endregion
 
