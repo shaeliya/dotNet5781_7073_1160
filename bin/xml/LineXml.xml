@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <ArrayOfLine xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Line>
-    <Id>0</Id>
+    <LineId>0</LineId>
     <LineNumber>480</LineNumber>
     <Area>JerusalemCenter</Area>
     <FirstStation>20001</FirstStation>
@@ -11,7 +11,7 @@
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
-    <Id>1</Id>
+    <LineId>1</LineId>
     <LineNumber>921</LineNumber>
     <Area>NorthCenter</Area>
     <FirstStation>33079</FirstStation>
@@ -21,7 +21,7 @@
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
-    <Id>2</Id>
+    <LineId>2</LineId>
     <LineNumber>790</LineNumber>
     <Area>SouthCenter</Area>
     <FirstStation>10466</FirstStation>
@@ -31,7 +31,7 @@
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
-    <Id>3</Id>
+    <LineId>3</LineId>
     <LineNumber>380</LineNumber>
     <Area>SouthCenter</Area>
     <FirstStation>13907</FirstStation>
@@ -41,7 +41,7 @@
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
-    <Id>4</Id>
+    <LineId>4</LineId>
     <LineNumber>431</LineNumber>
     <Area>JerusalemCenter</Area>
     <FirstStation>4170</FirstStation>
@@ -51,7 +51,7 @@
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
-    <Id>5</Id>
+    <LineId>5</LineId>
     <LineNumber>691</LineNumber>
     <Area>North</Area>
     <FirstStation>40058</FirstStation>
@@ -61,7 +61,7 @@
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
-    <Id>6</Id>
+    <LineId>6</LineId>
     <LineNumber>41</LineNumber>
     <Area>North</Area>
     <FirstStation>51353</FirstStation>
@@ -71,7 +71,7 @@
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
-    <Id>7</Id>
+    <LineId>7</LineId>
     <LineNumber>59</LineNumber>
     <Area>North</Area>
     <FirstStation>53408</FirstStation>
@@ -81,7 +81,7 @@
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
-    <Id>8</Id>
+    <LineId>8</LineId>
     <LineNumber>53</LineNumber>
     <Area>Center</Area>
     <FirstStation>26469</FirstStation>
@@ -91,7 +91,7 @@
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
-    <Id>9</Id>
+    <LineId>9</LineId>
     <LineNumber>60</LineNumber>
     <Area>Center</Area>
     <FirstStation>22955</FirstStation>
@@ -101,7 +101,7 @@
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
-    <Id>10</Id>
+    <LineId>10</LineId>
     <LineNumber>150</LineNumber>
     <Area>South</Area>
     <FirstStation>10030</FirstStation>
@@ -111,7 +111,7 @@
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
-    <Id>11</Id>
+    <LineId>11</LineId>
     <LineNumber>115</LineNumber>
     <Area>Center</Area>
     <FirstStation>33551</FirstStation>
@@ -121,7 +121,7 @@
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
-    <Id>12</Id>
+    <LineId>12</LineId>
     <LineNumber>2</LineNumber>
     <Area>Center</Area>
     <FirstStation>31738</FirstStation>
@@ -131,7 +131,7 @@
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
-    <Id>13</Id>
+    <LineId>13</LineId>
     <LineNumber>392</LineNumber>
     <Area>Center</Area>
     <FirstStation>38330</FirstStation>
