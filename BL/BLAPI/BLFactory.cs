@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 //להפוך לXML כמו ה-DAL FACTORY
+
+// מכין לי את האובייקט כך שנוכל להעביר אותו לשכבה הבאה
 namespace BLAPI
 {
     public static class BLFactory

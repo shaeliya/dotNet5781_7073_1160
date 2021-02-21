@@ -28,7 +28,6 @@ namespace DalApi
 
         #endregion AdjacentStations
 
-
         #region Bus
         IEnumerable<Bus> GetAllBusses();
         IEnumerable<Bus> GetAllBussesBy(Predicate<Bus> predicate);
@@ -41,7 +40,6 @@ namespace DalApi
 
         #endregion Bus
 
-
         #region Line
         IEnumerable<Line> GetAllLine();
         IEnumerable<Line> GetAllLineBy(Predicate<Line> predicate);
@@ -52,7 +50,6 @@ namespace DalApi
         void DeleteLine(int id);
         void DeleteLineBy(Predicate<Line> predicate);
         #endregion Line
-
 
         #region LineStation
         IEnumerable<LineStation> GetAllLineStation();
@@ -65,7 +62,6 @@ namespace DalApi
         void DeleteLineStationBy(Predicate<LineStation> predicate);
 
         #endregion LineStation
-
 
         #region LineTrip
         IEnumerable<LineTrip> GetAllLineTrip();

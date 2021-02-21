@@ -13,6 +13,7 @@ namespace DL
 {
     sealed class DLObject : IDal
     {
+        // מאפשר להקצות לכל היותר אובייקט אחד 
         #region singelton
         static readonly DLObject instance = new DLObject();
         static DLObject() { }// static ctor to ensure instance init is done just before first usage
@@ -147,7 +148,6 @@ namespace DL
 
         #endregion AdjacentStations 
 
-
         #region Bus
         public IEnumerable<Bus> GetAllBusses()
         {
@@ -202,11 +202,6 @@ namespace DL
             {
                 throw new BusNotFoundException(bus.LicenseNumber);
             }
-
-            //if (busToUpdate.IsDeleted)
-            //{
-            //    throw new BusDeletedException(bus.LicenseNumber, "Cannot update deleted bus");
-            //}
 
             DataSource.busesList.Remove(busToUpdate);
             DataSource.busesList.Add(bus.Clone());
@@ -295,12 +290,6 @@ namespace DL
             {
                 throw new LineNotFoundException(lineId);
             }
-
-            if (lineById.IsDeleted)
-            {
-                //throw new LineDeletedException(lineId);
-            }
-
             return lineById;
         }
         public void AddLine(Line line)
@@ -322,10 +311,6 @@ namespace DL
                 throw new LineNotFoundException(line.LineId);
             }
 
-            //if (lineToUpdate.IsDeleted)
-            //{
-            //    throw new LineDeletedException(line.LineId, "Cannot update deleted line");
-            //}
             DataSource.linesList.Remove(lineToUpdate);
             DataSource.linesList.Add(line.Clone());
         }
@@ -370,8 +355,6 @@ namespace DL
           
             lineToDelete.IsDeleted = true;
         }
-
-       
         public void DeleteLineBy(Predicate<Line> predicate)
         {
             var allLineBy = GetAllLineBy(predicate);
@@ -385,7 +368,6 @@ namespace DL
                 throw new LineNotFoundException(0, $"Cannot delete line For requested predicate: {predicate}");
             }
         }
-
 
         #endregion Line
 

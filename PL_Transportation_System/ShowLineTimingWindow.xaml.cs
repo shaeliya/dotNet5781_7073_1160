@@ -106,7 +106,7 @@ namespace PL_Transportation_System
                 // שמביאה את כל התחנות לחצי השעה הקרובה - השאילתה שכתבנו BL-קריאה לפונקציה ב
                 var allCurrentLinesForStation = bl.GetAllCurrentLinesForStation(stationBO, currentTime);
 
-                // כדי שאוכל להציג אותם בחלון PO לזמני הקו BO ממירה את זמני הקו
+                // כדי שנוכל להציג אותם בחלון PO לזמני הקו BO ממירה את זמני הקו
                 var allCurrentLinesForStationPO = allCurrentLinesForStation.Select(lt => (PO.LineTiming)lt.CopyPropertiesToNew(typeof(PO.LineTiming))).Cast<PO.LineTiming>();
 
                 // מציגה את רשימת זמני הקוים

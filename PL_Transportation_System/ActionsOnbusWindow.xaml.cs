@@ -31,7 +31,6 @@ namespace PL_Transportation_System
             InitializeComponent();
             DataContext = this;
             GetBusses();
-            //lvBus.DisplayMemberPath = " LicenseNumber ".ToString();
         }
 
         private void GetBusses()

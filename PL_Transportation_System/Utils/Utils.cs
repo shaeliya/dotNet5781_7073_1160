@@ -9,8 +9,6 @@ namespace PL_Transportation_System.Utils
 {
     public static class UtilsFunctions
     {
-
-
         public static bool IsDigitsOnly(string str)//Checks if the license number is just digits
         {
             foreach (char c in str)

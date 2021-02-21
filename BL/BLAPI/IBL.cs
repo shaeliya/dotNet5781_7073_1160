@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BLAPI
 {
+   // ממשק של שכבת הבי אל
     public interface IBL
     {
-
         #region Bus
         IEnumerable<Bus> GetAllBusses();
         Bus GetBusById(int id);
@@ -18,7 +18,6 @@ namespace BLAPI
         void DeleteBus(int id);
 
         #endregion Bus
-
 
         #region Line
         IEnumerable<Line> GetAllLine();
@@ -49,6 +48,7 @@ namespace BLAPI
         void DeleteStation(int id);
 
         #endregion Station
+        //  סימן שאלה ליד טייפ מאפשר לי להחזיר או את הטייפ או נאל  
         TimeSpan?  GetTimeBetweenStations(int stationId1, int stationId2);
         double? GetDistanceBetweenStations(int stationId1, int stationId2);
         List<LineTiming> GetAllCurrentLinesForStation(Station station, TimeSpan timeSpan);

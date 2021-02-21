@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-
+    // מימוש הממשק
     public class BLImp : IBL
     {
         IDal dl = DLFactory.GetDL();
@@ -125,7 +125,7 @@ namespace BL
             // DO-מביאים את התחנה מה            
             DO.Station station = dl.GetStationById(lineStation.StationId);
 
-            StationOfLine sol = (StationOfLine)station.CopyPropertiesToNewAndUnion(typeof(StationOfLine), lineStation);
+            StationOfLine sol = (StationOfLine)station.CopyPropertiesToNewAndUnion(typeof(StationOfLine), lineStation);// מעתיק את הפרופרטיס
 
             var nextLineStation = dl.GetAllLineStationBy(ls => ls.LineId == lineStation.LineId && ls.LineStationIndex == lineStation.LineStationIndex + 1).FirstOrDefault();
             if (nextLineStation == null)
@@ -198,7 +198,7 @@ namespace BL
             line.CopyPropertiesTo(lineDO);
 
             dl.AddLine(lineDO);
-            //line.LineTripList.ToList().ForEach(lt => AddLineTripFromLine(lt));
+            
         }
 
         public void MoveLineStationUp(Line line, StationOfLine stationOfLine)
@@ -552,7 +552,7 @@ namespace BL
         {
             List<LineTiming> lineTimingList = new List<LineTiming>();
 
-            // 1. נמצא את כל תחנות-הקווים העוברים בתחנה
+            // 1. נמצא את כל תחנות-הקווים(ליין סטיישן) ששיכים לאותו איי די של התחנה
             var allLineStations = dl.GetAllLineStationBy(ls => !ls.IsDeleted &&
                                                               ls.StationId == station.StationId);
 
@@ -641,7 +641,7 @@ namespace BL
             var currentStationInLine = line.StationsList.Where(s => s.StationId == station.StationId).FirstOrDefault();
             double timeUntilCuurentStation = line.StationsList.OrderBy(s => s.LineStationIndex).
                                                                Where(s => s.LineStationIndex < currentStationInLine.LineStationIndex).
-                                                               Sum(s => s.TimeToNextStation.TotalMinutes);
+                                                               Sum(s => s.TimeToNextStation.TotalMinutes);// מחשב את סכום הזמן של כל התחנות עד לתחנה שלי 
             return timeUntilCuurentStation;
 
         }
