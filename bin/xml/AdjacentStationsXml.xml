@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfAdjacentStations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <AdjacentStations>
     <AdjacentStationsId>1</AdjacentStationsId>
@@ -359,13 +359,5 @@
     <Distance>5.01500742906472</Distance>
     <Time>PT19M45S</Time>
     <IsDeleted>false</IsDeleted>
-  </AdjacentStations>
-  <AdjacentStations>
-    <AdjacentStationsId>0</AdjacentStationsId>
-    <StationId1>2</StationId1>
-    <StationId2>1</StationId2>
-    <Distance>3.00562790897937</Distance>
-    <Time>PT3M5S</Time>
-    <IsDeleted>False</IsDeleted>
   </AdjacentStations>
 </ArrayOfAdjacentStations>
