@@ -1,0 +1,14 @@
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\CreateXmlFilesFromDataSource\bin\Debug\CreateXmlFilesFromDataSource.exe.config
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\CreateXmlFilesFromDataSource\bin\Debug\CreateXmlFilesFromDataSource.exe
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\CreateXmlFilesFromDataSource\bin\Debug\CreateXmlFilesFromDataSource.pdb
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\CreateXmlFilesFromDataSource\bin\Debug\DLAPI.dll
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\CreateXmlFilesFromDataSource\bin\Debug\DS.dll
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\CreateXmlFilesFromDataSource\bin\Debug\DLAPI.pdb
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\CreateXmlFilesFromDataSource\bin\Debug\DLAPI.dll.config
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\CreateXmlFilesFromDataSource\bin\Debug\DS.pdb
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\CreateXmlFilesFromDataSource\bin\Debug\DS.dll.config
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\CreateXmlFilesFromDataSource\obj\Debug\CreateXmlFilesFromDataSource.csprojAssemblyReference.cache
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\CreateXmlFilesFromDataSource\obj\Debug\CreateXmlFilesFromDataSource.csproj.CoreCompileInputs.cache
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\CreateXmlFilesFromDataSource\obj\Debug\CreateXmlFilesFromDataSource.csproj.CopyComplete
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\CreateXmlFilesFromDataSource\obj\Debug\CreateXmlFilesFromDataSource.exe
+C:\Users\shalh\source\repos\dotNet5781_7073_1160\CreateXmlFilesFromDataSource\obj\Debug\CreateXmlFilesFromDataSource.pdb

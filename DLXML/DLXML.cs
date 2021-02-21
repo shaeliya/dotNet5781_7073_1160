@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 using DalApi;
 using DO;
@@ -67,7 +68,7 @@ namespace DL
                                           StationId2 = Int32.Parse(a.Element("StationId2").Value),
                                           Distance = double.Parse(a.Element("Distance").Value),
                                           Time = TimeSpan.ParseExact(a.Element("Time").Value, "hh\\:mm\\:ss", CultureInfo.InvariantCulture),
-                                          IsDeleted = bool.Parse(a.Element("AdjacentStationsId").Value)
+                                          IsDeleted = bool.Parse(a.Element("IsDeleted").Value)
                                       };
 
 
@@ -89,7 +90,7 @@ namespace DL
                                          StationId2 = Int32.Parse(a.Element("StationId2").Value),
                                          Distance = double.Parse(a.Element("Distance").Value),
                                          Time = TimeSpan.ParseExact(a.Element("Time").Value, "hh\\:mm\\:ss", CultureInfo.InvariantCulture),
-                                         IsDeleted = bool.Parse(a.Element("AdjacentStationsId").Value)
+                                         IsDeleted = bool.Parse(a.Element("IsDeleted").Value)
 
                                      }
                                      where predicate(AdjacentStations)
@@ -118,7 +119,7 @@ namespace DL
                                 StationId2 = Int32.Parse(a.Element("StationId2").Value),
                                 Distance = double.Parse(a.Element("Distance").Value),
                                 Time = TimeSpan.ParseExact(a.Element("Time").Value, "hh\\:mm\\:ss", CultureInfo.InvariantCulture),
-                                IsDeleted = bool.Parse(a.Element("AdjacentStationsId").Value)
+                                IsDeleted = bool.Parse(a.Element("IsDeleted").Value)
 
 
                             }).FirstOrDefault();
@@ -244,8 +245,8 @@ namespace DL
                               FuelRemain = double.Parse(b.Element("FuelRemain").Value),
                               Treatment = double.Parse(b.Element("Treatment").Value),
                               LastTreatmentDate = DateTime.Parse(b.Element("LastTreatmentDate").Value),
-                              Status = (Enums.BusStatuses)Enum.Parse(typeof(Enums.BusStatuses), b.Element("BusStatuses").Value),
-                              IsDeleted = bool.Parse(b.Element("LicenseNumber").Value)                          
+                              Status = (Enums.BusStatuses)Enum.Parse(typeof(Enums.BusStatuses), b.Element("Status").Value),
+                              IsDeleted = bool.Parse(b.Element("IsDeleted").Value)                          
                           };
 
 
@@ -270,7 +271,7 @@ namespace DL
                             Treatment = double.Parse(b.Element("Treatment").Value),
                             LastTreatmentDate = DateTime.Parse(b.Element("LastTreatmentDate").Value),
                             Status = (Enums.BusStatuses)Enum.Parse(typeof(Enums.BusStatuses), b.Element("BusStatuses").Value),
-                            IsDeleted = bool.Parse(b.Element("LicenseNumber").Value)
+                            IsDeleted = bool.Parse(b.Element("IsDeleted").Value)
                         }
                         where predicate(bus)
                         select bus;
@@ -297,7 +298,7 @@ namespace DL
                                 Treatment = double.Parse(b.Element("Treatment").Value),
                                 LastTreatmentDate = DateTime.Parse(b.Element("LastTreatmentDate").Value),
                                 Status = (Enums.BusStatuses)Enum.Parse(typeof(Enums.BusStatuses), b.Element("BusStatuses").Value),
-                                IsDeleted = bool.Parse(b.Element("LicenseNumber").Value)
+                                IsDeleted = bool.Parse(b.Element("IsDeleted").Value)
 
                             }).FirstOrDefault();
 
@@ -358,10 +359,10 @@ namespace DL
             }
 
 
-            if (bool.Parse(busToUpdate.Element("IsDeleted").Value))
-            {
-                throw new LineDeletedException(bus.LicenseNumber, "Cannot update deleted bus");
-            }
+            //if (bool.Parse(busToUpdate.Element("IsDeleted").Value))
+            //{
+            //    throw new LineDeletedException(bus.LicenseNumber, "Cannot update deleted bus");
+            //}
 
             busToUpdate.Element("LicenseNumber").Value = bus.LicenseNumber.ToString();
             busToUpdate.Element("FromDate").Value = bus.FromDate.ToString();
@@ -558,7 +559,7 @@ namespace DL
                               LineId = Int32.Parse(l.Element("LineId").Value),
                               LineNumber = Int32.Parse(l.Element("LineNumber").Value),
                               Area = (Enums.Areas)Enum.Parse(typeof(Enums.Areas), l.Element("Area").Value),
-                              IsDeleted = bool.Parse(l.Element("LineNumber").Value)
+                              IsDeleted = bool.Parse(l.Element("IsDeleted").Value)
 
                           };
 
@@ -580,7 +581,7 @@ namespace DL
                              LineId = Int32.Parse(l.Element("LineId").Value),
                              LineNumber = Int32.Parse(l.Element("LineNumber").Value),
                              Area = (Enums.Areas)Enum.Parse(typeof(Enums.Areas), l.Element("Area").Value),
-                             IsDeleted = bool.Parse(l.Element("LineNumber").Value)
+                             IsDeleted = bool.Parse(l.Element("IsDeleted").Value)
 
                          }
                          where predicate(line)
@@ -606,7 +607,7 @@ namespace DL
                                 LineId = Int32.Parse(l.Element("LineId").Value),
                                 LineNumber = Int32.Parse(l.Element("LineNumber").Value),
                                 Area = (Enums.Areas)Enum.Parse(typeof(Enums.Areas), l.Element("Area").Value),
-                                IsDeleted = bool.Parse(l.Element("LineNumber").Value)
+                                IsDeleted = bool.Parse(l.Element("IsDeleted").Value)
 
                             }).FirstOrDefault();
 
@@ -736,7 +737,7 @@ namespace DL
                                   LineTripId = Int32.Parse(l.Element("LineTripId").Value),
                                   LineId = Int32.Parse(l.Element("LineId").Value),
                                   StartAt = TimeSpan.ParseExact(l.Element("StartAt").Value, "hh\\:mm\\:ss", CultureInfo.InvariantCulture),
-                                  IsDeleted = bool.Parse(l.Element("LineTripId").Value)
+                                 IsDeleted = bool.Parse(l.Element("IsDeleted").Value)
 
                               };
 
@@ -756,8 +757,9 @@ namespace DL
                              {
                                  LineTripId = Int32.Parse(l.Element("LineTripId").Value),
                                  LineId = Int32.Parse(l.Element("LineId").Value),
-                                 StartAt = TimeSpan.ParseExact(l.Element("StartAt").Value, "hh\\:mm\\:ss", CultureInfo.InvariantCulture),
-                                 IsDeleted = bool.Parse(l.Element("LineTripId").Value)
+                                 //StartAt = TimeSpan.ParseExact(l.Element("StartAt").Value, "hh\\:mm\\:ss", CultureInfo.InvariantCulture),
+                                 StartAt =  XmlConvert.ToTimeSpan(l.Element("StartAt").Value),
+                                IsDeleted = bool.Parse(l.Element("IsDeleted").Value)
 
                              }
                              where predicate(lineTrip)
@@ -782,7 +784,7 @@ namespace DL
                                 LineTripId = Int32.Parse(l.Element("LineTripId").Value),
                                 LineId = Int32.Parse(l.Element("LineId").Value),
                                 StartAt = TimeSpan.ParseExact(l.Element("StartAt").Value, "hh\\:mm\\:ss", CultureInfo.InvariantCulture),
-                                IsDeleted = bool.Parse(l.Element("LineTripId").Value)
+                               IsDeleted = bool.Parse(l.Element("IsDeleted").Value)
 
                             }).FirstOrDefault();
 

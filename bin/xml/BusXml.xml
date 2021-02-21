@@ -1,250 +1,203 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfBus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Bus>
-    <LicenseNumber>9110354</LicenseNumber>
-    <DateBegin>2008-02-13T00:00:00</DateBegin>
-    <LastTreatment>2019-06-24T00:00:00</LastTreatment>
-    <TotalMileage>12198</TotalMileage>
-    <FuelRemain>542</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>8000</KmBeforTreatment>
-    <KmBeforeFuel>500</KmBeforeFuel>
+    <LicenseNumber>6453093</LicenseNumber>
+    <FromDate>2003-03-07T00:00:00</FromDate>
+    <TotalTrip>3391794495.8420844</TotalTrip>
+    <FuelRemain>1177.2296051798526</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>true</IsAccessible>
   </Bus>
   <Bus>
-    <LicenseNumber>1234567</LicenseNumber>
-    <DateBegin>2014-12-20T00:00:00</DateBegin>
-    <LastTreatment>2020-06-20T00:00:00</LastTreatment>
-    <TotalMileage>5920</TotalMileage>
-    <FuelRemain>450</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>12000</KmBeforTreatment>
-    <KmBeforeFuel>1000</KmBeforeFuel>
+    <LicenseNumber>3022625</LicenseNumber>
+    <FromDate>2005-10-04T00:00:00</FromDate>
+    <TotalTrip>3363682756.3667474</TotalTrip>
+    <FuelRemain>85.987829404411755</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>true</IsAccessible>
   </Bus>
   <Bus>
-    <LicenseNumber>9517538</LicenseNumber>
-    <DateBegin>2012-11-10T00:00:00</DateBegin>
-    <LastTreatment>2020-10-12T00:00:00</LastTreatment>
-    <TotalMileage>19000</TotalMileage>
-    <FuelRemain>125</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>1000</KmBeforTreatment>
-    <KmBeforeFuel>20</KmBeforeFuel>
+    <LicenseNumber>7690858</LicenseNumber>
+    <FromDate>2009-07-13T00:00:00</FromDate>
+    <TotalTrip>8317246283.490078</TotalTrip>
+    <FuelRemain>707.07787175340468</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>true</IsAccessible>
   </Bus>
   <Bus>
-    <LicenseNumber>6543817</LicenseNumber>
-    <DateBegin>2011-10-19T00:00:00</DateBegin>
-    <LastTreatment>2020-07-24T00:00:00</LastTreatment>
-    <TotalMileage>9865</TotalMileage>
-    <FuelRemain>105</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>11000</KmBeforTreatment>
-    <KmBeforeFuel>100</KmBeforeFuel>
+    <LicenseNumber>5639217</LicenseNumber>
+    <FromDate>2012-05-05T00:00:00</FromDate>
+    <TotalTrip>5524740799.3968029</TotalTrip>
+    <FuelRemain>769.94258287639479</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>true</IsAccessible>
   </Bus>
   <Bus>
-    <LicenseNumber>9638524</LicenseNumber>
-    <DateBegin>2017-09-15T00:00:00</DateBegin>
-    <LastTreatment>2020-02-01T00:00:00</LastTreatment>
-    <TotalMileage>15806</TotalMileage>
-    <FuelRemain>542</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>4200</KmBeforTreatment>
-    <KmBeforeFuel>256</KmBeforeFuel>
+    <LicenseNumber>6757485</LicenseNumber>
+    <FromDate>2005-05-26T00:00:00</FromDate>
+    <TotalTrip>9697740092.4193516</TotalTrip>
+    <FuelRemain>79.541671892414641</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>true</IsAccessible>
   </Bus>
   <Bus>
-    <LicenseNumber>1478526</LicenseNumber>
-    <DateBegin>2016-08-12T00:00:00</DateBegin>
-    <LastTreatment>2020-12-03T00:00:00</LastTreatment>
-    <TotalMileage>5964</TotalMileage>
-    <FuelRemain>412</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>14000</KmBeforTreatment>
-    <KmBeforeFuel>1100</KmBeforeFuel>
+    <LicenseNumber>8000534</LicenseNumber>
+    <FromDate>2015-09-18T00:00:00</FromDate>
+    <TotalTrip>9981767448.2547035</TotalTrip>
+    <FuelRemain>19.051724681654818</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>false</IsAccessible>
   </Bus>
   <Bus>
-    <LicenseNumber>9637418</LicenseNumber>
-    <DateBegin>2015-07-10T00:00:00</DateBegin>
-    <LastTreatment>2020-11-16T00:00:00</LastTreatment>
-    <TotalMileage>5880</TotalMileage>
-    <FuelRemain>355</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>16000</KmBeforTreatment>
-    <KmBeforeFuel>698</KmBeforeFuel>
+    <LicenseNumber>49658328</LicenseNumber>
+    <FromDate>2020-01-16T00:00:00</FromDate>
+    <TotalTrip>1867532511.0172253</TotalTrip>
+    <FuelRemain>403.01259468217035</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>true</IsAccessible>
   </Bus>
   <Bus>
-    <LicenseNumber>1731985</LicenseNumber>
-    <DateBegin>2014-06-17T00:00:00</DateBegin>
-    <LastTreatment>2020-06-19T00:00:00</LastTreatment>
-    <TotalMileage>2975</TotalMileage>
-    <FuelRemain>277</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>20000</KmBeforTreatment>
-    <KmBeforeFuel>230</KmBeforeFuel>
+    <LicenseNumber>88407175</LicenseNumber>
+    <FromDate>2020-12-12T00:00:00</FromDate>
+    <TotalTrip>5848040555.3575964</TotalTrip>
+    <FuelRemain>202.39061225922342</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>false</IsAccessible>
   </Bus>
   <Bus>
-    <LicenseNumber>5485761</LicenseNumber>
-    <DateBegin>2010-05-18T00:00:00</DateBegin>
-    <LastTreatment>2020-09-23T00:00:00</LastTreatment>
-    <TotalMileage>13963</TotalMileage>
-    <FuelRemain>366</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>6300</KmBeforTreatment>
-    <KmBeforeFuel>900</KmBeforeFuel>
+    <LicenseNumber>5451594</LicenseNumber>
+    <FromDate>2013-03-05T00:00:00</FromDate>
+    <TotalTrip>4915430910.6481113</TotalTrip>
+    <FuelRemain>495.66633635185025</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>true</IsAccessible>
   </Bus>
   <Bus>
-    <LicenseNumber>9432615</LicenseNumber>
-    <DateBegin>2016-04-12T00:00:00</DateBegin>
-    <LastTreatment>2020-07-24T00:00:00</LastTreatment>
-    <TotalMileage>8538</TotalMileage>
-    <FuelRemain>328</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>13000</KmBeforTreatment>
-    <KmBeforeFuel>100</KmBeforeFuel>
+    <LicenseNumber>4017808</LicenseNumber>
+    <FromDate>2007-02-24T00:00:00</FromDate>
+    <TotalTrip>6752545937.7898331</TotalTrip>
+    <FuelRemain>91.024526764650147</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>false</IsAccessible>
   </Bus>
   <Bus>
-    <LicenseNumber>1103564</LicenseNumber>
-    <DateBegin>2011-02-13T00:00:00</DateBegin>
-    <LastTreatment>2020-03-02T00:00:00</LastTreatment>
-    <TotalMileage>118391</TotalMileage>
-    <FuelRemain>224</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>2698</KmBeforTreatment>
-    <KmBeforeFuel>56</KmBeforeFuel>
+    <LicenseNumber>3393453</LicenseNumber>
+    <FromDate>2006-04-16T00:00:00</FromDate>
+    <TotalTrip>353542246.95373952</TotalTrip>
+    <FuelRemain>776.77501401108464</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>true</IsAccessible>
   </Bus>
   <Bus>
-    <LicenseNumber>12345678</LicenseNumber>
-    <DateBegin>2019-12-20T00:00:00</DateBegin>
-    <LastTreatment>2020-07-24T00:00:00</LastTreatment>
-    <TotalMileage>7861</TotalMileage>
-    <FuelRemain>278</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>18900</KmBeforTreatment>
-    <KmBeforeFuel>100</KmBeforeFuel>
+    <LicenseNumber>5878197</LicenseNumber>
+    <FromDate>2016-03-13T00:00:00</FromDate>
+    <TotalTrip>9444995453.3392029</TotalTrip>
+    <FuelRemain>564.00338482717211</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>true</IsAccessible>
   </Bus>
   <Bus>
-    <LicenseNumber>60503817</LicenseNumber>
-    <DateBegin>2019-10-19T00:00:00</DateBegin>
-    <LastTreatment>2020-07-24T00:00:00</LastTreatment>
-    <TotalMileage>6187</TotalMileage>
-    <FuelRemain>214</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>16000</KmBeforTreatment>
-    <KmBeforeFuel>100</KmBeforeFuel>
-    <IsDeleted>false</IsDeleted>
-    <IsAccessible>false</IsAccessible>
+    <LicenseNumber>2405533</LicenseNumber>
+    <FromDate>28/03/2000 00:00:00</FromDate>
+    <TotalTrip>11173470.3035515</TotalTrip>
+    <FuelRemain>0</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>01/01/0001 00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
+    <IsDeleted>True</IsDeleted>
   </Bus>
   <Bus>
-    <LicenseNumber>59631224</LicenseNumber>
-    <DateBegin>2018-09-15T00:00:00</DateBegin>
-    <LastTreatment>2020-11-04T00:00:00</LastTreatment>
-    <TotalMileage>5150</TotalMileage>
-    <FuelRemain>517</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>15000</KmBeforTreatment>
-    <KmBeforeFuel>420</KmBeforeFuel>
-    <IsDeleted>false</IsDeleted>
-    <IsAccessible>false</IsAccessible>
+    <LicenseNumber>1968416</LicenseNumber>
+    <FromDate>06/02/2000 00:00:00</FromDate>
+    <TotalTrip>5369564299.43431</TotalTrip>
+    <FuelRemain>0</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>01/01/0001 00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
+    <IsDeleted>True</IsDeleted>
   </Bus>
   <Bus>
-    <LicenseNumber>2190526</LicenseNumber>
-    <DateBegin>2006-08-12T00:00:00</DateBegin>
-    <LastTreatment>2020-10-03T00:00:00</LastTreatment>
-    <TotalMileage>9162</TotalMileage>
-    <FuelRemain>311</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>10950</KmBeforTreatment>
-    <KmBeforeFuel>758</KmBeforeFuel>
+    <LicenseNumber>4376921</LicenseNumber>
+    <FromDate>2008-08-16T00:00:00</FromDate>
+    <TotalTrip>2184364175.6104054</TotalTrip>
+    <FuelRemain>442.0844712686187</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>false</IsAccessible>
   </Bus>
   <Bus>
-    <LicenseNumber>10994418</LicenseNumber>
-    <DateBegin>2019-07-10T00:00:00</DateBegin>
-    <LastTreatment>2020-07-07T00:00:00</LastTreatment>
-    <TotalMileage>5177</TotalMileage>
-    <FuelRemain>442</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>1465</KmBeforTreatment>
-    <KmBeforeFuel>560</KmBeforeFuel>
+    <LicenseNumber>6913561</LicenseNumber>
+    <FromDate>1995-01-03T00:00:00</FromDate>
+    <TotalTrip>8643757995.5890579</TotalTrip>
+    <FuelRemain>815.47700606588126</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>false</IsAccessible>
   </Bus>
   <Bus>
-    <LicenseNumber>18439185</LicenseNumber>
-    <DateBegin>2020-06-17T00:00:00</DateBegin>
-    <LastTreatment>2020-12-31T00:00:00</LastTreatment>
-    <TotalMileage>4120</TotalMileage>
-    <FuelRemain>199</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>11000</KmBeforTreatment>
-    <KmBeforeFuel>100</KmBeforeFuel>
+    <LicenseNumber>97651897</LicenseNumber>
+    <FromDate>2018-08-05T00:00:00</FromDate>
+    <TotalTrip>2844141263.0513887</TotalTrip>
+    <FuelRemain>8.9639497292060177</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>false</IsAccessible>
   </Bus>
   <Bus>
-    <LicenseNumber>5084301</LicenseNumber>
-    <DateBegin>2010-05-18T00:00:00</DateBegin>
-    <LastTreatment>2020-07-24T00:00:00</LastTreatment>
-    <TotalMileage>7128</TotalMileage>
-    <FuelRemain>214</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>14000</KmBeforTreatment>
-    <KmBeforeFuel>952</KmBeforeFuel>
+    <LicenseNumber>6914597</LicenseNumber>
+    <FromDate>2017-10-05T00:00:00</FromDate>
+    <TotalTrip>6846541327.3802652</TotalTrip>
+    <FuelRemain>855.212023696961</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>false</IsAccessible>
   </Bus>
   <Bus>
-    <LicenseNumber>9439014</LicenseNumber>
-    <DateBegin>2009-04-12T00:00:00</DateBegin>
-    <LastTreatment>2020-05-17T00:00:00</LastTreatment>
-    <TotalMileage>91036</TotalMileage>
-    <FuelRemain>350</FuelRemain>
-    <CurrentMileage>0</CurrentMileage>
-    <Status>Ready</Status>
-    <KmBeforTreatment>5201</KmBeforTreatment>
-    <KmBeforeFuel>80</KmBeforeFuel>
+    <LicenseNumber>38625557</LicenseNumber>
+    <FromDate>2019-01-15T00:00:00</FromDate>
+    <TotalTrip>3446321030.792284</TotalTrip>
+    <FuelRemain>149.35948550904146</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
-    <IsAccessible>true</IsAccessible>
+  </Bus>
+  <Bus>
+    <LicenseNumber>6780995</LicenseNumber>
+    <FromDate>2009-02-04T00:00:00</FromDate>
+    <TotalTrip>6876319061.1727009</TotalTrip>
+    <FuelRemain>447.6795503574794</FuelRemain>
+    <Treatment>0</Treatment>
+    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
+    <IsDeleted>false</IsDeleted>
   </Bus>
 </ArrayOfBus>

@@ -56,16 +56,18 @@ namespace PL_Transportation_System
             var BusesToUpdate = Buses.Where(b => b.IsUpdated).Select(b =>
             {
                 var newB = (BO.Bus)b.CopyPropertiesToNew(typeof(BO.Bus));
-                
+
                 return newB;
 
             });
-                foreach (var bus in BusesToUpdate)
-                {
-                    bl.UpdateBus(bus);
-                }
-          
-           }
+            foreach (var bus in BusesToUpdate)
+            {
+                bl.UpdateBus(bus);
+            }
+
+            MessageBox.Show("Updated Succesfully!");
+
+        }
 
         private void AddBus(object sender, RoutedEventArgs e)
         {
