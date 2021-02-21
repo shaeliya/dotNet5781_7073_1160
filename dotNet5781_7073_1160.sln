@@ -27,8 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS", "DS\DS.csproj", "{095E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6D78515A-770A-4EB3-81DB-C18C1302C0D7}"
 	ProjectSection(SolutionItems) = preProject
+		..\..\..\Downloads\Bonuses for the project.docx = ..\..\..\Downloads\Bonuses for the project.docx
 		config.xml = config.xml
-		ToDo.docx = ToDo.docx
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLXML", "DLXML\DLXML.csproj", "{494C73C7-7817-4281-B2A8-F6802397E1B7}"
