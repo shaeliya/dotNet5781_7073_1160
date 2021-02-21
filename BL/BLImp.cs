@@ -299,10 +299,9 @@ namespace BL
 
         private void AddLineTrip(LineTrip lineTrip, Line line)
         {
-            DO.LineTrip ls = (DO.LineTrip)lineTrip.CopyPropertiesToNewAndUnion(typeof(DO.LineTrip), line);
+            DO.LineTrip lt = (DO.LineTrip)lineTrip.CopyPropertiesToNew(typeof(DO.LineTrip));
 
-            dl.AddLineTrip(ls);
-
+            dl.AddLineTrip(lt);
         }
 
         private void AddLineStation(StationOfLine stationOfLine, Line line)
@@ -390,7 +389,7 @@ namespace BL
         {
             var lineTripsForLine = dl.GetAllLineTripBy(lt => lt.LineId == line.LineId).ToList();
 
-            lineTripsForLine.ToList().ForEach(lt => DeleteLineTrip(lt.LineTripId));
+            lineTripsForLine.ToList().ForEach(lt => DeleteLineTrip(lt.LineTripId, true));
             AddLineTripFromLine(line);
         }
 
@@ -505,9 +504,9 @@ namespace BL
             lineTrip.CopyPropertiesTo(lineTripDO);
             dl.AddLineTrip(lineTripDO);
         }
-        public void DeleteLineTrip(int id)
+        public void DeleteLineTrip(int id, bool isForcedDelete)
         {
-            dl.DeleteLineTrip(id);
+            dl.DeleteLineTrip(id, isForcedDelete);
         }
 
         public void AddLineTripToLine(Line line, LineTrip lineTrip)

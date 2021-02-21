@@ -12,7 +12,7 @@ namespace BO
     public class LineTrip
     {
         public int LineTripId { get; set; }
-        public Line Line { get; set; }
+        public int LineId { get; set; }
         public TimeSpan StartAt { get; set; }
         public TimeSpan Frequency { get; set; }
         public TimeSpan FinishAt { get; set; }

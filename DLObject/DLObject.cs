@@ -349,7 +349,7 @@ namespace DL
             if (lineTripToDelete != null)
             {
                 var lineTripToDeleteList = lineTripToDelete.ToList();
-                lineTripToDeleteList.ForEach(lt => DeleteLineTrip(lt.LineTripId));
+                lineTripToDeleteList.ForEach(lt => DeleteLineTrip(lt.LineTripId, false));
             }
 
           
@@ -497,7 +497,7 @@ namespace DL
         }
         public IEnumerable<LineTrip> GetAllLineTripBy(Predicate<LineTrip> predicate)
         {
-            var lineTripBy = DataSource.lineTripsList.Where(lineTrip => !lineTrip.IsDeleted && predicate(lineTrip))
+            var lineTripBy = DataSource.lineTripsList.Where(lineTrip => predicate(lineTrip))
                                                                     .Select(lineTrip => lineTrip.Clone());
             return lineTripBy;
         }
@@ -561,16 +561,24 @@ namespace DL
             }
             update(lineTripToUpdate.Clone());
         }
-        public void DeleteLineTrip(int lineTripId)
+        public void DeleteLineTrip(int lineTripId, bool isForcedDelete)
         {
-            var lineTripToDelete = DataSource.lineTripsList.Find(lt => !lt.IsDeleted && lt.LineTripId == lineTripId);
+            var lineTripToDelete = DataSource.lineTripsList.Find(lt => lt.LineTripId == lineTripId);
 
             if (lineTripToDelete == null)
             {
                 throw new LineTripNotFoundException(lineTripId, $"Cannot delete line Trip id: {lineTripId} because it was not found");
             }
-            lineTripToDelete.IsDeleted = true;
-            //DataSource.lineTripsList.Remove(lineTripToDelete);
+
+            if (isForcedDelete)
+            {
+
+                DataSource.lineTripsList.Remove(lineTripToDelete);
+            }
+            else
+            {
+                lineTripToDelete.IsDeleted = true;
+            }
         }
         public void DeleteLineTripBy(Predicate<LineTrip> predicate)
         {
@@ -578,7 +586,7 @@ namespace DL
             if (allLineTripBy != null)
             {
                 var allLineTripByList = allLineTripBy.ToList();
-                allLineTripByList.ForEach(lt => DeleteLineTrip(lt.LineTripId));
+                allLineTripByList.ForEach(lt => DeleteLineTrip(lt.LineTripId, false));
             }
             else
             {

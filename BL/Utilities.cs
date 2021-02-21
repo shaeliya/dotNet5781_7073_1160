@@ -32,7 +32,7 @@ namespace BL
         }
 
         /// <summary>
-        /// פונקציית הרחבה שמחזירה משתנה מסוג חדש ומעתיקה את השדות מ
+        /// toUnion - פונקציית הרחבה שמחזירה משתנה מסוג חדש ומעתיקה את השדות מ
         /// </summary>
         /// <typeparam name="S"></typeparam>
         /// <typeparam name="T"></typeparam>

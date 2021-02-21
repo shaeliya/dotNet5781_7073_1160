@@ -710,7 +710,7 @@ namespace DL
             if (lineTripToDelete != null)
             {
                 var lineTripToDeleteList = lineTripToDelete.ToList();
-                lineTripToDeleteList.ForEach(lt => DeleteLineTrip(lt.LineTripId));
+                lineTripToDeleteList.ForEach(lt => DeleteLineTrip(lt.LineTripId ,false));
             }
 
 
@@ -862,7 +862,7 @@ namespace DL
                 UpdateLineTrip(lt);
             }
         }
-        public void DeleteLineTrip(int lineTripId)
+        public void DeleteLineTrip(int lineTripId, bool isForcedDelete)
         {
         XElement lineTripRootElem = XMLTools.LoadListFromXMLElement(lineTripPath);
 
@@ -875,7 +875,15 @@ namespace DL
                 throw new LineTripNotFoundException(lineTripId, $"Cannot delete line Trip id : {lineTripId} because it was not found");
             }
 
-            lineTripToDelete.Element("IsDeleted").Value = "true";
+            if (isForcedDelete)
+            {
+
+                lineTripToDelete.Remove();
+            }
+            else
+            {
+                lineTripToDelete.Element("IsDeleted").Value = "true";
+            }
 
             XMLTools.SaveListToXMLElement(lineTripRootElem, lineTripPath);
         }

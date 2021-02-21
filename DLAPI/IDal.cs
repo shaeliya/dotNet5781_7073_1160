@@ -70,7 +70,7 @@ namespace DalApi
         void AddLineTrip(LineTrip lineTrip);
         void UpdateLineTrip(LineTrip lineTrip);
         void UpdateLineTrip(LineTrip id, Action<LineTrip> update); //method that knows to update specific fields in Bus
-        void DeleteLineTrip(int id);
+        void DeleteLineTrip(int id, bool isForcedDelete);
         void DeleteLineTripBy(Predicate<LineTrip> predicate);
 
         #endregion LineTrip

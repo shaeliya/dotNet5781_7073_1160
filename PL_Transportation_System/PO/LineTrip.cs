@@ -24,7 +24,7 @@ namespace PL_Transportation_System.PO
             ((PO.LineTrip)d).IsUpdated = true;
         }
         public int LineTripId { get; set; }
-        public Line Line { get; set; }
+        public int LineId { get; set; }
         public bool IsDeleted { get; set; }
 
 
