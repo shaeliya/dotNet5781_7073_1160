@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfAdjacentStations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <AdjacentStations>
     <AdjacentStationsId>1</AdjacentStationsId>
     <StationId1>2</StationId1>
     <StationId2>1</StationId2>
-    <Distance>1.9870669606547182</Distance>
+    <Distance>3.0056279089793692</Distance>
     <Time>PT3M5S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -12,7 +12,7 @@
     <AdjacentStationsId>2</AdjacentStationsId>
     <StationId1>3</StationId1>
     <StationId2>2</StationId2>
-    <Distance>4.943710555529087</Distance>
+    <Distance>9.7415274257033726</Distance>
     <Time>PT6M10S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -20,7 +20,7 @@
     <AdjacentStationsId>3</AdjacentStationsId>
     <StationId1>4</StationId1>
     <StationId2>3</StationId2>
-    <Distance>2.6736982754309189</Distance>
+    <Distance>6.8034631527510765</Distance>
     <Time>PT9M15S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -28,7 +28,7 @@
     <AdjacentStationsId>4</AdjacentStationsId>
     <StationId1>5</StationId1>
     <StationId2>4</StationId2>
-    <Distance>6.1929942992017581</Distance>
+    <Distance>6.3477465463093239</Distance>
     <Time>PT12M20S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -36,7 +36,7 @@
     <AdjacentStationsId>5</AdjacentStationsId>
     <StationId1>6</StationId1>
     <StationId2>5</StationId2>
-    <Distance>8.434593426964522</Distance>
+    <Distance>9.72064639591642</Distance>
     <Time>PT15M25S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -44,7 +44,7 @@
     <AdjacentStationsId>6</AdjacentStationsId>
     <StationId1>7</StationId1>
     <StationId2>6</StationId2>
-    <Distance>0.680850294502848</Distance>
+    <Distance>4.2778105744057378</Distance>
     <Time>PT18M30S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -52,7 +52,7 @@
     <AdjacentStationsId>7</AdjacentStationsId>
     <StationId1>8</StationId1>
     <StationId2>7</StationId2>
-    <Distance>4.4551855921536614</Distance>
+    <Distance>2.5085207568521244</Distance>
     <Time>PT21M35S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -60,7 +60,7 @@
     <AdjacentStationsId>8</AdjacentStationsId>
     <StationId1>9</StationId1>
     <StationId2>8</StationId2>
-    <Distance>4.0631988866083315</Distance>
+    <Distance>5.5898485794150492</Distance>
     <Time>PT24M40S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -68,7 +68,7 @@
     <AdjacentStationsId>9</AdjacentStationsId>
     <StationId1>10</StationId1>
     <StationId2>9</StationId2>
-    <Distance>2.9950471811439132</Distance>
+    <Distance>4.3826798432891625</Distance>
     <Time>PT27M45S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -76,7 +76,7 @@
     <AdjacentStationsId>10</AdjacentStationsId>
     <StationId1>12</StationId1>
     <StationId2>11</StationId2>
-    <Distance>7.6091946200976119</Distance>
+    <Distance>3.4877742114419932</Distance>
     <Time>PT1M5S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -84,7 +84,7 @@
     <AdjacentStationsId>11</AdjacentStationsId>
     <StationId1>13</StationId1>
     <StationId2>12</StationId2>
-    <Distance>5.760276871388907</Distance>
+    <Distance>1.9536505664948609</Distance>
     <Time>PT4M10S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -92,7 +92,7 @@
     <AdjacentStationsId>12</AdjacentStationsId>
     <StationId1>14</StationId1>
     <StationId2>13</StationId2>
-    <Distance>2.7264785935294249</Distance>
+    <Distance>6.1335099440224043</Distance>
     <Time>PT7M15S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -100,7 +100,7 @@
     <AdjacentStationsId>13</AdjacentStationsId>
     <StationId1>15</StationId1>
     <StationId2>14</StationId2>
-    <Distance>3.0085090578107669</Distance>
+    <Distance>4.2639505247417606</Distance>
     <Time>PT10M20S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -108,7 +108,7 @@
     <AdjacentStationsId>14</AdjacentStationsId>
     <StationId1>16</StationId1>
     <StationId2>15</StationId2>
-    <Distance>8.3242640792505185</Distance>
+    <Distance>5.8727568245366015</Distance>
     <Time>PT13M25S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -116,7 +116,7 @@
     <AdjacentStationsId>15</AdjacentStationsId>
     <StationId1>17</StationId1>
     <StationId2>16</StationId2>
-    <Distance>1.5064627467684741</Distance>
+    <Distance>6.1786414262273546</Distance>
     <Time>PT16M30S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -124,7 +124,7 @@
     <AdjacentStationsId>16</AdjacentStationsId>
     <StationId1>18</StationId1>
     <StationId2>17</StationId2>
-    <Distance>4.1093659110410918</Distance>
+    <Distance>1.4061250746744336</Distance>
     <Time>PT19M35S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -132,7 +132,7 @@
     <AdjacentStationsId>17</AdjacentStationsId>
     <StationId1>19</StationId1>
     <StationId2>18</StationId2>
-    <Distance>2.5814941041551038</Distance>
+    <Distance>6.0981214091173008</Distance>
     <Time>PT22M40S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -140,7 +140,7 @@
     <AdjacentStationsId>18</AdjacentStationsId>
     <StationId1>20</StationId1>
     <StationId2>19</StationId2>
-    <Distance>1.2360695585310784</Distance>
+    <Distance>3.3261036811518037</Distance>
     <Time>PT25M45S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -148,7 +148,7 @@
     <AdjacentStationsId>19</AdjacentStationsId>
     <StationId1>22</StationId1>
     <StationId2>21</StationId2>
-    <Distance>3.3430670000813278</Distance>
+    <Distance>8.7729071976025157</Distance>
     <Time>PT55S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -156,7 +156,7 @@
     <AdjacentStationsId>20</AdjacentStationsId>
     <StationId1>23</StationId1>
     <StationId2>22</StationId2>
-    <Distance>3.0470287271528642</Distance>
+    <Distance>1.3706702715115018</Distance>
     <Time>PT2M10S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -164,7 +164,7 @@
     <AdjacentStationsId>21</AdjacentStationsId>
     <StationId1>24</StationId1>
     <StationId2>23</StationId2>
-    <Distance>7.0950869147642921</Distance>
+    <Distance>9.1292856971869654</Distance>
     <Time>PT5M15S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -172,7 +172,7 @@
     <AdjacentStationsId>22</AdjacentStationsId>
     <StationId1>25</StationId1>
     <StationId2>24</StationId2>
-    <Distance>4.1513092711806809</Distance>
+    <Distance>1.6927143909003186</Distance>
     <Time>PT8M20S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -180,7 +180,7 @@
     <AdjacentStationsId>23</AdjacentStationsId>
     <StationId1>26</StationId1>
     <StationId2>25</StationId2>
-    <Distance>0.54736830016941218</Distance>
+    <Distance>5.8592066491764072</Distance>
     <Time>PT11M25S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -188,7 +188,7 @@
     <AdjacentStationsId>24</AdjacentStationsId>
     <StationId1>27</StationId1>
     <StationId2>26</StationId2>
-    <Distance>1.4611548115318431</Distance>
+    <Distance>5.2329577173725506</Distance>
     <Time>PT14M30S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -196,7 +196,7 @@
     <AdjacentStationsId>25</AdjacentStationsId>
     <StationId1>28</StationId1>
     <StationId2>27</StationId2>
-    <Distance>8.95857512134061</Distance>
+    <Distance>2.3092530694833275</Distance>
     <Time>PT17M35S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -204,7 +204,7 @@
     <AdjacentStationsId>26</AdjacentStationsId>
     <StationId1>29</StationId1>
     <StationId2>28</StationId2>
-    <Distance>3.5718138781710591</Distance>
+    <Distance>10.071267319643528</Distance>
     <Time>PT20M40S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -212,7 +212,7 @@
     <AdjacentStationsId>27</AdjacentStationsId>
     <StationId1>30</StationId1>
     <StationId2>29</StationId2>
-    <Distance>2.2555639668160881</Distance>
+    <Distance>8.80494722738161</Distance>
     <Time>PT23M45S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -220,7 +220,7 @@
     <AdjacentStationsId>28</AdjacentStationsId>
     <StationId1>32</StationId1>
     <StationId2>31</StationId2>
-    <Distance>1.0779791113817967</Distance>
+    <Distance>9.144891557584</Distance>
     <Time>PT2M55S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -228,7 +228,7 @@
     <AdjacentStationsId>29</AdjacentStationsId>
     <StationId1>33</StationId1>
     <StationId2>32</StationId2>
-    <Distance>0.576658218203419</Distance>
+    <Distance>4.3091442844873038</Distance>
     <Time>PT10S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -236,7 +236,7 @@
     <AdjacentStationsId>30</AdjacentStationsId>
     <StationId1>34</StationId1>
     <StationId2>33</StationId2>
-    <Distance>9.29839119911119</Distance>
+    <Distance>1.7876181729545901</Distance>
     <Time>PT3M15S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -244,7 +244,7 @@
     <AdjacentStationsId>31</AdjacentStationsId>
     <StationId1>35</StationId1>
     <StationId2>34</StationId2>
-    <Distance>1.8091603719206344</Distance>
+    <Distance>3.3363467300479983</Distance>
     <Time>PT6M20S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -252,7 +252,7 @@
     <AdjacentStationsId>32</AdjacentStationsId>
     <StationId1>36</StationId1>
     <StationId2>35</StationId2>
-    <Distance>2.0286854894499693</Distance>
+    <Distance>9.4632305358365318</Distance>
     <Time>PT9M25S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -260,7 +260,7 @@
     <AdjacentStationsId>33</AdjacentStationsId>
     <StationId1>37</StationId1>
     <StationId2>36</StationId2>
-    <Distance>3.2809158399612248</Distance>
+    <Distance>1.7533123890186251</Distance>
     <Time>PT12M30S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -268,7 +268,7 @@
     <AdjacentStationsId>34</AdjacentStationsId>
     <StationId1>38</StationId1>
     <StationId2>37</StationId2>
-    <Distance>6.7155859806647467</Distance>
+    <Distance>4.808164321960958</Distance>
     <Time>PT15M35S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -276,7 +276,7 @@
     <AdjacentStationsId>35</AdjacentStationsId>
     <StationId1>39</StationId1>
     <StationId2>38</StationId2>
-    <Distance>8.2091348300264855</Distance>
+    <Distance>8.7425047868129351</Distance>
     <Time>PT18M40S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -284,7 +284,7 @@
     <AdjacentStationsId>36</AdjacentStationsId>
     <StationId1>40</StationId1>
     <StationId2>39</StationId2>
-    <Distance>7.2341798994383684</Distance>
+    <Distance>4.7493254338620821</Distance>
     <Time>PT21M45S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -292,7 +292,7 @@
     <AdjacentStationsId>37</AdjacentStationsId>
     <StationId1>42</StationId1>
     <StationId2>41</StationId2>
-    <Distance>1.5069192112455698</Distance>
+    <Distance>4.2368925817948266</Distance>
     <Time>PT4M55S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -300,7 +300,7 @@
     <AdjacentStationsId>38</AdjacentStationsId>
     <StationId1>43</StationId1>
     <StationId2>42</StationId2>
-    <Distance>2.7280326123479903</Distance>
+    <Distance>2.6198797002992964</Distance>
     <Time>PT1M50S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -308,7 +308,7 @@
     <AdjacentStationsId>39</AdjacentStationsId>
     <StationId1>44</StationId1>
     <StationId2>43</StationId2>
-    <Distance>6.0117172214722814</Distance>
+    <Distance>7.8347961657376937</Distance>
     <Time>PT1M15S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -316,7 +316,7 @@
     <AdjacentStationsId>40</AdjacentStationsId>
     <StationId1>45</StationId1>
     <StationId2>44</StationId2>
-    <Distance>4.0467063279574305</Distance>
+    <Distance>10.463903506269634</Distance>
     <Time>PT4M20S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -324,7 +324,7 @@
     <AdjacentStationsId>41</AdjacentStationsId>
     <StationId1>46</StationId1>
     <StationId2>45</StationId2>
-    <Distance>1.9365313162265958</Distance>
+    <Distance>9.3804491464423236</Distance>
     <Time>PT7M25S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -332,7 +332,7 @@
     <AdjacentStationsId>42</AdjacentStationsId>
     <StationId1>47</StationId1>
     <StationId2>46</StationId2>
-    <Distance>8.9854700409273942</Distance>
+    <Distance>7.0306794161585522</Distance>
     <Time>PT10M30S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -340,7 +340,7 @@
     <AdjacentStationsId>43</AdjacentStationsId>
     <StationId1>48</StationId1>
     <StationId2>47</StationId2>
-    <Distance>4.4282809309327416</Distance>
+    <Distance>4.7393997843560758</Distance>
     <Time>PT13M35S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -348,7 +348,7 @@
     <AdjacentStationsId>44</AdjacentStationsId>
     <StationId1>49</StationId1>
     <StationId2>48</StationId2>
-    <Distance>2.3692283946411816</Distance>
+    <Distance>9.1291567462632237</Distance>
     <Time>PT16M40S</Time>
     <IsDeleted>false</IsDeleted>
   </AdjacentStations>
@@ -356,8 +356,16 @@
     <AdjacentStationsId>45</AdjacentStationsId>
     <StationId1>50</StationId1>
     <StationId2>49</StationId2>
-    <Distance>2.116036580696719</Distance>
+    <Distance>5.01500742906472</Distance>
     <Time>PT19M45S</Time>
     <IsDeleted>false</IsDeleted>
+  </AdjacentStations>
+  <AdjacentStations>
+    <AdjacentStationsId>0</AdjacentStationsId>
+    <StationId1>2</StationId1>
+    <StationId2>1</StationId2>
+    <Distance>3.00562790897937</Distance>
+    <Time>PT3M5S</Time>
+    <IsDeleted>False</IsDeleted>
   </AdjacentStations>
 </ArrayOfAdjacentStations>

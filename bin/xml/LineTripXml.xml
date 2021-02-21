@@ -1,11 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfLineTrip xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <LineTrip>
-    <LineTripId>1</LineTripId>
-    <LineId>1</LineId>
-    <StartAt>PT5H1M4S</StartAt>
-    <IsDeleted>false</IsDeleted>
-  </LineTrip>
   <LineTrip>
     <LineTripId>2</LineTripId>
     <LineId>2</LineId>
@@ -58,12 +52,6 @@
     <LineTripId>10</LineTripId>
     <LineId>10</LineId>
     <StartAt>PT9H10M13S</StartAt>
-    <IsDeleted>false</IsDeleted>
-  </LineTrip>
-  <LineTrip>
-    <LineTripId>11</LineTripId>
-    <LineId>1</LineId>
-    <StartAt>PT6H5M23S</StartAt>
     <IsDeleted>false</IsDeleted>
   </LineTrip>
   <LineTrip>
@@ -121,12 +109,6 @@
     <IsDeleted>false</IsDeleted>
   </LineTrip>
   <LineTrip>
-    <LineTripId>21</LineTripId>
-    <LineId>1</LineId>
-    <StartAt>PT7H20M23S</StartAt>
-    <IsDeleted>false</IsDeleted>
-  </LineTrip>
-  <LineTrip>
     <LineTripId>22</LineTripId>
     <LineId>2</LineId>
     <StartAt>PT7H21M24S</StartAt>
@@ -178,12 +160,6 @@
     <LineTripId>30</LineTripId>
     <LineId>10</LineId>
     <StartAt>PT11H29M32S</StartAt>
-    <IsDeleted>false</IsDeleted>
-  </LineTrip>
-  <LineTrip>
-    <LineTripId>31</LineTripId>
-    <LineId>1</LineId>
-    <StartAt>PT10H39M25S</StartAt>
     <IsDeleted>false</IsDeleted>
   </LineTrip>
   <LineTrip>
@@ -241,12 +217,6 @@
     <IsDeleted>false</IsDeleted>
   </LineTrip>
   <LineTrip>
-    <LineTripId>41</LineTripId>
-    <LineId>1</LineId>
-    <StartAt>PT12H42M29S</StartAt>
-    <IsDeleted>false</IsDeleted>
-  </LineTrip>
-  <LineTrip>
     <LineTripId>42</LineTripId>
     <LineId>2</LineId>
     <StartAt>PT12H43M30S</StartAt>
@@ -298,12 +268,6 @@
     <LineTripId>50</LineTripId>
     <LineId>10</LineId>
     <StartAt>PT13H51M38S</StartAt>
-    <IsDeleted>false</IsDeleted>
-  </LineTrip>
-  <LineTrip>
-    <LineTripId>51</LineTripId>
-    <LineId>1</LineId>
-    <StartAt>PT15H58M47S</StartAt>
     <IsDeleted>false</IsDeleted>
   </LineTrip>
   <LineTrip>
@@ -361,12 +325,6 @@
     <IsDeleted>false</IsDeleted>
   </LineTrip>
   <LineTrip>
-    <LineTripId>61</LineTripId>
-    <LineId>1</LineId>
-    <StartAt>PT17H26M21S</StartAt>
-    <IsDeleted>false</IsDeleted>
-  </LineTrip>
-  <LineTrip>
     <LineTripId>62</LineTripId>
     <LineId>2</LineId>
     <StartAt>PT17H27M22S</StartAt>
@@ -418,12 +376,6 @@
     <LineTripId>70</LineTripId>
     <LineId>10</LineId>
     <StartAt>PT18H35M30S</StartAt>
-    <IsDeleted>false</IsDeleted>
-  </LineTrip>
-  <LineTrip>
-    <LineTripId>71</LineTripId>
-    <LineId>1</LineId>
-    <StartAt>PT20H8M</StartAt>
     <IsDeleted>false</IsDeleted>
   </LineTrip>
   <LineTrip>
@@ -481,12 +433,6 @@
     <IsDeleted>false</IsDeleted>
   </LineTrip>
   <LineTrip>
-    <LineTripId>81</LineTripId>
-    <LineId>1</LineId>
-    <StartAt>PT22H17M9S</StartAt>
-    <IsDeleted>false</IsDeleted>
-  </LineTrip>
-  <LineTrip>
     <LineTripId>82</LineTripId>
     <LineId>2</LineId>
     <StartAt>PT22H18M10S</StartAt>
@@ -539,5 +485,65 @@
     <LineId>10</LineId>
     <StartAt>PT23H26M18S</StartAt>
     <IsDeleted>false</IsDeleted>
+  </LineTrip>
+  <LineTrip>
+    <LineTripId>1</LineTripId>
+    <LineId>1</LineId>
+    <StartAt>PT5H1M4S</StartAt>
+    <IsDeleted>True</IsDeleted>
+  </LineTrip>
+  <LineTrip>
+    <LineTripId>11</LineTripId>
+    <LineId>1</LineId>
+    <StartAt>PT6H5M23S</StartAt>
+    <IsDeleted>False</IsDeleted>
+  </LineTrip>
+  <LineTrip>
+    <LineTripId>21</LineTripId>
+    <LineId>1</LineId>
+    <StartAt>PT7H20M23S</StartAt>
+    <IsDeleted>False</IsDeleted>
+  </LineTrip>
+  <LineTrip>
+    <LineTripId>31</LineTripId>
+    <LineId>1</LineId>
+    <StartAt>PT10H39M25S</StartAt>
+    <IsDeleted>False</IsDeleted>
+  </LineTrip>
+  <LineTrip>
+    <LineTripId>41</LineTripId>
+    <LineId>1</LineId>
+    <StartAt>PT12H42M29S</StartAt>
+    <IsDeleted>False</IsDeleted>
+  </LineTrip>
+  <LineTrip>
+    <LineTripId>51</LineTripId>
+    <LineId>1</LineId>
+    <StartAt>PT15H58M47S</StartAt>
+    <IsDeleted>False</IsDeleted>
+  </LineTrip>
+  <LineTrip>
+    <LineTripId>61</LineTripId>
+    <LineId>1</LineId>
+    <StartAt>PT17H26M21S</StartAt>
+    <IsDeleted>False</IsDeleted>
+  </LineTrip>
+  <LineTrip>
+    <LineTripId>71</LineTripId>
+    <LineId>1</LineId>
+    <StartAt>PT20H8M</StartAt>
+    <IsDeleted>False</IsDeleted>
+  </LineTrip>
+  <LineTrip>
+    <LineTripId>81</LineTripId>
+    <LineId>1</LineId>
+    <StartAt>PT22H17M9S</StartAt>
+    <IsDeleted>False</IsDeleted>
+  </LineTrip>
+  <LineTrip>
+    <LineTripId>0</LineTripId>
+    <LineId>0</LineId>
+    <StartAt>PT12H</StartAt>
+    <IsDeleted>False</IsDeleted>
   </LineTrip>
 </ArrayOfLineTrip>

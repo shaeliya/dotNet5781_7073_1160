@@ -105,6 +105,7 @@ namespace PL_Transportation_System
             {
                 bl.UpdateLine(line);
             }
+            MessageBox.Show("Updated succesfully!!!");
         }
         
         private void AddLine(object sender, RoutedEventArgs e)

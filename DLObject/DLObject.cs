@@ -48,10 +48,10 @@ namespace DL
                 throw new AdjacentStationsNotFoundException(adjacentStationsId);
             }
 
-            if (adjacentStationsById.IsDeleted)
-            {
-                throw new AdjacentStationsDeletedException(adjacentStationsId);
-            }
+            //if (adjacentStationsById.IsDeleted)
+            //{
+            //    throw new AdjacentStationsDeletedException(adjacentStationsId);
+            //}
 
             return adjacentStationsById;
         }
@@ -89,10 +89,10 @@ namespace DL
                 throw new AdjacentStationsNotFoundException(adjacentStations.AdjacentStationsId);
             }
 
-            if (adjacentStationsToUpdate.IsDeleted)
-            {
-                throw new AdjacentStationsDeletedException(adjacentStations.AdjacentStationsId, "Cannot update deleted adjacent stations");
-            }
+            //if (adjacentStationsToUpdate.IsDeleted)
+            //{
+            //    throw new AdjacentStationsDeletedException(adjacentStations.AdjacentStationsId, "Cannot update deleted adjacent stations");
+            //}
 
             DataSource.adjacentStationsList.Remove(adjacentStationsToUpdate);
             DataSource.adjacentStationsList.Add(adjacentStations.Clone());
@@ -106,10 +106,10 @@ namespace DL
                 throw new AdjacentStationsNotFoundException(adjacentStations.AdjacentStationsId);
             }
 
-            if (adjacentStationsToUpdate.IsDeleted)
-            {
-                throw new AdjacentStationsDeletedException(adjacentStations.AdjacentStationsId, "Cannot update deleted adjacent stations");
-            }
+            //if (adjacentStationsToUpdate.IsDeleted)
+            //{
+            //    throw new AdjacentStationsDeletedException(adjacentStations.AdjacentStationsId, "Cannot update deleted adjacent stations");
+            //}
             update(adjacentStationsToUpdate.Clone());
         }
         public void DeleteAdjacentStations(int adjacentStationsId)
@@ -174,10 +174,10 @@ namespace DL
                 throw new BusNotFoundException(licenseNumber);
             }
 
-            if (busById.IsDeleted)
-            {
-                throw new BusDeletedException(licenseNumber);
-            }
+            //if (busById.IsDeleted)
+            //{
+            //    throw new BusDeletedException(licenseNumber);
+            //}
 
             return busById;
         }
@@ -216,10 +216,10 @@ namespace DL
                 throw new BusNotFoundException(bus.LicenseNumber);
             }
 
-            if (busToUpdate.IsDeleted)
-            {
-                throw new BusDeletedException(bus.LicenseNumber, "Cannot update deleted bus");
-            }
+            //if (busToUpdate.IsDeleted)
+            //{
+            //    throw new BusDeletedException(bus.LicenseNumber, "Cannot update deleted bus");
+            //}
             update(busToUpdate.Clone());
         }
         public void DeleteBus(int licenseNumber)
@@ -323,10 +323,10 @@ namespace DL
                 throw new LineNotFoundException(line.LineId);
             }
 
-            if (lineToUpdate.IsDeleted)
-            {
-                throw new LineDeletedException(line.LineId, "Cannot update deleted line");
-            }
+            //if (lineToUpdate.IsDeleted)
+            //{
+            //    throw new LineDeletedException(line.LineId, "Cannot update deleted line");
+            //}
             update(lineToUpdate.Clone());
         }
         public void DeleteLine(int lineId)
@@ -397,10 +397,10 @@ namespace DL
                 throw new LineStationNotFoundException(lineStationId);
             }
 
-            if (LineStationById.IsDeleted)
-            {
-                throw new LineStationDeletedException(lineStationId);
-            }
+            //if (LineStationById.IsDeleted)
+            //{
+            //    throw new LineStationDeletedException(lineStationId);
+            //}
 
             return LineStationById;
         }
@@ -425,10 +425,10 @@ namespace DL
                 throw new LineStationNotFoundException(lineStation.LineStationId);
             }
 
-            if (lineStationToUpdate.IsDeleted)
-            {
-                throw new LineStationDeletedException(lineStation.LineStationId, "Cannot update deleted line station Id");
-            }
+            //if (lineStationToUpdate.IsDeleted)
+            //{
+            //    throw new LineStationDeletedException(lineStation.LineStationId, "Cannot update deleted line station Id");
+            //}
 
             DataSource.lineStationsList.Remove(lineStationToUpdate);
             DataSource.lineStationsList.Add(lineStation.Clone());
@@ -444,10 +444,10 @@ namespace DL
                 throw new LineStationNotFoundException(lineStation.LineStationId);
             }
 
-            if (LineStationToUpdate.IsDeleted)
-            {
-                throw new LineStationDeletedException(lineStation.LineStationId, "Cannot update deleted LineStation");
-            }
+            //if (LineStationToUpdate.IsDeleted)
+            //{
+            //    throw new LineStationDeletedException(lineStation.LineStationId, "Cannot update deleted LineStation");
+            //}
             update(LineStationToUpdate.Clone());
         }
         public void DeleteLineStation(int lineStationId, bool isForcedDelete)
@@ -512,10 +512,10 @@ namespace DL
                 throw new LineTripNotFoundException(lineTripId);
             }
 
-            if (lineTripById.IsDeleted)
-            {
-                throw new LineTripDeletedException(lineTripId);
-            }
+            //if (lineTripById.IsDeleted)
+            //{
+            //    throw new LineTripDeletedException(lineTripId);
+            //}
 
             return lineTripById;
         }
@@ -538,10 +538,10 @@ namespace DL
                 throw new LineTripNotFoundException(lineTrip.LineTripId);
             }
 
-            if (lineTripToUpdate.IsDeleted)
-            {
-                throw new LineTripDeletedException(lineTrip.LineTripId, "Cannot update deleted line trip Id");
-            }
+            //if (lineTripToUpdate.IsDeleted)
+            //{
+            //    throw new LineTripDeletedException(lineTrip.LineTripId, "Cannot update deleted line trip Id");
+            //}
 
             DataSource.lineTripsList.Remove(lineTripToUpdate);
             DataSource.lineTripsList.Add(lineTrip.Clone());
@@ -555,10 +555,10 @@ namespace DL
                 throw new LineTripNotFoundException(lineTrip.LineTripId);
             }
 
-            if (lineTripToUpdate.IsDeleted)
-            {
-                throw new LineTripDeletedException(lineTrip.LineTripId, "Cannot update deleted line Trip");
-            }
+            //if (lineTripToUpdate.IsDeleted)
+            //{
+            //    throw new LineTripDeletedException(lineTrip.LineTripId, "Cannot update deleted line Trip");
+            //}
             update(lineTripToUpdate.Clone());
         }
         public void DeleteLineTrip(int lineTripId, bool isForcedDelete)
@@ -620,10 +620,10 @@ namespace DL
                 throw new StationNotFoundException(stationId);
             }
 
-            if (stationById.IsDeleted)
-            {
-              //  throw new StationDeletedException(stationId);
-            }
+            //if (stationById.IsDeleted)
+            //{
+            //    throw new StationDeletedException(stationId);
+            //}
 
             return stationById;
         }
@@ -646,10 +646,10 @@ namespace DL
                 throw new StationNotFoundException(station.StationId);
             }
 
-            if (stationToUpdate.IsDeleted)
-            {
-                //throw new StationDeletedException(station.StationId, "Cannot update deleted station Id");
-            }
+            //if (stationToUpdate.IsDeleted)
+            //{
+            //    throw new StationDeletedException(station.StationId, "Cannot update deleted station Id");
+            //}
 
             DataSource.stationsList.Remove(stationToUpdate);
             DataSource.stationsList.Add(station.Clone());
@@ -663,10 +663,10 @@ namespace DL
                 throw new StationNotFoundException(station.StationId);
             }
 
-            if (stationToUpdate.IsDeleted)
-            {
-                throw new StationDeletedException(station.StationId, "Cannot update deleted station");
-            }
+            //if (stationToUpdate.IsDeleted)
+            //{
+            //    throw new StationDeletedException(station.StationId, "Cannot update deleted station");
+            //}
             update(stationToUpdate.Clone());
         }
         public void DeleteStation(int stationId)

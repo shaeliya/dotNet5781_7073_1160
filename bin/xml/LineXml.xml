@@ -3,61 +3,61 @@
   <Line>
     <LineId>1</LineId>
     <LineNumber>1</LineNumber>
-    <Area>General</Area>
+    <Area>Haifa</Area>
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
     <LineId>2</LineId>
     <LineNumber>2</LineNumber>
-    <Area>General</Area>
+    <Area>Jerusalem</Area>
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
     <LineId>3</LineId>
     <LineNumber>3</LineNumber>
-    <Area>General</Area>
+    <Area>North</Area>
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
     <LineId>4</LineId>
     <LineNumber>4</LineNumber>
-    <Area>Jerusalem</Area>
+    <Area>Haifa</Area>
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
     <LineId>5</LineId>
     <LineNumber>5</LineNumber>
-    <Area>Haifa</Area>
+    <Area>General</Area>
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
     <LineId>6</LineId>
     <LineNumber>6</LineNumber>
-    <Area>South</Area>
+    <Area>North</Area>
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
     <LineId>7</LineId>
     <LineNumber>7</LineNumber>
-    <Area>Center</Area>
+    <Area>South</Area>
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
     <LineId>8</LineId>
     <LineNumber>8</LineNumber>
-    <Area>TelAviv</Area>
+    <Area>North</Area>
     <IsDeleted>true</IsDeleted>
   </Line>
   <Line>
     <LineId>9</LineId>
     <LineNumber>9</LineNumber>
-    <Area>South</Area>
+    <Area>General</Area>
     <IsDeleted>false</IsDeleted>
   </Line>
   <Line>
     <LineId>10</LineId>
     <LineNumber>10</LineNumber>
-    <Area>Center</Area>
+    <Area>Haifa</Area>
     <IsDeleted>false</IsDeleted>
   </Line>
 </ArrayOfLine>

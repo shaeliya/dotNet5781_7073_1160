@@ -67,7 +67,7 @@ namespace DL
                                           StationId1 = Int32.Parse(a.Element("StationId1").Value),
                                           StationId2 = Int32.Parse(a.Element("StationId2").Value),
                                           Distance = double.Parse(a.Element("Distance").Value),
-                                          Time = TimeSpan.ParseExact(a.Element("Time").Value, "hh\\:mm\\:ss", CultureInfo.InvariantCulture),
+                                          Time = XmlConvert.ToTimeSpan(a.Element("Time").Value),
                                           IsDeleted = bool.Parse(a.Element("IsDeleted").Value)
                                       };
 
@@ -89,7 +89,7 @@ namespace DL
                                          StationId1 = Int32.Parse(a.Element("StationId1").Value),
                                          StationId2 = Int32.Parse(a.Element("StationId2").Value),
                                          Distance = double.Parse(a.Element("Distance").Value),
-                                         Time = TimeSpan.ParseExact(a.Element("Time").Value, "hh\\:mm\\:ss", CultureInfo.InvariantCulture),
+                                         Time = XmlConvert.ToTimeSpan(a.Element("Time").Value),
                                          IsDeleted = bool.Parse(a.Element("IsDeleted").Value)
 
                                      }
@@ -118,7 +118,7 @@ namespace DL
                                 StationId1 = Int32.Parse(a.Element("StationId1").Value),
                                 StationId2 = Int32.Parse(a.Element("StationId2").Value),
                                 Distance = double.Parse(a.Element("Distance").Value),
-                                Time = TimeSpan.ParseExact(a.Element("Time").Value, "hh\\:mm\\:ss", CultureInfo.InvariantCulture),
+                                Time = XmlConvert.ToTimeSpan(a.Element("Time").Value),
                                 IsDeleted = bool.Parse(a.Element("IsDeleted").Value)
 
 
@@ -126,13 +126,13 @@ namespace DL
 
             if (adjacentStationsById == null)
             {
-                throw new LineNotFoundException(adjacentStationsId);
+                throw new AdjacentStationsNotFoundException(adjacentStationsId);
             }
 
-            if (adjacentStationsById.IsDeleted)
-            {
-                throw new LineDeletedException(adjacentStationsId);
-            }
+            //if (adjacentStationsById.IsDeleted)
+            //{
+            //    throw new AdjacentStationsDeletedException(adjacentStationsId);
+            //}
 
             return adjacentStationsById;
         }
@@ -147,7 +147,7 @@ namespace DL
 
             if (adjacentStationsExist != null)
             {
-                throw new LineAlreadyExistsException(adjacentStations.AdjacentStationsId);
+                throw new AdjacentStationsAlreadyExistsException(adjacentStations.AdjacentStationsId);
 
             }
            
@@ -156,12 +156,12 @@ namespace DL
                                    new XElement("StationId1", adjacentStations.StationId1.ToString()),
                                    new XElement("StationId2", adjacentStations.StationId2.ToString()),
                                    new XElement("Distance", adjacentStations.Distance.ToString()),
-                                   new XElement("Time", adjacentStations.Time.ToString()),
+                                   new XElement("Time", XmlConvert.ToString(adjacentStations.Time)),
                                    new XElement("IsDeleted", adjacentStations.IsDeleted.ToString()));
 
             adjacentStationsRootElem.Add(adjacentStationsElem);
 
-            XMLTools.SaveListToXMLElement(adjacentStationsRootElem, linePath);
+            XMLTools.SaveListToXMLElement(adjacentStationsRootElem, adjacentStationsPath);
         }
         public void UpdateAdjacentStations(AdjacentStations adjacentStations)
         {
@@ -178,10 +178,10 @@ namespace DL
             }
 
 
-            if (bool.Parse(adjacentStationsToUpdate.Element("IsDeleted").Value))
-            {
-                throw new LineDeletedException(adjacentStations.AdjacentStationsId, "Cannot update deleted adjacentStations");
-            }
+            //if (bool.Parse(adjacentStationsToUpdate.Element("IsDeleted").Value))
+            //{
+            //    throw new LineDeletedException(adjacentStations.AdjacentStationsId, "Cannot update deleted adjacentStations");
+            //}
 
             adjacentStationsToUpdate.Element("AdjacentStationsId").Value = adjacentStations.AdjacentStationsId.ToString();
             adjacentStationsToUpdate.Element("StationId1").Value = adjacentStations.StationId1.ToString();
@@ -307,10 +307,10 @@ namespace DL
                 throw new LineNotFoundException(licenseNumber);
             }
 
-            if (busById.IsDeleted)
-            {
-                throw new LineDeletedException(licenseNumber);
-            }
+            //if (busById.IsDeleted)
+            //{
+            //    throw new LineDeletedException(licenseNumber);
+            //}
 
             return busById;
         }
@@ -324,7 +324,7 @@ namespace DL
 
             if (busExist != null)
             {
-                throw new LineAlreadyExistsException(bus.LicenseNumber);
+                throw new BusAlreadyExistsException(bus.LicenseNumber);
 
             }
 
@@ -446,10 +446,10 @@ namespace DL
                 throw new LineStationNotFoundException(lineStationId);
             }
 
-            if (LineStationById.IsDeleted)
-            {
-                throw new LineStationDeletedException(lineStationId);
-            }
+            //if (LineStationById.IsDeleted)
+            //{
+            //    throw new LineStationDeletedException(lineStationId);
+            //}
 
             return LineStationById;
         }
@@ -479,10 +479,10 @@ namespace DL
                 throw new LineStationNotFoundException(lineStation.LineStationId);
             }
 
-            if (lineStationToUpdate.IsDeleted)
-            {
-                throw new LineStationDeletedException(lineStation.LineStationId, "Cannot update deleted line station Id");
-            }
+            //if (lineStationToUpdate.IsDeleted)
+            //{
+            //    throw new LineStationDeletedException(lineStation.LineStationId, "Cannot update deleted line station Id");
+            //}
 
             lineStationsList.Remove(lineStationToUpdate);
             lineStationsList.Add(lineStation); 
@@ -502,10 +502,10 @@ namespace DL
                 throw new LineStationNotFoundException(lineStation.LineStationId);
             }
 
-            if (LineStationToUpdate.IsDeleted)
-            {
-                throw new LineStationDeletedException(lineStation.LineStationId, "Cannot update deleted LineStation");
-            }
+            //if (LineStationToUpdate.IsDeleted)
+            //{
+            //    throw new LineStationDeletedException(lineStation.LineStationId, "Cannot update deleted LineStation");
+            //}
             update(LineStationToUpdate);
             XMLTools.SaveListToXMLSerializer(lineStationsList, lineStationPath);
 
@@ -616,10 +616,10 @@ namespace DL
                 throw new LineNotFoundException(lineId);
             }
 
-            if (lineById.IsDeleted)
-            {
-                throw new LineDeletedException(lineId);
-            }
+            //if (lineById.IsDeleted)
+            //{
+            //    throw new LineDeletedException(lineId);
+            //}
 
             return lineById;
         }
@@ -663,10 +663,10 @@ namespace DL
             }
 
 
-            if (bool.Parse(lineToUpdate.Element("IsDeleted").Value))
-            {
-                throw new LineDeletedException(line.LineId, "Cannot update deleted line");
-            }
+            //if (bool.Parse(lineToUpdate.Element("IsDeleted").Value))
+            //{
+            //    throw new LineDeletedException(line.LineId, "Cannot update deleted line");
+            //}
 
             lineToUpdate.Element("LineId").Value = line.LineId.ToString();
             lineToUpdate.Element("LineNumber").Value = line.LineNumber.ToString();
@@ -736,7 +736,7 @@ namespace DL
                               {
                                   LineTripId = Int32.Parse(l.Element("LineTripId").Value),
                                   LineId = Int32.Parse(l.Element("LineId").Value),
-                                  StartAt = TimeSpan.ParseExact(l.Element("StartAt").Value, "hh\\:mm\\:ss", CultureInfo.InvariantCulture),
+                                  StartAt = XmlConvert.ToTimeSpan(l.Element("StartAt").Value),
                                  IsDeleted = bool.Parse(l.Element("IsDeleted").Value)
 
                               };
@@ -757,7 +757,6 @@ namespace DL
                              {
                                  LineTripId = Int32.Parse(l.Element("LineTripId").Value),
                                  LineId = Int32.Parse(l.Element("LineId").Value),
-                                 //StartAt = TimeSpan.ParseExact(l.Element("StartAt").Value, "hh\\:mm\\:ss", CultureInfo.InvariantCulture),
                                  StartAt =  XmlConvert.ToTimeSpan(l.Element("StartAt").Value),
                                 IsDeleted = bool.Parse(l.Element("IsDeleted").Value)
 
@@ -783,7 +782,7 @@ namespace DL
                             {
                                 LineTripId = Int32.Parse(l.Element("LineTripId").Value),
                                 LineId = Int32.Parse(l.Element("LineId").Value),
-                                StartAt = TimeSpan.ParseExact(l.Element("StartAt").Value, "hh\\:mm\\:ss", CultureInfo.InvariantCulture),
+                                StartAt = XmlConvert.ToTimeSpan(l.Element("StartAt").Value),
                                IsDeleted = bool.Parse(l.Element("IsDeleted").Value)
 
                             }).FirstOrDefault();
@@ -793,10 +792,10 @@ namespace DL
                 throw new LineTripNotFoundException(lineTripId);
             }
 
-            if (lineTripById.IsDeleted)
-            {
-                throw new LineTripDeletedException(lineTripId);
-            }
+            //if (lineTripById.IsDeleted)
+            //{
+            //    throw new LineTripDeletedException(lineTripId);
+            //}
 
             return lineTripById; 
             
@@ -818,7 +817,7 @@ namespace DL
             XElement lineTripElem = new XElement("LineTrip",
                                    new XElement("LineTripId", lineTrip.LineTripId.ToString()),
                                    new XElement("LineId", lineTrip.LineId.ToString()),
-                                   new XElement("StartAt", lineTrip.StartAt.ToString()),
+                                   new XElement("StartAt", XmlConvert.ToString(lineTrip.StartAt)),
                                    new XElement("IsDeleted", lineTrip.IsDeleted.ToString()));
 
             lineTripRootElem.Add(lineTripElem);
@@ -839,10 +838,10 @@ namespace DL
             }
 
 
-            if (bool.Parse(lineTripToUpdate.Element("IsDeleted").Value))
-            {
-                throw new LineTripDeletedException(lineTrip.LineTripId, "Cannot update deleted line Trip");
-            }
+            //if (bool.Parse(lineTripToUpdate.Element("IsDeleted").Value))
+            //{
+            //    throw new LineTripDeletedException(lineTrip.LineTripId, "Cannot update deleted line Trip");
+            //}
 
             lineTripToUpdate.Element("LineTripId").Value = lineTrip.LineTripId.ToString();
             lineTripToUpdate.Element("LineId").Value = lineTrip.LineId.ToString();
@@ -929,10 +928,10 @@ namespace DL
                 throw new StationNotFoundException(stationId);
             }
 
-            if (stationById.IsDeleted)
-            {
-                throw new StationDeletedException(stationId);
-            }
+            //if (stationById.IsDeleted)
+            //{
+            //    throw new StationDeletedException(stationId);
+            //}
 
             return stationById;
         }
@@ -961,10 +960,10 @@ namespace DL
                 throw new StationNotFoundException(station.StationId);
             }
 
-            if (stationToUpdate.IsDeleted)
-            {
-                throw new StationDeletedException(station.StationId, "Cannot update deleted station Id");
-            }
+            //if (stationToUpdate.IsDeleted)
+            //{
+            //    throw new StationDeletedException(station.StationId, "Cannot update deleted station Id");
+            //}
 
             stationsList.Remove(stationToUpdate);
             stationsList.Add(station);
@@ -982,10 +981,10 @@ namespace DL
                 throw new StationNotFoundException(station.StationId);
             }
 
-            if (stationToUpdate.IsDeleted)
-            {
-                throw new StationDeletedException(station.StationId, "Cannot update deleted station");
-            }
+            //if (stationToUpdate.IsDeleted)
+            //{
+            //    throw new StationDeletedException(station.StationId, "Cannot update deleted station");
+            //}
             update(stationToUpdate);
             XMLTools.SaveListToXMLSerializer(stationsList, stationPath);
 
