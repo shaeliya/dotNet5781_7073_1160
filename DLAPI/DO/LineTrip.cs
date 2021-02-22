@@ -23,7 +23,7 @@ namespace DO
         // serialization instead.
         [Browsable(false)]
         [XmlElement(DataType = "duration", ElementName = "StartAt")]
-        public string TimeSinceLastEventString
+        public string StartAtString
         {
             get
             {

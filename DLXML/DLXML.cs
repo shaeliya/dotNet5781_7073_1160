@@ -903,15 +903,14 @@ namespace DL
 
             List<Station> stationsList = XMLTools.LoadListFromXMLSerializer<Station>(stationPath);
 
-            var allstations = stationsList.Where(station => !station.IsDeleted)
-                                                                 .Select(station => station);
+            var allstations = stationsList.Select(station => station);
             return allstations;
         }
         public IEnumerable<Station> GetAllStationBy(Predicate<Station> predicate)
         {
             List<Station> stationsList = XMLTools.LoadListFromXMLSerializer<Station>(stationPath);
 
-            var stationBy = stationsList.Where(station => !station.IsDeleted && predicate(station))
+            var stationBy = stationsList.Where(station => predicate(station))
                                                                        .Select(station => station);
             return stationBy;
         }

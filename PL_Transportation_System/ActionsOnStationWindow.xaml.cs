@@ -97,7 +97,7 @@ namespace PL_Transportation_System
                 }
                 else
                 {
-                    MessageBox.Show("Cannot update deleted station");
+                    MessageBox.Show("Cannot show deleted station");
                 }
             }
 
