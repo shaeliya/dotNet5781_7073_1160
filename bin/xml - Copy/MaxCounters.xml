@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfMaxCounters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <MaxCounters>
+    <MaxAdjacentStationsId>90</MaxAdjacentStationsId>
+    <MaxLineId>10</MaxLineId>
+    <MaxLineStationId>100</MaxLineStationId>
+    <MaxLineTripId>90</MaxLineTripId>
+    <MaxStationId>50</MaxStationId>
+  </MaxCounters>
+</ArrayOfMaxCounters>

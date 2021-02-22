@@ -10,6 +10,16 @@ using System.Xml.Serialization;
 
 namespace CreateXmlFilesFromDataSource
 {
+    public class MaxCounters
+    {
+
+        public int MaxAdjacentStationsId { get; set; }
+        public int MaxLineId { get; set; }
+        public int MaxLineStationId { get; set; }
+        public int MaxLineTripId { get; set; }
+        public int MaxStationId { get; set; }
+
+    }
     class Program
     {
         static void Main(string[] args)
@@ -21,6 +31,7 @@ namespace CreateXmlFilesFromDataSource
             SerializeLineStation();
             SerializeLineTrip();
             SerializeStation();
+            SerializeConfig();
         }
 
 
@@ -60,6 +71,23 @@ namespace CreateXmlFilesFromDataSource
             XmlSerializer x = new XmlSerializer(typeof(List<Station>));
             TextWriter writer = new StreamWriter("C:\\Temp\\StationXml.xml");
             x.Serialize(writer, DataSource.stationsList);
+        }
+        private static void SerializeConfig()
+        { 
+            MaxCounters maxCounters = new MaxCounters
+            {
+                MaxAdjacentStationsId = Configuration.MaxAdjacentStationsId,
+                MaxLineId = Configuration.MaxLineId,
+                MaxLineStationId = Configuration.MaxLineStationId,
+                MaxLineTripId = Configuration.MaxLineTripId,
+                MaxStationId = Configuration.MaxStationId
+
+            };
+            List<MaxCounters> lst = new List<MaxCounters>();
+            lst.Add(maxCounters);
+            XmlSerializer x = new XmlSerializer(typeof(List<MaxCounters>));
+            TextWriter writer = new StreamWriter("C:\\Temp\\MaxCounters.xml");
+            x.Serialize(writer, lst);
         }
     }
 }

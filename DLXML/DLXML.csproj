@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DLXML.cs" />
+    <Compile Include="MaxCounters.cs" />
     <Compile Include="XMLTools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

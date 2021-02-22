@@ -72,7 +72,7 @@ namespace PL_Transportation_System
 
             var lineTrip = new PO.LineTrip()
             {
-             
+                LineId = line.LineId,
                 StartAt = StartAt
             };
            

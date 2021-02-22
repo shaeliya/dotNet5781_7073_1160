@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using DalApi;
+using DLXML;
 using DO;
 using DO.Exceptions;
 using DS;
@@ -51,8 +52,31 @@ namespace DL
         string lineStationPath = @"LineStationXml.xml"; //XMLSerializer
         string lineTripPath = @"LineTripXml.xml"; //XMLSerializer
         string stationPath = @"StationXml.xml"; //XMLSerializer
+        string maxCountersPath = @"MaxCounters.xml";
 
         #endregion
+
+        #region MaxCounters
+        private MaxCounters GetMaxCounters()
+        {
+            MaxCounters maxCounters = XMLTools.LoadListFromXMLSerializer<MaxCounters>(maxCountersPath).FirstOrDefault();
+            return maxCounters;
+        }
+        private void UpdateMaxCounters(MaxCounters maxCounters)
+        {
+            List<MaxCounters> maxCountersList = XMLTools.LoadListFromXMLSerializer<MaxCounters>(maxCountersPath);
+
+            MaxCounters maxCountersUpdate = maxCountersList.FirstOrDefault();
+
+            maxCountersList.Remove(maxCountersUpdate);
+
+            maxCountersList.Add(maxCounters);
+
+            XMLTools.SaveListToXMLSerializer(maxCountersList, maxCountersPath);
+
+        }
+
+        #endregion MaxCounters
 
         #region AdjacentStations
         public IEnumerable<AdjacentStations> GetAllAdjacentStations()
@@ -150,7 +174,10 @@ namespace DL
                 throw new AdjacentStationsAlreadyExistsException(adjacentStations.AdjacentStationsId);
 
             }
-           
+
+
+            MaxCounters maxCounters = GetMaxCounters();
+            adjacentStations.AdjacentStationsId = ++maxCounters.MaxAdjacentStationsId;
             XElement adjacentStationsElem = new XElement("AdjacentStations",
                                    new XElement("AdjacentStationsId", adjacentStations.AdjacentStationsId.ToString()),
                                    new XElement("StationId1", adjacentStations.StationId1.ToString()),
@@ -160,8 +187,8 @@ namespace DL
                                    new XElement("IsDeleted", adjacentStations.IsDeleted.ToString()));
 
             adjacentStationsRootElem.Add(adjacentStationsElem);
-
             XMLTools.SaveListToXMLElement(adjacentStationsRootElem, adjacentStationsPath);
+            UpdateMaxCounters(maxCounters);
         }
         public void UpdateAdjacentStations(AdjacentStations adjacentStations)
         {
@@ -316,6 +343,7 @@ namespace DL
         }
         public void AddBus(Bus bus)
         {
+            
             XElement busRootElem = XMLTools.LoadListFromXMLElement(busPath);
 
             var busExist = (from b in busRootElem.Elements()
@@ -457,14 +485,17 @@ namespace DL
         {
             List<LineStation> lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationPath);
 
+            MaxCounters maxCounters = GetMaxCounters();
             var lineStationExist = lineStationsList.FirstOrDefault(l => l.LineStationId == lineStation.LineStationId);
             if (lineStationExist != null)
             {
                 throw new LineStationAlreadyExistsException(lineStation.LineStationId);
 
             }
+            lineStation.LineStationId = ++maxCounters.MaxLineStationId;
             lineStationsList.Add(lineStation);
             XMLTools.SaveListToXMLSerializer(lineStationsList, lineStationPath);
+            UpdateMaxCounters(maxCounters);
 
         }
 
@@ -514,8 +545,7 @@ namespace DL
         {
             List<LineStation> lineStationsList = XMLTools.LoadListFromXMLSerializer<LineStation>(lineStationPath);
 
-            var lineStationToDelete = lineStationsList.Find(lineStation => !lineStation.IsDeleted &&
-                                                                                                     lineStation.LineStationId == lineStationId);
+            var lineStationToDelete = lineStationsList.Find(lineStation => lineStation.LineStationId == lineStationId);
 
             if (lineStationToDelete == null)
             {
@@ -625,6 +655,8 @@ namespace DL
         }
         public void AddLine(Line line)
         {
+           
+            MaxCounters maxCounters = GetMaxCounters();
             XElement lineRootElem = XMLTools.LoadListFromXMLElement(linePath);
 
 
@@ -637,6 +669,7 @@ namespace DL
                 throw new LineAlreadyExistsException(line.LineId);
 
             }
+            line.LineId = ++maxCounters.MaxLineId;
 
             XElement lineElem = new XElement("Line",
                                    new XElement("LineId", line.LineId.ToString()),
@@ -647,6 +680,8 @@ namespace DL
             lineRootElem.Add(lineElem);
 
             XMLTools.SaveListToXMLElement(lineRootElem, linePath);
+
+            UpdateMaxCounters(maxCounters);
         }
         public void UpdateLine(Line line)
         {
@@ -814,6 +849,8 @@ namespace DL
 
             }
 
+            MaxCounters maxCounters = GetMaxCounters();
+            lineTrip.LineTripId = ++maxCounters.MaxLineTripId;
             XElement lineTripElem = new XElement("LineTrip",
                                    new XElement("LineTripId", lineTrip.LineTripId.ToString()),
                                    new XElement("LineId", lineTrip.LineId.ToString()),
@@ -823,6 +860,8 @@ namespace DL
             lineTripRootElem.Add(lineTripElem);
 
             XMLTools.SaveListToXMLElement(lineTripRootElem, lineTripPath);
+
+            UpdateMaxCounters(maxCounters);
 
         }
         public void UpdateLineTrip(LineTrip lineTrip)
@@ -944,8 +983,11 @@ namespace DL
                 throw new StationAlreadyExistsException(station.StationId);
 
             }
+            MaxCounters maxCounters = GetMaxCounters();
+            station.StationId = ++maxCounters.MaxStationId;
             stationsList.Add(station);
             XMLTools.SaveListToXMLSerializer(stationsList, stationPath);
+            UpdateMaxCounters(maxCounters);
 
         }
         public void UpdateStation(Station station)
