@@ -246,6 +246,20 @@ namespace PL_Transportation_System
 
             MessageBox.Show("Line Trip updated successfuly!");
         }
+
+        private void DeleteStationClick(object sender, RoutedEventArgs e)
+        {
+            var lineBO = LinePoToBoAdapter();
+            Button button = (Button)sender;
+            if (button.DataContext is StationOfLine)
+            {
+                StationOfLine stationOfLine = (StationOfLine)button.DataContext;
+                var stationOfLineBO = (BO.StationOfLine)stationOfLine.CopyPropertiesToNew(typeof(BO.StationOfLine));
+                bl.DeleteLineStation(lineBO, stationOfLineBO);
+                lineBO = bl.GetLineById(lineBO.LineId);
+                SelectedLine.StationsList = new ObservableCollection<PO.StationOfLine>(lineBO.StationsList.Select(s => s.CopyPropertiesToNew(typeof(PO.StationOfLine))).Cast<PO.StationOfLine>());
+            }
+        }
     }
 }
 

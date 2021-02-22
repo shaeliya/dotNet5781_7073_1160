@@ -252,6 +252,42 @@ namespace BL
 
         }
 
+        public void DeleteLineStation(Line line, StationOfLine stationOfLine)
+        {
+
+            // אם זאת התחנה הראשונה - אין מה לעדכן
+            if (stationOfLine.LineStationIndex != 1)
+            {
+                double distanceFromPrevStation = 0;
+                TimeSpan timeFromPrevStation = new TimeSpan();
+                // אם זאת התחנה האחרונה - צריך לעדכן את המרחק והזמן של התחנה הקודמת ל-0
+                // כי עכשיו היא האחרונה ובתחנה האחרונה המרחק והזמן לתחנה הבאה הם תמיד 0
+                // לכן נבדוק אם זהו האינדקס האחרון ורק אם לא נחשב את המרחק והזמן לתחנה הבאה
+                var lastLineStation = dl.GetAllLineStationBy(ls => ls.LineId == line.LineId).OrderByDescending(o => o.LineStationIndex).FirstOrDefault();
+                int lastIndex = lastLineStation.LineStationIndex;
+
+
+                if (stationOfLine.LineStationIndex != lastIndex)
+                {
+                    var prevStation = line.StationsList.Where(ls => ls.LineStationIndex == stationOfLine.LineStationIndex - 1).FirstOrDefault();
+                    distanceFromPrevStation = prevStation.DistanceToNextStation + stationOfLine.DistanceToNextStation;
+                    timeFromPrevStation = prevStation.TimeToNextStation + stationOfLine.TimeToNextStation;
+                }
+
+                UpdateTimeAndDistanceOfNextStation(line, stationOfLine, distanceFromPrevStation, timeFromPrevStation);
+
+            }            
+
+            line.StationsList.Where(sol => sol.LineStationIndex > stationOfLine.LineStationIndex).ToList().ForEach
+                 (sol =>
+                 {
+                     sol.LineStationIndex--;
+                 });
+
+            line.StationsList = line.StationsList.Where(s=>s.LineStationId != stationOfLine.LineStationId);
+            UpdateLineStations(line);
+        }
+
         private void AddStationsFromLine(Line line)
         {
             // 2. נוסיף את התחנות שלו
@@ -332,7 +368,6 @@ namespace BL
         }
         public void AddLineStationToLine(Line line, StationOfLine stationOfLine, double distanceFromPrevStation, TimeSpan timeFromPrevStation)
         {
-
             // LineStation לא הוספנו את המרחק והזמן מהתחנה הקודמת ליישות
             // כי אין בה צורך , משום שהמרחק מהתחנה הקודמת נמצא לנו בתחנה הקודמת
             // בשדה: מרחק לתחנה הבאה. כנל לגבי זמן
@@ -341,20 +376,9 @@ namespace BL
             // לאורך כל הדרך LineStation מיותר ביישות
 
 
-
-            // אם מוסיפים תחנה באמצע או בסוף צריך לטפל במרחק וזמן לתחנה הבאה
-            // של התחנה שלפני התחנה שמוסיפים
-
             if (distanceFromPrevStation > 0)
-            {             
-
-                var stationToUpdate = line.StationsList.Where(sol => sol.LineStationIndex == stationOfLine.LineStationIndex - 1).FirstOrDefault();
-                                
-                if(stationToUpdate!=null)
-                {
-                    stationToUpdate.DistanceToNextStation = distanceFromPrevStation;
-                    stationToUpdate.TimeToNextStation = timeFromPrevStation;
-                }
+            {
+                UpdateTimeAndDistanceOfNextStation(line, stationOfLine, distanceFromPrevStation, timeFromPrevStation);
             }
 
             line.StationsList.Where(sol => sol.LineStationIndex >= stationOfLine.LineStationIndex).ToList().ForEach
@@ -366,6 +390,25 @@ namespace BL
             line.StationsList = line.StationsList.Append(stationOfLine);
             UpdateLineStations(line);
 
+        }
+
+        /// <summary> 
+        // אם מוסיפים או מורידים תחנה באמצע או בסוף צריך לטפל במרחק וזמן לתחנה הבאה
+        // של התחנה שלפני התחנה שמוסיפים
+        /// </summary>
+        /// <param name="line">הקו</param>
+        /// <param name="stationOfLine">התחנה שאותה רוצים למחוק/להוריד</param>
+        /// <param name="distance">מרחק שרוצים לעדכן</param>
+        /// <param name="time">זמן שרוצים לעדכן</param>
+        private void UpdateTimeAndDistanceOfNextStation(Line line, StationOfLine stationOfLine, double distance, TimeSpan time)
+        {
+            var stationToUpdate = line.StationsList.Where(sol => sol.LineStationIndex == stationOfLine.LineStationIndex - 1).FirstOrDefault();
+
+            if (stationToUpdate != null)
+            {
+                stationToUpdate.DistanceToNextStation = distance;
+                stationToUpdate.TimeToNextStation = time;
+            }
         }
 
         /// <summary>

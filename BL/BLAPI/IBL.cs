@@ -30,6 +30,7 @@ namespace BLAPI
         void DeleteLine(int line);
         void MoveLineStationUp(Line line, StationOfLine stationOfLine);
         void MoveLineStationDown(Line line, StationOfLine stationOfLine);
+        void DeleteLineStation(Line line, StationOfLine stationOfLine);
 
         #endregion Line
 

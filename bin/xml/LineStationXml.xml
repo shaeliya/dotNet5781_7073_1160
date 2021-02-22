@@ -631,73 +631,31 @@
     <IsDeleted>false</IsDeleted>
   </LineStation>
   <LineStation>
-    <LineStationId>321</LineStationId>
+    <LineStationId>366</LineStationId>
     <LineId>1</LineId>
-    <StationId>3</StationId>
-    <LineStationIndex>2</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
-    <LineStationId>322</LineStationId>
-    <LineId>1</LineId>
-    <StationId>2</StationId>
+    <StationId>1</StationId>
     <LineStationIndex>1</LineStationIndex>
     <IsDeleted>false</IsDeleted>
   </LineStation>
   <LineStation>
-    <LineStationId>323</LineStationId>
+    <LineStationId>367</LineStationId>
     <LineId>1</LineId>
-    <StationId>1</StationId>
+    <StationId>5</StationId>
+    <LineStationIndex>2</LineStationIndex>
+    <IsDeleted>false</IsDeleted>
+  </LineStation>
+  <LineStation>
+    <LineStationId>368</LineStationId>
+    <LineId>1</LineId>
+    <StationId>6</StationId>
     <LineStationIndex>3</LineStationIndex>
     <IsDeleted>false</IsDeleted>
   </LineStation>
   <LineStation>
-    <LineStationId>324</LineStationId>
-    <LineId>1</LineId>
-    <StationId>5</StationId>
-    <LineStationIndex>4</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
-    <LineStationId>325</LineStationId>
-    <LineId>1</LineId>
-    <StationId>6</StationId>
-    <LineStationIndex>5</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
-    <LineStationId>326</LineStationId>
-    <LineId>1</LineId>
-    <StationId>4</StationId>
-    <LineStationIndex>6</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
-    <LineStationId>327</LineStationId>
-    <LineId>1</LineId>
-    <StationId>7</StationId>
-    <LineStationIndex>7</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
-    <LineStationId>328</LineStationId>
-    <LineId>1</LineId>
-    <StationId>8</StationId>
-    <LineStationIndex>8</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
-    <LineStationId>329</LineStationId>
+    <LineStationId>369</LineStationId>
     <LineId>1</LineId>
     <StationId>9</StationId>
-    <LineStationIndex>9</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
-    <LineStationId>330</LineStationId>
-    <LineId>1</LineId>
-    <StationId>10</StationId>
-    <LineStationIndex>10</LineStationIndex>
+    <LineStationIndex>4</LineStationIndex>
     <IsDeleted>false</IsDeleted>
   </LineStation>
 </ArrayOfLineStation>

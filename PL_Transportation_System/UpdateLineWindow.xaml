@@ -40,13 +40,6 @@
                             DisplayMemberBinding="{Binding Path=TimeToNextStation}" />
                                 <GridViewColumn Header="Distance To Next Station"
                             DisplayMemberBinding="{Binding Path=DistanceToNextStation}" />
-                                <GridViewColumn Header="Is Deleted" >
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <CheckBox IsChecked="{Binding IsDeleted, Mode=TwoWay}"/>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
                                 <GridViewColumn Header="Move Up" >
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
@@ -68,6 +61,17 @@
                                     Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=MoveDownCommand}" CommandParameter="{Binding}" Width="40" Height="40" FontSize="15px" Opacity="1">
                                                 <Button.Background>
                                                     <ImageBrush ImageSource="Sources/Down.png"/>
+                                                </Button.Background>
+                                            </Button>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Delete">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Click="DeleteStationClick"  Width="40" Height="40" FontSize="15px" Opacity="1">
+                                                <Button.Background>
+                                                    <ImageBrush ImageSource="Sources/up.png"/>
                                                 </Button.Background>
                                             </Button>
                                         </DataTemplate>
