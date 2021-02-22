@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sources/delete.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("delete.png")]
 
 

@@ -71,7 +71,7 @@
                                         <DataTemplate>
                                             <Button Click="DeleteStationClick"  Width="40" Height="40" FontSize="15px" Opacity="1">
                                                 <Button.Background>
-                                                    <ImageBrush ImageSource="Sources/up.png"/>
+                                                    <ImageBrush ImageSource="Delete.png"/>
                                                 </Button.Background>
                                             </Button>
                                         </DataTemplate>

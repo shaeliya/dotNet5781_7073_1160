@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfBus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Bus>
     <LicenseNumber>73399087</LicenseNumber>
@@ -122,13 +122,13 @@
   </Bus>
   <Bus>
     <LicenseNumber>1218637</LicenseNumber>
-    <FromDate>1999-11-20T00:00:00</FromDate>
-    <TotalTrip>7621344829.2122936</TotalTrip>
-    <FuelRemain>712.41984131067045</FuelRemain>
+    <FromDate>20/11/1999 00:00:00</FromDate>
+    <TotalTrip>7621344829.21229</TotalTrip>
+    <FuelRemain>0</FuelRemain>
     <Treatment>0</Treatment>
-    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <LastTreatmentDate>01/01/0001 00:00:00</LastTreatmentDate>
     <Status>ReadyToGo</Status>
-    <IsDeleted>false</IsDeleted>
+    <IsDeleted>True</IsDeleted>
   </Bus>
   <Bus>
     <LicenseNumber>2835007</LicenseNumber>
@@ -200,4 +200,14 @@
     <Status>ReadyToGo</Status>
     <IsDeleted>false</IsDeleted>
   </Bus>
+  <bus>
+    <LicenseNumber>1</LicenseNumber>
+    <FromDate>01/02/2021 00:00:00</FromDate>
+    <TotalTrip>43</TotalTrip>
+    <FuelRemain>14</FuelRemain>
+    <Treatment>34</Treatment>
+    <LastTreatmentDate>03/02/2021 00:00:00</LastTreatmentDate>
+    <Status>ReadyToGo</Status>
+    <IsDeleted>False</IsDeleted>
+  </bus>
 </ArrayOfBus>

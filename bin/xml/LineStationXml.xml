@@ -1,76 +1,6 @@
 <?xml version="1.0"?>
 <ArrayOfLineStation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <LineStation>
-    <LineStationId>11</LineStationId>
-    <LineId>2</LineId>
-    <StationId>11</StationId>
-    <LineStationIndex>1</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
-    <LineStationId>12</LineStationId>
-    <LineId>2</LineId>
-    <StationId>12</StationId>
-    <LineStationIndex>2</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
-    <LineStationId>13</LineStationId>
-    <LineId>2</LineId>
-    <StationId>13</StationId>
-    <LineStationIndex>3</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
-    <LineStationId>14</LineStationId>
-    <LineId>2</LineId>
-    <StationId>14</StationId>
-    <LineStationIndex>4</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
-    <LineStationId>15</LineStationId>
-    <LineId>2</LineId>
-    <StationId>15</StationId>
-    <LineStationIndex>5</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
-    <LineStationId>16</LineStationId>
-    <LineId>2</LineId>
-    <StationId>16</StationId>
-    <LineStationIndex>6</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
-    <LineStationId>17</LineStationId>
-    <LineId>2</LineId>
-    <StationId>17</StationId>
-    <LineStationIndex>7</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
-    <LineStationId>18</LineStationId>
-    <LineId>2</LineId>
-    <StationId>18</StationId>
-    <LineStationIndex>8</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
-    <LineStationId>19</LineStationId>
-    <LineId>2</LineId>
-    <StationId>19</StationId>
-    <LineStationIndex>9</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
-    <LineStationId>20</LineStationId>
-    <LineId>2</LineId>
-    <StationId>20</StationId>
-    <LineStationIndex>10</LineStationIndex>
-    <IsDeleted>false</IsDeleted>
-  </LineStation>
-  <LineStation>
     <LineStationId>31</LineStationId>
     <LineId>4</LineId>
     <StationId>31</StationId>
@@ -656,6 +586,41 @@
     <LineId>1</LineId>
     <StationId>9</StationId>
     <LineStationIndex>4</LineStationIndex>
+    <IsDeleted>false</IsDeleted>
+  </LineStation>
+  <LineStation>
+    <LineStationId>400</LineStationId>
+    <LineId>2</LineId>
+    <StationId>12</StationId>
+    <LineStationIndex>1</LineStationIndex>
+    <IsDeleted>false</IsDeleted>
+  </LineStation>
+  <LineStation>
+    <LineStationId>401</LineStationId>
+    <LineId>2</LineId>
+    <StationId>14</StationId>
+    <LineStationIndex>2</LineStationIndex>
+    <IsDeleted>false</IsDeleted>
+  </LineStation>
+  <LineStation>
+    <LineStationId>402</LineStationId>
+    <LineId>2</LineId>
+    <StationId>15</StationId>
+    <LineStationIndex>3</LineStationIndex>
+    <IsDeleted>false</IsDeleted>
+  </LineStation>
+  <LineStation>
+    <LineStationId>403</LineStationId>
+    <LineId>2</LineId>
+    <StationId>16</StationId>
+    <LineStationIndex>4</LineStationIndex>
+    <IsDeleted>false</IsDeleted>
+  </LineStation>
+  <LineStation>
+    <LineStationId>404</LineStationId>
+    <LineId>2</LineId>
+    <StationId>17</StationId>
+    <LineStationIndex>5</LineStationIndex>
     <IsDeleted>false</IsDeleted>
   </LineStation>
 </ArrayOfLineStation>

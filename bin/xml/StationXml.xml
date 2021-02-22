@@ -1,13 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <ArrayOfStation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Station>
-    <StationId>1</StationId>
-    <Name>HA-CALANIT2</Name>
-    <Longitude>34.480722375903618</Longitude>
-    <Latitude>31.401289956970739</Latitude>
-    <Adress>HA-CALANIT2</Adress>
-    <IsDeleted>false</IsDeleted>
-  </Station>
   <Station>
     <StationId>2</StationId>
     <Name>HA-CALANIT3</Name>
@@ -399,5 +391,21 @@
     <Latitude>31.714972853201893</Latitude>
     <Adress>HA-RAKEFET11</Adress>
     <IsDeleted>false</IsDeleted>
+  </Station>
+  <Station>
+    <StationId>51</StationId>
+    <Name>fdsf</Name>
+    <Longitude>4543</Longitude>
+    <Latitude>5454</Latitude>
+    <Adress>bvfb</Adress>
+    <IsDeleted>false</IsDeleted>
+  </Station>
+  <Station>
+    <StationId>1</StationId>
+    <Name>HA-CALANIT2</Name>
+    <Longitude>34.480722375903618</Longitude>
+    <Latitude>31.401289956970739</Latitude>
+    <Adress>HA-CALANIT2</Adress>
+    <IsDeleted>true</IsDeleted>
   </Station>
 </ArrayOfStation>
