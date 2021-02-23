@@ -72,16 +72,12 @@ namespace PL_Transportation_System
                     //updateLineWindow.SelectedLine = line;
                     updateLineWindow.Closing += OnCloseWindow;
                     updateLineWindow.Show();
-
-
                 }
                 else
                 {
                     MessageBox.Show("Cannot update deleted line");
                 }
             }
-
-
             //UpdateLineWindow updateLineWindow = new UpdateLineWindow();
 
             //updateLineWindow.Show();
