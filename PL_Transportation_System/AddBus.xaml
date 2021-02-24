@@ -20,49 +20,34 @@
             <RowDefinition Height="414*"/>
         </Grid.RowDefinitions>
         <ListBox Opacity="0.60" HorizontalAlignment="Left" Height="409" Margin="13,10,0,0" VerticalAlignment="Top" Width="430" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <Label  Content="Add Bus" FontFamily="Goudy Old Style" FontSize="25px" Foreground="#FF042271" FontWeight="Bold" Grid.ColumnSpan="2" Margin="168,10,-167.6,1.2"/>
-        <StackPanel  Margin="44,29.8,43.4,172.6" Grid.Row="1" Grid.ColumnSpan="2">
-            <StackPanel Orientation="Horizontal">
-                <Label  FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold" Content="License Number:"/>
-                <TextBox Width="93" x:Name="tbLicenseNumber"  Background="#FFFEFFFF"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label                 FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="From Date:"/>
-                <DatePicker x:Name="tbFromDate" Foreground="#FF042271" FontSize="15"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label                 FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="Total Trip:"/>
-                <TextBox Width="106" x:Name="tbTotalTrip"  Background="#FFFEFFFF"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label                 FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="Fuel Remain:"/>
-                <TextBox Width="71" x:Name="tbFuelRemain"  Background="#FFFEFFFF"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label                 FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="Treatment:"/>
-                <TextBox Width="70" x:Name="tbTreatment"  Background="#FFFEFFFF"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label                 FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="LastTreatmentDate:"/>
-                <DatePicker x:Name="dpLastTreatmentDate" Background="#00000000" Foreground="#FF042271" FontSize="15" OpacityMask="#FFE46E6E">
-                    <DatePicker.BorderBrush>
-                        <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
-                            <GradientStop Color="#FFA3AEB9" Offset="0"/>
-                            <GradientStop Color="#FF8399A9" Offset="0.375"/>
-                            <GradientStop Color="#FF718597" Offset="0.375"/>
-                            <GradientStop Color="#FF131618" Offset="1"/>
-                        </LinearGradientBrush>
-                    </DatePicker.BorderBrush>
-                </DatePicker>
-            </StackPanel>
+        <Label  Content="Add Bus" FontFamily="Goudy Old Style" FontSize="25px" Foreground="#FF042271" FontWeight="Bold" Grid.ColumnSpan="2" Margin="168,10,129.4,10.2"/>
 
-            <RadialProgressbar:RadialProgressBar Height="100"/>
 
-        </StackPanel>
         <Grid Margin="0,286.8,9.4,-9.4" Grid.Row="1" Grid.ColumnSpan="2">
             <Button Command="{Binding CancelAddBusCommand}" Click="Add_Button_Click" Content="Add" FontSize="15" FontFamily="Goudy Old Style" Foreground="#FF042271"  BorderThickness="2px" Background="White" Opacity="0.5"  FontWeight="Bold" Margin="65,-3,282,97"/>
             <Button Command="{Binding CancelAddBusCommand}" Click="Cancel_Button_Click" Content="Cancel" FontSize="15" FontFamily="Goudy Old Style" Foreground="#FF042271"  BorderThickness="2px" Background="White" Opacity="0.5" FontWeight="Bold" Margin="281,-3,53,97"/>
         </Grid>
+        <TextBox x:Name="tbLicenseNumber"  Background="#FFFEFFFF" Margin="222,13.8,142.4,373.6" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <Label  FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold" Content="License Number:" Margin="58,9.8,9.8,361.6" Grid.Row="1"/>
+        <DatePicker x:Name="tbFromDate" Foreground="#FF042271" FontSize="15" Margin="222,52.8,142.4,329.6" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Label                 FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="From Date:" Margin="58,52.8,75.8,320.6" Grid.Row="1"/>
+        <TextBox x:Name="tbTotalTrip"  Background="#FFFEFFFF" Margin="222,101.8,142.4,285.6" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Label                 FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="Total Trip:" Margin="58,98.8,75.8,278.6" Grid.Row="1"/>
+        <TextBox x:Name="tbFuelRemain"  Background="#FFFEFFFF" Margin="222,145.8,142.4,241.6" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Label                 FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="Fuel Remain:" Margin="58,140.8,46.8,237.6" Grid.Row="1"/>
+        <TextBox x:Name="tbTreatment"  Background="#FFFEFFFF" Margin="222,185.8,142.4,201.6" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Label                 FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="Treatment:" Margin="58,181.8,61.8,194.6" Grid.Row="1"/>
+        <DatePicker x:Name="dpLastTreatmentDate" Background="#00000000" Foreground="#FF042271" FontSize="15" OpacityMask="#FFE46E6E" Grid.ColumnSpan="2" Margin="222,227.8,142.4,150.6" Grid.Row="1" RenderTransformOrigin="0.428,-0.021">
+            <DatePicker.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
+                    <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                    <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                    <GradientStop Color="#FF718597" Offset="0.375"/>
+                    <GradientStop Color="#FF131618" Offset="1"/>
+                </LinearGradientBrush>
+            </DatePicker.BorderBrush>
+        </DatePicker>
+        <Label                 FontFamily="Goudy Old Style" FontSize="15px" Foreground="#FF042271" FontWeight="Bold" Content="LastTreatmentDate:" Margin="58,224.8,9.8,150.6" Grid.Row="1"/>
 
     </Grid>
 </Window>
