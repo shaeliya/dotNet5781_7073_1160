@@ -230,8 +230,16 @@ namespace PL_Transportation_System
 
         private bool LineStationValidityCheck(int index, double distanceToNextStation, TimeSpan timeToNextStation, double distanceFromPrevStation, TimeSpan timeFromPrevStation)
         {
-
-            if (Convert.ToInt32(index) == 0 || Convert.ToInt32(index) > line.StationsList.Select(s => s.LineStationIndex).Max() + 1)
+            int maxIndex = 0;
+            if (line.StationsList.Count == 0)
+            {
+                maxIndex = 1;
+            }
+            else
+            {
+                maxIndex = line.StationsList.Select(s => s.LineStationIndex).Max() + 1;
+            }
+            if (Convert.ToInt32(index) == 0 || Convert.ToInt32(index) > maxIndex)
             {
                 MessageBox.Show(" The index is unvalid");
                 return false;

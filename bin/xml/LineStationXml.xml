@@ -623,4 +623,18 @@
     <LineStationIndex>5</LineStationIndex>
     <IsDeleted>false</IsDeleted>
   </LineStation>
+  <LineStation>
+    <LineStationId>406</LineStationId>
+    <LineId>11</LineId>
+    <StationId>2</StationId>
+    <LineStationIndex>1</LineStationIndex>
+    <IsDeleted>false</IsDeleted>
+  </LineStation>
+  <LineStation>
+    <LineStationId>407</LineStationId>
+    <LineId>11</LineId>
+    <StationId>3</StationId>
+    <LineStationIndex>2</LineStationIndex>
+    <IsDeleted>false</IsDeleted>
+  </LineStation>
 </ArrayOfLineStation>

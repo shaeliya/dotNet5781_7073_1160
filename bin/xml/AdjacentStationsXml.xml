@@ -2520,4 +2520,12 @@
     <Time>PT16M30S</Time>
     <IsDeleted>False</IsDeleted>
   </AdjacentStations>
+  <AdjacentStations>
+    <AdjacentStationsId>361</AdjacentStationsId>
+    <StationId1>2</StationId1>
+    <StationId2>3</StationId2>
+    <Distance>12</Distance>
+    <Time>PT12M</Time>
+    <IsDeleted>False</IsDeleted>
+  </AdjacentStations>
 </ArrayOfAdjacentStations>
