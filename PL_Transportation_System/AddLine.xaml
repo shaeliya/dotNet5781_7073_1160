@@ -29,22 +29,14 @@
         </Grid.RowDefinitions>
         <ListBox Opacity="0.7" HorizontalAlignment="Left" Height="295" Margin="18,18,0,0" VerticalAlignment="Top" Width="360" Grid.ColumnSpan="2"/>
         <Label Content="Add Line" FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="20"  FontWeight="Bold" Margin="85.545,24,122.4,289.2" Grid.Column="1"/>
-        <StackPanel Margin="44,77,43.4,173.2" Grid.ColumnSpan="2">
-            <StackPanel Orientation="Horizontal">
-                <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold">Line Number:</Label>
-                <TextBox Width="93" Name="tbLineNumber"  Background="#FFFEFFFF"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,22.8,0">
-                <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold">Area:</Label>
-                <ComboBox Name="cbArea"  ItemsSource="{Binding Source={StaticResource Areas}}"  SelectedIndex="{Binding Area, Converter={StaticResource EnumToIntConverter}, Mode=TwoWay}" Width="200"/>
-            </StackPanel>
 
-            <StackPanel Orientation="Horizontal"/>
-
-        </StackPanel>
         <Grid Margin="0,334,9.4,-8.8" Grid.ColumnSpan="2">
             <Button  Content="Add" FontSize="20"   Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="40,-132,230.6,105.4" Click="Button_Click"/>
             <Button  Content="Cancel" FontSize="20"   Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="214,-131,33.6,103.4" RenderTransformOrigin="0.5,0.5"/>
         </Grid>
+        <ComboBox x:Name="cbArea"  ItemsSource="{Binding Source={StaticResource Areas}}"  SelectedIndex="{Binding Area, Converter={StaticResource EnumToIntConverter}, Mode=TwoWay}" Margin="106.8,146,127.4,184.2" Grid.Column="1"/>
+        <TextBox x:Name="tbLineNumber"  Background="#FFFEFFFF" Grid.Column="1" Margin="106.8,97,127.4,233.2"/>
+        <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold" Content="Line Number:" Margin="2.8,93,239.4,220.2" Grid.Column="1"/>
+        <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold" Content="Area:" Margin="2.8,142,287.4,170.2" Grid.Column="1"/>
     </Grid>
 </Window>

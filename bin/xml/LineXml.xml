@@ -66,4 +66,10 @@
     <Area>North</Area>
     <IsDeleted>False</IsDeleted>
   </Line>
+  <Line>
+    <LineId>12</LineId>
+    <LineNumber>12345</LineNumber>
+    <Area>South</Area>
+    <IsDeleted>False</IsDeleted>
+  </Line>
 </ArrayOfLine>
