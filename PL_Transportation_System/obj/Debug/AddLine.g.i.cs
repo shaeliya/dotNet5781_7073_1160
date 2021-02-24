@@ -43,7 +43,7 @@ namespace PL_Transportation_System {
     public partial class AddLine : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
-        #line 35 "..\..\AddLine.xaml"
+        #line 34 "..\..\AddLine.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox tbLineNumber;
         
@@ -51,7 +51,7 @@ namespace PL_Transportation_System {
         #line hidden
         
         
-        #line 39 "..\..\AddLine.xaml"
+        #line 38 "..\..\AddLine.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.ComboBox cbArea;
         
@@ -96,7 +96,7 @@ namespace PL_Transportation_System {
             return;
             case 3:
             
-            #line 46 "..\..\AddLine.xaml"
+            #line 44 "..\..\AddLine.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Button_Click);
             
             #line default

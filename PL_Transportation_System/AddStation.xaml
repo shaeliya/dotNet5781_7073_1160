@@ -20,26 +20,17 @@
         </Grid.RowDefinitions>
         <ListBox Opacity="0.6" HorizontalAlignment="Left" Height="348" Margin="15,9,0,0" VerticalAlignment="Top" Width="351" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
 
-        <Label Content="Add Station" FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="25px"  FontWeight="Bold" Grid.ColumnSpan="2" Margin="137,9,86.2,330.2" Grid.RowSpan="2"/>
-        <StackPanel Margin="44,29.8,43.4,172.6" Grid.Row="1" Grid.ColumnSpan="2">
-            <StackPanel Orientation="Horizontal">
-                <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold">Name:</Label>
-                <TextBox Width="93" Name="tbName"  Background="#FFFEFFFF"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold">Longitude:</Label>
-                <TextBox Width="106" Name="tbLongitude"  Background="#FFFEFFFF"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold">Latitude:</Label>
-                <TextBox Width="71" Name="tbLatitude"  Background="#FFFEFFFF"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold">Adress:</Label>
-                <TextBox Width="71" Name="tbAdress"  Background="#FFFEFFFF"/>
-            </StackPanel>
+        <Label Content="Add Station" FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="25px"  FontWeight="Bold" Grid.ColumnSpan="2" Margin="137,9,86.2,334.2" Grid.RowSpan="2"/>
+        <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold" Margin="48,10.4,70.6,287.2" Grid.Row="1">Name:</Label>
+        <TextBox Name="tbName"  Background="#FFFEFFFF" Grid.ColumnSpan="2" Margin="154,11.4,86.2,303.2" Grid.Row="1"/>
+        <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold" Margin="48,59.4,60.6,252.2" Grid.Row="1">Longitude:</Label>
+        <TextBox Name="tbLongitude"  Background="#FFFEFFFF" Grid.ColumnSpan="2" Margin="154,63.4,86.2,251.2" Grid.Row="1"/>
+        <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold" Margin="48,113.4,70.6,197.2" Grid.Row="1">Latitude:</Label>
+        <TextBox Name="tbLatitude"  Background="#FFFEFFFF" Grid.ColumnSpan="2" Margin="154,117.4,86.2,197.2" Grid.Row="1"/>
+        <Label FontFamily="Goudy Old Style" Foreground="#FF042271" FontSize="15px"  FontWeight="Bold" Margin="48,164.4,70.6,135.2" Grid.Row="1">Adress:</Label>
+        <TextBox Name="tbAdress"  Background="#FFFEFFFF" RenderTransformOrigin="1.935,4.329" Grid.ColumnSpan="2" Margin="154,168.4,86.2,146.2" Grid.Row="1"/>
 
-        </StackPanel>
+
         <Grid Margin="0,286.8,9.4,-9.4" Grid.Row="1" Grid.ColumnSpan="2">
             <Button Click="Add_Button_Click" Content="Add" FontSize="20"  BorderThickness="2px" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="32,-71,192.8,83.2"/>
             <Button Click="Cancel_Button_Click" Content="Cancel" FontSize="20" BorderThickness="2px"  FontFamily="Goudy Old Style" FontWeight="Bold" Margin="193,-72,18.8,84.2" RenderTransformOrigin="0.5,0.5"/>
