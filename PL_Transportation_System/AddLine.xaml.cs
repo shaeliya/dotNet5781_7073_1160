@@ -83,5 +83,10 @@ namespace PL_Transportation_System
                                 
             return true;
         }
+
+        private void Cancel_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

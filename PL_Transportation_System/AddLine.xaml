@@ -32,7 +32,7 @@
 
         <Grid Margin="0,334,9.4,-8.8" Grid.ColumnSpan="2">
             <Button  Content="Add" FontSize="20"   Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="40,-132,230.6,105.4" Click="Button_Click"/>
-            <Button  Content="Cancel" FontSize="20"   Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="214,-131,33.6,103.4" RenderTransformOrigin="0.5,0.5"/>
+            <Button  Content="Cancel" FontSize="20"   Opacity="0.5" FontFamily="Goudy Old Style" FontWeight="Bold" Margin="214,-131,33.6,103.4" RenderTransformOrigin="0.5,0.5" Click="Cancel_Button_Click"/>
         </Grid>
         <ComboBox x:Name="cbArea"  ItemsSource="{Binding Source={StaticResource Areas}}"  SelectedIndex="{Binding Area, Converter={StaticResource EnumToIntConverter}, Mode=TwoWay}" Margin="106.8,146,127.4,184.2" Grid.Column="1"/>
         <TextBox x:Name="tbLineNumber"  Background="#FFFEFFFF" Grid.Column="1" Margin="106.8,97,127.4,233.2"/>

@@ -4,19 +4,19 @@
     <LineId>1</LineId>
     <LineNumber>1</LineNumber>
     <Area>Center</Area>
-    <IsDeleted>false</IsDeleted>
+    <IsDeleted>False</IsDeleted>
   </Line>
   <Line>
     <LineId>2</LineId>
     <LineNumber>2</LineNumber>
     <Area>TelAviv</Area>
-    <IsDeleted>false</IsDeleted>
+    <IsDeleted>False</IsDeleted>
   </Line>
   <Line>
     <LineId>3</LineId>
     <LineNumber>3</LineNumber>
     <Area>South</Area>
-    <IsDeleted>false</IsDeleted>
+    <IsDeleted>True</IsDeleted>
   </Line>
   <Line>
     <LineId>4</LineId>

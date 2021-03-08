@@ -1,30 +1,6 @@
 <?xml version="1.0"?>
 <ArrayOfStation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Station>
-    <StationId>2</StationId>
-    <Name>HA-CALANIT3</Name>
-    <Longitude>34.2987216021394</Longitude>
-    <Latitude>31.076288575248924</Latitude>
-    <Adress>HA-CALANIT3</Adress>
-    <IsDeleted>false</IsDeleted>
-  </Station>
-  <Station>
-    <StationId>3</StationId>
-    <Name>HA-CALANIT4</Name>
-    <Longitude>34.414602819091925</Longitude>
-    <Latitude>31.283219319807</Latitude>
-    <Adress>HA-CALANIT4</Adress>
-    <IsDeleted>false</IsDeleted>
-  </Station>
-  <Station>
-    <StationId>4</StationId>
-    <Name>HA-CALANIT5</Name>
-    <Longitude>35.514477644914052</Longitude>
-    <Latitude>33.247281508775089</Latitude>
-    <Adress>HA-CALANIT5</Adress>
-    <IsDeleted>false</IsDeleted>
-  </Station>
-  <Station>
     <StationId>5</StationId>
     <Name>HA-CALANIT6</Name>
     <Longitude>35.065337509506072</Longitude>
@@ -401,11 +377,35 @@
     <IsDeleted>false</IsDeleted>
   </Station>
   <Station>
+    <StationId>3</StationId>
+    <Name>HA-CALANIT4</Name>
+    <Longitude>34.414602819091925</Longitude>
+    <Latitude>31.283219319807</Latitude>
+    <Adress>HA-CALANIT4</Adress>
+    <IsDeleted>true</IsDeleted>
+  </Station>
+  <Station>
+    <StationId>2</StationId>
+    <Name>HA-CALANIT3</Name>
+    <Longitude>34.2987216021394</Longitude>
+    <Latitude>31.076288575248924</Latitude>
+    <Adress>HA-CALANIT3</Adress>
+    <IsDeleted>false</IsDeleted>
+  </Station>
+  <Station>
+    <StationId>4</StationId>
+    <Name>HA-CALANIT5</Name>
+    <Longitude>35.514477644914052</Longitude>
+    <Latitude>33.247281508775089</Latitude>
+    <Adress>HA-CALANIT5</Adress>
+    <IsDeleted>false</IsDeleted>
+  </Station>
+  <Station>
     <StationId>1</StationId>
     <Name>HA-CALANIT2</Name>
     <Longitude>34.480722375903618</Longitude>
     <Latitude>31.401289956970739</Latitude>
     <Adress>HA-CALANIT2</Adress>
-    <IsDeleted>true</IsDeleted>
+    <IsDeleted>false</IsDeleted>
   </Station>
 </ArrayOfStation>

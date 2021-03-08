@@ -92,7 +92,7 @@ namespace PL_Transportation_System
         private void ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             // מוסיפה 10 דקות לזמן הנוכחי
-            currentTime = currentTime.Add(new TimeSpan(0, 10, 0));
+            currentTime = currentTime.Add(new TimeSpan(0, 30, 0));
 
             // מעדכנת את השעון במסך עצמו
             Update_lblCurrentTime();
@@ -127,8 +127,10 @@ namespace PL_Transportation_System
             {
                 // ProgressChanged מרים (מפעיל) אירוע של 
                 timeWorker.ReportProgress(0);
-                // ישן שנייה
-                Thread.Sleep(1000);
+                // ישן 3 שניות
+                //אם נתקע ניתן להגדיל את מספר השניות שהוא  ישן כי לפעמים המהירות שהמחשב עובד גורמת לכך שהמסך לא מספיק להתעדכן
+                //תלוי במחשב הספציפי שעליו מריצים את התכנית
+                Thread.Sleep(3000);
             }
         }
 
@@ -172,8 +174,8 @@ namespace PL_Transportation_System
 
         private void SetCurrentTime()
         {
-            currentTime = DateTime.Now.TimeOfDay;
-            //currentTime = new TimeSpan(7,0,0);
+           // currentTime = DateTime.Now.TimeOfDay;
+            currentTime = new TimeSpan(7,0,0);
         }
 
         private void StopSimulation_Clicked(object sender, RoutedEventArgs e)

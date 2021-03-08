@@ -22,13 +22,13 @@
   </Bus>
   <Bus>
     <LicenseNumber>6078724</LicenseNumber>
-    <FromDate>2004-01-29T00:00:00</FromDate>
-    <TotalTrip>6990854054.7924643</TotalTrip>
-    <FuelRemain>502.89964392636887</FuelRemain>
+    <FromDate>29/01/2004 00:00:00</FromDate>
+    <TotalTrip>6990854054.79246</TotalTrip>
+    <FuelRemain>0</FuelRemain>
     <Treatment>0</Treatment>
-    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <LastTreatmentDate>01/01/0001 00:00:00</LastTreatmentDate>
     <Status>ReadyToGo</Status>
-    <IsDeleted>false</IsDeleted>
+    <IsDeleted>False</IsDeleted>
   </Bus>
   <Bus>
     <LicenseNumber>3914335</LicenseNumber>
@@ -62,13 +62,13 @@
   </Bus>
   <Bus>
     <LicenseNumber>5329728</LicenseNumber>
-    <FromDate>2000-01-30T00:00:00</FromDate>
-    <TotalTrip>1930367889.1185544</TotalTrip>
-    <FuelRemain>887.37497758929385</FuelRemain>
+    <FromDate>30/01/2000 00:00:00</FromDate>
+    <TotalTrip>1930367889.11855</TotalTrip>
+    <FuelRemain>0</FuelRemain>
     <Treatment>0</Treatment>
-    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <LastTreatmentDate>01/01/0001 00:00:00</LastTreatmentDate>
     <Status>ReadyToGo</Status>
-    <IsDeleted>false</IsDeleted>
+    <IsDeleted>False</IsDeleted>
   </Bus>
   <Bus>
     <LicenseNumber>27188966</LicenseNumber>
@@ -82,13 +82,13 @@
   </Bus>
   <Bus>
     <LicenseNumber>2049828</LicenseNumber>
-    <FromDate>1999-09-09T00:00:00</FromDate>
-    <TotalTrip>8401827828.9910984</TotalTrip>
-    <FuelRemain>294.72461649250454</FuelRemain>
+    <FromDate>09/09/1999 00:00:00</FromDate>
+    <TotalTrip>8401827828.9911</TotalTrip>
+    <FuelRemain>0</FuelRemain>
     <Treatment>0</Treatment>
-    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <LastTreatmentDate>01/01/0001 00:00:00</LastTreatmentDate>
     <Status>ReadyToGo</Status>
-    <IsDeleted>false</IsDeleted>
+    <IsDeleted>False</IsDeleted>
   </Bus>
   <Bus>
     <LicenseNumber>7667890</LicenseNumber>
@@ -112,13 +112,13 @@
   </Bus>
   <Bus>
     <LicenseNumber>2086314</LicenseNumber>
-    <FromDate>2014-12-05T00:00:00</FromDate>
-    <TotalTrip>325499497.70430321</TotalTrip>
-    <FuelRemain>766.56430997027292</FuelRemain>
+    <FromDate>05/12/2014 00:00:00</FromDate>
+    <TotalTrip>325499497.704303</TotalTrip>
+    <FuelRemain>0</FuelRemain>
     <Treatment>0</Treatment>
-    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <LastTreatmentDate>01/01/0001 00:00:00</LastTreatmentDate>
     <Status>ReadyToGo</Status>
-    <IsDeleted>false</IsDeleted>
+    <IsDeleted>False</IsDeleted>
   </Bus>
   <Bus>
     <LicenseNumber>1218637</LicenseNumber>
@@ -182,13 +182,13 @@
   </Bus>
   <Bus>
     <LicenseNumber>5725926</LicenseNumber>
-    <FromDate>2001-02-07T00:00:00</FromDate>
-    <TotalTrip>8834624778.043623</TotalTrip>
-    <FuelRemain>845.09815315068613</FuelRemain>
+    <FromDate>07/02/2001 00:00:00</FromDate>
+    <TotalTrip>8834624778.04362</TotalTrip>
+    <FuelRemain>0</FuelRemain>
     <Treatment>0</Treatment>
-    <LastTreatmentDate>0001-01-01T00:00:00</LastTreatmentDate>
+    <LastTreatmentDate>01/01/0001 00:00:00</LastTreatmentDate>
     <Status>ReadyToGo</Status>
-    <IsDeleted>false</IsDeleted>
+    <IsDeleted>False</IsDeleted>
   </Bus>
   <Bus>
     <LicenseNumber>81795077</LicenseNumber>
